@@ -8,7 +8,6 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "outDir": "dist",
-    "baseUrl": "src",
-    "declaration": true
+    "baseUrl": "src"
   }
 }

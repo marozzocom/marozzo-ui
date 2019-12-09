@@ -6,6 +6,18 @@ const webpack = require("webpack")
 
 module.exports = merge(common, {
   mode: "production",
+  module: {
+    rules: [
+      // All files with a ".ts" or ".tsx" extension will be handled by "ts-loader".
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        options: {
+          configFile: "tsconfig.prod.json"
+        }
+      }
+    ]
+  },
   plugins: [
     new BundleAnalyzerPlugin({
       analyzerMode: "static",

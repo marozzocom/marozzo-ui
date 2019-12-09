@@ -1,9 +1,9 @@
 {
   "name": "@marozzocom/marozzo-ui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React UI components used by marozzo.com",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/src/index.d.ts",
   "scripts": {
     "test": "jest",
     "storybook": "start-storybook -p 6006",

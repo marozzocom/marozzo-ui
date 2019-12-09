@@ -3,6 +3,7 @@ const common = require("./webpack.common.js")
 const path = require("path")
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 const webpack = require("webpack")
+const DtsBundleWebpack = require('dts-bundle-webpack')
 
 module.exports = merge(common, {
   mode: "production",
@@ -27,6 +28,11 @@ module.exports = merge(common, {
     }),
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(true)
+    }),
+    new DtsBundleWebpack({
+      name: "marozzo-ui",
+      main: "dist/**/*.d.ts",
+      out: "index.d.ts"
     })
   ]
 })

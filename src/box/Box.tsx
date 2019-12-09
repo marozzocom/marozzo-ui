@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { color, space, typography, layout, SpaceProps, LayoutProps, ColorProps, TypographyProps, compose } from 'styled-system'
-import { FC, StyleHTMLAttributes } from "react"
+import { FC } from "react"
 import css, { SystemStyleObject } from "@styled-system/css"
 
 export interface BaseProps extends React.RefAttributes<any> {

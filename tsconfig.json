@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "esModuleInterop": true,
+    "target": "es6",
+    "jsx": "react",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "baseUrl": "src"
+  }
+}

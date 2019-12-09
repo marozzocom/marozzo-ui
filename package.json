@@ -1,12 +1,13 @@
 {
   "name": "@marozzocom/marozzo-ui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React UI components used by marozzo.com",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

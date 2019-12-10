@@ -1,6 +1,6 @@
 import React from "react"
 import { render, fireEvent } from '@testing-library/react'
-import { Button } from "button/Button"
+import { Button } from "../src/button/Button"
 
 test("renders button", () => {
   const { getByText } = render(<Button>button</Button>)

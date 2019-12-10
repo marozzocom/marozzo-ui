@@ -1,6 +1,4 @@
-import { Theme } from "themes/theme";
-
-const theme: Theme = {
+const theme = {
   fonts: {
     body: 'system-ui, sans-serif',
     heading: '"Avenir Next", sans-serif',
@@ -11,6 +9,10 @@ const theme: Theme = {
     background: '#fff',
     primary: '#33e',
     secondary: '#faa'
+  },
+  radii: {
+    normal: 10,
+    round: 2000
   }
 }
 

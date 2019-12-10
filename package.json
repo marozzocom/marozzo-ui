@@ -1,16 +1,17 @@
 {
   "name": "@marozzocom/marozzo-ui",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "React UI components used by marozzo.com",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "type": "module",
   "scripts": {
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "webpack --config webpack.prod.js",
-    "tsc": "tsc"
+    "clean": "rimraf dist/*",
+    "prebuild": "npm run clean",
+    "build": "tsc -p tsconfig.prod.json"
   },
   "repository": {
     "type": "git",
@@ -53,15 +54,12 @@
     "@types/jest": "^24.0.23",
     "@types/theme-ui": "^0.2.5",
     "babel-loader": "^8.0.6",
-    "clean-webpack-plugin": "^3.0.0",
-    "dts-bundle-webpack": "^1.0.2",
     "eslint": "^6.7.2",
     "eslint-plugin-react": "^7.17.0",
     "jest": "^24.9.0",
+    "rimraf": "^3.0.0",
     "ts-jest": "^24.2.0",
     "ts-loader": "^6.2.1",
-    "webpack-bundle-analyzer": "^3.6.0",
-    "webpack-cli": "^3.3.10",
-    "webpack-merge": "^4.2.2"
+    "webpack-cli": "^3.3.10"
   }
 }

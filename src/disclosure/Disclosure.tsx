@@ -1,24 +1,23 @@
 import React, { FC, useMemo } from "react"
 import nanoid from "nanoid"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion, AnimationProps } from "framer-motion"
+import { useTheme } from "emotion-theming"
+import { ITheme } from "../themes/default"
 
 interface Props {
+  animation?: AnimationProps
   open?: boolean
   key?: string
 }
 
-export const Disclosure: FC<Props> = ({open = true, key, children}) => {
+export const Disclosure: FC<Props> = ({animation, open = true, key, children}) => {
   const memoizedKey = key ?? useMemo(() => nanoid(), [])
+  const theme = useTheme<ITheme>()
 
   return <AnimatePresence>
     {open && <motion.div
       key={memoizedKey}
-      initial={{ opacity: 0, x: "-100%" }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{
-        type: "tween"
-      }}
-      exit={{ opacity: 0 }}
+      {...{...animation ?? theme.disclosures.default}}
     >
       {children}
     </motion.div>}

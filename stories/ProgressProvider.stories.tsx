@@ -1,7 +1,6 @@
 import React, { useContext } from "react"
-import { ProgressProvider } from "../src/progress/ProgressProvider";
+import { ProgressProvider, ProgressContext } from "../src/progress/ProgressProvider";
 import { Button } from "../src";
-import { ProgressContext } from "../src/progress/useProgress";
 
 export default {
   component: ProgressProvider,

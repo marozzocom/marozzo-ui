@@ -4,14 +4,12 @@ import { Toast as IToast, Toasts } from "./models"
 import { dissociate } from "../helpers"
 import { Disclosure } from "../disclosure/Disclosure"
 
-// import { Disclosure } from "../disclosure/Disclosure"
-
 export const ToastContext = createContext<{ toasts: Toasts, add: (data: IToast, id: string) => void, remove: (id: string) => void }>(null)
 
 export const ToastProvider: FC<{}> = ({ children }) => {
   const [toasts, setToasts] = useState<Toasts>({})
 
-  const add = ({ message }: IToast, id: string) => setToasts({ ...toasts, [id]: { message } })
+  const add = ({ message }: IToast, id: string) => setToasts(currentToasts => ({ ...currentToasts, [id]: { message } }))
 
   const remove = (id: string) => setToasts(currentToasts => ({...dissociate(id)(currentToasts)}))
 
@@ -24,6 +22,6 @@ export const ToastProvider: FC<{}> = ({ children }) => {
 }
 
 const Toaster: FC<{}> = () => {
-  const { toasts } = useContext(ToastContext)
-  return <Disclosure>{Object.entries(toasts).map(([id, { message }]) => <Toast key={id} id={id} message={message} />)}</Disclosure>
+  const { toasts, remove } = useContext(ToastContext)
+  return <Disclosure>{Object.entries(toasts).map(([id, { message }]) => <Toast key={id} id={id} message={message} remove={() => remove(id)} />)}</Disclosure>
 }

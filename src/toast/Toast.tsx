@@ -8,11 +8,11 @@ import { useTheme } from "emotion-theming"
 import { ITheme } from "../themes/default"
 
 export interface Props extends IToast {
-  id: string
+  id?: string
+  remove?: (id: string) => void
 }
 
-export const Toast: FC<Props> = ({ message, children, id }) => {
-  const { remove } = useContext(ToastContext)
+export const Toast: FC<Props> = ({ message, children, id, remove }) => {
   const { timings } = useTheme<ITheme>()
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const Toast: FC<Props> = ({ message, children, id }) => {
     <Box borderRadius="normal" backgroundColor="tomato">
       <Text>{message}</Text>
       {children}
-      <Close onClick={() => remove(id)} />
+      {remove && id && <Close onClick={() => remove(id)} />}
     </Box>
   )
 }

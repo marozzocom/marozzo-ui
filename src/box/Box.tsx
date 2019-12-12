@@ -3,13 +3,15 @@ import { color, space, typography, layout, SpaceProps, LayoutProps, ColorProps, 
 import { FC } from "react"
 import css, { SystemStyleObject } from "@styled-system/css"
 
-export interface BaseProps extends React.RefAttributes<any> {
+interface HTMLProps<T> extends React.RefAttributes<T>, Omit<React.HTMLAttributes<T>, "color"> {}
+
+interface BaseProps<T> extends Omit<HTMLProps<T>, "style"> {
   as?: React.ElementType
   style?: SystemStyleObject
 }
 
-export interface BoxProps
-  extends BaseProps,
+interface Props<T = HTMLElement>
+  extends BaseProps<T>,
   SpaceProps,
   LayoutProps,
   TypographyProps,
@@ -17,7 +19,7 @@ export interface BoxProps
   ShadowProps,
   ColorProps { }
 
-export const Box: FC<BoxProps> = styled("div")(
+export const Box: FC<Props> = styled("div")(
   {
     boxSizing: "border-box",
     minWidth: 0

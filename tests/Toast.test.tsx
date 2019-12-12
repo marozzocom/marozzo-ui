@@ -1,8 +1,8 @@
 import React from "react"
-import { render } from '@testing-library/react'
+import { render } from "@testing-library/react"
 import { Toast } from "../src/toast/Toast"
 
-test("renders toast", () => {
-  const { getByText } = render(<Toast>toast</Toast>)
-  expect(getByText('toast')).not.toBeNull()
+test("Renders Toast", () => {
+  const { getByText } = render(<Toast id="toast" message="Toast"/>)
+  expect(getByText("Toast")).not.toBeNull()
 })

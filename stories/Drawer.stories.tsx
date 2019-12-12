@@ -12,6 +12,5 @@ export const drawer = () => {
   return <>
     <Button onClick={() => setOpen(!open)}>toggle</Button>
     <Drawer open={open}>drawer</Drawer>
-    <Drawer open={true}>drawer2</Drawer>
   </>
 }

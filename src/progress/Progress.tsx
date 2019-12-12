@@ -5,4 +5,4 @@ interface Props {
   value?: number
 }
 
-export const Progress: FC<Props> = ({ value = 100}) => <Box height="2" bg="gray"><Box height="2" width={`${value}%`} bg="tomato"/></Box>
+export const Progress: FC<Props> = ({ value = 100}) => <Box height="2" bg="gray" aria-valuemin={0} aria-valuemax={0} aria-valuenow={value} aria-valuetext={`${value}%`} role="progressbar"><Box height="2" width={`${value}%`} bg="tomato"/></Box>

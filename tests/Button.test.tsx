@@ -1,17 +1,17 @@
 import React from "react"
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent } from "@testing-library/react"
 import { Button } from "../src/button/Button"
 
-test("renders button", () => {
-  const { getByText } = render(<Button>button</Button>)
-  expect(getByText('button')).not.toBeNull()
+test("Renders Button", () => {
+  const { getByText } = render(<Button>Button</Button>)
+  expect(getByText("Button")).not.toBeNull()
 })
 
-it("captures clicks", done => {
+it("Button Captures clicks", done => {
   const handleClick = () => {
     done()
   }
-  const { getByText } = render(<Button onClick={handleClick}>button</Button>)
-  const node = getByText("button");
+  const { getByText } = render(<Button onClick={handleClick}>Button</Button>)
+  const node = getByText("Button");
   fireEvent.click(node);
 });

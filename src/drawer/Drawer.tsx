@@ -4,19 +4,20 @@ import { Portal } from "../portal/Portal"
 import { Disclosure } from "../disclosure/Disclosure"
 import { useTheme } from "emotion-theming"
 import { ITheme } from "../themes/default"
+import nanoid from "nanoid"
 
 interface Props {
   open?: boolean
   key?: string
 }
 
-export const Drawer: FC<Props> = ({ open = true, key, children }) => {
+export const Drawer: FC<Props> = ({ open = true, key=nanoid(), children }) => {
   const theme = useTheme<ITheme>()
   
   return (
   <Portal>
-    <Disclosure animation={theme.disclosures.drawer} open={open} key={key}>
-      <Box width="6" boxShadow="normal">{children}</Box>
+    <Disclosure animation={theme.disclosures.drawer}>
+      {open && <Box width="6" boxShadow="normal" key={key}>{children}</Box>}
     </Disclosure>
   </Portal>
 )}

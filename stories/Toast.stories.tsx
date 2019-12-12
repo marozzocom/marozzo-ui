@@ -6,4 +6,4 @@ export default {
   title: "Toast",
 };
 
-export const toast = () => <Toast>Toast</Toast>
+export const toast = () => <Toast id="toast" message="Toast"/>

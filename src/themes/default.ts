@@ -61,6 +61,10 @@ class Theme {
       }
     }
   }
+
+  timings = {
+    toast: 5000
+  }
 }
 
 

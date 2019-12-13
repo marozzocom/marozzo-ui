@@ -2,7 +2,11 @@ import React, { FC, useEffect, useState } from "react"
 import { Progress } from "../progress/Progress"
 import { Box } from "../box/Box"
 
-export const PageProgress: FC<{}> = () => {
+interface Props {
+  source?: any // TODO: implement constraints
+}
+
+export const PageProgress: FC<Props> = ({}) => {
   const [progress, setProgress] = useState(0)
   const source = document.scrollingElement
 

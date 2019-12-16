@@ -31,7 +31,7 @@ class DefaultTheme {
     text: '#000',
     background: '#fff',
     primary: '#33e',
-    secondary: '#faa'
+    secondary: '#666'
   }
 
   radii = {

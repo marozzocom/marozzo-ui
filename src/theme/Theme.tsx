@@ -8,4 +8,7 @@ interface Props {
     global?: InterpolationWithTheme<any>
 }
 
-export const Theme: FC<Props> = ({theme, children, global}) => <>{global && <Global styles={global} />}<ThemeProvider theme={theme}>{children}</ThemeProvider></>
+export const Theme: FC<Props> = ({theme, children, global}) => {
+    console.log(global)
+    return <>{global && <Global styles={global} />}<ThemeProvider theme={theme}>{children}</ThemeProvider></>
+}

@@ -3,7 +3,7 @@ import { Box } from "../box/Box"
 import { Portal } from "../portal/Portal"
 import { Disclosure } from "../disclosure/Disclosure"
 import { useTheme } from "emotion-theming"
-import { ITheme } from "../themes/default"
+import { ITheme } from "../theme/DefaultTheme"
 import nanoid from "nanoid"
 
 interface Props {

@@ -2,7 +2,7 @@ import React, { FC, useMemo, Children, ReactNode, cloneElement, ReactElement } f
 import nanoid from "nanoid"
 import { AnimatePresence, motion, AnimationProps } from "framer-motion"
 import { useTheme } from "emotion-theming"
-import { ITheme } from "../themes/default"
+import { ITheme } from "../theme/DefaultTheme"
 
 interface Props {
   animation?: AnimationProps

@@ -10,7 +10,7 @@ interface BaseProps<T> extends Omit<HTMLProps<T>, "style"> {
   style?: SystemStyleObject
 }
 
-interface Props<T = HTMLElement>
+export interface Props<T = HTMLElement>
   extends BaseProps<T>,
   SpaceProps,
   PositionProps,

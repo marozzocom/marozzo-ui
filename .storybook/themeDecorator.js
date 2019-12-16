@@ -1,9 +1,10 @@
 import React from "react"
-import { ThemeProvider } from "emotion-theming"
-import theme from "themes/default"
+import { Theme } from "../src/theme/Theme"
+import { global } from "../src/theme/global"
+import theme from "../src/theme/DefaultTheme"
 
 const ThemeDecorator = storyFn => (
-  <ThemeProvider theme={theme}>{storyFn()}</ThemeProvider>
+  <Theme theme={theme} global={global}>{storyFn()}</Theme>
 )
 
 export default ThemeDecorator

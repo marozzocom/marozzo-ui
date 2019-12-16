@@ -1,14 +1,14 @@
-export interface ITheme extends Theme {
+export interface ITheme extends DefaultTheme {
 }
 
-class Theme {
-  private static instance: Theme
+class DefaultTheme {
+  private static instance: DefaultTheme
 
   static getInstance() {
-    if (!Theme.instance) {
-      Theme.instance = new Theme()
+    if (!DefaultTheme.instance) {
+      DefaultTheme.instance = new DefaultTheme()
     }
-    return Theme.instance
+    return DefaultTheme.instance
   }
 
   sizes = {
@@ -68,5 +68,5 @@ class Theme {
 }
 
 
-const theme = Theme.getInstance()
+const theme = DefaultTheme.getInstance()
 export default theme

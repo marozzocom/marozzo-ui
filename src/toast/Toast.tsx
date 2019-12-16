@@ -5,7 +5,7 @@ import { Text } from "../text/Text"
 import { Close } from "../close/Close"
 import { ToastContext } from "./ToastProvider"
 import { useTheme } from "emotion-theming"
-import { ITheme } from "../themes/default"
+import { ITheme } from "../theme/DefaultTheme"
 
 export interface Props extends IToast {
   id?: string

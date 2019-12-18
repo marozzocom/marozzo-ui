@@ -1,6 +1,6 @@
 import React, { FC, useState, createContext, Dispatch, SetStateAction } from "react"
 
-interface Operations {
+export interface Operations {
   [id: string]: boolean
 }
 

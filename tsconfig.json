@@ -9,5 +9,6 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "outDir": "dist"
-  }
+  },
+  "include": ["src"]
 }

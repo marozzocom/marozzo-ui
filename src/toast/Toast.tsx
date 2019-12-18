@@ -1,13 +1,12 @@
-import React, { FC, useContext, useEffect } from "react"
+import React, { FC, useEffect } from "react"
 import { Box } from "../box/Box"
 import { Toast as IToast } from "./models"
 import { Text } from "../text/Text"
 import { Close } from "../close/Close"
-import { ToastContext } from "./ToastProvider"
 import { useTheme } from "emotion-theming"
 import { ITheme } from "../theme/DefaultTheme"
 
-export interface Props extends IToast {
+interface Props extends IToast {
   id?: string
   remove?: (id: string) => void
 }

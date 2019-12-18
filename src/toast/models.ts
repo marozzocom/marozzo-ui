@@ -4,12 +4,12 @@ enum ToastType {
   Error
 }
 
-export interface Toast {
+export interface ToastData {
   message: string
   title?: string
   type?: ToastType
 }
 
 export interface Toasts {
-  [id: string]: Toast
+  [id: string]: ToastData
 }

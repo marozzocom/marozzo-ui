@@ -1,26 +1,30 @@
 import React, { FC, useEffect } from "react"
 import { Box } from "../box/Box"
-import { Toast as IToast } from "./models"
+import { ToastData } from "./models"
 import { Text } from "../text/Text"
 import { Close } from "../close/Close"
 import { useTheme } from "emotion-theming"
-import { ITheme } from "../theme/DefaultTheme"
+import { Theme } from "../theme/Theme"
+import { useToast } from "./useToast"
+import { Heading } from "../heading/Heading"
 
-interface Props extends IToast {
+interface Props extends ToastData {
   id?: string
   remove?: (id: string) => void
 }
 
-export const Toast: FC<Props> = ({ message, children, id, remove }) => {
-  const { timings } = useTheme<ITheme>()
+export const Toast: FC<Props> = ({ message, title, children, id }) => {
+  const { timings } = useTheme<Theme>()
+  const { remove } = useToast()
 
-  useEffect(() => {
+  remove && useEffect(() => {
     const removeTimer = setTimeout(() => remove(id), timings.toast)
     return () => clearTimeout(removeTimer)
   }, [])
 
   return (
     <Box borderRadius="normal" backgroundColor="tomato">
+      <Heading>{title}</Heading>
       <Text>{message}</Text>
       {children}
       {remove && id && <Close onClick={() => remove(id)} />}

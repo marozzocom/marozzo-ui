@@ -1,10 +1,13 @@
 import React, { FC } from "react"
 import { ThemeProviderProps, ThemeProvider } from "emotion-theming"
-import { ITheme } from "./DefaultTheme"
+import { DefaultTheme } from "./DefaultTheme"
 import { Global, InterpolationWithTheme } from "@emotion/core"
 
+export interface Theme extends DefaultTheme {
+}
+
 interface Props {
-    theme: ThemeProviderProps<ITheme>,
+    theme: ThemeProviderProps<Theme>,
     global?: InterpolationWithTheme<any>
 }
 

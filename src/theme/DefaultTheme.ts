@@ -1,7 +1,4 @@
-export interface ITheme extends DefaultTheme {
-}
-
-class DefaultTheme {
+export class DefaultTheme {
   private static instance: DefaultTheme
 
   static getInstance() {
@@ -67,6 +64,4 @@ class DefaultTheme {
   }
 }
 
-
-const theme = DefaultTheme.getInstance()
-export default theme
+export const defaultTheme = DefaultTheme.getInstance()

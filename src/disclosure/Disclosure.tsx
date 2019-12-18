@@ -2,7 +2,7 @@ import React, { FC, useMemo, Children, ReactNode, cloneElement, ReactElement } f
 import nanoid from "nanoid"
 import { AnimatePresence, motion, AnimationProps } from "framer-motion"
 import { useTheme } from "emotion-theming"
-import { ITheme } from "../theme/DefaultTheme"
+import { Theme } from "../theme/Theme"
 
 interface Props {
   animation?: AnimationProps
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const Disclosure: FC<Props> = ({ animation, key, children }) => {
-  const { disclosures } = useTheme<ITheme>()
+  const { disclosures } = useTheme<Theme>()
 
   return <AnimatePresence>
     {Children.map(children, (child: ReactElement<any>, index) => (

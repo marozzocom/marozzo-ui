@@ -3,7 +3,7 @@ import { Box } from "../box/Box"
 import { Portal } from "../portal/Portal"
 import { Disclosure } from "../disclosure/Disclosure"
 import { useTheme } from "emotion-theming"
-import { ITheme } from "../theme/DefaultTheme"
+import { Theme } from "../theme/Theme"
 import nanoid from "nanoid"
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const Drawer: FC<Props> = ({ open = true, key=nanoid(), children }) => {
-  const theme = useTheme<ITheme>()
+  const theme = useTheme<Theme>()
   
   return (
   <Portal>

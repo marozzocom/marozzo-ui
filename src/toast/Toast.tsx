@@ -4,7 +4,7 @@ import { ToastData } from "./models"
 import { Text } from "../text/Text"
 import { Close } from "../close/Close"
 import { useTheme } from "emotion-theming"
-import { Theme } from "../theme/ThemeProvider"
+import { Theme } from "../theme/models"
 import { useToast } from "./useToast"
 import { Heading } from "../heading/Heading"
 

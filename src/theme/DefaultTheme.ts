@@ -27,8 +27,8 @@ class DefaultTheme {
   colors = {
     text: '#000',
     background: '#fff',
-    primary: '#33e',
-    secondary: '#666'
+    primary: '#f00',
+    secondary: '#faa'
   }
 
   radii = {

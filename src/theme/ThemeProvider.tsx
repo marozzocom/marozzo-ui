@@ -4,7 +4,7 @@ import { Global, InterpolationWithTheme } from "@emotion/core"
 import { Theme } from "./models"
 
 interface Props {
-    theme: ThemeProviderProps<Theme>,
+    theme: Theme,
     global?: InterpolationWithTheme<any>
 }
 

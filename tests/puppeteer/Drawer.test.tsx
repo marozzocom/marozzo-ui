@@ -13,7 +13,8 @@ describe("Drawer", () => {
     const rootFrame = frames.find(f => f.name() === "storybook-preview-iframe");
     await rootFrame.click("#drawer-toggle")
     await page.waitFor(1000)
-    // await page.screenshot({path: 'screenshot.png'});
+    
+    // await page.screenshot({path: path.join(__dirname, "../../screenshots", "drawer.png")})
     await expect(rootFrame).toMatch("drawer")
   })
 })

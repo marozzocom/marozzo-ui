@@ -1,4 +1,4 @@
-import React, { FC, useMemo, Children, ReactNode, cloneElement, ReactElement } from "react"
+import React, { FC, useMemo, Children, ReactElement } from "react"
 import nanoid from "nanoid"
 import { AnimatePresence, motion, AnimationProps } from "framer-motion"
 import { useTheme } from "emotion-theming"
@@ -12,15 +12,19 @@ interface Props {
 
 export const Disclosure: FC<Props> = ({ animation, key, children }) => {
   const { disclosures } = useTheme<Theme>()
+  const rootKey = useMemo(() => (key ?? nanoid()), [])
 
   return <AnimatePresence>
-    {Children.map(children, (child: ReactElement<any>, index) => (
+    {children && Children.map(children, (child: ReactElement<any>, index) => {
+      const motionKey = `${rootKey}-${child?.key ?? "child"}-${index}`
+      console.log("motionKey", motionKey)
+      return (
       <motion.div
-        key={`${key}-${child?.key ?? index}`}
+        key={motionKey}
         {...{ ...animation ?? disclosures.default }}
       >{child}
       </motion.div>
-    )
+    )}
     )}
   </AnimatePresence>
 }

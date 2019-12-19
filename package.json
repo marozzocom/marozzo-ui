@@ -15,7 +15,7 @@
     "prebuild": "npm run build-storybook && npm run test && npm run clean",
     "build": "tsc -p tsconfig.prod.json",
     "release": "npm version patch && npm run build && npm publish",
-    "commit": "git-cz"
+    "cm": "git-cz"
   },
   "repository": {
     "type": "git",

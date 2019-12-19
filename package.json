@@ -14,7 +14,7 @@
     "clean": "rimraf dist/*",
     "prebuild": "npm run build-storybook && npm run test && npm run clean",
     "build": "tsc -p tsconfig.prod.json",
-    "release": "npm version patch && npm run build && npm publish",
+    "release": "standard-version && npm run build && npm publish",
     "commit": "npx git-cz"
   },
   "repository": {
@@ -73,13 +73,14 @@
     "jest-puppeteer": "^4.4.0",
     "puppeteer": "^2.0.0",
     "rimraf": "^3.0.0",
+    "standard-version": "^7.0.1",
     "ts-jest": "^24.2.0",
     "ts-loader": "^6.2.1",
     "webpack-cli": "^3.3.10"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog",
+      "path": "node_modules/cz-conventional-changelog",
       "maxHeaderWidth": 100,
       "maxLineWidth": 100,
       "defaultType": "",
@@ -87,11 +88,6 @@
       "defaultSubject": "",
       "defaultBody": "",
       "defaultIssues": ""
-    }
-  },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   }
 }

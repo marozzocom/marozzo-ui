@@ -1,15 +1,15 @@
-enum ToastType {
+export enum ToastType {
   Default,
   Success,
   Error
 }
 
-export interface ToastData {
+export interface ToastItem {
   message: string
   title?: string
   type?: ToastType
 }
 
 export interface Toasts {
-  [id: string]: ToastData
+  [id: string]: ToastItem
 }

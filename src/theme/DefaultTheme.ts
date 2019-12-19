@@ -1,4 +1,4 @@
-export class DefaultTheme {
+class DefaultTheme {
   private static instance: DefaultTheme
 
   static getInstance() {
@@ -58,10 +58,22 @@ export class DefaultTheme {
       }
     }
   }
-
-  timings = {
-    toast: 5000
-  }
 }
 
-export const defaultTheme = DefaultTheme.getInstance()
+const {
+  sizes,
+  fonts,
+  colors,
+  radii,
+  shadows,
+  disclosures
+} = DefaultTheme.getInstance()
+
+export const defaultTheme = {
+  sizes,
+  fonts,
+  colors,
+  radii,
+  shadows,
+  disclosures
+}

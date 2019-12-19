@@ -4,4 +4,4 @@ import { Icon } from "../icon/Icon"
 
 interface Props<T = HTMLButtonElement> extends DOMAttributes<T> {}
 
-export const Close: FC<Props> = ({onClick}) => <Box onClick={onClick} as="button"><Icon icon="Close"/></Box>
+export const Close: FC<Props> = ({onClick}) => <Box onClick={onClick} as="button" aria-label="Close"><Icon icon="Close"/></Box> // TODO: aria label need localization

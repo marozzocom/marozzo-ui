@@ -1,3 +1,3 @@
-import { DefaultTheme } from "./DefaultTheme";
+import { defaultTheme } from "./DefaultTheme";
 
-export interface Theme extends DefaultTheme {}
+export type Theme = typeof defaultTheme

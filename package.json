@@ -15,7 +15,7 @@
     "prebuild": "npm run build-storybook && npm run test && npm run clean",
     "build": "tsc -p tsconfig.prod.json",
     "release": "npm version patch && npm run build && npm publish",
-    "cm": "git-cz"
+    "cm": "npx git-cz"
   },
   "repository": {
     "type": "git",
@@ -79,7 +79,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/.bin/cz-conventional-changelog",
+      "path": "./node_modules/cz-conventional-changelog",
       "maxHeaderWidth": 100,
       "maxLineWidth": 100,
       "defaultType": "",

@@ -17,7 +17,7 @@ export const Disclosure: FC<Props> = ({ animation, key, children }) => {
   return <AnimatePresence>
     {children && Children.map(children, (child: ReactElement<any>, index) => {
       const motionKey = `${rootKey}-${child?.key ?? "child"}-${index}`
-      console.log("motionKey", motionKey)
+      
       return (
       <motion.div
         key={motionKey}

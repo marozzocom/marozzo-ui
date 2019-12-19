@@ -14,7 +14,8 @@
     "clean": "rimraf dist/*",
     "prebuild": "npm run build-storybook && npm run test && npm run clean",
     "build": "tsc -p tsconfig.prod.json",
-    "release": "npm run build && npm version patch && npm publish"
+    "release": "npm run build && npm version patch && npm publish",
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
@@ -63,8 +64,11 @@
     "@types/nanoid": "^2.1.0",
     "@types/puppeteer": "^2.0.0",
     "babel-loader": "^8.0.6",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.7.2",
     "eslint-plugin-react": "^7.17.0",
+    "husky": "^3.1.0",
     "jest": "^24.9.0",
     "jest-puppeteer": "^4.4.0",
     "puppeteer": "^2.0.0",
@@ -72,5 +76,15 @@
     "ts-jest": "^24.2.0",
     "ts-loader": "^6.2.1",
     "webpack-cli": "^3.3.10"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
   }
 }

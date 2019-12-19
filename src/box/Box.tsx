@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { color, space, typography, layout, SpaceProps, LayoutProps, ColorProps, TypographyProps, compose, BorderProps, border, ShadowProps, shadow, PositionProps, position } from 'styled-system'
+import { color, space, typography, layout, SpaceProps, LayoutProps, ColorProps, TypographyProps, compose, BorderProps, border, ShadowProps, shadow, PositionProps, position, FlexboxProps, flexbox } from 'styled-system'
 import { FC } from "react"
 import css, { SystemStyleObject } from "@styled-system/css"
 
@@ -18,6 +18,7 @@ interface Props<T = HTMLElement>
   TypographyProps,
   BorderProps,
   ShadowProps,
+  FlexboxProps,
   ColorProps { }
 
 export const Box: FC<Props> = styled("div")(
@@ -33,6 +34,7 @@ export const Box: FC<Props> = styled("div")(
     typography,
     border,
     shadow,
-    position
+    position,
+    flexbox
   )
 )

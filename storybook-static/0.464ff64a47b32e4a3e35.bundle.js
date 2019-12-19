@@ -1,2 +1,2 @@
 (window.webpackJsonp=window.webpackJsonp||[]).push([[0],{297:function(module,__webpack_exports__,__webpack_require__){"use strict";__webpack_require__.r(__webpack_exports__);var react__WEBPACK_IMPORTED_MODULE_0__=__webpack_require__(0),react__WEBPACK_IMPORTED_MODULE_0___default=__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);__webpack_exports__.default=()=>react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path",{d:"M53.54,50,85.36,18.18a2.5,2.5,0,1,0-3.54-3.54L50,46.46,18.18,14.64a2.5,2.5,0,0,0-3.54,3.54L46.46,50,14.64,81.82a2.5,2.5,0,1,0,3.54,3.54L50,53.54,81.82,85.36a2.5,2.5,0,1,0,3.54-3.54Z"})}}]);
-//# sourceMappingURL=0.f5132cc9888cadafbaa4.bundle.js.map
+//# sourceMappingURL=0.464ff64a47b32e4a3e35.bundle.js.map

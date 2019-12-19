@@ -13,7 +13,8 @@
     "build-storybook": "build-storybook -c .storybook -o storybook-static",
     "clean": "rimraf dist/*",
     "prebuild": "npm run build-storybook && npm run test && npm run clean",
-    "build": "tsc -p tsconfig.prod.json"
+    "build": "tsc -p tsconfig.prod.json",
+    "publish": "npm run build && npm version patch && npm publish"
   },
   "repository": {
     "type": "git",

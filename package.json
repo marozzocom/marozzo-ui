@@ -14,7 +14,7 @@
     "clean": "rimraf dist/*",
     "prebuild": "npm run build-storybook && npm run test && npm run clean",
     "build": "tsc -p tsconfig.prod.json",
-    "release": "npm version patch && npm run build && npm publish",
+    "release": "npm version patch && npm run build && npm run commit && npm publish",
     "commit": "git-cz"
   },
   "repository": {

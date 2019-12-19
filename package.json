@@ -79,7 +79,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "node_modules/cz-conventional-changelog",
+      "path": "./node_modules/.bin/cz-conventional-changelog",
       "maxHeaderWidth": 100,
       "maxLineWidth": 100,
       "defaultType": "",

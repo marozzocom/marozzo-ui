@@ -1,6 +1,6 @@
 {
   "name": "@marozzocom/marozzo-ui",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "React UI components used by marozzo.com",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -78,12 +78,12 @@
     "webpack-cli": "^3.3.10"
   },
   "config": {
-    "commitizen": {      
+    "commitizen": {
       "path": "./node_modules/cz-conventional-changelog",
       "maxHeaderWidth": 100,
       "maxLineWidth": 100,
       "defaultType": "",
-      "defaultScope": "",        
+      "defaultScope": "",
       "defaultSubject": "",
       "defaultBody": "",
       "defaultIssues": ""

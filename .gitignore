@@ -44,3 +44,9 @@ node_modules/
 # dotenv environment variables file
 .env
 .env.test
+
+# Storybook static site
+storybook-static
+
+# Screenshots
+screenshots

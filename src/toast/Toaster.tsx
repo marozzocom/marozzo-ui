@@ -7,6 +7,6 @@ import { useToast } from "./useToast"
 export const Toaster: FC<{}> = () => {
   const { toasts, remove } = useToast()
   return <Disclosure>
-    {Object.entries(toasts).map(([id, { message, title }]) => <Toast key={id} id={id} message={message} title={title} remove={remove}/>)}
+    {Object.entries(toasts).map(([id, { message, title, duration }]) => <Toast key={id} id={id} duration={duration} message={message} title={title} remove={remove}/>)}
   </Disclosure>
 }

@@ -17,5 +17,5 @@ export default {
 
 const Controls = () => {
   const { add } = useToast()
-  return <Button id="toaster-queue" onClick={() => add({ title: "Hi!", message: "Toast!" })}>Toast</Button>
+  return <Button id="toaster-queue" onClick={() => add({ title: "Hi!", message: "Toast!", duration: 1000 })}>Toast</Button>
 }

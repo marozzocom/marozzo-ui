@@ -9,7 +9,6 @@ import { timings } from "../constants"
 interface Props extends ToastItem {
   id?: string
   remove?: (id: string) => void
-  duration?: number
 }
 
 export const Toast: FC<Props> = ({ message, title, children, id, duration = timings.toast, remove }) => {

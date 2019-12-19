@@ -10,7 +10,7 @@ export default {
 export const drawer = () => {
   const [open, setOpen] = useState(false)
   return <>
-    <Button onClick={() => setOpen(!open)}>toggle</Button>
+    <Button onClick={() => setOpen(!open)} id="drawer-toggle">toggle</Button>
     <Drawer open={open}>drawer</Drawer>
   </>
 }

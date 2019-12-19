@@ -1,11 +1,13 @@
 module.exports = {
-  preset: "ts-jest",
+  preset: "jest-puppeteer",
+  transform: {
+    "^.+\\.tsx?$": "ts-jest",
+  },
   globals: {
     "ts-jest": {
       diagnostics: false,
     },
   },
-  testEnvironment: "jsdom",
   moduleDirectories: ["node_modules", "src"],
-  testMatch: ["**/tests/*.test.ts?(x)"]
+  testMatch: ["**/tests/puppeteer/*.test.ts?(x)"]
 }

@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from "react"
+import React, { FC } from "react"
 import { Box } from "../box/Box"
 import { Portal } from "../portal/Portal"
 import { Disclosure } from "../disclosure/Disclosure"

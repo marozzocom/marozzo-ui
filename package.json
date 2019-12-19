@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "test": "npm run test:unit && npm run test:puppeteer",
+    "test": "npm run test:unit -- -o && npm run test:puppeteer -- -o",
     "test:unit": "jest",
     "test:puppeteer": "jest --config=jest.puppeteer.config.js",
     "storybook": "start-storybook -p 6006",

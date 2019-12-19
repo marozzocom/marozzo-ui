@@ -1,5 +1,3 @@
-import { css } from "@emotion/core";
-
 export const global = {
     "*, *::before, *::after": {
         boxSizing: "border-box"

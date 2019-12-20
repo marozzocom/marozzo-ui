@@ -7,24 +7,25 @@ import { Theme } from "../theme/models"
 interface Props {
   animation?: AnimationProps
   open?: boolean
-  key?: string
+  id?: string
 }
 
-export const Disclosure: FC<Props> = ({ animation, key, children }) => {
+export const Disclosure: FC<Props> = ({ animation, id, children }) => {
   const { disclosures } = useTheme<Theme>()
-  const rootKey = useMemo(() => (key ?? nanoid()), [])
+  const rootKey = useMemo(() => (id ?? nanoid()), [])
 
   return <AnimatePresence>
-    {children && Children.map(children, (child: ReactElement<any>, index) => {
-      const motionKey = `${rootKey}-${child?.key ?? "child"}-${index}`
-      
+    {children && Children.map(children, (child: ReactElement<any>) => {
+      const motionKey = `${rootKey}-${child?.key ?? nanoid()}`
+
       return (
-      <motion.div
-        key={motionKey}
-        {...{ ...animation ?? disclosures.default }}
-      >{child}
-      </motion.div>
-    )}
+        <motion.div
+          key={motionKey}
+          {...{ ...animation ?? disclosures.default }}
+        >{child}
+        </motion.div>
+      )
+    }
     )}
   </AnimatePresence>
 }

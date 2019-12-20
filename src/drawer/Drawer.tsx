@@ -32,10 +32,7 @@ export const Drawer: FC<Props> = ({ open = true, key = nanoid(), far, animation,
     ...animation
   }
 
-  const handleTab = (event: KeyboardEvent) => {
-    console.log("press")
-    event.key === "Tab" && !focusTrapRef.current.contains(event.currentTarget) && event.shiftKey ? focusTrap.last.focus() : focusTrap.first.focus()
-  }
+  const handleTab = (event: KeyboardEvent) => event.key === "Tab" && !focusTrapRef.current.contains(event.currentTarget) && event.shiftKey ? focusTrap.last.focus() : focusTrap.first.focus()
 
   useEffect(() => {
     if (focusTrapRef.current) {

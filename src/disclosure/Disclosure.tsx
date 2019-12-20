@@ -1,11 +1,11 @@
 import React, { FC, useMemo, Children, ReactElement } from "react"
 import nanoid from "nanoid"
-import { AnimatePresence, motion, AnimationProps } from "framer-motion"
+import { AnimatePresence, motion, MotionProps } from "framer-motion"
 import { useTheme } from "emotion-theming"
 import { Theme } from "../theme/models"
 
 interface Props {
-  animation?: AnimationProps
+  animation?: MotionProps
   open?: boolean
   id?: string
 }

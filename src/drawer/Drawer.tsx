@@ -13,11 +13,12 @@ interface Props {
   far?: boolean
   animation?: MotionProps
   modal?: boolean
+  hasCloseButton?: boolean
   overlayProps?: ComponentProps<typeof Overlay>
   close?: () => void
 }
 
-export const Drawer: FC<Props> = ({ open = true, key = nanoid(), far, animation, children, overlayProps, modal = true, close }) => {
+export const Drawer: FC<Props> = ({ open = true, key = nanoid(), far, hasCloseButton=true, animation, children, overlayProps, modal = true, close }) => {
   const focusTrapRef = useRef(null)
   const [focusTrap, setFocusTrap] = useState({ first: undefined, last: undefined })
 
@@ -55,9 +56,9 @@ export const Drawer: FC<Props> = ({ open = true, key = nanoid(), far, animation,
 
   return (
     <Portal>
-      {modal && open && <Overlay {...overlayProps} />}
+      {modal && open && <Overlay onClick={close} {...overlayProps} />}
       <Disclosure animation={motionProps}>
-        {open && <DrawerContainer key={key} close={close}>{children}</DrawerContainer>}
+        {open && <DrawerContainer key={key} close={hasCloseButton && close}>{children}</DrawerContainer>}
       </Disclosure>
     </Portal>
   )

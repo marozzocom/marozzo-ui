@@ -12,7 +12,7 @@ export const drawer = () => {
   const [open, setOpen] = useState(false)
   return <>
     <Button position="fixed" right="2" zIndex={1} onClick={() => setOpen(!open)} id="drawer-toggle">toggle</Button>
-    <Drawer open={open}>drawer</Drawer>
+    <Drawer open={open} close={() => setOpen(false)}>drawer</Drawer>
   </>
 }
 
@@ -20,7 +20,7 @@ export const drawerWithFocusTrap = () => {
   const [open, setOpen] = useState(false)
   return <>
     <Button position="fixed" right="2" zIndex={1} onClick={() => setOpen(!open)} id="drawer-toggle">toggle</Button>
-    <Drawer open={open}>
+    <Drawer open={open} close={() => setOpen(false)}>
       <>
         <Link to="http://google.com" newTab>Link 1</Link><br />
         <Link to="http://google.com" newTab>Link 2</Link><br />
@@ -37,11 +37,19 @@ export const drawerWithFocusTrap = () => {
   </>
 }
 
-export const drawerWithCloseButton = () => {
+export const drawerWithoutCloseButton = () => {
   const [open, setOpen] = useState(false)
   return <>
     <Button position="fixed" right="2" zIndex={1} onClick={() => setOpen(!open)} id="drawer-toggle">toggle</Button>
-    <Drawer open={open} close={() => setOpen(false)}>drawer</Drawer>
+    <Drawer open={open} hasCloseButton={false} close={() => setOpen(false)}>drawer</Drawer>
+  </>
+}
+
+export const drawerWithoutOverlayClose = () => {
+  const [open, setOpen] = useState(false)
+  return <>
+    <Button position="fixed" right="2" zIndex={1} onClick={() => setOpen(!open)} id="drawer-toggle">toggle</Button>
+    <Drawer open={open} overlayProps={{ onClick: null }} close={() => setOpen(false)}>drawer</Drawer>
   </>
 }
 
@@ -49,7 +57,7 @@ export const modelessDrawer = () => {
   const [open, setOpen] = useState(false)
   return <>
     <Button position="fixed" right="2" onClick={() => setOpen(!open)} id="drawer-toggle">toggle</Button>
-    <Drawer open={open} modal={false}>drawer</Drawer>
+    <Drawer open={open} modal={false} close={() => setOpen(false)}>drawer</Drawer>
   </>
 }
 
@@ -57,7 +65,7 @@ export const drawerWithCustomOverlay = () => {
   const [open, setOpen] = useState(false)
   return <>
     <Button position="fixed" right="2" zIndex={1} onClick={() => setOpen(!open)} id="drawer-toggle">toggle</Button>
-    <Drawer open={open} overlayProps={{ bg: "tomato" }}>drawer</Drawer>
+    <Drawer open={open} overlayProps={{ bg: "tomato" }} close={() => setOpen(false)}>drawer</Drawer>
   </>
 }
 
@@ -65,7 +73,7 @@ export const drawerPositionedFar = () => {
   const [open, setOpen] = useState(false)
   return <>
     <Button position="fixed" left="2" zIndex={1} onClick={() => setOpen(!open)} id="drawer-toggle">toggle</Button>
-    <Drawer open={open} far={true}>drawer</Drawer>
+    <Drawer open={open} far={true} close={() => setOpen(false)}>drawer</Drawer>
   </>
 }
 
@@ -83,6 +91,6 @@ export const drawerWithCustomAnimation = () => {
           duration: .3
         }
       }
-    }>drawer</Drawer>
+    } close={() => setOpen(false)}>drawer</Drawer>
   </>
 }

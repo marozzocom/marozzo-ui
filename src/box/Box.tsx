@@ -1,5 +1,25 @@
-import styled from '@emotion/styled'
-import { color, space, typography, layout, SpaceProps, LayoutProps, ColorProps, TypographyProps, compose, BorderProps, border, ShadowProps, shadow, PositionProps, position, FlexboxProps, flexbox, BackgroundImageProps, backgroundImage } from 'styled-system'
+import styled from "@emotion/styled"
+import {
+  color,
+  space,
+  typography,
+  layout,
+  SpaceProps,
+  LayoutProps,
+  ColorProps,
+  TypographyProps,
+  compose,
+  BorderProps,
+  border,
+  ShadowProps,
+  shadow,
+  PositionProps,
+  position,
+  FlexboxProps,
+  flexbox,
+  BackgroundImageProps,
+  backgroundImage
+} from "styled-system"
 import { FC } from "react"
 import css, { SystemStyleObject } from "@styled-system/css"
 
@@ -16,31 +36,22 @@ interface BaseProps<T> extends Omit<HTMLProps<T>, "style"> {
 
 interface Props<T = HTMLElement>
   extends BaseProps<T>,
-  SpaceProps,
-  PositionProps,
-  LayoutProps,
-  TypographyProps,
-  BorderProps,
-  BackgroundImageProps,
-  ShadowProps,
-  FlexboxProps,
-  ColorProps { }
+    SpaceProps,
+    PositionProps,
+    LayoutProps,
+    TypographyProps,
+    BorderProps,
+    BackgroundImageProps,
+    ShadowProps,
+    FlexboxProps,
+    ColorProps {}
 
 export const Box: FC<Props> = styled("div")(
   {
     boxSizing: "border-box",
+    position: "relative",
     minWidth: 0
   },
   props => css(props.style), // TODO: Are we using style or css?
-  compose(
-    space,
-    color,
-    backgroundImage,
-    layout,
-    typography,
-    border,
-    shadow,
-    position,
-    flexbox
-  )
+  compose(space, color, backgroundImage, layout, typography, border, shadow, position, flexbox)
 )

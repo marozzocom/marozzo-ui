@@ -12,20 +12,16 @@ interface Props {
 
 export const Disclosure: FC<Props> = ({ animation, id, children }) => {
   const { disclosures } = useTheme<Theme>()
-  const rootKey = useMemo(() => (id ?? nanoid()), [])
+  const rootKey = useMemo(() => (id ?? nanoid()), [id])
 
   return <AnimatePresence>
-    {children && Children.map(children, (child: ReactElement<any>) => {
-      const motionKey = `${rootKey}-${child?.key ?? nanoid()}`
-
-      return (
+    {children && Children.map(children, (child: ReactElement<any>) => (
         <motion.div
-          key={motionKey}
+          key={child.key ?? rootKey}
           {...{ ...animation ?? disclosures.default }}
         >{child}
         </motion.div>
       )
-    }
     )}
   </AnimatePresence>
 }

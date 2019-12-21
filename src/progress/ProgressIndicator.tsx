@@ -5,7 +5,9 @@ import { useProgress } from "./useProgress"
 
 export const ProgressIndicator: FC<{}> = () => {
   const { active } = useProgress()
-  return <Disclosure>
-  {active && <Progress />}
-</Disclosure>
+  return (
+    <Disclosure>
+      {active && <Progress />}
+    </Disclosure>
+  )
 } 

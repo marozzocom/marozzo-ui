@@ -2,8 +2,8 @@ import React from "react"
 import { Button } from "../src";
 import { ProgressProvider } from "../src/progress/ProgressProvider"
 import { ProgressIndicator } from "../src/progress/ProgressIndicator"
-import { useProgress } from "../src/progress/useProgress";
-import nanoid from "nanoid";
+import { useProgress } from "../src/progress/useProgress"
+import nanoid from "nanoid"
 
 export const GlobalProgress = () => {
 
@@ -29,5 +29,5 @@ const Controls = () => {
     setTimeout(() => stop(id), 3000)
   }
 
-return <><Button onClick={queue}>{"queue"}</Button>Operations: {queueLength}</>
+  return <><Button onClick={queue}>{"queue"}</Button>Operations: {queueLength}</>
 }

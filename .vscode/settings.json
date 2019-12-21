@@ -2,8 +2,9 @@
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "typescript.preferences.importModuleSpecifier": "relative",
   "javascript.preferences.importModuleSpecifier": "relative",
-  "cSpell.words": [
-    "focusable",
-    "prebuild"
-  ]
+  "cSpell.words": ["focusable", "prebuild"],
+  "prettier.configPath": ".prettierrc",
+  "prettier.printWidth": 100,
+  "prettier.semi": false,
+  "prettier.jsxBracketSameLine": true
 }

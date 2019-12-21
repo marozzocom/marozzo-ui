@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/marozzocom/marozzo-ui/compare/v0.1.7...v0.1.8) (2019-12-21)
+
+
+### Bug Fixes
+
+* **disclosure:** fix keys causing element duplication ([301e22a](https://github.com/marozzocom/marozzo-ui/commit/301e22a87b2ff046cd8c4c9eed7c706542a4f083)), closes [#1](https://github.com/marozzocom/marozzo-ui/issues/1)
+
 ### [0.1.7](https://github.com/marozzocom/marozzo-ui/compare/v0.1.6...v0.1.7) (2019-12-20)
 
 

@@ -3,7 +3,7 @@ export const global = {
     boxSizing: "border-box"
   },
   // Set core body defaults
-  "body": {
+  body: {
     minHeight: "100vh",
     scrollBehavior: "smooth",
     lineHeight: "1.5",
@@ -21,12 +21,16 @@ export const global = {
     textDecorationSkipInk: "auto"
   },
   // Make images easier to work with
-  "img": {
+  img: {
     maxWidth: "100%",
     display: "block"
   },
   // Inherit fonts for inputs and buttons
   "input, button, textarea, select": {
     font: "inherit"
+  },
+  // Pointer cursor for buttons
+  "button, input[type='button'], input[type='submit'], input[type='reset']": {
+    cursor: "pointer"
   }
 }

@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import { Flex } from "../flex/Flex"
-import { SpaceProps, FlexboxProps } from "styled-system"
+import { SpaceProps } from "styled-system"
+import { Box } from "../box/Box"
 
 export enum Position {
   Center,
@@ -70,7 +71,7 @@ const getFlexboxProps = (position: Position) => {
 }
 
 export const Fixture: FC<Props> = ({ position, children, ...props }) => (
-  <Flex position="absolute" top="0" right="0" bottom="0" left="0" {...getFlexboxProps(position)} {...props}>
+  <Flex position="absolute" style={{ pointerEvents: "none" }} top="0" right="0" bottom="0" left="0" {...getFlexboxProps(position)} {...props}>
     {children}
   </Flex>
 )

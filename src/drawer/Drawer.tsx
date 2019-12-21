@@ -7,6 +7,8 @@ import { MotionProps } from "framer-motion"
 import { Overlay } from "../overlay/Overlay"
 import { Close } from "../close/Close"
 import { useFocusTrap } from "../focusTrap/useFocusTrap"
+import { Fixture, Position } from "../fixture/Fixture"
+import { Box } from "../box/Box"
 
 interface Props {
   open?: boolean
@@ -19,14 +21,14 @@ interface Props {
   close?: () => void
 }
 
-export const Drawer: FC<Props> = ({ open = true, key = nanoid(), far, hasCloseButton=true, animation, children, overlayProps, modal = true, close }) => {
+export const Drawer: FC<Props> = ({ open = true, key = nanoid(), far, hasCloseButton = true, animation, children, overlayProps, modal = true, close }) => {
   const motionProps: MotionProps = {
     initial: { opacity: 0, x: `${far ? 100 : -100}%`, position: "fixed", left: !far && 0, right: far && 0, top: 0, bottom: 0 },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: `${far ? 100 : -100}%` },
     transition: {
       type: "tween",
-      duration: .3
+      duration: 0.3
     },
     ...animation
   }
@@ -35,20 +37,27 @@ export const Drawer: FC<Props> = ({ open = true, key = nanoid(), far, hasCloseBu
     <Portal>
       {modal && open && <Overlay onClick={close} {...overlayProps} />}
       <Disclosure animation={motionProps}>
-        {open && <DrawerContainer key={key} close={hasCloseButton && close}>{children}</DrawerContainer>}
+        {open && (
+          <DrawerContainer key={key} close={hasCloseButton && close}>
+            {children}
+          </DrawerContainer>
+        )}
       </Disclosure>
     </Portal>
   )
 }
-
 
 const DrawerContainer: FC<{ close: () => void }> = ({ children, close }) => {
   const focusTrap = useFocusTrap()
 
   return (
     <Surface ref={focusTrap} width="6" boxShadow="subtle">
-      {close && <Close onClick={close} />}
-      {children}
+      <Box>{children}</Box>
+      {close && (
+        <Fixture position={Position.TopRight}>
+          <Close onClick={close} />
+        </Fixture>
+      )}
     </Surface>
   )
 }

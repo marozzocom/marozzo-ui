@@ -50,7 +50,8 @@ export const Box: FC<Props> = styled("div")(
   {
     boxSizing: "border-box",
     position: "relative",
-    minWidth: 0
+    minWidth: 0,
+    pointerEvents: "all"
   },
   props => css(props.style), // TODO: Are we using style or css?
   compose(space, color, backgroundImage, layout, typography, border, shadow, position, flexbox)

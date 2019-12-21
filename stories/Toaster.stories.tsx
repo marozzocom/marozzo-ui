@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Button } from "../src"
 import { useToast } from "../src/toast/useToast"
 import { Toaster as ToasterComponent } from "../src/toast/Toaster"
@@ -15,6 +15,12 @@ export default {
 };
 
 const Controls = () => {
+  const [index, setindex] = useState(1)
   const { add } = useToast()
-  return <Button id="toaster-queue" onClick={() => add({ title: "Hi!", message: "Toast!", duration: 1000 })}>Toast</Button>
+  const queue = () => {
+    add({ title: `Hi! (${index})`, message: "Toast!", duration: 1000 })
+    setindex(index + 1)
+  }
+
+  return <Button id="toaster-queue" onClick={queue}>Toast</Button>
 }

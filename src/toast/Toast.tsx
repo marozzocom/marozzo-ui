@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react"
+import React, { FC, useEffect, ComponentProps } from "react"
 import { Box } from "../box/Box"
 import { ToastItem } from "./models"
 import { Text } from "../text/Text"
@@ -6,7 +6,7 @@ import { Close } from "../close/Close"
 import { Heading } from "../heading/Heading"
 import { timings } from "../constants"
 
-interface Props extends ToastItem {
+interface Props extends ToastItem, ComponentProps<typeof Box> {
   id?: string
   remove?: (id: string) => void
 }

@@ -2,11 +2,26 @@ import React, { FC } from "react"
 import { Disclosure } from "../disclosure/Disclosure"
 import { Toast } from "./Toast"
 import { useToast } from "./useToast"
+import { MotionProps } from "framer-motion"
+import { Flex } from "../flex/Flex"
 
 
 export const Toaster: FC<{}> = () => {
   const { toasts, remove } = useToast()
-  return <Disclosure id="toaster">
-    {Object.entries(toasts).map(([id, { message, title, duration }]) => <Toast key={id} id={id} duration={duration} message={message} title={title} remove={remove} />)}
-  </Disclosure>
+
+  const animation: MotionProps = {
+    initial: { opacity: 0, y: "150%", overflow: "hidden" },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, height: 0 }
+  }
+
+  // TODO: These styles need refinement
+
+  return (
+    <Flex flexDirection="column" position="fixed" right="0" bottom="0" left="0" justifyContent="flex-end" >
+      <Disclosure id="toaster" animation={animation}>
+        {Object.entries(toasts).map(([id, { message, title, duration }]) => <Toast key={id} id={id} duration={duration} message={message} title={title} remove={remove} />)}
+      </Disclosure>
+    </Flex>
+  )
 }

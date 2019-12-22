@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/marozzocom/marozzo-ui/compare/v0.2.4...v0.3.0) (2019-12-22)
+
+### ⚠ BREAKING CHANGES
+
+- **markdown:** Markdown content now provided as child, not prop.
+
+### Features
+
+- **links:** add NavLink and update Link props ([e18f145](https://github.com/marozzocom/marozzo-ui/commit/e18f14535f7986c8ea8948ac4ca8a1f2872f4819))
+- **toc:** add Toc component, hooks and story ([fda341a](https://github.com/marozzocom/marozzo-ui/commit/fda341af818acaffa1707e103c70e6e07c514e52)), closes [#7](https://github.com/marozzocom/marozzo-ui/issues/7)
+- add content section ([84038f2](https://github.com/marozzocom/marozzo-ui/commit/84038f2fad0df4771691a66201c3a40b5d0b1381))
+
+### improvement
+
+- **markdown:** change markdown to use markdown-to-jsx ([882b5d0](https://github.com/marozzocom/marozzo-ui/commit/882b5d0750f99934c8505b32d5b9989ead85dc14))
+
 ### [0.2.4](https://github.com/marozzocom/marozzo-ui/compare/v0.2.3...v0.2.4) (2019-12-22)
 
 ### [0.2.3](https://github.com/marozzocom/marozzo-ui/compare/v0.2.2...v0.2.3) (2019-12-22)

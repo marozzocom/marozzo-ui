@@ -6,12 +6,10 @@ export default {
   title: "Markdown"
 }
 
-export const box = () => (
-  <Markdown
-    content={`
+export const basic = () => (
+  <Markdown>{`
 # Title
 ## Heading
 Text rendered via Markdown.
-`}
-  />
+`}</Markdown>
 )

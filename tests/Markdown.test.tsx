@@ -8,7 +8,7 @@ Text rendered via Markdown.
 `
 
 test("Renders Markdown", () => {
-  const { getByText, getByRole } = render(<Markdown content={md} />)
+  const { getByText, getByRole } = render(<Markdown>{md}</Markdown>)
   expect(getByText("Text rendered via Markdown.")).not.toBeNull()
   expect(getByRole("heading")).not.toBeNull()
 })

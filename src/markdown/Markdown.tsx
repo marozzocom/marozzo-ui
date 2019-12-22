@@ -1,21 +1,49 @@
-import React, { FC, PropsWithChildren } from "react"
-import ReactMarkdown from "react-markdown"
-import { Box, Text } from ".."
-import { Heading, Level } from "../heading/Heading"
+import React, { FC } from "react"
+import { Text } from ".."
+import { Heading } from "../heading/Heading"
+import MarkdownToJSX from "markdown-to-jsx"
 
-interface Props {
-  content: string
+const overrides = {
+  h1: {
+    component: Heading,
+    props: {
+      level: 1
+    }
+  },
+  h2: {
+    component: Heading,
+    props: {
+      level: 2
+    }
+  },
+  h3: {
+    component: Heading,
+    props: {
+      level: 3
+    }
+  },
+  h4: {
+    component: Heading,
+    props: {
+      level: 4
+    }
+  },
+  h5: {
+    component: Heading,
+    props: {
+      level: 5
+    }
+  },
+  h6: {
+    component: Heading,
+    props: {
+      level: 6
+    }
+  },
+  p: {
+    component: Text
+  }
 }
 
 // TODO: Complete Node types: https://github.com/rexxars/react-markdown
-export const Markdown: FC<Props> = ({ content }) => (
-  <ReactMarkdown
-    source={content}
-    renderers={{
-      root: (props: PropsWithChildren<{}>) => <Box>{props.children}</Box>,
-      heading: (props: PropsWithChildren<{ level: number }>) => <Heading level={props.level as Level}>{props.children}</Heading>,
-      text: (props: PropsWithChildren<{}>) => <Text>{props.children}</Text>,
-      paragraph: (props: PropsWithChildren<{}>) => <Box mb={3}>{props.children}</Box>
-    }}
-  />
-)
+export const Markdown: FC<{}> = ({ children }) => <MarkdownToJSX options={{ overrides }}>{children}</MarkdownToJSX>

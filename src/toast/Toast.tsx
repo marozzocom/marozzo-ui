@@ -5,6 +5,8 @@ import { Text } from "../text/Text"
 import { Close } from "../close/Close"
 import { Heading } from "../heading/Heading"
 import { timings } from "../_common/constants"
+import { Surface } from ".."
+import { Fixture, Position } from "../fixture/Fixture"
 
 interface Props extends ToastItem, ComponentProps<typeof Box> {
   id?: string
@@ -19,11 +21,16 @@ export const Toast: FC<Props> = ({ message, title, children, id, duration = timi
     }, [])
 
   return (
-    <Box borderRadius="normal" backgroundColor="tomato">
-      <Heading>{title}</Heading>
+    <Surface borderRadius="normal" boxShadow="subtle" m={2} p={2} width={7} height={4} flex="0 0 auto">
+      <Heading level={3}>{title}</Heading>
       <Text>{message}</Text>
       {children}
-      {remove && id && <Close onClick={() => remove(id)} />}
-    </Box>
+
+      {remove && id && (
+        <Fixture position={Position.TopRight}>
+          <Close onClick={() => remove(id)} />
+        </Fixture>
+      )}
+    </Surface>
   )
 }

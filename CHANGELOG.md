@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/marozzocom/marozzo-ui/compare/v0.2.0...v0.2.1) (2019-12-22)
+
+### Features
+
+- **useescape:** add useEscape ([eadf6a7](https://github.com/marozzocom/marozzo-ui/commit/eadf6a7eedc4d22050d47210d7b34d896c808f56)), closes [#5](https://github.com/marozzocom/marozzo-ui/issues/5)
+
+### Bug Fixes
+
+- **drawer:** correct import path ([f2a9899](https://github.com/marozzocom/marozzo-ui/commit/f2a989964a52f7f1857ad26f12220ebb69288480))
+
 ## [0.2.0](https://github.com/marozzocom/marozzo-ui/compare/v0.1.10...v0.2.0) (2019-12-22)
 
 ### ⚠ BREAKING CHANGES

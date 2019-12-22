@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/marozzocom/marozzo-ui/compare/v0.1.10...v0.2.0) (2019-12-22)
+
+### ⚠ BREAKING CHANGES
+
+- **heading:** Heading type needs to be set as number (1-6)
+
+### Features
+
+- **markdown:** add markdown component, story and tests ([b76549c](https://github.com/marozzocom/marozzo-ui/commit/b76549c89cf608ed1c416fc92d7bdfeada623b45))
+
+### improvement
+
+- **heading:** change heading type to number (1-6) from enum ([ea72094](https://github.com/marozzocom/marozzo-ui/commit/ea720943226149006e06b8e4aa5bdf9bc255355f))
+
 ### [0.1.10](https://github.com/marozzocom/marozzo-ui/compare/v0.1.9...v0.1.10) (2019-12-21)
 
 ### [0.1.9](https://github.com/marozzocom/marozzo-ui/compare/v0.1.8...v0.1.9) (2019-12-21)

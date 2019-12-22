@@ -5,8 +5,24 @@ import { SpaceProps } from "styled-system"
 
 interface Props<T = HTMLButtonElement> extends React.HTMLAttributes<T>, SpaceProps {}
 
+// TODO: Default localization
+// TODO: Standardize the way of creating focus styles (pseudo styles)
+
 export const Close: FC<Props> = ({ onClick }, props) => (
-  <Button onClick={onClick} bg="transparent" aria-label={props["aria-label"] ?? "Close"} width={2} height={2} p={0}>
+  <Button
+    onClick={onClick}
+    bg="transparent"
+    aria-label={props["aria-label"] ?? "Close"}
+    width={3}
+    height={3}
+    p={1}
+    m={1}
+    style={{
+      "&:focus": {
+        outline: "none",
+        background: "rgba(0, 0, 0, 0.1)"
+      }
+    }}>
     <Icon icon="Close" />
   </Button>
-) // TODO: Default localization
+)

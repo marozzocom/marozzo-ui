@@ -37,7 +37,7 @@ export const useFocusTrap = () => {
       first: focusableElements[0],
       last: focusableElements[focusableElements.length - 1]
     })
-    
+
     focusableElements[0].focus()
 
     window.addEventListener("keydown", handleTab)

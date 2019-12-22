@@ -6,7 +6,7 @@ export const global = {
   body: {
     minHeight: "100vh",
     scrollBehavior: "smooth",
-    lineHeight: "1.5",
+    lineHeight: "1.62",
     backgroundColor: "#ccf"
   },
   "div::before, div::after": {

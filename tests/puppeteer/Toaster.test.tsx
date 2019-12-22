@@ -20,7 +20,7 @@ describe("Toaster", () => {
   })
 })
 
-it("should automatically remove Toast after 5 seconds", async () => {
+it("should automatically remove Toast after 2.5 seconds", async () => {
   const frames = await page.frames()
   const rootFrame = frames.find(f => f.name() === "storybook-preview-iframe")
   await rootFrame.click("#toaster-queue")
@@ -28,6 +28,6 @@ it("should automatically remove Toast after 5 seconds", async () => {
 
   await expect(rootFrame).toMatch("Toast!")
   await page.waitFor(3000)
-  // await page.screenshot({path: path.join(__dirname, "../../screenshots", "toaster.png")})
+  await page.screenshot({ path: path.join(__dirname, "../../screenshots", "toaster.png") })
   await expect(rootFrame).not.toMatch("Toast!")
 })

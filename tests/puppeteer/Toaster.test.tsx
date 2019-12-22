@@ -28,6 +28,6 @@ it("should automatically remove Toast after 2.5 seconds", async () => {
 
   await expect(rootFrame).toMatch("Toast!")
   await page.waitFor(3000)
-  await page.screenshot({ path: path.join(__dirname, "../../screenshots", "toaster.png") })
+  // await page.screenshot({ path: path.join(__dirname, "../../screenshots", "toaster.png") })
   await expect(rootFrame).not.toMatch("Toast!")
 })

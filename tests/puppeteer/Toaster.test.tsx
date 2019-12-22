@@ -14,7 +14,7 @@ describe("Toaster", () => {
     const rootFrame = frames.find(f => f.name() === "storybook-preview-iframe")
     await rootFrame.click("#toaster-queue")
     await page.waitFor(1000)
-    
+
     // await page.screenshot({path: path.join(__dirname, "../../screenshots", "toaster.png")})
     await expect(rootFrame).toMatch("Toast!")
   })
@@ -25,9 +25,9 @@ it("should automatically remove Toast after 5 seconds", async () => {
   const rootFrame = frames.find(f => f.name() === "storybook-preview-iframe")
   await rootFrame.click("#toaster-queue")
   await page.waitFor(100)
-  
+
   await expect(rootFrame).toMatch("Toast!")
-  await page.waitFor(2000)
+  await page.waitFor(3000)
   // await page.screenshot({path: path.join(__dirname, "../../screenshots", "toaster.png")})
   await expect(rootFrame).not.toMatch("Toast!")
 })

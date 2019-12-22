@@ -6,9 +6,10 @@ import { Surface } from "../surface/Surface"
 import { MotionProps } from "framer-motion"
 import { Overlay } from "../overlay/Overlay"
 import { Close } from "../close/Close"
-import { useFocusTrap } from "../focusTrap/useFocusTrap"
+import { useFocusTrap } from "../_common/useFocusTrap"
 import { Fixture, Position } from "../fixture/Fixture"
 import { Box } from "../box/Box"
+import { useEscape } from "../_common/useEscape"
 
 interface Props {
   open?: boolean
@@ -49,6 +50,7 @@ export const Drawer: FC<Props> = ({ open = true, key = nanoid(), far, hasCloseBu
 
 const DrawerContainer: FC<{ close: () => void }> = ({ children, close }) => {
   const focusTrap = useFocusTrap()
+  useEscape(close)
 
   return (
     <Surface ref={focusTrap} width="6" boxShadow="subtle">

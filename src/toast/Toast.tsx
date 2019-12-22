@@ -4,7 +4,7 @@ import { ToastItem } from "./models"
 import { Text } from "../text/Text"
 import { Close } from "../close/Close"
 import { Heading } from "../heading/Heading"
-import { timings } from "../constants"
+import { timings } from "../_common/constants"
 
 interface Props extends ToastItem, ComponentProps<typeof Box> {
   id?: string
@@ -12,10 +12,11 @@ interface Props extends ToastItem, ComponentProps<typeof Box> {
 }
 
 export const Toast: FC<Props> = ({ message, title, children, id, duration = timings.toast, remove }) => {
-  remove && useEffect(() => {
-    const removeTimer = setTimeout(() => remove(id), duration)
-    return () => clearTimeout(removeTimer)
-  }, [])
+  remove &&
+    useEffect(() => {
+      const removeTimer = setTimeout(() => remove(id), duration)
+      return () => clearTimeout(removeTimer)
+    }, [])
 
   return (
     <Box borderRadius="normal" backgroundColor="tomato">

@@ -6,5 +6,7 @@
   "prettier.configPath": ".prettierrc",
   "prettier.printWidth": 100,
   "prettier.semi": false,
-  "prettier.jsxBracketSameLine": true
+  "prettier.jsxBracketSameLine": true,
+  "javascript.format.semicolons": "remove",
+  "typescript.format.semicolons": "remove"
 }

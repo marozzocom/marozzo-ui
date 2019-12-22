@@ -1,17 +1,14 @@
-import React, { FC } from "react"
+import React, { FC, ElementType } from "react"
 import { Text } from "../text/Text"
 
-enum Level {
-    H1 = "h1",
-    H2 = "h2",
-    H3 = "h3",
-    H4 = "h4",
-    H5 = "h5",
-    H6 = "h6"
-}
+export type Level = 1 | 2 | 3 | 4 | 5 | 6
 
 interface Props {
-    level?: Level
+  level?: Level
 }
 
-export const Heading: FC<Props> = ({level=Level.H2, children}) => <Text as={level}>{children}</Text>
+export const Heading: FC<Props> = ({ level = 2, children }) => (
+  <Text as={`h${level}` as ElementType} role="heading" aria-level={level}>
+    {children}
+  </Text>
+)

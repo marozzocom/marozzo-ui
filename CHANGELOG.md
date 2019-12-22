@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/marozzocom/marozzo-ui/compare/v0.2.1...v0.2.2) (2019-12-22)
+
+### Bug Fixes
+
+- **button:** fix passing styles ([3c94860](https://github.com/marozzocom/marozzo-ui/commit/3c9486075be9a7c99a7c9fb23853369444b3e5a7))
+
 ### [0.2.1](https://github.com/marozzocom/marozzo-ui/compare/v0.2.0...v0.2.1) (2019-12-22)
 
 ### Features

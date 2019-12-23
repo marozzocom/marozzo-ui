@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import { Text } from ".."
 import { Heading } from "../heading/Heading"
 import MarkdownToJSX from "markdown-to-jsx"
+import { ContentSection } from "../contentSection/ContentSection"
 
 const overrides = {
   h1: {
@@ -42,6 +43,9 @@ const overrides = {
   },
   p: {
     component: Text
+  },
+  Section: {
+    component: ContentSection
   }
 }
 

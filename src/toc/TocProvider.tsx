@@ -1,33 +1,28 @@
 import React, { FC, useState, createContext, Dispatch, SetStateAction } from "react"
 
-export type Toc = { name: string; element: Element } // TODO: type
+export type Toc = {
+  name: string
+  element: Element
+}
 
 const TocContext = createContext<{
   toc: Toc[]
   setToc: Dispatch<SetStateAction<Toc[]>>
   observer: IntersectionObserver
-  selected: Element
+  selected: Element | string
 }>(null)
 
 const TocProvider: FC<{}> = ({ children }) => {
   const [toc, setToc] = useState<Toc[]>([])
-  const [selected, setSelected] = useState<Element>()
-  let previousY = 0
+  const [selected, setSelected] = useState<Element | string>()
 
-  const observation = (entries: IntersectionObserverEntry[]) => {
-    const currentY = entries[0].boundingClientRect.y
-    if (currentY < previousY) {
-      // Check scroll direction
-      setSelected(entries.find(entry => entry.isIntersecting && currentY < previousY && entry.boundingClientRect.y < entry.rootBounds.y).target)
-    } else {
-      setSelected(entries.reverse().find(entry => entry.isIntersecting && entry.boundingClientRect.y > entry.rootBounds.y).target)
-    }
-  }
-
-  const observer = new IntersectionObserver(observation, {
-    rootMargin: "0px",
-    threshold: 0
-  })
+  const observation = (entries: IntersectionObserverEntry[]) =>
+    entries.forEach(entry =>
+      entry.isIntersecting
+        ? setSelected(entries[0].target)
+        : setSelected(entry.boundingClientRect.y < 0 ? entries[0].target.nextElementSibling : entries[0].target.previousElementSibling)
+    )
+  const observer = new IntersectionObserver(observation)
 
   return <TocContext.Provider value={{ toc, setToc, observer, selected }}>{children}</TocContext.Provider>
 }

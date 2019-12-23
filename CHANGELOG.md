@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/marozzocom/marozzo-ui/compare/v0.3.1...v0.3.2) (2019-12-23)
+
+### Bug Fixes
+
+- **toc:** fix click acrivation by giving small threshold, also change "selected" to "active" ([c56462d](https://github.com/marozzocom/marozzo-ui/commit/c56462d3e33b1f0da9f87904529faede94a363fd))
+
 ### [0.3.1](https://github.com/marozzocom/marozzo-ui/compare/v0.3.0...v0.3.1) (2019-12-23)
 
 ## [0.3.0](https://github.com/marozzocom/marozzo-ui/compare/v0.2.4...v0.3.0) (2019-12-22)

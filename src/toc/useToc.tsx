@@ -3,9 +3,9 @@ import { TocContext } from "./TocProvider"
 
 export const useToc = () => {
   try {
-    const { toc, setToc, observer, selected } = useContext(TocContext)
+    const { toc, setToc, observer, active } = useContext(TocContext)
 
-    return { toc, setToc, observer, selected }
+    return { toc, setToc, observer, active }
   } catch (error) {
     throw "Failed to read context."
   }

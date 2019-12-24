@@ -4,7 +4,7 @@ class DefaultTheme {
     damping: 10,
     stiffness: 100
   }
-  
+
   private static instance: DefaultTheme
 
   static getInstance() {
@@ -54,6 +54,7 @@ class DefaultTheme {
     normal: "0 0 10px rgba(0, 0, 0, 0.5)"
   }
 
+  // TODO: Decide whether to keep these with components, within Theme or somewhere else.
   disclosures = {
     default: {
       initial: { opacity: 0 },
@@ -66,15 +67,7 @@ class DefaultTheme {
   }
 }
 
-const {
-  sizes,
-  fonts,
-  colors,
-  radii,
-  shadows,
-  disclosures,
-  gradients
-} = DefaultTheme.getInstance()
+const { sizes, fonts, colors, radii, shadows, disclosures, gradients } = DefaultTheme.getInstance()
 
 export const defaultTheme = {
   sizes,

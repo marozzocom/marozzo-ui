@@ -3,3 +3,5 @@ export const dissociate = (key: string) => <T>(obj: { [key: string]: T }): { [ke
   delete result[key]
   return result
 }
+
+export const positive = (n: number) => Math.max(0, n)

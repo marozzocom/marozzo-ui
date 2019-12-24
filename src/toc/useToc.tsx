@@ -7,6 +7,6 @@ export const useToc = () => {
 
     return { toc, setToc, observer, active }
   } catch (error) {
-    throw "Failed to read context."
+    return { toc: null, setToc: null, observer: null, active: null }
   }
 }

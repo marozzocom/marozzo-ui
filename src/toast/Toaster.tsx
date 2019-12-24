@@ -4,7 +4,6 @@ import { Toast } from "./Toast"
 import { useToast } from "./useToast"
 import { MotionProps } from "framer-motion"
 import { Flex } from "../flex/Flex"
-import { Box } from ".."
 
 export const Toaster: FC<{}> = () => {
   const { toasts, remove } = useToast()

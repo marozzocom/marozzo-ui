@@ -35,20 +35,31 @@ Not yet available, check source code.
 Some of the short-term components you can expect.
 
 🔲 Light and dark default theme
+
 🔲 Data atble (based on react-table)
+
 🔲 Basic form elements
+
 🔲 Image
+
 🔲 Menu (popup menu)
+
 🔲 Dialog
+
 🔲 Card content components
+
 🔲 Video (cloudflare stream component)
+
 🔲 List
+
 🔲 Avatar
+
 🔲 Properly styled buttons
 
 # Some things I might add to this library, or just use this library to create them with
 
 🔲 A very cool drag-and-drop "builder" for hierarchical page content
+
 🔲 Top and side menus
 
 # Installation

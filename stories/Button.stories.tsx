@@ -7,8 +7,19 @@ export default {
   title: "Button"
 }
 
-export const button = () => (
-  <Button p={2} onClick={action("clicked")}>
+export const defaultButton = () => <Button onClick={action("clicked")}>Button</Button>
+export const primaryButton = () => (
+  <Button primary onClick={action("clicked")}>
+    Button
+  </Button>
+)
+export const smallButton = () => (
+  <Button small onClick={action("clicked")}>
+    Button
+  </Button>
+)
+export const smallPrimaryButton = () => (
+  <Button small primary onClick={action("clicked")}>
     Button
   </Button>
 )

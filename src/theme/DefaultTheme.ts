@@ -27,21 +27,38 @@ class DefaultTheme {
   }
 
   fonts = {
-    body: "system-ui, sans-serif",
-    heading: `"Avenir Next", sans-serif`,
+    body: "mr-eaves-xl-sans, sans-serif",
+    heading: `"rigid-square, sans-serif`,
+    action: "mr-eaves-xl-sans, sans-serif",
     monospace: "Menlo, monospace"
   }
 
+  fontSizes = {
+    xs: "0.75rem",
+    sm: "0.875rem",
+    md: "1rem",
+    lg: "1.25rem",
+    xl: "1.5rem"
+  }
+
+  fontWeights = {
+    normal: 400,
+    medium: 500,
+    bold: 700
+  }
+
   colors = {
-    text: "#000",
+    text: "#1a1a1a",
     background: "#fff",
     primary: "#f00",
     secondary: "#faa",
     overlay: "rgba(0, 0, 0, 0.25)"
   }
 
+  // TODO: base these on the theme colors
   gradients = {
-    primary: "linear-gradient( -45deg, rgb(140,106,0) 0%, rgb(240,181,0) 100%)"
+    primary: "linear-gradient(-45deg, rgb(140,106,0) 0%, rgb(240,181,0) 100%)",
+    button: "linear-gradient(45deg, rgb(198,166,64) 0%, rgb(255,208,64) 100%)"
   }
 
   radii = {
@@ -51,7 +68,32 @@ class DefaultTheme {
 
   shadows = {
     subtle: "0px 5px 10px 0px rgba(0, 0, 0, 0.02)",
-    normal: "0 0 10px rgba(0, 0, 0, 0.5)"
+    normal: "0 0 10px rgba(0, 0, 0, 0.5)",
+    inset: "inset 3.536px 3.536px 10px 0px rgba(0, 0, 0, 0.15)"
+  }
+
+  buttons = {
+    default: {
+      background: "none"
+    },
+    primary: {
+      borderRadius: this.radii.normal,
+      backgroundImage: this.gradients.button,
+      boxShadow: this.shadows.inset
+    }
+  }
+
+  textStyles = {
+    actionSmall: {
+      fontFamily: this.fonts.action,
+      fontWeight: this.fontWeights.bold,
+      fontSize: this.fontSizes.sm
+    },
+    actionNormal: {
+      fontFamily: this.fonts.action,
+      fontWeight: this.fontWeights.bold,
+      fontSize: this.fontSizes.md
+    }
   }
 
   // TODO: Decide whether to keep these with components, within Theme or somewhere else.
@@ -67,14 +109,18 @@ class DefaultTheme {
   }
 }
 
-const { sizes, fonts, colors, radii, shadows, disclosures, gradients } = DefaultTheme.getInstance()
+const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, disclosures, gradients, buttons, textStyles } = DefaultTheme.getInstance()
 
 export const defaultTheme = {
   sizes,
   fonts,
+  fontSizes,
+  fontWeights,
   colors,
   radii,
   shadows,
   disclosures,
-  gradients
+  gradients,
+  buttons,
+  textStyles
 }

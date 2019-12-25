@@ -18,7 +18,11 @@ import {
   FlexboxProps,
   flexbox,
   BackgroundImageProps,
-  backgroundImage
+  backgroundImage,
+  ButtonStyleProps,
+  buttonStyle,
+  TextStyleProps,
+  textStyle
 } from "styled-system"
 import { FC } from "react"
 import css, { SystemStyleObject } from "@styled-system/css"
@@ -41,6 +45,8 @@ interface Props<T = HTMLElement>
     LayoutProps,
     TypographyProps,
     BorderProps,
+    ButtonStyleProps,
+    TextStyleProps,
     BackgroundImageProps,
     ShadowProps,
     FlexboxProps,
@@ -54,5 +60,5 @@ export const Box: FC<Props> = styled("div")(
     pointerEvents: "all"
   },
   props => css(props.style), // TODO: Are we using style or css?
-  compose(space, color, backgroundImage, layout, typography, border, shadow, position, flexbox)
+  compose(space, color, backgroundImage, layout, typography, border, shadow, position, flexbox, buttonStyle, textStyle)
 )

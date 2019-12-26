@@ -1,11 +1,18 @@
-import React, { FC } from "react"
-import { ThemeProviderProps, ThemeProvider as EmotionThemeProvider } from "emotion-theming"
-import { Global, InterpolationWithTheme } from "@emotion/core"
+import React, { FC, CSSProperties } from "react"
+import { ThemeProvider as EmotionThemeProvider } from "emotion-theming"
+import { Global, InterpolationWithTheme, CSSObject } from "@emotion/core"
 import { Theme } from "./models"
+import { defaultTheme } from "./DefaultTheme"
+import { global as globals } from "./global"
 
 interface Props {
-    theme: Theme,
-    global?: InterpolationWithTheme<any>
+  theme?: Theme
+  global?: CSSObject
 }
 
-export const ThemeProvider: FC<Props> = ({theme, children, global}) => <>{global && <Global styles={global} />}<EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider></>
+export const ThemeProvider: FC<Props> = ({ theme = defaultTheme, children, global = globals }) => (
+  <>
+    {global && <Global styles={global} />}
+    <EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider>
+  </>
+)

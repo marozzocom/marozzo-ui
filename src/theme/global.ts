@@ -1,4 +1,6 @@
-export const global = {
+import { CSSObject } from "@emotion/core"
+
+export const global: CSSObject = {
   "*, *::before, *::after": {
     boxSizing: "border-box"
   },

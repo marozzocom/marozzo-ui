@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/marozzocom/marozzo-ui/compare/v0.3.2...v0.4.0) (2019-12-26)
+
+### ⚠ BREAKING CHANGES
+
+- **scrollprogress:** PageProgress component rewritten as ScrollProgress family of tools.
+
+### Features
+
+- start work on parallax (content entry exit with easing) component ([9ac28f8](https://github.com/marozzocom/marozzo-ui/commit/9ac28f88d806462d6b2ed1e8d37bfa779db2499a))
+
+### improvement
+
+- **scrollprogress:** rewrite scrollprogress (pageProgress) ([59fb209](https://github.com/marozzocom/marozzo-ui/commit/59fb2093743877c7dbabef4b3c6c8365f03a7fbd))
+
 ### [0.3.2](https://github.com/marozzocom/marozzo-ui/compare/v0.3.1...v0.3.2) (2019-12-23)
 
 ### Bug Fixes

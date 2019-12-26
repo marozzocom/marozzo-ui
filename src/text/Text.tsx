@@ -6,4 +6,4 @@ interface Props extends ComponentProps<typeof Box> {
   // Custom multiline truncation?
 }
 
-export const Text: FC<Props> = forwardRef(({ ...props }, ref) => <Box ref={ref} as="p" textStyle="body" {...props} />)
+export const Text: FC<Props> = forwardRef(({ ...props }, ref) => <Box ref={ref} as="p" variants={["textStyles.body"]} {...props} />)

@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Text } from ".."
+import { Text } from "../text/Text"
 import { Heading } from "../heading/Heading"
 import MarkdownToJSX from "markdown-to-jsx"
 import { ContentSection } from "../contentSection/ContentSection"

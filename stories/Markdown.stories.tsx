@@ -10,6 +10,7 @@ export const basic = () => (
   <Markdown>{`
 # Title
 ## Heading
+
 Text rendered via Markdown.
 `}</Markdown>
 )

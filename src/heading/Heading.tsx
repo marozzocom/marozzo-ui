@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Heading: FC<Props> = ({ level = 2, children }) => (
-  <Text as={`h${level}` as ElementType} role="heading" aria-level={level} textStyle="heading">
+  <Text as={`h${level}` as ElementType} role="heading" aria-level={level} variants={["textStyles.heading"]}>
     {children}
   </Text>
 )

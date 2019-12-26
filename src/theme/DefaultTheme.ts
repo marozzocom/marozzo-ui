@@ -72,36 +72,37 @@ class DefaultTheme {
     inset: "inset 3.536px 3.536px 10px 0px rgba(0, 0, 0, 0.15)"
   }
 
-  buttons = {
-    default: {
-      background: "none"
+  variants = {
+    buttons: {
+      default: {
+        background: "none"
+      },
+      primary: {
+        borderRadius: this.radii.normal,
+        backgroundImage: this.gradients.button,
+        boxShadow: this.shadows.inset
+      }
     },
-    primary: {
-      borderRadius: this.radii.normal,
-      backgroundImage: this.gradients.button,
-      boxShadow: this.shadows.inset
-    }
-  }
-
-  textStyles = {
-    actionSmall: {
-      fontFamily: this.fonts.action,
-      fontWeight: this.fontWeights.bold,
-      fontSize: this.fontSizes.sm
-    },
-    actionNormal: {
-      fontFamily: this.fonts.action,
-      fontWeight: this.fontWeights.bold,
-      fontSize: this.fontSizes.md
-    },
-    heading: {
-      fontFamily: this.fonts.heading,
-      fontWeight: this.fontWeights.bold
-    },
-    body: {
-      fontFamily: this.fonts.body,
-      fontWeight: this.fontWeights.normal,
-      fontSize: this.fontSizes.md
+    textStyles: {
+      actionSmall: {
+        fontFamily: this.fonts.action,
+        fontWeight: this.fontWeights.bold,
+        fontSize: this.fontSizes.sm
+      },
+      actionNormal: {
+        fontFamily: this.fonts.action,
+        fontWeight: this.fontWeights.bold,
+        fontSize: this.fontSizes.md
+      },
+      heading: {
+        fontFamily: this.fonts.heading,
+        fontWeight: this.fontWeights.bold
+      },
+      body: {
+        fontFamily: this.fonts.body,
+        fontWeight: this.fontWeights.normal,
+        fontSize: this.fontSizes.md
+      }
     }
   }
 
@@ -118,7 +119,7 @@ class DefaultTheme {
   }
 }
 
-const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, disclosures, gradients, buttons, textStyles } = DefaultTheme.getInstance()
+const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, disclosures, gradients, variants } = DefaultTheme.getInstance()
 
 export const defaultTheme = {
   sizes,
@@ -130,6 +131,5 @@ export const defaultTheme = {
   shadows,
   disclosures,
   gradients,
-  buttons,
-  textStyles
+  variants
 }

@@ -1,6 +1,7 @@
 import { Box } from "../box/Box"
 import { FC, forwardRef, ComponentProps } from "react"
 import React from "react"
+import { variant, size } from "styled-system"
 
 interface Props extends ComponentProps<typeof Box> {
   primary?: boolean
@@ -14,8 +15,8 @@ export const Button: FC<Props> = forwardRef(({ primary, small, style, ...props }
     py={small ? 0 : 1}
     as="button"
     ref={ref}
-    textStyle={small ? "actionSmall" : "actionNormal"}
-    variant={primary ? "primary" : "default"}
+    //variant={small ? "actionSmall" : "actionNormal"}
+    variants={[primary ? ["buttons.primary"] : ["buttons.default"], small ? ["textStyles.actionSmall"] : ["textStyles.actionNormal"]]}
     {...props}
   />
 ))

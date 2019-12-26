@@ -23,6 +23,10 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: "ts-loader"
+      },
+      {
+        test: /\.md$/i,
+        use: "raw-loader"
       }
     ]
   },

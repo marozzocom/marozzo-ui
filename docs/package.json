@@ -1,0 +1,34 @@
+{
+  "name": "marozzo-ui-docs",
+  "version": "0.1.0",
+  "description": "Marozzo UI Documentation",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "webpack-dev-server --open --config webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marozzocom/marozzo-ui.git"
+  },
+  "author": "Ilkka Hartikainen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marozzocom/marozzo-ui/issues"
+  },
+  "homepage": "https://github.com/marozzocom/marozzo-ui#readme",
+  "devDependencies": {
+    "ts-loader": "^6.2.1",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
+    "html-webpack-plugin": "^3.2.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "@marozzocom/marozzo-ui": "^0.1.5",
+    "typescript": "^3.7.3"
+  }
+}

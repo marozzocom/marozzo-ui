@@ -28,7 +28,7 @@ class DefaultTheme {
 
   fonts = {
     body: "mr-eaves-xl-sans, sans-serif",
-    heading: `"rigid-square, sans-serif`,
+    heading: "rigid-square, sans-serif",
     action: "mr-eaves-xl-sans, sans-serif",
     monospace: "Menlo, monospace"
   }
@@ -92,6 +92,15 @@ class DefaultTheme {
     actionNormal: {
       fontFamily: this.fonts.action,
       fontWeight: this.fontWeights.bold,
+      fontSize: this.fontSizes.md
+    },
+    heading: {
+      fontFamily: this.fonts.heading,
+      fontWeight: this.fontWeights.bold
+    },
+    body: {
+      fontFamily: this.fonts.body,
+      fontWeight: this.fontWeights.normal,
       fontSize: this.fontSizes.md
     }
   }

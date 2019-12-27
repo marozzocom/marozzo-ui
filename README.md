@@ -36,7 +36,7 @@ Some of the short-term components you can expect.
 
 🔲 Light and dark default theme
 
-🔲 Data atble (based on react-table)
+🔲 Data table (based on react-table)
 
 🔲 Basic form elements
 
@@ -84,5 +84,4 @@ Contributions are welcome, but probably still unlikely at this stage. Drop me an
 # Technologies used
 
 [Emotion](https://emotion.sh/) for css and component primitives
-[Styled System](https://styled-system.com/) for theme and styling
 [Framer motion](https://www.framer.com/motion/) for animations

@@ -1,4 +1,4 @@
-import React, { FC, ComponentProps, forwardRef } from "react"
+import React, { FC, ComponentProps } from "react"
 import { Box } from "../box/Box"
 
 interface Props extends ComponentProps<typeof Box> {
@@ -7,9 +7,11 @@ interface Props extends ComponentProps<typeof Box> {
 }
 
 interface PropsWithHTMLAttributes extends Props {
-  href: string
+  href?: string
 }
 
-export const Link: FC<Props> = forwardRef<HTMLElement, PropsWithHTMLAttributes>(({ to, newTab, style, ...props }, ref) => (
-  <Box as="a" href={to} target={newTab ? "_blank" : null} ref={ref} style={{ cursor: "pointer", ...style }} {...props} />
-))
+export const Link: FC<PropsWithHTMLAttributes> = ({ to, newTab, style, children, ...props }) => (
+  <Box as="a" href={to} target={newTab ? "_blank" : null} style={{ cursor: "pointer", ...style }} {...props}>
+    {children}
+  </Box>
+)

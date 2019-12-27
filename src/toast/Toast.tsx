@@ -7,6 +7,7 @@ import { Heading } from "../heading/Heading"
 import { timings } from "../_common/constants"
 import { Surface } from ".."
 import { Fixture, Position } from "../fixture/Fixture"
+import { useTheme } from "../theme/useTheme"
 
 interface Props extends ToastItem, ComponentProps<typeof Box> {
   id?: string
@@ -14,6 +15,7 @@ interface Props extends ToastItem, ComponentProps<typeof Box> {
 }
 
 export const Toast: FC<Props> = ({ message, title, children, id, duration = timings.toast, remove }) => {
+  const { theme } = useTheme()
   remove &&
     useEffect(() => {
       const removeTimer = setTimeout(() => remove(id), duration)
@@ -21,7 +23,16 @@ export const Toast: FC<Props> = ({ message, title, children, id, duration = timi
     }, [])
 
   return (
-    <Surface borderRadius="normal" boxShadow="subtle" m={2} p={2} width={7} height={4} flex="0 0 auto">
+    <Surface
+      style={{
+        borderRadius: theme.radii.normal,
+        boxShadow: theme.shadows.subtle,
+        margin: theme.sizes[2],
+        padding: theme.sizes[2],
+        width: theme.sizes[7],
+        height: theme.sizes[4],
+        flex: "0 0 auto"
+      }}>
       <Heading level={3}>{title}</Heading>
       <Text>{message}</Text>
       {children}

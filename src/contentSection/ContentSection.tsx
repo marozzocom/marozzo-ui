@@ -13,6 +13,7 @@ export const ContentSection: FC<Props> = ({ name, children }) => {
   if (observer) {
     useEffect(() => {
       observer.observe(ref.current)
+
       setToc((toc: any) => [
         ...toc,
         {
@@ -23,5 +24,5 @@ export const ContentSection: FC<Props> = ({ name, children }) => {
     }, [])
   }
 
-  return <Box ref={ref}>{children}</Box>
+  return <Box innerRef={ref}>{children}</Box>
 }

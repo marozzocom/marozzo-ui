@@ -22,7 +22,10 @@ export const ScrollProgress: FC<{}> = ({}) => {
 
   return (
     <Fixture type="fixed" position={Position.Top}>
-      <Box width="100vw">
+      <Box
+        style={{
+          width: "100vw"
+        }}>
         <Disclosure animation={animation}>{showProgress && <Progress value={progress} />}</Disclosure>
       </Box>
     </Fixture>

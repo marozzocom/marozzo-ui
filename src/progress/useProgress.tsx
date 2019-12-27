@@ -12,6 +12,6 @@ export const useProgress = () => {
 
     return { active, start, stop, queueLength }
   } catch (error) {
-    throw "Failed to read context."
+    throw { active: null, start: null, stop: null, queueLength: null }
   }
 }

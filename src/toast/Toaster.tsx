@@ -21,7 +21,15 @@ export const Toaster: FC<{}> = () => {
   // TODO: These styles need refinement
 
   return (
-    <Flex flexDirection="column" position="fixed" right="0" bottom="0" left="0" justifyContent="flex-end">
+    <Flex
+      style={{
+        flexDirection: "column",
+        position: "fixed",
+        right: 0,
+        bottom: 0,
+        left: 0,
+        justifyContent: "flex-end"
+      }}>
       <Disclosure id="toaster" animation={animation}>
         {Object.entries(toasts).map(([id, { message, title, duration }]) => (
           <Toast key={id} id={id} duration={duration} message={message} title={title} remove={remove} />

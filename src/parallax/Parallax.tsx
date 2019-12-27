@@ -6,7 +6,13 @@ export const Parallax: FC<{}> = ({}) => {
   const { progress } = useParallax()
 
   return (
-    <Box position="fixed" top="0" left="0" right="0">
+    <Box
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0
+      }}>
       TODO
     </Box>
   )

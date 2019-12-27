@@ -50,7 +50,7 @@ class DefaultTheme {
   colors = {
     text: "#1a1a1a",
     background: "#fff",
-    primary: "#f00",
+    primary: "#0ff",
     secondary: "#faa",
     overlay: "rgba(0, 0, 0, 0.25)"
   }
@@ -60,6 +60,8 @@ class DefaultTheme {
     primary: "linear-gradient(-45deg, rgb(140,106,0) 0%, rgb(240,181,0) 100%)",
     button: "linear-gradient(45deg, rgb(198,166,64) 0%, rgb(255,208,64) 100%)"
   }
+
+  breakpoints = [576, 768, 992, 1200]
 
   radii = {
     normal: 10,
@@ -119,7 +121,7 @@ class DefaultTheme {
   }
 }
 
-const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, disclosures, gradients, variants } = DefaultTheme.getInstance()
+const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, disclosures, gradients, variants, breakpoints } = DefaultTheme.getInstance()
 
 export const defaultTheme = {
   sizes,
@@ -131,5 +133,6 @@ export const defaultTheme = {
   shadows,
   disclosures,
   gradients,
-  variants
+  variants,
+  breakpoints
 }

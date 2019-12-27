@@ -1,9 +1,24 @@
 import React from "react"
-import { Box } from "../src/box/Box";
+import { Box } from "../src/box/Box"
+import { useTheme } from "../src/theme/useTheme"
 
 export default {
   component: Box,
-  title: "Box",
-};
+  title: "Box"
+}
 
-export const box = () => <Box p={3} bg="secondary">Box</Box>
+export const box = () => {
+  const {
+    theme: { sizes, colors }
+  } = useTheme()
+
+  return (
+    <Box
+      style={{
+        padding: sizes[3],
+        background: colors.secondary
+      }}>
+      Box
+    </Box>
+  )
+}

@@ -53,7 +53,12 @@ const DrawerContainer: FC<{ close: () => void }> = ({ children, close }) => {
   useEscape(close)
 
   return (
-    <Surface ref={focusTrap} width="6" boxShadow="subtle">
+    <Surface
+      ref={focusTrap}
+      style={{
+        width: "6",
+        boxShadow: "subtle"
+      }}>
       <Box>{children}</Box>
       {close && (
         <Fixture position={Position.TopRight}>

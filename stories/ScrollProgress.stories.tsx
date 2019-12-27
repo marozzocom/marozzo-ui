@@ -53,8 +53,11 @@ const ScrollableContent: FC<{}> = ({ children }) => {
   }, [content.current])
 
   return (
-    <Box py="500px">
-      <Box ref={content} border="2px solid tomato">
+    <Box
+      style={{
+        padding: "500px initial"
+      }}>
+      <Box innerRef={content} style={{ border: "2px solid tomato" }}>
         {children}
       </Box>
     </Box>

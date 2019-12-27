@@ -36,7 +36,6 @@ const ScrollProgressProvider: FC<{}> = ({ children }) => {
   let timer: number
 
   const updateProgress = () => {
-    console.log("target", target.offsetTop)
     timer && cancelAnimationFrame(timer)
     setShowProgress(shouldShowProgress(container)(target))
 

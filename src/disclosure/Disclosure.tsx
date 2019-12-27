@@ -1,8 +1,7 @@
 import React, { FC, useMemo, Children, ReactElement } from "react"
 import nanoid from "nanoid"
 import { AnimatePresence, motion, MotionProps } from "framer-motion"
-import { useTheme } from "emotion-theming"
-import { Theme } from "../theme/models"
+import { useTheme } from "../theme/useTheme"
 
 interface Props {
   animation?: MotionProps
@@ -11,17 +10,19 @@ interface Props {
 }
 
 export const Disclosure: FC<Props> = ({ animation, id, children }) => {
-  const { disclosures } = useTheme<Theme>()
-  const rootKey = useMemo(() => (id ?? nanoid()), [id])
+  const {
+    theme: { disclosures }
+  } = useTheme()
+  const rootKey = useMemo(() => id ?? nanoid(), [id])
 
-  return <AnimatePresence>
-    {children && Children.map(children, (child: ReactElement<any>) => (
-        <motion.div
-          key={child.key ?? rootKey}
-          {...{ ...animation ?? disclosures.default }}
-        >{child}
-        </motion.div>
-      )
-    )}
-  </AnimatePresence>
+  return (
+    <AnimatePresence>
+      {children &&
+        Children.map(children, (child: ReactElement<any>) => (
+          <motion.div key={child.key ?? rootKey} {...{ ...(animation ?? disclosures.default) }}>
+            {child}
+          </motion.div>
+        ))}
+    </AnimatePresence>
+  )
 }

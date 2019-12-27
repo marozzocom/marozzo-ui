@@ -1,10 +1,10 @@
 import React, { FC, ComponentProps } from "react"
 import { Link } from "../link/Link"
-import { SystemStyleObject } from "@styled-system/css"
+import { CSSObject } from "@emotion/core"
 
 interface Props extends ComponentProps<typeof Link> {
   selected?: boolean
-  selectedStyle?: SystemStyleObject
+  selectedStyle?: CSSObject
 }
 
 const defaultSelectedStyle = {
@@ -12,7 +12,14 @@ const defaultSelectedStyle = {
 }
 
 export const NavLink: FC<Props> = ({ onClick, style, children, selected, selectedStyle = defaultSelectedStyle }, props) => (
-  <Link onClick={onClick} display="block" style={{ ...style, ...(selected && selectedStyle) }} {...props}>
+  <Link
+    onClick={onClick}
+    style={{
+      display: "block",
+      ...style,
+      ...(selected && selectedStyle)
+    }}
+    {...props}>
     {children}
   </Link>
 )

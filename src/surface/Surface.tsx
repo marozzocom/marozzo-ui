@@ -1,12 +1,21 @@
-import React, { FC, ComponentProps, forwardRef } from "react"
-import { Box } from ".."
-import { useTheme } from "emotion-theming"
-import { Theme } from "../theme"
+import React, { FC, ComponentProps } from "react"
+import { Box } from "../box/Box"
+import { useTheme } from "../theme/useTheme"
 
-export const Surface: FC<ComponentProps<typeof Box>> = forwardRef((props, ref) => {
-  const theme = useTheme() as Theme
+export const Surface: FC<ComponentProps<typeof Box>> = ({ style, children, ...props }) => {
+  const {
+    theme: { gradients }
+  } = useTheme()
 
   return (
-  <Box ref={ref} height="100%" backgroundImage={theme.gradients.primary} {...props} />
+    <Box
+      style={{
+        height: "100%",
+        backgroundImage: gradients.primary,
+        ...style
+      }}
+      {...props}>
+      {children}
+    </Box>
   )
-})
+}

@@ -1,7 +1,6 @@
 import React from "react"
 import { Fixture, Position } from "../src/fixture/Fixture"
 import { Card } from "../src/card/Card"
-import { position } from "styled-system"
 import { Box } from "../src"
 
 export default {

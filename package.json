@@ -15,7 +15,8 @@
     "prebuild": "npm run build-storybook && npm run test && npm run clean",
     "build": "tsc -p tsconfig.prod.json",
     "release": "standard-version && npm run build && git push --follow-tags origin master && npm publish",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "build:force": "tsc -p tsconfig.prod.json"
   },
   "repository": {
     "type": "git",
@@ -37,19 +38,16 @@
   "homepage": "https://github.com/marozzocom/marozzo-ui#readme",
   "dependencies": {
     "@emotion/core": "^10.0.27",
-    "@styled-system/css": "^5.1.4",
+    "@types/facepaint": "^1.2.1",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
-    "@types/styled-system": "^5.1.4",
-    "@types/styled-system__css": "^5.0.4",
     "emotion": "^10.0.27",
-    "emotion-theming": "^10.0.27",
+    "facepaint": "^1.2.1",
     "framer-motion": "^1.7.0",
     "markdown-to-jsx": "^6.10.3",
     "nanoid": "^2.1.8",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "styled-system": "^5.1.4",
     "typescript": "^3.7.4"
   },
   "devDependencies": {

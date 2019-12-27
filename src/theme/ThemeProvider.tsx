@@ -1,6 +1,5 @@
-import React, { FC, CSSProperties } from "react"
-import { ThemeProvider as EmotionThemeProvider } from "emotion-theming"
-import { Global, InterpolationWithTheme, CSSObject } from "@emotion/core"
+import React, { FC, createContext, SetStateAction, Dispatch, useState } from "react"
+import { Global, CSSObject } from "@emotion/core"
 import { Theme } from "./models"
 import { defaultTheme } from "./DefaultTheme"
 import { global as globals } from "./global"
@@ -10,9 +9,15 @@ interface Props {
   global?: CSSObject
 }
 
-export const ThemeProvider: FC<Props> = ({ theme = defaultTheme, children, global = globals }) => (
-  <>
+const ThemeContext = createContext<{
+  theme: Theme
+}>({ theme: defaultTheme })
+
+const ThemeProvider: FC<Props> = ({ theme, children, global = globals }) => (
+  <ThemeContext.Provider value={{ theme }}>
     {global && <Global styles={global} />}
-    <EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider>
-  </>
+    {children}
+  </ThemeContext.Provider>
 )
+
+export { ThemeContext, ThemeProvider }

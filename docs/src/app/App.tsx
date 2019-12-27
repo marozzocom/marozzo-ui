@@ -1,27 +1,44 @@
-import React, { useEffect, useState } from "react"
-import { ThemeProvider, defaultTheme, ProgressProvider, ProgressIndicator, ToastProvider, Toaster, Markdown } from "@marozzocom/marozzo-ui"
+import React from "react"
+import {
+  defaultTheme,
+  ThemeProvider,
+  Box,
+  Text,
+  ProgressProvider,
+  ScrollProgress,
+  ScrollProgressProvider,
+  ProgressIndicator,
+  ToastProvider,
+  Toaster,
+  Card,
+  Heading,
+  TocProvider
+} from "@marozzocom/marozzo-ui"
+import Page from "./Page"
+import { Footer } from "./Footer"
 
-const App = () => {
-  const [content, setContent] = useState<string>("")
-
-  useEffect(() => {
-    ;(async () => {
-      const page = await import("../pages/introduction.md")
-      setContent(page.default)
-    })()
-  }, [])
-
-  return (
-    <ThemeProvider theme={defaultTheme}>
-      <ProgressProvider>
-        <ProgressIndicator />
-        <ToastProvider>
-          <Toaster />
-          <Markdown>{content}</Markdown>
-        </ToastProvider>
-      </ProgressProvider>
-    </ThemeProvider>
-  )
-}
+const App = () => (
+  <ThemeProvider theme={defaultTheme}>
+    <ProgressProvider>
+      <ProgressIndicator />
+      <ToastProvider>
+        <Toaster />
+        <TocProvider>
+          <ScrollProgressProvider>
+            <ScrollProgress />
+            <Card>
+              <Box>
+                <Text>Testings</Text>
+              </Box>
+              <Heading>Test heading</Heading>
+            </Card>
+            <Page />
+            <Footer />
+          </ScrollProgressProvider>
+        </TocProvider>
+      </ToastProvider>
+    </ProgressProvider>
+  </ThemeProvider>
+)
 
 export default App

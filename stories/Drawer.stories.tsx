@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import { Drawer } from "../src/drawer/Drawer"
+import { Drawer, DrawerRaw } from "../src/drawer"
+import { Text } from "../src/text/Text"
 import { Button } from "../src/button/Button"
 import { Link } from "../src/link/Link"
 import { CSSObject } from "@emotion/core"
@@ -14,6 +15,12 @@ const buttonStyle: CSSObject = {
   right: "20px",
   zIndex: 1
 }
+
+export const _DrawerRaw = () => (
+  <DrawerRaw>
+    <Text>Drawer</Text>
+  </DrawerRaw>
+)
 
 export const drawer = () => {
   const [open, setOpen] = useState(false)

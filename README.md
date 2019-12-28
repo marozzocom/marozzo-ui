@@ -1,23 +1,29 @@
+<div style="margin-top: 10px;">
+  <a href="https://github.com/marozzocom/marozzo-ui/tree/master/logo">
+    <img src="https://raw.githubusercontent.com/marozzocom/marozzo-ui/master/logo/2x/logo%402x.png" alt="marozzo-ui logo" width="600" />
+  </a>
+</div>
+
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 # marozzo-ui
 
 React UI components used in marozzo.com.
 
-This library is still in **alpha stage**.
+This library is actively developed but in **alpha stage**.
 
-# Design principles
+# Motivation
 
-- Offer highly customizable clean primitives
+- Offer highly customizable clean primitives, everything is based on a single Box element
 - Create an opinionated set of UI components with a combination of the primitives
 - Offer functionality as reusable hooks
-- Keep component api simple -- instead make it easy to fork or rebuild new components (no custom renderers and overly complicated objects)
-- Most of stylistic customization comes from theme and by exposing primitive style props to component
-- Aim for good composition. While a _Card_ component may recommend a _CardHeading_, _CardBody_ and _CardActions_ as its content, allow passing in whatever as children instead of forcing to set these via props.
+- Keep component api simple -- instead make it easy to fork or rebuild new components (no custom renderers and overly complicated objects if possible)
+- Stylistic customization comes primarily from theme, secondarily from customized, component specific props and thirdly by providing a CSS Object
+- Aim for good composition. While a _Card_ component may recommend a _CardHeading_, _CardBody_ and _CardActions_ as its content, allow passing in whatever as children instead of forcing to set these via props. As far as possible, every component should return a stand-alone singular element.
 
 # Features
 
-- Based on extensible, composable primitives (inspiration shamelessly taken from Rebass/Theme-UI and Chakra-UI)
+- Based on extensible, composable primitives
 - Written with, for and only in TypeScript
 - Focus on app development, not static sites
 - No support for legacy browsers such as IE11
@@ -26,9 +32,13 @@ This library is still in **alpha stage**.
 
 [Component library Storybook](https://marozzoui.marozzo.com)
 
+# Inspiration
+
+This library is heavily inspired by Rebass/Theme-UI and Chakra-UI, as well as Material UI and Office UI Fabric React.
+
 # Documentation
 
-Not yet available, check source code.
+Not yet available, for now check source code and the demo Storybook. A documentation site built with Marozzo UI will be available soon.
 
 # Roadmap
 
@@ -54,7 +64,7 @@ Some of the short-term components you can expect.
 
 🔲 Avatar
 
-✅ Properly styled buttons
+✅ Properly styled buttons (kind of done, hover effects TBD)
 
 # Some things I might add to this library, or just use this library to create them with
 

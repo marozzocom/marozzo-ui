@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/marozzocom/marozzo-ui/compare/v0.4.6...v0.5.0) (2019-12-28)
+
+### ⚠ BREAKING CHANGES
+
+- **styles:** Component style api now based on Emotion CSS instead of styled-system props. Refs
+  now provided as innerRef, I don't like forwardrefs. Theme provider now a custom React context hook.
+
+- **styles:** remove styled-system dependency ([8124c77](https://github.com/marozzocom/marozzo-ui/commit/8124c7708d9ad53c89f1487f454ddfb84a796aa3))
+
 ### [0.4.6](https://github.com/marozzocom/marozzo-ui/compare/v0.4.5...v0.4.6) (2019-12-26)
 
 ### [0.4.5](https://github.com/marozzocom/marozzo-ui/compare/v0.4.4...v0.4.5) (2019-12-26)

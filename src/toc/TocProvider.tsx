@@ -1,4 +1,4 @@
-import React, { FC, useState, createContext, Dispatch, SetStateAction } from "react"
+import React, { FC, useState, createContext, Dispatch, SetStateAction, useEffect } from "react"
 
 export type Toc = {
   name: string
@@ -14,14 +14,33 @@ const TocContext = createContext<{
 
 const TocProvider: FC<{}> = ({ children }) => {
   const [toc, setToc] = useState<Toc[]>([])
-  const [active, setActive] = useState<Element | string>()
+  const [active, setActive] = useState<Element>()
+  const [intersecting, setIntersecting] = useState<{ element: Element; direction: "up" | "down" }>({ element: null, direction: undefined })
 
-  const observation = (entries: IntersectionObserverEntry[]) =>
-    entries.forEach(entry =>
-      entry.isIntersecting
-        ? setActive(entries[0].target)
-        : setActive(entry.boundingClientRect.y < 0 ? entries[0].target.nextElementSibling : entries[0].target.previousElementSibling)
-    )
+  const observation = (entries: IntersectionObserverEntry[]) => {
+    entries.some(entry => {
+      if (entry.isIntersecting) {
+        setActive(entry.target)
+        return false
+      } else {
+        entry.boundingClientRect.y < 0
+          ? setIntersecting({ element: entry.target.nextElementSibling, direction: "down" })
+          : setIntersecting({ element: entry.target.previousElementSibling, direction: "up" })
+      }
+    })
+  }
+
+  // TODO: Refactor function without changing behavior
+  useEffect(() => {
+    const intersectingElementIndex = toc.findIndex(tocElement => tocElement.element === intersecting.element)
+    const activeElementIndex = toc.findIndex(tocElement => tocElement.element === active)
+    if (intersecting.direction === "up" && intersectingElementIndex < activeElementIndex) {
+      setActive(intersecting.element)
+    } else if (intersecting.direction === "down" && intersectingElementIndex > activeElementIndex) {
+      setActive(intersecting.element)
+    }
+  }, [intersecting])
+
   const observer = new IntersectionObserver(observation, { threshold: 0.1 })
 
   return <TocContext.Provider value={{ toc, setToc, observer, active }}>{children}</TocContext.Provider>

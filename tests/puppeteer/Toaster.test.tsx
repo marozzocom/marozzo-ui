@@ -5,7 +5,7 @@ describe("Toaster", () => {
     jest.setTimeout(10000)
     await page.goto(`file:${path.join(__dirname, "../../storybook-static", "index.html")}`)
     await page.waitFor(1000)
-    await page.click("a[title='Toaster']")
+    await page.click("a#explorertoaster")
     await page.waitFor(1000)
   })
 

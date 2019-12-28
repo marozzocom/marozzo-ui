@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import { Button } from "../src"
 import { useToast } from "../src/toast/useToast"
-import { Toaster as ToasterComponent } from "../src/toast/Toaster"
+import { Toaster } from "../src/toast/Toaster"
 import { ToastProvider } from "../src/toast/ToastProvider"
 
-export const Toaster = () => (
+export const _Toaster = () => (
   <ToastProvider>
     <Controls />
-    <ToasterComponent />
+    <Toaster />
   </ToastProvider>
 )
 

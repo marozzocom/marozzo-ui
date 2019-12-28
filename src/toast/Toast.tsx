@@ -30,7 +30,7 @@ export const Toast: FC<Props> = ({ message, title, children, id, duration = timi
         margin: theme.sizes[2],
         padding: theme.sizes[2],
         width: theme.sizes[7],
-        height: theme.sizes[4],
+        height: theme.sizes[5],
         flex: "0 0 auto"
       }}>
       <Heading level={3}>{title}</Heading>

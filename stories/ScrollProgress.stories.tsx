@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, FC } from "react"
 import { markdown } from "./mock/mock"
 import { ScrollProgress, ScrollProgressProvider, useScrollProgress } from "../src/scrollProgress"
-import { Markdown, Box, Text, Heading, Fixture, Position } from "../src"
+import { Markdown, Box, Text, Heading } from "../src"
 
 export default {
   component: ScrollProgress,

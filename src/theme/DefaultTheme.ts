@@ -1,10 +1,4 @@
 class DefaultTheme {
-  private spring = {
-    type: "spring",
-    damping: 10,
-    stiffness: 100
-  }
-
   private static instance: DefaultTheme
 
   static getInstance() {
@@ -52,7 +46,41 @@ class DefaultTheme {
     background: "#fff",
     primary: "#0ff",
     secondary: "#faa",
-    overlay: "rgba(0, 0, 0, 0.25)"
+    overlay: "rgba(0, 0, 0, 0.25)",
+    active: "#77daff"
+  }
+
+  shadows = {
+    active: `${this.colors.active} 0 0 0 3px`,
+    subtle: "0px 5px 10px 0px rgba(0, 0, 0, 0.02)",
+    normal: "0 0 10px rgba(0, 0, 0, 0.5)",
+    inset: "inset 3.536px 3.536px 10px 0px rgba(0, 0, 0, 0.15)"
+  }
+
+  pseudo = {
+    button: {
+      "&::after": {
+        content: '""',
+        display: "block",
+        background: "rgba(0, 0, 0, 0.1)",
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        position: "absolute",
+        opacity: 0,
+        transition: "opacity 0.2s, boxShadow 0.2s"
+      },
+      "&:hover": {
+        "&::after": {
+          opacity: 1
+        }
+      },
+      "&:focus": {
+        outline: "none",
+        boxShadow: this.shadows.active
+      }
+    }
   }
 
   // TODO: base these on the theme colors
@@ -68,15 +96,10 @@ class DefaultTheme {
     round: 2000
   }
 
-  shadows = {
-    subtle: "0px 5px 10px 0px rgba(0, 0, 0, 0.02)",
-    normal: "0 0 10px rgba(0, 0, 0, 0.5)",
-    inset: "inset 3.536px 3.536px 10px 0px rgba(0, 0, 0, 0.15)"
-  }
-
   variants = {
     buttons: {
       default: {
+        borderRadius: this.radii.normal,
         background: "none"
       },
       primary: {
@@ -135,7 +158,7 @@ class DefaultTheme {
   }
 }
 
-const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, disclosures, gradients, variants, breakpoints } = DefaultTheme.getInstance()
+const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, disclosures, gradients, variants, breakpoints, pseudo } = DefaultTheme.getInstance()
 
 export const defaultTheme = {
   sizes,
@@ -148,5 +171,6 @@ export const defaultTheme = {
   disclosures,
   gradients,
   variants,
-  breakpoints
+  breakpoints,
+  pseudo
 }

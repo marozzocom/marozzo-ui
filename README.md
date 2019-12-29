@@ -64,7 +64,7 @@ Some of the short-term components you can expect.
 
 🔲 Avatar
 
-✅ Properly styled buttons (kind of done, hover effects TBD)
+✅ Properly styled buttons
 
 # Some things I might add to this library, or just use this library to create them with
 

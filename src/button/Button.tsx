@@ -12,17 +12,23 @@ export const Button: FC<Props> = ({ primary, small, style, children, ...props })
   const {
     theme: {
       sizes,
+      pseudo,
       variants: { buttons, textStyles }
     }
   } = useTheme()
 
   return (
     <Box
+      variant={{
+        ...(primary ? buttons.primary : buttons.default),
+        ...(small ? textStyles.actionSmall : textStyles.actionNormal)
+      }}
       style={{
         border: "none",
+        overflow: "hidden",
+        transition: "box-shadow 0.2s",
         padding: `${small ? sizes[0] : sizes[1]} ${small ? sizes[2] : sizes[3]}`,
-        ...(primary ? buttons.primary : buttons.default),
-        ...(small ? textStyles.actionSmall : textStyles.actionNormal),
+        ...pseudo.button,
         ...style
       }}
       as="button"

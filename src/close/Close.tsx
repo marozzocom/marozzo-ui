@@ -5,8 +5,7 @@ import { useTheme } from "../theme/useTheme"
 
 interface Props<T = HTMLButtonElement> extends React.HTMLAttributes<T> {}
 
-// TODO: Default localization
-// TODO: Standardize the way of creating focus styles (pseudo styles)
+// TODO: Default localization?
 
 export const Close: FC<Props> = ({ onClick }, props) => {
   const {
@@ -21,11 +20,7 @@ export const Close: FC<Props> = ({ onClick }, props) => {
         width: sizes[3],
         height: sizes[3],
         padding: sizes[1],
-        margin: sizes[1],
-        "&:focus": {
-          outline: "none",
-          background: "rgba(0, 0, 0, 0.1)"
-        }
+        margin: sizes[1]
       }}>
       <Icon icon="Close" />
     </Button>

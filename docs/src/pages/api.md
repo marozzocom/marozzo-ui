@@ -23,6 +23,12 @@ In most cases you can, in the end, override any of the styles with inline overri
 
 These styles are applied usually in this order.
 
+## Custom props
+
+Some components may expose props that have an effect on their display style, such as `Button` that lets you specify props `primary` and `small` that have an effect on how the button is rendered.
+
+These props can change the components variant or style attributes depending on the component. In the case of `Button`, they together choose a variant for the button. If a variant is specified, it will override the effects of these props. You should refer to the documentation of each component if you run want to learn more closely how to customize their style and behavior.
+
 ## Variant
 
 The variant api refers to combined styles within the theme, typically under `variants` key, such as
@@ -50,10 +56,10 @@ Variants can be specified elsewhere in the theme, another file or within the com
 Variants can be grouped and combined as you like with array spread operator, for example:
 
 ```
-variant={
+variant={{
   ...variants.textStyles.heading,
   ...variants.cards.raised
-}
+}}
 ```
 
 But remember that the `Box` component will not join given variants with the default variant.

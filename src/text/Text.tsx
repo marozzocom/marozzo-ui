@@ -15,12 +15,7 @@ export const Text: FC<Props> = ({ children, ...props }) => {
   } = useTheme()
 
   return (
-    <Box
-      as="p"
-      style={{
-        ...textStyles.body
-      }}
-      {...props}>
+    <Box as="p" variant={textStyles.body} {...props}>
       {children}
     </Box>
   )

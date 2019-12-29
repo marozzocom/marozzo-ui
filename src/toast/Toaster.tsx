@@ -3,7 +3,7 @@ import { Disclosure } from "../disclosure/Disclosure"
 import { Toast } from "./Toast"
 import { useToast } from "./useToast"
 import { MotionProps } from "framer-motion"
-import { Flex } from "../flex/Flex"
+import { Stack } from "../stack/Stack"
 
 export const Toaster: FC<{}> = () => {
   const { toasts, remove } = useToast()
@@ -21,7 +21,7 @@ export const Toaster: FC<{}> = () => {
   // TODO: These styles need refinement
 
   return (
-    <Flex
+    <Stack
       style={{
         flexDirection: "column",
         position: "fixed",
@@ -35,6 +35,6 @@ export const Toaster: FC<{}> = () => {
           <Toast key={id} id={id} duration={duration} message={message} title={title} remove={remove} />
         ))}
       </Disclosure>
-    </Flex>
+    </Stack>
   )
 }

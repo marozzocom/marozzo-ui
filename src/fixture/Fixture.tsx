@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Flex } from "../flex/Flex"
+import { Box } from "../box/Box"
 
 export enum Position {
   Center,
@@ -13,6 +13,7 @@ export enum Position {
   BottomLeft
 }
 
+// TODO: consider changing to separate horizontal and vertical align props
 interface Props {
   position?: Position
   type?: "absolute" | "fixed"
@@ -70,8 +71,9 @@ const getFlexboxProps = (position: Position) => {
 }
 
 export const Fixture: FC<Props> = ({ position, children, type = "absolute", ...props }) => (
-  <Flex
+  <Box
     style={{
+      display: "flex",
       position: type,
       pointerEvents: "none",
       top: 0,
@@ -82,5 +84,5 @@ export const Fixture: FC<Props> = ({ position, children, type = "absolute", ...p
     }}
     {...props}>
     {children}
-  </Flex>
+  </Box>
 )

@@ -30,7 +30,7 @@ export const drawer = () => {
         toggle
       </Button>
       <Drawer open={open} close={() => setOpen(false)}>
-        drawer
+        <Text>Drawer</Text>
       </Drawer>
     </>
   )
@@ -98,7 +98,7 @@ export const drawerWithoutCloseButton = () => {
         toggle
       </Button>
       <Drawer open={open} hasCloseButton={false} close={() => setOpen(false)}>
-        drawer
+        <Text>Drawer</Text>
       </Drawer>
     </>
   )
@@ -112,7 +112,7 @@ export const drawerWithoutOverlayClose = () => {
         toggle
       </Button>
       <Drawer open={open} overlayProps={{ onClick: null }} close={() => setOpen(false)}>
-        drawer
+        <Text>Drawer</Text>
       </Drawer>
     </>
   )
@@ -126,7 +126,7 @@ export const modelessDrawer = () => {
         toggle
       </Button>
       <Drawer open={open} modal={false} close={() => setOpen(false)}>
-        drawer
+        <Text>Drawer</Text>
       </Drawer>
     </>
   )
@@ -140,7 +140,7 @@ export const drawerWithCustomOverlay = () => {
         toggle
       </Button>
       <Drawer open={open} overlayProps={{ style: { backGround: "tomato" } }} close={() => setOpen(false)}>
-        drawer
+        <Text>Drawer</Text>
       </Drawer>
     </>
   )
@@ -161,7 +161,7 @@ export const drawerPositionedFar = () => {
         toggle
       </Button>
       <Drawer open={open} far={true} close={() => setOpen(false)}>
-        drawer
+        <Text>Drawer</Text>
       </Drawer>
     </>
   )
@@ -186,7 +186,7 @@ export const drawerWithCustomAnimation = () => {
           }
         }}
         close={() => setOpen(false)}>
-        drawer
+        <Text>Drawer</Text>
       </Drawer>
     </>
   )

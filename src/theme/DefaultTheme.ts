@@ -105,6 +105,20 @@ class DefaultTheme {
         fontWeight: this.fontWeights.normal,
         fontSize: this.fontSizes.md
       }
+    },
+    cards: {
+      primary: {
+        borderRadius: this.radii.normal,
+        boxShadow: this.shadows.subtle,
+        minWidth: this.sizes[6],
+        minHeight: this.sizes[6]
+      },
+      test: {
+        background: "#cf0",
+        backgroundImage: "none",
+        borderRadius: this.radii.normal,
+        boxShadow: this.shadows.subtle
+      }
     }
   }
 

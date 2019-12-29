@@ -1,6 +1,6 @@
 import React from "react"
 import { TocProvider, Toc } from "../src/toc"
-import { Flex, Box, Markdown } from "../src"
+import { Stack, Box, Markdown } from "../src"
 import { markdown } from "./mock/mock"
 import { useTheme } from "../src/theme/useTheme"
 
@@ -15,7 +15,7 @@ export const tocFromContent = () => {
   } = useTheme()
   return (
     <TocProvider>
-      <Flex>
+      <Stack horizontal>
         <Box
           style={{
             flexShrink: 0,
@@ -30,7 +30,7 @@ export const tocFromContent = () => {
         <Box>
           <Markdown>{markdown}</Markdown>
         </Box>
-      </Flex>
+      </Stack>
     </TocProvider>
   )
 }

@@ -1,6 +1,6 @@
 {
   "name": "@marozzocom/marozzo-ui",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "React UI components used by marozzo.com",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,7 @@
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook -c .storybook -o storybook-static --quiet",
     "clean": "rimraf dist/*",
-    "prebuild": "npm run build:storybook && npm run test && npm run clean",
+    "prebuild": "npm run build:storybook & npm run test && npm run clean",
     "build": "tsc -p tsconfig.prod.json",
     "release": "standard-version && npm run build && git push --follow-tags origin master && npm publish",
     "commit": "npx git-cz",

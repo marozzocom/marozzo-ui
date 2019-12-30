@@ -21,7 +21,7 @@ export const DrawerRaw: FC<Props> = ({ children, close }) => {
 
   return (
     <Surface
-      ref={focusTrap}
+      innerRef={focusTrap}
       style={{
         padding: sizes[2],
         width: sizes[6],

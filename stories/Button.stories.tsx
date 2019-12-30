@@ -34,6 +34,13 @@ export const smallPrimaryButton = () => (
     </Button>
   </Fixture>
 )
+export const disabledButton = () => (
+  <Fixture>
+    <Button disabled onClick={action("clicked")}>
+      Button
+    </Button>
+  </Fixture>
+)
 export const buttonWithCustomStyles = () => (
   <Fixture>
     <Button
@@ -46,13 +53,16 @@ export const buttonWithCustomStyles = () => (
         transitionProperty: `color opacity background-color transform box-shadow`,
         options: "1000ms",
         "&::after": {
-          content: `"none"`
+          content: "none"
         },
         "&:hover": {
           backgroundColor: "#f00",
           transform: ["scale(1.2)", "scale(1.5)"],
           boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
           color: "#fff"
+        },
+        "&:active": {
+          transform: "scale(0.85)"
         }
       }}>
       Button

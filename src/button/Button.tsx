@@ -1,14 +1,15 @@
 import { Box } from "../box/Box"
 import React, { FC, ComponentProps } from "react"
 import { useTheme } from "../theme/useTheme"
-import { CSSObject } from "@emotion/core"
+import { ensureArray } from "../_common/helpers"
 
 interface Props extends ComponentProps<typeof Box> {
   primary?: boolean
   small?: boolean
+  disabled?: boolean
 }
 
-export const Button: FC<Props> = ({ primary, small, style, children, ...props }) => {
+export const Button: FC<Props> = ({ disabled, primary, small, style, children, ...props }) => {
   const { theme } = useTheme()
   const {
     sizes,
@@ -27,6 +28,7 @@ export const Button: FC<Props> = ({ primary, small, style, children, ...props })
           border: "none",
           overflow: "hidden",
           padding: `${small ? sizes[0] : sizes[1]} ${small ? sizes[2] : sizes[3]}`,
+          ...(disabled && { pointerEvents: "none" }),
           "&::after": {
             content: '""',
             display: "block",
@@ -49,8 +51,9 @@ export const Button: FC<Props> = ({ primary, small, style, children, ...props })
             boxShadow: shadows.active
           }
         },
-        style as CSSObject
+        ...ensureArray(style)
       ]}
+      disabled={disabled}
       as="button"
       {...props}>
       {children}

@@ -49,5 +49,4 @@ const overrides = {
   }
 }
 
-// TODO: Complete Node types: https://github.com/rexxars/react-markdown
 export const Markdown: FC<{}> = ({ children }) => <MarkdownToJSX options={{ overrides }}>{children}</MarkdownToJSX>

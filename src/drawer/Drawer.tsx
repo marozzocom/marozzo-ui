@@ -5,8 +5,9 @@ import nanoid from "nanoid"
 import { MotionProps } from "framer-motion"
 import { Overlay } from "../overlay/Overlay"
 import { DrawerRaw } from "./DrawerRaw"
+import { Box } from ".."
 
-interface Props {
+interface Props extends ComponentProps<typeof Box> {
   open?: boolean
   key?: string
   far?: boolean
@@ -17,7 +18,18 @@ interface Props {
   close?: () => void
 }
 
-export const Drawer: FC<Props> = ({ open = true, key = nanoid(), far, hasCloseButton = true, animation, children, overlayProps, modal = true, close }) => {
+export const Drawer: FC<Props> = ({
+  open = true,
+  key = nanoid(),
+  far,
+  hasCloseButton = true,
+  animation,
+  children,
+  overlayProps,
+  modal = true,
+  close,
+  ...props
+}) => {
   const motionProps: MotionProps = {
     initial: { opacity: 0, x: `${far ? 100 : -100}%`, position: "fixed", left: !far && 0, right: far && 0, top: 0, bottom: 0 },
     animate: { opacity: 1, x: 0 },
@@ -34,7 +46,7 @@ export const Drawer: FC<Props> = ({ open = true, key = nanoid(), far, hasCloseBu
       {modal && open && <Overlay onClick={close} {...overlayProps} />}
       <Disclosure animation={motionProps}>
         {open && (
-          <DrawerRaw key={key} close={hasCloseButton && close}>
+          <DrawerRaw key={key} close={hasCloseButton && close} {...props}>
             {children}
           </DrawerRaw>
         )}

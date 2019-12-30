@@ -1,12 +1,12 @@
-import React, { FC, useRef, useEffect } from "react"
+import React, { FC, useRef, useEffect, ComponentProps } from "react"
 import { Box } from "../box/Box"
 import { useToc } from "../toc"
 
-interface Props {
+interface Props extends ComponentProps<typeof Box> {
   name: string
 }
 
-export const ContentSection: FC<Props> = ({ name, children }) => {
+export const ContentSection: FC<Props> = ({ name, children, ...props }) => {
   const { observer, setToc } = useToc()
   const ref = useRef<HTMLHeadingElement>()
 
@@ -24,5 +24,9 @@ export const ContentSection: FC<Props> = ({ name, children }) => {
     }, [])
   }
 
-  return <Box innerRef={ref}>{children}</Box>
+  return (
+    <Box innerRef={ref} {...props}>
+      {children}
+    </Box>
+  )
 }

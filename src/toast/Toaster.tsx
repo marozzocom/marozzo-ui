@@ -1,38 +1,47 @@
-import React, { FC } from "react"
+import React, { FC, ComponentProps } from "react"
 import { Disclosure } from "../disclosure/Disclosure"
 import { Toast } from "./Toast"
 import { useToast } from "./useToast"
 import { MotionProps } from "framer-motion"
 import { Stack } from "../stack/Stack"
+import { Box } from ".."
+import { ensureArray } from "../_common/helpers"
 
-export const Toaster: FC<{}> = () => {
-  const { toasts, remove } = useToast()
+interface Props extends ComponentProps<typeof Box> {
+  toastProps?: ComponentProps<typeof Toast>
+  animation?: MotionProps
+}
 
-  const animation: MotionProps = {
-    initial: { opacity: -0.5, height: "0", y: "50px", overflow: "hidden", position: "relative" },
-    animate: { opacity: 1, height: "100%", y: 0 },
-    exit: { opacity: -0.5, height: "0", y: "50px" },
-    transition: {
-      type: "tween",
-      duration: "0.3"
-    }
+const defaultAnimation: MotionProps = {
+  initial: { opacity: -0.5, height: "0", y: "50px", overflow: "hidden", position: "relative" },
+  animate: { opacity: 1, height: "100%", y: 0 },
+  exit: { opacity: -0.5, height: "0", y: "50px" },
+  transition: {
+    type: "tween",
+    duration: "0.3"
   }
+}
 
-  // TODO: These styles need refinement
+export const Toaster: FC<Props> = ({ toastProps, style, animation = defaultAnimation, ...props }) => {
+  const { toasts, remove } = useToast()
 
   return (
     <Stack
-      style={{
-        flexDirection: "column",
-        position: "fixed",
-        right: 0,
-        bottom: 0,
-        left: 0,
-        justifyContent: "flex-end"
-      }}>
+      style={[
+        {
+          flexDirection: "column",
+          position: "fixed",
+          right: 0,
+          bottom: 0,
+          left: 0,
+          justifyContent: "flex-end"
+        },
+        ...ensureArray(style)
+      ]}
+      {...props}>
       <Disclosure id="toaster" animation={animation}>
         {Object.entries(toasts).map(([id, { message, title, duration }]) => (
-          <Toast key={id} id={id} duration={duration} message={message} title={title} remove={remove} />
+          <Toast key={id} id={id} duration={duration} message={message} title={title} remove={remove} {...toastProps} />
         ))}
       </Disclosure>
     </Stack>

@@ -2,13 +2,14 @@ import React, { FC, ComponentProps } from "react"
 import { Link } from "../link/Link"
 import { CSSObject } from "@emotion/core"
 import { useTheme } from "../theme"
+import { ensureArray } from "../_common/helpers"
 
 interface Props extends ComponentProps<typeof Link> {
   selected?: boolean
   selectedStyle?: CSSObject
 }
 
-export const NavLink: FC<Props> = ({ onClick, style, children, selected, selectedStyle }, props) => {
+export const NavLink: FC<Props> = ({ onClick, style, children, selected, selectedStyle, ...props }) => {
   const {
     theme: {
       colors,
@@ -26,21 +27,23 @@ export const NavLink: FC<Props> = ({ onClick, style, children, selected, selecte
     <Link
       onClick={onClick}
       variant={textStyles.actionNormal}
-      style={{
-        display: "block",
-        ...style,
-        ...(selected && selectedStylesWithDefault),
-        "&:hover": {
-          ...selectedStylesWithDefault
+      style={[
+        {
+          display: "block",
+          "&:hover": {
+            ...selectedStylesWithDefault
+          },
+          "&:focus": {
+            outline: "none",
+            boxShadow: shadows.active
+          }
         },
-        "&:focus": {
-          outline: "none",
-          boxShadow: shadows.active
-        }
-      }}
-      {...props}
+        ...ensureArray(style),
+        selected && selectedStylesWithDefault
+      ]}
       as="a"
-      tabIndex={0}>
+      tabIndex={0}
+      {...props}>
       {children}
     </Link>
   )

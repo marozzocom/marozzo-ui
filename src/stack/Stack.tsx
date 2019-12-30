@@ -1,6 +1,6 @@
 import React, { FC, ComponentProps } from "react"
 import { Box } from "../box/Box"
-import { binaryFromBooleans } from "../_common/helpers"
+import { binaryFromBooleans, ensureArray } from "../_common/helpers"
 
 type Alignment = "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly" | "baseline" | "stretch"
 
@@ -20,13 +20,15 @@ const flexDirection: { [index: number]: "column" | "column-reverse" | "row" | "r
 
 export const Stack: FC<Props> = ({ horizontal = false, reverse = false, horizontalAlign, verticalAlign, children, style, ...props }) => (
   <Box
-    style={{
-      flexDirection: flexDirection[binaryFromBooleans(horizontal, reverse)],
-      alignItems: horizontal ? verticalAlign : horizontalAlign,
-      justifyContent: horizontal ? horizontalAlign : verticalAlign,
-      display: "flex",
-      ...style
-    }}
+    style={[
+      {
+        flexDirection: flexDirection[binaryFromBooleans(horizontal, reverse)],
+        alignItems: horizontal ? verticalAlign : horizontalAlign,
+        justifyContent: horizontal ? horizontalAlign : verticalAlign,
+        display: "flex"
+      },
+      ...ensureArray(style)
+    ]}
     {...props}>
     {children}
   </Box>

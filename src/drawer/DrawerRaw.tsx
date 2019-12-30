@@ -1,17 +1,18 @@
-import React, { FC } from "react"
+import React, { FC, ComponentProps } from "react"
 import { Surface } from "../surface/Surface"
 import { Close } from "../close/Close"
 import { useFocusTrap } from "../_common/useFocusTrap"
-import { Fixture, Position } from "../fixture/Fixture"
+import { Fixture, Vertical, Horizontal } from "../fixture/Fixture"
 import { Box } from "../box/Box"
 import { useEscape } from "../_common/useEscape"
 import { useTheme } from "../theme/useTheme"
+import { ensureArray } from "../_common/helpers"
 
-interface Props {
+interface Props extends ComponentProps<typeof Box> {
   close?: () => void
 }
 
-export const DrawerRaw: FC<Props> = ({ children, close }) => {
+export const DrawerRaw: FC<Props> = ({ children, style, close, ...props }) => {
   const {
     theme: { sizes }
   } = useTheme()
@@ -22,14 +23,18 @@ export const DrawerRaw: FC<Props> = ({ children, close }) => {
   return (
     <Surface
       innerRef={focusTrap}
-      style={{
-        padding: sizes[2],
-        width: sizes[6],
-        boxShadow: "subtle"
-      }}>
-      <Box>{children}</Box>
+      style={[
+        {
+          padding: sizes[2],
+          width: sizes[6],
+          boxShadow: "subtle"
+        },
+        ...ensureArray(style)
+      ]}
+      {...props}>
+      {children}
       {close && (
-        <Fixture position={Position.TopRight}>
+        <Fixture vertical={Vertical.Top} horizontal={Horizontal.End}>
           <Close onClick={close} />
         </Fixture>
       )}

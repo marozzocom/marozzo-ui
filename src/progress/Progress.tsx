@@ -1,27 +1,35 @@
-import React, { FC } from "react"
+import React, { FC, ComponentProps } from "react"
 import { Box } from "../box/Box"
 import { motion } from "framer-motion"
 import { useTheme } from "../theme/useTheme"
+import { ensureArray } from "../_common/helpers"
+import { CSSObject } from "@emotion/core"
 
-interface Props {
+interface Props extends ComponentProps<typeof Box> {
   value?: number
+  indicatorProps?: ComponentProps<typeof Box>
 }
 
-export const Progress: FC<Props> = ({ value = 100 }) => {
+export const Progress: FC<Props> = ({ style, indicatorProps = {}, value = 100, ...props }) => {
   const {
     theme: { sizes }
   } = useTheme()
+  const { style: indicatorStyle, ...otherIndicatorProps } = indicatorProps
   return (
     <Box
-      style={{
-        height: sizes[2],
-        background: "gray"
-      }}
+      style={[
+        {
+          height: sizes[2],
+          background: "gray"
+        },
+        ...ensureArray(style)
+      ]}
       aria-valuemin={0}
       aria-valuemax={0}
       aria-valuenow={value}
       aria-valuetext={`${value}%`}
-      role="progressbar">
+      role="progressbar"
+      {...props}>
       <motion.div
         initial={{
           x: "-100%"
@@ -34,11 +42,15 @@ export const Progress: FC<Props> = ({ value = 100 }) => {
           type: "tween"
         }}>
         <Box
-          style={{
-            height: sizes[2],
-            width: "100%",
-            background: "tomato"
-          }}
+          style={[
+            {
+              height: sizes[2],
+              width: "100%",
+              background: "tomato"
+            },
+            ...ensureArray(indicatorProps.style)
+          ]}
+          {...otherIndicatorProps}
         />
       </motion.div>
     </Box>

@@ -1,11 +1,13 @@
-import React, { FC } from "react"
+import React, { FC, ComponentProps } from "react"
 import { Progress } from "../progress/Progress"
 import { Box } from "../box/Box"
 import { useScrollProgress } from "./useScrollProgress"
 import { Disclosure } from ".."
-import { Position, Fixture } from "../fixture/Fixture"
+import { Fixture, Vertical, FixtureProps } from "../fixture/Fixture"
 
-export const ScrollProgress: FC<{}> = ({}) => {
+interface Props extends ComponentProps<typeof Progress>, FixtureProps {}
+
+export const ScrollProgress: FC<Props> = ({ value, type = "fixed", vertical = Vertical.Top, horizontal, ...props }) => {
   const { progress, showProgress } = useScrollProgress()
 
   const exit = progress === 100 ? { x: "100%" } : { opacity: 0 }
@@ -21,12 +23,12 @@ export const ScrollProgress: FC<{}> = ({}) => {
   }
 
   return (
-    <Fixture type="fixed" position={Position.Top}>
+    <Fixture type={type} vertical={vertical} horizontal={horizontal}>
       <Box
         style={{
           width: "100vw"
         }}>
-        <Disclosure animation={animation}>{showProgress && <Progress value={progress} />}</Disclosure>
+        <Disclosure animation={animation}>{showProgress && <Progress value={progress} {...props} />}</Disclosure>
       </Box>
     </Fixture>
   )

@@ -28,11 +28,14 @@ class DefaultTheme {
   }
 
   fontSizes = {
-    xs: "0.75rem",
-    sm: "0.875rem",
-    md: "1rem",
-    lg: "1.25rem",
-    xl: "1.5rem"
+    xxs: "0.4rem",
+    xs: "0.6rem",
+    s: "0.8rem",
+    m: "1rem",
+    l: "1.2rem",
+    xl: "1.4rem",
+    xxl: "1.6rem",
+    xxxl: "2rem"
   }
 
   fontWeights = {
@@ -90,21 +93,45 @@ class DefaultTheme {
       actionSmall: {
         fontFamily: this.fonts.action,
         fontWeight: this.fontWeights.bold,
-        fontSize: this.fontSizes.sm
+        fontSize: this.fontSizes.s
       },
       actionNormal: {
         fontFamily: this.fonts.action,
         fontWeight: this.fontWeights.bold,
-        fontSize: this.fontSizes.md
+        fontSize: this.fontSizes.m
       },
-      heading: {
-        fontFamily: this.fonts.heading,
-        fontWeight: this.fontWeights.bold
+      headings: {
+        "1": {
+          fontSize: this.fontSizes.xxxl,
+          fontWeight: this.fontWeights.bold
+        },
+        "2": {
+          fontSize: this.fontSizes.xxl,
+          fontWeight: this.fontWeights.bold
+        },
+        "3": {
+          fontSize: this.fontSizes.xl,
+          fontWeight: this.fontWeights.bold
+        },
+        "4": {
+          fontSize: this.fontSizes.xl,
+          fontWeight: this.fontWeights.normal
+        },
+        "5": {
+          fontSize: this.fontSizes.l,
+          fontWeight: this.fontWeights.bold
+        },
+        "6": {
+          fontSize: this.fontSizes.l,
+          fontWeight: this.fontWeights.normal,
+          fontStyle: "italic"
+        }
       },
+
       body: {
         fontFamily: this.fonts.body,
         fontWeight: this.fontWeights.normal,
-        fontSize: this.fontSizes.md
+        fontSize: this.fontSizes.m
       }
     },
     cards: {

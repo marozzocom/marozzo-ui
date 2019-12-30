@@ -1,8 +1,8 @@
 import React from "react"
-import { Flex } from "../src/"
+import { Stack } from "../src/"
 import { render } from "@testing-library/react"
 
-test("Renders Flex", () => {
-  const { getByText } = render(<Flex>Flex</Flex>)
-  expect(getByText("Flex")).not.toBeNull()
+test("Renders Stack", () => {
+  const { getByText } = render(<Stack>Stack</Stack>)
+  expect(getByText("Stack")).not.toBeNull()
 })

@@ -50,37 +50,15 @@ class DefaultTheme {
     active: "#77daff"
   }
 
+  animations = {
+    normal: "0.2s ease-out"
+  }
+
   shadows = {
-    active: `${this.colors.active} 0 0 0 3px`,
+    active: `${this.colors.active} 0 0 0 2px`,
     subtle: "0px 5px 10px 0px rgba(0, 0, 0, 0.02)",
     normal: "0 0 10px rgba(0, 0, 0, 0.5)",
     inset: "inset 3.536px 3.536px 10px 0px rgba(0, 0, 0, 0.15)"
-  }
-
-  pseudo = {
-    button: {
-      "&::after": {
-        content: '""',
-        display: "block",
-        background: "rgba(0, 0, 0, 0.1)",
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        position: "absolute",
-        opacity: 0,
-        transition: "opacity 0.2s, boxShadow 0.2s"
-      },
-      "&:hover": {
-        "&::after": {
-          opacity: 1
-        }
-      },
-      "&:focus": {
-        outline: "none",
-        boxShadow: this.shadows.active
-      }
-    }
   }
 
   // TODO: base these on the theme colors
@@ -158,7 +136,7 @@ class DefaultTheme {
   }
 }
 
-const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, disclosures, gradients, variants, breakpoints, pseudo } = DefaultTheme.getInstance()
+const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, disclosures, gradients, variants, breakpoints, animations } = DefaultTheme.getInstance()
 
 export const defaultTheme = {
   sizes,
@@ -172,5 +150,5 @@ export const defaultTheme = {
   gradients,
   variants,
   breakpoints,
-  pseudo
+  animations
 }

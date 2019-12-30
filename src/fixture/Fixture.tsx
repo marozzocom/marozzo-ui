@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, ComponentProps } from "react"
 import { Box } from "../box/Box"
 
 export enum Position {
@@ -14,7 +14,7 @@ export enum Position {
 }
 
 // TODO: consider changing to separate horizontal and vertical align props
-interface Props {
+interface Props extends ComponentProps<typeof Box> {
   position?: Position
   type?: "absolute" | "fixed"
 }

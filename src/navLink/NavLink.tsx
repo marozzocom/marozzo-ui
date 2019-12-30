@@ -12,6 +12,7 @@ export const NavLink: FC<Props> = ({ onClick, style, children, selected, selecte
   const {
     theme: {
       colors,
+      shadows,
       variants: { textStyles }
     }
   } = useTheme()
@@ -24,14 +25,22 @@ export const NavLink: FC<Props> = ({ onClick, style, children, selected, selecte
   return (
     <Link
       onClick={onClick}
+      variant={textStyles.actionNormal}
       style={{
         display: "block",
-        transition: "color 200ms",
-        ...textStyles.actionNormal,
         ...style,
-        ...(selected && selectedStylesWithDefault)
+        ...(selected && selectedStylesWithDefault),
+        "&:hover": {
+          ...selectedStylesWithDefault
+        },
+        "&:focus": {
+          outline: "none",
+          boxShadow: shadows.active
+        }
       }}
-      {...props}>
+      {...props}
+      as="a"
+      tabIndex={0}>
       {children}
     </Link>
   )

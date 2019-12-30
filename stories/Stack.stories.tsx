@@ -1,5 +1,5 @@
 import React from "react"
-import { Stack, Text, Card } from "../src"
+import { Stack, Text, Card, Fixture } from "../src"
 import { useTheme } from "../src/theme/useTheme"
 
 export default {
@@ -18,13 +18,19 @@ export const stackVertical = () => {
         background: colors.secondary
       }}>
       <Card>
-        <Text>Stack1</Text>
+        <Fixture>
+          <Text>Stack1</Text>
+        </Fixture>
       </Card>
       <Card>
-        <Text>Stack2</Text>
+        <Fixture>
+          <Text>Stack2</Text>
+        </Fixture>
       </Card>
       <Card>
-        <Text>Stack3</Text>
+        <Fixture>
+          <Text>Stack3</Text>
+        </Fixture>
       </Card>
     </Stack>
   )
@@ -42,13 +48,19 @@ export const stackHorizontal = () => {
         background: colors.secondary
       }}>
       <Card>
-        <Text>Stack1</Text>
+        <Fixture>
+          <Text>Stack1</Text>
+        </Fixture>
       </Card>
       <Card>
-        <Text>Stack2</Text>
+        <Fixture>
+          <Text>Stack2</Text>
+        </Fixture>
       </Card>
       <Card>
-        <Text>Stack3</Text>
+        <Fixture>
+          <Text>Stack3</Text>
+        </Fixture>
       </Card>
     </Stack>
   )

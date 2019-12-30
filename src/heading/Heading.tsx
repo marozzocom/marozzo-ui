@@ -8,6 +8,8 @@ interface Props {
   level?: Level
 }
 
+// TODO: Properly handle font sizes
+
 export const Heading: FC<Props> = ({ level = 2, children }) => {
   const {
     theme: {
@@ -16,7 +18,7 @@ export const Heading: FC<Props> = ({ level = 2, children }) => {
   } = useTheme()
 
   return (
-    <Text as={`h${level}` as ElementType} role="heading" aria-level={level} style={{ ...textStyles.heading }}>
+    <Text as={`h${level}` as ElementType} role="heading" aria-level={level} variant={textStyles.heading}>
       {children}
     </Text>
   )

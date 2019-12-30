@@ -1,87 +1,43 @@
 import React, { FC, ComponentProps } from "react"
 import { Box } from "../box/Box"
+import { ensureArray } from "../_common/helpers"
 
-export enum Position {
-  Center,
-  Top,
-  Right,
-  Bottom,
-  Left,
-  TopLeft,
-  TopRight,
-  BottomRight,
-  BottomLeft
+export enum Vertical {
+  Top = "flex-start",
+  Center = "center",
+  Bottom = "flex-end"
 }
 
-// TODO: consider changing to separate horizontal and vertical align props
-interface Props extends ComponentProps<typeof Box> {
-  position?: Position
+export enum Horizontal {
+  Start = "flex-start",
+  Center = "center",
+  End = "flex-end"
+}
+
+export interface FixtureProps {
+  horizontal?: Horizontal
+  vertical?: Vertical
   type?: "absolute" | "fixed"
 }
 
-const getFlexboxProps = (position: Position) => {
-  switch (position) {
-    case Position.Top:
-      return {
-        alignItems: "flex-start",
-        justifyContent: "center"
-      }
-    case Position.Right:
-      return {
-        alignItems: "center",
-        justifyContent: "flex-end"
-      }
-    case Position.Bottom:
-      return {
-        alignItems: "flex-end",
-        justifyContent: "center"
-      }
-    case Position.Left:
-      return {
-        alignItems: "center",
-        justifyContent: "flex-start"
-      }
-    case Position.TopLeft:
-      return {
-        alignItems: "flex-start",
-        justifyContent: "flex-start"
-      }
-    case Position.TopRight:
-      return {
-        alignItems: "flex-start",
-        justifyContent: "flex-end"
-      }
-    case Position.BottomRight:
-      return {
-        alignItems: "flex-end",
-        justifyContent: "flex-end"
-      }
-    case Position.BottomLeft:
-      return {
-        alignItems: "flex-end",
-        justifyContent: "flex-start"
-      }
-    case Position.Center:
-    default:
-      return {
-        alignItems: "center",
-        justifyContent: "center"
-      }
-  }
-}
+interface Props extends ComponentProps<typeof Box>, FixtureProps {}
 
-export const Fixture: FC<Props> = ({ position, children, type = "absolute", ...props }) => (
+export const Fixture: FC<Props> = ({ vertical = Vertical.Center, horizontal = Horizontal.Center, children, type = "absolute", style, ...props }) => (
   <Box
-    style={{
-      display: "flex",
-      position: type,
-      pointerEvents: "none",
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      ...getFlexboxProps(position)
-    }}
+    style={[
+      {
+        display: "flex",
+        position: type,
+        pointerEvents: "none",
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        alignItems: vertical,
+        justifyContent: horizontal
+      },
+      ...ensureArray(style)
+    ]}
     {...props}>
     {children}
   </Box>

@@ -1,5 +1,5 @@
 import React from "react"
-import { Fixture, Position } from "../src/fixture/Fixture"
+import { Fixture, Vertical, Horizontal } from "../src/fixture/Fixture"
 import { Card } from "../src/card/Card"
 import { Box } from "../src"
 
@@ -18,7 +18,7 @@ export const center = () => (
   </Fixture>
 )
 export const top = () => (
-  <Fixture position={Position.Top}>
+  <Fixture vertical={Vertical.Top}>
     <Card>
       <Fixture>
         <Box>Fixture</Box>
@@ -27,7 +27,7 @@ export const top = () => (
   </Fixture>
 )
 export const right = () => (
-  <Fixture position={Position.Right}>
+  <Fixture horizontal={Horizontal.End}>
     <Card>
       <Fixture>
         <Box>Fixture</Box>
@@ -36,7 +36,7 @@ export const right = () => (
   </Fixture>
 )
 export const bottom = () => (
-  <Fixture position={Position.Bottom}>
+  <Fixture vertical={Vertical.Bottom}>
     <Card>
       <Fixture>
         <Box>Fixture</Box>
@@ -45,7 +45,7 @@ export const bottom = () => (
   </Fixture>
 )
 export const left = () => (
-  <Fixture position={Position.Left}>
+  <Fixture horizontal={Horizontal.Start}>
     <Card>
       <Fixture>
         <Box>Fixture</Box>
@@ -54,7 +54,7 @@ export const left = () => (
   </Fixture>
 )
 export const topLeft = () => (
-  <Fixture position={Position.TopLeft}>
+  <Fixture vertical={Vertical.Top} horizontal={Horizontal.Start}>
     <Card>
       <Fixture>
         <Box>Fixture</Box>
@@ -63,7 +63,7 @@ export const topLeft = () => (
   </Fixture>
 )
 export const topRight = () => (
-  <Fixture position={Position.TopRight}>
+  <Fixture vertical={Vertical.Top} horizontal={Horizontal.End}>
     <Card>
       <Fixture>
         <Box>Fixture</Box>
@@ -72,7 +72,7 @@ export const topRight = () => (
   </Fixture>
 )
 export const bottomRight = () => (
-  <Fixture position={Position.BottomRight}>
+  <Fixture vertical={Vertical.Bottom} horizontal={Horizontal.End}>
     <Card>
       <Fixture>
         <Box>Fixture</Box>
@@ -81,7 +81,7 @@ export const bottomRight = () => (
   </Fixture>
 )
 export const bottomLeft = () => (
-  <Fixture position={Position.BottomLeft}>
+  <Fixture vertical={Vertical.Bottom} horizontal={Horizontal.Start}>
     <Card>
       <Fixture>
         <Box>Fixture</Box>

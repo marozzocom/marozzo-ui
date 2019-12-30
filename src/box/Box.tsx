@@ -4,7 +4,7 @@ import { FC } from "react"
 import { useTheme } from "../theme"
 import { ensureArray } from "../_common/helpers"
 
-interface HTMLProps<T> extends React.RefAttributes<T>, Omit<React.HTMLAttributes<T>, "style"> {
+interface BoxProps<T> {
   target?: string
   as?: React.ElementType
   style?: CSSObject | CSSObject[]
@@ -12,7 +12,7 @@ interface HTMLProps<T> extends React.RefAttributes<T>, Omit<React.HTMLAttributes
   variant?: any
 }
 
-interface Props<T = HTMLElement> extends HTMLProps<T> {}
+interface Props<T = HTMLElement> extends BoxProps<T>, Omit<React.AllHTMLAttributes<T>, keyof BoxProps<T> | "type" | "value"> {}
 
 export const Box: FC<Props<HTMLElement>> = ({ as = "div", style, variant, children, innerRef, ...props }) => {
   const Tag: any = `${as}`

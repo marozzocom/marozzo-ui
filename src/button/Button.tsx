@@ -2,6 +2,7 @@ import { Box } from "../box/Box"
 import { FC, ComponentProps } from "react"
 import React from "react"
 import { useTheme } from "../theme/useTheme"
+import merge from "deepmerge"
 
 interface Props extends ComponentProps<typeof Box> {
   primary?: boolean
@@ -9,13 +10,12 @@ interface Props extends ComponentProps<typeof Box> {
 }
 
 export const Button: FC<Props> = ({ primary, small, style, children, ...props }) => {
+  const { theme } = useTheme()
   const {
-    theme: {
-      sizes,
-      pseudo,
-      variants: { buttons, textStyles }
-    }
-  } = useTheme()
+    sizes,
+    shadows,
+    variants: { buttons, textStyles }
+  } = theme
 
   return (
     <Box
@@ -23,14 +23,35 @@ export const Button: FC<Props> = ({ primary, small, style, children, ...props })
         ...(primary ? buttons.primary : buttons.default),
         ...(small ? textStyles.actionSmall : textStyles.actionNormal)
       }}
-      style={{
-        border: "none",
-        overflow: "hidden",
-        transition: "box-shadow 0.2s",
-        padding: `${small ? sizes[0] : sizes[1]} ${small ? sizes[2] : sizes[3]}`,
-        ...pseudo.button,
-        ...style
-      }}
+      style={merge(
+        {
+          border: "none",
+          overflow: "hidden",
+          padding: `${small ? sizes[0] : sizes[1]} ${small ? sizes[2] : sizes[3]}`,
+          "&::after": {
+            content: '""',
+            display: "block",
+            background: "rgba(0, 0, 0, 0.1)",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            position: "absolute",
+            opacity: 0.5,
+            transitionDuration: "300ms"
+          },
+          "&:hover": {
+            "&::after": {
+              opacity: 1
+            }
+          },
+          "&:focus": {
+            outline: "none",
+            boxShadow: shadows.active
+          }
+        },
+        { ...style }
+      )}
       as="button"
       {...props}>
       {children}

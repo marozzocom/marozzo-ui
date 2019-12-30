@@ -96,6 +96,30 @@ would change the color of the element according to the breakpoints. The array su
 
 </Section>
 
+<Section name="Pseudo">
+
+# Pseudo elements and classes
+
+</Section>
+
+<Section name="Transitions">
+
+# Transitions
+
+</Section>
+
+<Section name="How it works">
+
+# How Marozzo UI works
+
+## Style order
+
+## Overriding styles
+
+## How are styles merged
+
+## Suggested logic for creating styles
+
 <Section name="Notes">
 
 # Notes

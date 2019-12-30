@@ -5,34 +5,63 @@ import { jsx } from "@emotion/core"
 
 import { FC } from "react"
 import { useTheme } from "../theme"
-import facepaint from "facepaint"
+import { Arg } from "facepaint"
+import merge from "deepmerge"
 
 interface HTMLProps<T> extends React.RefAttributes<T>, Omit<React.HTMLAttributes<T>, "style"> {
   target?: string
   as?: React.ElementType
-  style?: facepaint.Arg
+  style?: Arg
   innerRef?: React.MutableRefObject<T>
-  variant?: facepaint.Arg
-  onClick?: (event: any) => void
+  variant?: Arg
 }
 
 interface Props<T = HTMLElement> extends HTMLProps<T> {}
 
 export const Box: FC<Props<HTMLElement>> = ({ as = "div", style, variant, children, innerRef, ...props }) => {
   const Tag: any = `${as}`
+
+  // TODO: Consider adding other pseudo states
+
   const { breakpoints } = useTheme()
+
+  console.log(
+    "styles",
+    breakpoints(
+      merge.all([
+        {
+          transitionProperty: "box-shadow, opacity, color, background-color, transform",
+          transitionDuration: "100ms",
+          transitionTimingFunction: "ease-in-out",
+          boxSizing: "border-box",
+          position: "relative",
+          minWidth: 0,
+          pointerEvents: "all"
+        },
+        { ...variant },
+        { ...style }
+      ])
+    )
+  )
 
   return (
     <Tag
       ref={innerRef}
-      css={breakpoints({
-        boxSizing: "border-box",
-        position: "relative",
-        minWidth: 0,
-        pointerEvents: "all",
-        ...variant,
-        ...style
-      })}
+      css={breakpoints(
+        merge.all([
+          {
+            transitionProperty: "box-shadow, opacity, color, background-color, transform",
+            transitionDuration: "100ms",
+            transitionTimingFunction: "ease-in-out",
+            boxSizing: "border-box",
+            position: "relative",
+            minWidth: 0,
+            pointerEvents: "all"
+          },
+          { ...variant },
+          { ...style }
+        ])
+      )}
       {...props}>
       {children}
     </Tag>

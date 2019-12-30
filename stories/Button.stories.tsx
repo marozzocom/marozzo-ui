@@ -1,5 +1,6 @@
 import React from "react"
 import { Button } from "../src/button/Button"
+import { Fixture } from "../src/fixture/Fixture"
 import { action } from "@storybook/addon-actions"
 
 export default {
@@ -7,19 +8,54 @@ export default {
   title: "Button"
 }
 
-export const defaultButton = () => <Button onClick={action("clicked")}>Button</Button>
+export const defaultButton = () => (
+  <Fixture>
+    <Button onClick={action("clicked")}>Button</Button>
+  </Fixture>
+)
 export const primaryButton = () => (
-  <Button primary onClick={action("clicked")}>
-    Button
-  </Button>
+  <Fixture>
+    <Button primary onClick={action("clicked")}>
+      Button
+    </Button>
+  </Fixture>
 )
 export const smallButton = () => (
-  <Button small onClick={action("clicked")}>
-    Button
-  </Button>
+  <Fixture>
+    <Button small onClick={action("clicked")}>
+      Button
+    </Button>
+  </Fixture>
 )
 export const smallPrimaryButton = () => (
-  <Button small primary onClick={action("clicked")}>
-    Button
-  </Button>
+  <Fixture>
+    <Button small primary onClick={action("clicked")}>
+      Button
+    </Button>
+  </Fixture>
+)
+export const buttonWithCustomStyles = () => (
+  <Fixture>
+    <Button
+      primary
+      onClick={action("clicked")}
+      style={{
+        borderRadius: "2px",
+        boxShadow: "none",
+        backgroundImage: "none",
+        transitionProperty: `color opacity background-color transform box-shadow`,
+        options: "1000ms",
+        "&::after": {
+          content: `"none"`
+        },
+        "&:hover": {
+          backgroundColor: "#f00",
+          transform: ["scale(1.2)", "scale(1.5)"],
+          boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+          color: "#fff"
+        }
+      }}>
+      Button
+    </Button>
+  </Fixture>
 )

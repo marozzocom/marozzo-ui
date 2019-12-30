@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/marozzocom/marozzo-ui/compare/v0.5.0...v0.6.0) (2019-12-30)
+
+### ⚠ BREAKING CHANGES
+
+- **fixture:** UPdate positioning props in Fixture
+- **component api:** Flex is now Stack.
+
+### Features
+
+- **box:** add support for variant ([4b38938](https://github.com/marozzocom/marozzo-ui/commit/4b38938e3d75de3baf4fefd941b0a601be8dd493))
+- **button:** add `disabled` prop ([d04d078](https://github.com/marozzocom/marozzo-ui/commit/d04d078236fdc04fa408040f734b295f61755af6))
+- **component api:** refactor component api ([281ce05](https://github.com/marozzocom/marozzo-ui/commit/281ce055a4413cd0db6581c221e30f70f53c2c74))
+- add helper to transform booleans into a binary value ([24eb966](https://github.com/marozzocom/marozzo-ui/commit/24eb966b48e6379758742be5f55da7ad88fb7b92))
+
+### Bug Fixes
+
+- **overlay:** fix overlay styles ([1955f75](https://github.com/marozzocom/marozzo-ui/commit/1955f7596e763e399a00e7edafa7160cb0bff251))
+- support variant with `Text` ([708fa29](https://github.com/marozzocom/marozzo-ui/commit/708fa29e6eacd23034d4d65237852fb67c3e8120))
+
+* **fixture:** change fixture positioning to separate `vertical` and `horizontal` props ([30c9768](https://github.com/marozzocom/marozzo-ui/commit/30c9768aeb02db4ced5620e9910802d041cba6c5))
+
 ## [0.5.0](https://github.com/marozzocom/marozzo-ui/compare/v0.4.6...v0.5.0) (2019-12-28)
 
 ### ⚠ BREAKING CHANGES

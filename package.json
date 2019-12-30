@@ -41,7 +41,6 @@
     "@types/facepaint": "^1.2.1",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
-    "deepmerge": "^4.2.2",
     "emotion": "^10.0.27",
     "facepaint": "^1.2.1",
     "framer-motion": "^1.7.0",

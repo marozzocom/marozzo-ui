@@ -11,7 +11,7 @@ interface Props extends ComponentProps<typeof Box> {
   verticalAlign?: Alignment
 }
 
-const flexDirection: { [key: number]: string } = {
+const flexDirection: { [index: number]: "column" | "column-reverse" | "row" | "row-reverse" } = {
   "0": "column",
   "1": "column-reverse",
   "2": "row",
@@ -21,11 +21,11 @@ const flexDirection: { [key: number]: string } = {
 export const Stack: FC<Props> = ({ horizontal = false, reverse = false, horizontalAlign, verticalAlign, children, style, ...props }) => (
   <Box
     style={{
-      ...style,
       flexDirection: flexDirection[binaryFromBooleans(horizontal, reverse)],
       alignItems: horizontal ? verticalAlign : horizontalAlign,
       justifyContent: horizontal ? horizontalAlign : verticalAlign,
-      display: "flex"
+      display: "flex",
+      ...style
     }}
     {...props}>
     {children}

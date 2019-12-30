@@ -31,14 +31,14 @@ export const Link: FC<PropsWithHTMLAttributes> = ({ to, newTab, style, children,
         "&:active, &:visited": {
           color: "inherit"
         },
-        ...style,
         "&:focus": {
           outline: "none",
           boxShadow: shadows.active
         },
         "&:hover": {
           color: colors.active
-        }
+        },
+        ...style
       }}
       {...props}>
       {children}

@@ -1,8 +1,7 @@
 import { Box } from "../box/Box"
-import { FC, ComponentProps } from "react"
-import React from "react"
+import React, { FC, ComponentProps } from "react"
 import { useTheme } from "../theme/useTheme"
-import merge from "deepmerge"
+import { CSSObject } from "@emotion/core"
 
 interface Props extends ComponentProps<typeof Box> {
   primary?: boolean
@@ -23,7 +22,7 @@ export const Button: FC<Props> = ({ primary, small, style, children, ...props })
         ...(primary ? buttons.primary : buttons.default),
         ...(small ? textStyles.actionSmall : textStyles.actionNormal)
       }}
-      style={merge(
+      style={[
         {
           border: "none",
           overflow: "hidden",
@@ -37,7 +36,7 @@ export const Button: FC<Props> = ({ primary, small, style, children, ...props })
             bottom: 0,
             left: 0,
             position: "absolute",
-            opacity: 0.5,
+            opacity: 0,
             transitionDuration: "300ms"
           },
           "&:hover": {
@@ -50,8 +49,8 @@ export const Button: FC<Props> = ({ primary, small, style, children, ...props })
             boxShadow: shadows.active
           }
         },
-        { ...style }
-      )}
+        style as CSSObject
+      ]}
       as="button"
       {...props}>
       {children}

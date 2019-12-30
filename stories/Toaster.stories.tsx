@@ -11,6 +11,20 @@ export const _Toaster = () => (
   </ToastProvider>
 )
 
+export const toasterWithCustomToasts = () => (
+  <ToastProvider>
+    <Controls />
+    <Toaster
+      toastProps={{
+        style: {
+          backgroundImage: "none",
+          border: "5px solid #f00"
+        }
+      }}
+    />
+  </ToastProvider>
+)
+
 export default {
   component: Toaster,
   title: "Toaster"

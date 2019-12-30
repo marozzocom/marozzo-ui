@@ -10,7 +10,7 @@
     "test:unit": "jest",
     "test:puppeteer": "jest --config=jest.puppeteer.config.js",
     "storybook": "start-storybook -p 6006",
-    "build:storybook": "build:storybook -c .storybook -o storybook-static --quiet",
+    "build:storybook": "build-storybook -c .storybook -o storybook-static --quiet",
     "clean": "rimraf dist/*",
     "prebuild": "npm run build:storybook && npm run test && npm run clean",
     "build": "tsc -p tsconfig.prod.json",

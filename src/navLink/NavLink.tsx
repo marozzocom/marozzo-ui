@@ -9,7 +9,7 @@ interface Props extends ComponentProps<typeof Link> {
   selectedStyle?: CSSObject
 }
 
-export const NavLink: FC<Props> = ({ onClick, style, children, selected, selectedStyle, ...props }) => {
+export const NavLink: FC<Props> = ({ style, children, selected, selectedStyle, ...props }) => {
   const {
     theme: {
       colors,
@@ -25,11 +25,10 @@ export const NavLink: FC<Props> = ({ onClick, style, children, selected, selecte
 
   return (
     <Link
-      onClick={onClick}
       variant={textStyles.actionNormal}
       style={[
         {
-          display: "block",
+          display: "inline-block",
           "&:hover": {
             ...selectedStylesWithDefault
           },
@@ -41,7 +40,6 @@ export const NavLink: FC<Props> = ({ onClick, style, children, selected, selecte
         ...ensureArray(style),
         selected && selectedStylesWithDefault
       ]}
-      as="a"
       tabIndex={0}
       {...props}>
       {children}

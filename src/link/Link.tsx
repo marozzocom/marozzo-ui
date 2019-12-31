@@ -9,7 +9,7 @@ interface Props extends ComponentProps<typeof Box> {
   href?: string
 }
 
-export const Link: FC<Props> = ({ to, newTab, style, children, ...props }) => {
+export const Link: FC<Props> = ({ as = "a", to, newTab, style, children, ...props }) => {
   const {
     theme: {
       colors,
@@ -17,9 +17,10 @@ export const Link: FC<Props> = ({ to, newTab, style, children, ...props }) => {
       variants: { textStyles }
     }
   } = useTheme()
+
   return (
     <Box
-      as="a"
+      as={as}
       href={to}
       target={newTab ? "_blank" : null}
       variant={textStyles.body}

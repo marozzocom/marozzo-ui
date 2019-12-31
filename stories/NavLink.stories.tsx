@@ -1,14 +1,16 @@
 import React from "react"
-import { Text } from "../src/text/Text"
 import { NavLink } from "../src/navLink/NavLink"
+import { action } from "@storybook/addon-actions"
 
 export default {
   component: NavLink,
   title: "NavLink"
 }
 
-export const link = () => (
+export const withLink = () => (
   <NavLink to="http://google.com" newTab>
-    <Text>Google</Text>
+    Google
   </NavLink>
 )
+
+export const withAction = () => <NavLink onClick={action("clicked")}>Click me</NavLink>

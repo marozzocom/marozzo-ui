@@ -135,11 +135,12 @@ class DefaultTheme {
       }
     },
     cards: {
+      // TODO: I don't know whether the min size is a good idea.
       primary: {
         borderRadius: this.radii.normal,
         boxShadow: this.shadows.subtle,
-        minWidth: this.sizes[6],
-        minHeight: this.sizes[6]
+        minWidth: this.sizes[5],
+        minHeight: this.sizes[5]
       },
       test: {
         background: "#cf0",

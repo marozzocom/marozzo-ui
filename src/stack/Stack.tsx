@@ -1,6 +1,8 @@
 import React, { FC, ComponentProps } from "react"
 import { Box } from "../box/Box"
 import { binaryFromBooleans, ensureArray } from "../_common/helpers"
+import { useTheme } from ".."
+import { CSSObject } from "@emotion/core"
 
 type Alignment = "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly" | "baseline" | "stretch"
 
@@ -9,6 +11,8 @@ interface Props extends ComponentProps<typeof Box> {
   reverse?: boolean
   horizontalAlign?: Alignment
   verticalAlign?: Alignment
+  gap?: string | number | string[] | "none"
+  itemStyle?: CSSObject
 }
 
 const flexDirection: { [index: number]: "column" | "column-reverse" | "row" | "row-reverse" } = {
@@ -18,18 +22,35 @@ const flexDirection: { [index: number]: "column" | "column-reverse" | "row" | "r
   "3": "row-reverse"
 }
 
-export const Stack: FC<Props> = ({ horizontal = false, reverse = false, horizontalAlign, verticalAlign, children, style, ...props }) => (
-  <Box
-    style={[
-      {
-        flexDirection: flexDirection[binaryFromBooleans(horizontal, reverse)],
-        alignItems: horizontal ? verticalAlign : horizontalAlign,
-        justifyContent: horizontal ? horizontalAlign : verticalAlign,
-        display: "flex"
-      },
-      ...ensureArray(style)
-    ]}
-    {...props}>
-    {children}
-  </Box>
-)
+export const Stack: FC<Props> = ({ gap, itemStyle, horizontal = false, reverse = false, horizontalAlign, verticalAlign, children, style, ...props }) => {
+  const {
+    theme: { sizes }
+  } = useTheme()
+
+  const gapStyle: CSSObject = gap !== "none" && {
+    "> *:not(:last-child)": {
+      marginRight: horizontal && (gap ?? sizes[2]),
+      marginBottom: !horizontal && (gap ?? sizes[2])
+    }
+  }
+
+  return (
+    <Box
+      style={[
+        {
+          flexDirection: flexDirection[binaryFromBooleans(horizontal, reverse)],
+          alignItems: horizontal ? verticalAlign : horizontalAlign,
+          justifyContent: horizontal ? horizontalAlign : verticalAlign,
+          display: "flex"
+        },
+        gapStyle,
+        itemStyle && {
+          "> *": itemStyle
+        },
+        ...ensureArray(style)
+      ]}
+      {...props}>
+      {children}
+    </Box>
+  )
+}

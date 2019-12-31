@@ -1,10 +1,16 @@
-import React, { useEffect, useState, useRef } from "react"
-import { Markdown, useScrollProgress, Flex, Box, Toc, useTheme } from "@marozzocom/marozzo-ui"
+import React, { useEffect, useState, useRef, FC } from "react"
+import { Markdown, useScrollProgress, Stack, Box, Toc, useTheme, useToc } from "@marozzocom/marozzo-ui"
+import { Navigation } from "../navigation/Navigation"
+import { navigation } from "../_common/navigation"
+import { useParams } from "react-router-dom"
 
-const Page = () => {
+const Page: FC<{}> = () => {
+  const { name } = useParams()
   const [content, setContent] = useState<string>("")
   const contentRef = useRef()
   const { attach } = useScrollProgress()
+  const { resetToc } = useToc()
+
   const {
     theme: { sizes }
   } = useTheme()
@@ -14,13 +20,17 @@ const Page = () => {
   }, [contentRef.current])
   useEffect(() => {
     ;(async () => {
-      const page = await import("../pages/introduction.md")
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      resetToc()
+      const page = await import(`../pages/${name}.md`)
       setContent(page.default)
     })()
-  }, [])
+  }, [name])
+
+  const toc = <Toc />
 
   return (
-    <Flex>
+    <Stack horizontal>
       <Box
         style={{
           flexShrink: 0,
@@ -30,12 +40,12 @@ const Page = () => {
           top: "0px",
           alignSelf: "flex-start"
         }}>
-        <Toc />
+        <Navigation items={{ ...navigation, [name]: { ...navigation[name], selected: true } }} toc={toc} />
       </Box>
       <Box innerRef={contentRef}>
         <Markdown>{content}</Markdown>
       </Box>
-    </Flex>
+    </Stack>
   )
 }
 

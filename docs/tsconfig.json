@@ -3,7 +3,7 @@
     "experimentalDecorators": true,
     "module": "esnext",
     "esModuleInterop": true,
-    "target": "es6",
+    "lib": ["dom", "esnext"],
     "jsx": "react",
     "noImplicitAny": true,
     "moduleResolution": "node",

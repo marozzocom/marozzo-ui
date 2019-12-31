@@ -18,6 +18,7 @@ const Page: FC<{}> = () => {
   useEffect(() => {
     attach(contentRef.current)
   }, [contentRef.current])
+
   useEffect(() => {
     ;(async () => {
       window.scrollTo({ top: 0, behavior: "smooth" })

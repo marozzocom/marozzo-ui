@@ -42,11 +42,10 @@ const App = () => (
                   <Route path={routes.home} exact>
                     <Home />
                   </Route>
-                  {/* <Route path={`${routes.components}:name`} exact render={props => <Page name={props?.match.params.name} />} /> */}
                   <Route path={`${routes.docs}:name`}>
                     <Page />
                   </Route>
-                  <Route render={() => <Box>Not found!</Box>} />
+                  <Route render={() => <Box>Page not found!</Box>} />
                 </Switch>
               </Router>
             </Suspense>

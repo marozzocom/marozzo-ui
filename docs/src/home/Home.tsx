@@ -1,10 +1,13 @@
-import React, { FC, useState } from "react"
-import { Stack, Box, Heading, Text, Fixture, Button } from "@marozzocom/marozzo-ui"
+import React, { FC } from "react"
+import { Stack, Box, Heading, Text, Fixture, Button, useTheme } from "@marozzocom/marozzo-ui"
 import { useHistory } from "react-router-dom"
 import { navigation } from "../_common/navigation"
 
 const Home: FC<{}> = () => {
   const history = useHistory()
+  const {
+    theme: { sizes }
+  } = useTheme()
 
   return (
     <Stack>
@@ -16,9 +19,21 @@ const Home: FC<{}> = () => {
             minHeight: "500px"
           }}>
           <Fixture>
-            <Button primary onClick={() => history.push(navigation["introduction"].path)}>
-              Read docs
-            </Button>
+            <Stack
+              horizontal
+              style={{
+                "> *": {
+                  marginLeft: sizes[2],
+                  marginRight: sizes[2]
+                }
+              }}>
+              <Button primary onClick={() => history.push(navigation["introduction"].path)}>
+                Read docs
+              </Button>
+              <Button primary onClick={() => window.open("https://marozzoui.marozzo.com/", "_newtab")}>
+                Explore Storybook
+              </Button>
+            </Stack>
           </Fixture>
         </Box>
       </Box>

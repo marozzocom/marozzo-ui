@@ -26,7 +26,9 @@ export const Navigation: FC<Props> = ({ items, toc, children }) => {
       {Object.entries(items).map(([key, { title, path, selected }]) => {
         return (
           <Fragment key={key}>
-            <NavLink onClick={() => history.push(path)}>{title}</NavLink>
+            <NavLink selected={selected} onClick={() => history.push(path)}>
+              {title}
+            </NavLink>
             {selected && <Box style={{ paddingLeft: sizes[2] }}>{toc}</Box>}
           </Fragment>
         )

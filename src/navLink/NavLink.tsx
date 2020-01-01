@@ -9,6 +9,11 @@ interface Props extends ComponentProps<typeof Link> {
   selectedStyle?: CSSObject
 }
 
+// TODO: I am not happy about the difference between Link and NavLink, and their behavior with onClick vs to/href.
+// Suggestion: Make Link always simple inline A element, no special click funtionality but with to prop (support for router TBD).
+// Make NavLink always an A that is block-level.
+// Add Router support to both elements and consider creating a click/keypress handler to NavLink
+
 export const NavLink: FC<Props> = ({ style, children, selected, selectedStyle, ...props }) => {
   const {
     theme: {
@@ -28,7 +33,7 @@ export const NavLink: FC<Props> = ({ style, children, selected, selectedStyle, .
       variant={textStyles.actionNormal}
       style={[
         {
-          display: "inline-block",
+          display: "block",
           "&:hover": {
             ...selectedStylesWithDefault
           },

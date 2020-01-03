@@ -1,4 +1,4 @@
-<Section name="Component Style">
+<Section id="section1" title="Component Style">
 
 # Component Style
 
@@ -96,19 +96,19 @@ would change the color of the element according to the breakpoints. The array su
 
 </Section>
 
-<Section name="Pseudo">
+<Section id="section2" title="Pseudo">
 
 # Pseudo elements and classes
 
 </Section>
 
-<Section name="Transitions">
+<Section id="section3" title="Transitions">
 
 # Transitions
 
 </Section>
 
-<Section name="How it works">
+<Section id="section4" title="How it works">
 
 # How Marozzo UI works
 
@@ -120,7 +120,7 @@ would change the color of the element according to the breakpoints. The array su
 
 ## Suggested logic for creating styles
 
-<Section name="Notes">
+<Section id="section5" title="Notes">
 
 # Notes
 

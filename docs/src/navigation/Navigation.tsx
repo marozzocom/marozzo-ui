@@ -1,5 +1,5 @@
-import React, { FC, Fragment, ReactNode, useState } from "react"
-import { Stack, NavLink, useTheme, Box } from "@marozzocom/marozzo-ui"
+import React, { FC, Fragment } from "react"
+import { Stack, NavLink, useTheme, Box, Toc } from "@marozzocom/marozzo-ui"
 import { useHistory } from "react-router-dom"
 
 export interface NavigationItems {
@@ -12,24 +12,27 @@ export interface NavigationItems {
 
 interface Props {
   items: NavigationItems
-  toc?: React.ReactNode
 }
 
-export const Navigation: FC<Props> = ({ items, toc, children }) => {
+export const Navigation: FC<Props> = ({ items }) => {
   const history = useHistory()
   const {
     theme: { sizes }
   } = useTheme()
 
   return (
-    <Stack>
+    <Stack itemStyle={{ display: "block" }}>
       {Object.entries(items).map(([key, { title, path, selected }]) => {
         return (
           <Fragment key={key}>
             <NavLink selected={selected} onClick={() => history.push(path)}>
               {title}
             </NavLink>
-            {selected && <Box style={{ paddingLeft: sizes[2] }}>{toc}</Box>}
+            {selected && (
+              <Box style={{ paddingLeft: sizes[2] }}>
+                <Toc />
+              </Box>
+            )}
           </Fragment>
         )
       })}

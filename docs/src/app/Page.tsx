@@ -1,34 +1,25 @@
 import React, { useEffect, useState, useRef, FC } from "react"
-import { Markdown, useScrollProgress, Stack, Box, Toc, useTheme, useToc } from "@marozzocom/marozzo-ui"
+import { Markdown, Stack, Box, useTheme, ScrollProgressContainer, ScrollProgress, Vertical, Sticky } from "@marozzocom/marozzo-ui"
 import { Navigation } from "../navigation/Navigation"
 import { navigation } from "../_common/navigation"
 import { useParams } from "react-router-dom"
+import { scrollProgressEmitter } from "@marozzocom/marozzo-ui"
 
 const Page: FC<{}> = () => {
-  const { name } = useParams()
-  const [content, setContent] = useState<string>("")
-  const contentRef = useRef()
-  const { attach } = useScrollProgress()
-  const { resetToc } = useToc()
-
   const {
-    theme: { sizes }
+    theme: { sizes, shadows, colors }
   } = useTheme()
 
-  useEffect(() => {
-    attach(contentRef.current)
-  }, [contentRef.current])
+  const { name } = useParams()
+  const [content, setContent] = useState<string>()
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" })
     ;(async () => {
-      window.scrollTo({ top: 0, behavior: "smooth" })
-      resetToc()
       const page = await import(`../pages/${name}.md`)
       setContent(page.default)
     })()
   }, [name])
-
-  const toc = <Toc />
 
   return (
     <Stack horizontal>
@@ -36,18 +27,41 @@ const Page: FC<{}> = () => {
         style={{
           flexShrink: 0,
           margin: `initial ${sizes[2]}`,
-          width: sizes[5],
+          width: sizes[6],
+          boxShadow: shadows.normal,
+          backgroundColor: colors.background,
           position: "sticky",
           top: "0px",
-          alignSelf: "flex-start"
+          alignSelf: "flex-start",
+          maxHeight: "100vh",
+          overflowY: "auto"
         }}>
-        <Navigation items={{ ...navigation, [name]: { ...navigation[name], selected: true } }} toc={toc} />
+        <Navigation items={{ ...navigation, [name]: { ...navigation[name], selected: true } }} />
       </Box>
-      <Box innerRef={contentRef}>
-        <Markdown>{content}</Markdown>
-      </Box>
+      <PageContent content={content} />
     </Stack>
   )
 }
 
 export default Page
+
+const PageContent: FC<{ content: string }> = ({ content }) => {
+  const contentRef = useRef()
+  const { set, clear } = scrollProgressEmitter
+
+  useEffect(() => {
+    set(contentRef.current)
+    return () => {
+      clear()
+    }
+  }, [contentRef.current])
+
+  return (
+    <Box innerRef={contentRef}>
+      <Sticky>
+        <ScrollProgress type="absolute" vertical={Vertical.Top} />
+      </Sticky>
+      <ScrollProgressContainer>{content && <Markdown>{content}</Markdown>}</ScrollProgressContainer>
+    </Box>
+  )
+}

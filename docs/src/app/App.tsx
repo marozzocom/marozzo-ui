@@ -5,8 +5,6 @@ import {
   Box,
   Text,
   ProgressProvider,
-  ScrollProgress,
-  ScrollProgressProvider,
   ProgressIndicator,
   ToastProvider,
   Toaster,
@@ -27,31 +25,28 @@ const App = () => (
       <ProgressIndicator />
       <ToastProvider>
         <Toaster />
-        <TocProvider>
-          <ScrollProgressProvider>
-            <ScrollProgress />
-            <Card>
-              <Box>
-                <Text>Testings</Text>
-              </Box>
-              <Heading>Test heading</Heading>
-            </Card>
-            <Suspense fallback={<>Loading... 🔜</>}>
-              <Router>
-                <Switch>
-                  <Route path={routes.home} exact>
-                    <Home />
-                  </Route>
-                  <Route path={`${routes.docs}:name`}>
-                    <Page />
-                  </Route>
-                  <Route render={() => <Box>Page not found!</Box>} />
-                </Switch>
-              </Router>
-            </Suspense>
-            <Footer />
-          </ScrollProgressProvider>
-        </TocProvider>
+        <Card>
+          <Box>
+            <Text>Testings</Text>
+          </Box>
+          <Heading>Test heading</Heading>
+        </Card>
+        <Suspense fallback={<>Loading... 🔜</>}>
+          <Router>
+            <Switch>
+              <Route path={routes.home} exact>
+                <Home />
+              </Route>
+              <Route path={`${routes.docs}:name`}>
+                <TocProvider>
+                  <Page />
+                </TocProvider>
+              </Route>
+              <Route render={() => <Box>Page not found!</Box>} />
+            </Switch>
+          </Router>
+        </Suspense>
+        <Footer />
       </ToastProvider>
     </ProgressProvider>
   </ThemeProvider>

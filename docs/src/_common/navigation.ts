@@ -15,5 +15,9 @@ export const navigation: NavigationItems = {
   api: {
     title: "Api",
     path: `${routes.docs}api`
+  },
+  hani: {
+    title: "Hani ❤",
+    path: `${routes.docs}hani`
   }
 }

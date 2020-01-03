@@ -1,56 +1,57 @@
-import React, { useRef, useEffect, FC } from "react"
+import React, { useRef, FC } from "react"
 import { markdown } from "./mock/mock"
-import { ScrollProgress, ScrollProgressProvider, useScrollProgress } from "../src/scrollProgress"
-import { Markdown, Box, Text, Heading } from "../src"
+import { ScrollProgress } from "../src/scrollProgress"
+import { Markdown, Box, ScrollProgressContainer } from "../src"
 
 export default {
   component: ScrollProgress,
   title: "ScrollProgress"
 }
 
-export const withLargeHeight = () => (
-  <ScrollProgressProvider>
-    <ScrollProgress />
-    <ScrollableContent>
-      <Markdown>{markdown}</Markdown>
-    </ScrollableContent>
-  </ScrollProgressProvider>
-)
+export const withLargeHeight = () => {
+  return (
+    <>
+      <ScrollProgress />
+      <ScrollProgressContainer
+        style={{
+          margin: "500px auto",
+          border: "2px solid #f00"
+        }}>
+        <Markdown>{markdown}</Markdown>
+      </ScrollProgressContainer>
+    </>
+  )
+}
 
-export const withMediumHeight = () => (
-  <ScrollProgressProvider>
-    <ScrollProgress />
-    <ScrollableContent>
-      <Heading>Lorem</Heading>
-      <Text>Lorem ipsum dolor sit amet.</Text>
-      <Heading>Ipsum</Heading>
-      <Text>Lorem ipsum dolor sit amet.</Text>
-      <Heading>Dolor</Heading>
-      <Text>Lorem ipsum dolor sit amet.</Text>
-      <Heading>Sit</Heading>
-      <Text>Lorem ipsum dolor sit amet.</Text>
-      <Heading>Amet</Heading>
-      <Text>Lorem ipsum dolor sit amet.</Text>
-    </ScrollableContent>
-  </ScrollProgressProvider>
-)
+// export const withMediumHeight = () => (
+//   <>
+//     <ScrollProgress />
+//     <ScrollableContent>
+//       <Heading>Lorem</Heading>
+//       <Text>Lorem ipsum dolor sit amet.</Text>
+//       <Heading>Ipsum</Heading>
+//       <Text>Lorem ipsum dolor sit amet.</Text>
+//       <Heading>Dolor</Heading>
+//       <Text>Lorem ipsum dolor sit amet.</Text>
+//       <Heading>Sit</Heading>
+//       <Text>Lorem ipsum dolor sit amet.</Text>
+//       <Heading>Amet</Heading>
+//       <Text>Lorem ipsum dolor sit amet.</Text>
+//     </ScrollableContent>
+//   </>
+// )
 
-export const withSmallHeight = () => (
-  <ScrollProgressProvider>
-    <ScrollProgress />
-    <ScrollableContent>
-      <Text>Lorem ipsum.</Text>
-    </ScrollableContent>
-  </ScrollProgressProvider>
-)
+// export const withSmallHeight = () => (
+//   <>
+//     <ScrollProgress />
+//     <ScrollableContent>
+//       <Text>Lorem ipsum.</Text>
+//     </ScrollableContent>
+//   </>
+// )
 
 const ScrollableContent: FC<{}> = ({ children }) => {
-  const content = useRef()
-  const { attach } = useScrollProgress()
-
-  useEffect(() => {
-    attach(content.current)
-  }, [content.current])
+  const content = useRef<HTMLElement>()
 
   return (
     <Box

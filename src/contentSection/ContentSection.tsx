@@ -1,28 +1,18 @@
 import React, { FC, useRef, useEffect, ComponentProps } from "react"
 import { Box } from "../box/Box"
-import { useToc } from "../toc"
+import { addTocItem } from "../toc/tocEmitter"
 
 interface Props extends ComponentProps<typeof Box> {
-  name: string
+  id: string
+  title: string
 }
 
-export const ContentSection: FC<Props> = ({ name, children, ...props }) => {
-  const { observer, setToc } = useToc()
+export const ContentSection: FC<Props> = ({ id, title, children, ...props }) => {
   const ref = useRef<HTMLHeadingElement>()
 
-  if (observer) {
-    useEffect(() => {
-      observer.observe(ref.current)
-
-      setToc((toc: any) => [
-        ...toc,
-        {
-          name,
-          element: ref.current
-        }
-      ])
-    }, [])
-  }
+  useEffect(() => {
+    addTocItem({ id, title, ref })
+  }, [])
 
   return (
     <Box innerRef={ref} {...props}>

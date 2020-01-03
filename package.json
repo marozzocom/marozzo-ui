@@ -42,6 +42,7 @@
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "emotion": "^10.0.27",
+    "eventemitter3": "^4.0.0",
     "facepaint": "^1.2.1",
     "framer-motion": "^1.7.0",
     "markdown-to-jsx": "^6.10.3",

@@ -1,52 +1,38 @@
-import React, { FC, useState, createContext, Dispatch, SetStateAction } from "react"
+import React, { FC, createContext, useCallback, useMemo } from "react"
+import EventEmitter from "eventemitter3"
+import { events } from "../_common/constants"
 
-export type Toc = {
-  name: string
-  element: Element
+export type TocItem = {
+  title: string
+  ref: React.MutableRefObject<HTMLHeadingElement>
+  active?: boolean
 }
 
-const TocContext = createContext<{
-  toc: Toc[]
-  setToc: Dispatch<SetStateAction<Toc[]>>
-  observer: IntersectionObserver
-  active: Element | string
-}>(null)
+export type TocList = {
+  [key: string]: TocItem
+}
+
+const TocContext = createContext<EventEmitter<string | symbol>>(null)
+
+const getScrollDirectionFromObserverEntry = (entry: IntersectionObserverEntry) => (entry.boundingClientRect.y < 0 ? "down" : "up")
+const getEnteringTarget = (entries: IntersectionObserverEntry[]) => entries.find(entry => entry.isIntersecting)?.target
+const getExitingTarget = (entries: IntersectionObserverEntry[]) =>
+  getScrollDirectionFromObserverEntry(entries[0]) === "down" ? entries[0].target.nextElementSibling : entries[0].target.previousElementSibling
+
+const getTargetFromIntersectionEntries = (entries: IntersectionObserverEntry[]) => getEnteringTarget(entries) ?? getExitingTarget(entries)
+
+const emitter = new EventEmitter()
 
 const TocProvider: FC<{}> = ({ children }) => {
-  const [toc, setToc] = useState<Toc[]>([])
-  const [active, setActive] = useState<Element>()
+  const activate = useCallback((entries: IntersectionObserverEntry[]) => emitter.emit("activateTocItem", getTargetFromIntersectionEntries(entries)), []) // setActiveElement(getTargetFromIntersectionEntries(entries)), [])
 
-  const observation = (entries: IntersectionObserverEntry[]) => {
-    entries.some(entry => {
-      // iterate through intersecting elements until match
-      if (entry.isIntersecting) {
-        // if entering, match and set active
-        setActive(entry.target)
-        return false
-      } else {
-        // if exiting, calculate direction and match the closest visible sibling and set active
-        const intersecting =
-          entry.boundingClientRect.y < 0
-            ? { element: entry.target.nextElementSibling, direction: "down" }
-            : { element: entry.target.previousElementSibling, direction: "up" }
+  const observer = useMemo(() => new IntersectionObserver(activate, { threshold: 0.1 }), [])
+  const observe = useCallback((element: HTMLHeadElement) => observer.observe(element), [])
 
-        const intersectingElementIndex = toc.findIndex(tocElement => tocElement.element === intersecting.element)
-        const activeElementIndex = toc.findIndex(tocElement => tocElement.element === active)
+  // Note: I expect intersectionobserver to clean up after itself automatically
+  emitter.on(events.addTocItem, ({ ref }) => observe(ref.current))
 
-        if (
-          (intersecting.direction === "up" && intersectingElementIndex < activeElementIndex) ||
-          (intersecting.direction === "down" && intersectingElementIndex > activeElementIndex)
-        ) {
-          setActive(intersecting.element)
-          return false
-        }
-      }
-    })
-  }
-
-  const observer = new IntersectionObserver(observation, { threshold: 0.1 })
-
-  return <TocContext.Provider value={{ toc, setToc, observer, active }}>{children}</TocContext.Provider>
+  return <TocContext.Provider value={emitter}>{children}</TocContext.Provider>
 }
 
 export { TocContext, TocProvider }

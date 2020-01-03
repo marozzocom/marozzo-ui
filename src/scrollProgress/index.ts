@@ -1,3 +1,3 @@
 export { ScrollProgress } from "./ScrollProgress"
-export { ScrollProgressProvider } from "./ScrollProgressProvider"
+export { ScrollProgressContainer } from "./ScrollProgressContainer"
 export { useScrollProgress } from "./useScrollProgress"

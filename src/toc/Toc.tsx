@@ -1,17 +1,17 @@
-import React, { FC } from "react"
+import React, { FC, useCallback } from "react"
 import { Box } from ".."
 import { useToc } from "./useToc"
 import { NavLink } from "../navLink/NavLink"
 
 export const Toc: FC<{}> = () => {
   const { toc, active } = useToc()
-  const scroll = (element: Element) => element.scrollIntoView({ behavior: "smooth" })
+  const scroll = useCallback((element: Element) => element.scrollIntoView({ behavior: "smooth" }), [])
 
   return (
     <Box>
-      {toc.map(({ name, element }, index) => (
-        <NavLink key={index} onClick={() => scroll(element)} selected={active ? element === active : index === 0}>
-          {name}
+      {Object.entries(toc).map(([id, { title, ref }]) => (
+        <NavLink key={id} onClick={() => scroll(ref.current)} selected={ref.current === active}>
+          {title}
         </NavLink>
       ))}
     </Box>

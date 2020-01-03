@@ -3,7 +3,6 @@ import { Box } from "../box/Box"
 import { motion } from "framer-motion"
 import { useTheme } from "../theme/useTheme"
 import { ensureArray } from "../_common/helpers"
-import { CSSObject } from "@emotion/core"
 
 interface Props extends ComponentProps<typeof Box> {
   value?: number

@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/marozzocom/marozzo-ui/compare/v0.6.3...v0.7.0) (2020-01-03)
+
+### ⚠ BREAKING CHANGES
+
+- **update the way components are exported:** Update emitters now from package root
+- **toc, scrollprogress:** TOC and ScrollProgress have been rewritten completely. They no longer use Context
+  and they have new API's.
+
+### Features
+
+- **focusvisible:** add support for focus-visible polyfill ([2612884](https://github.com/marozzocom/marozzo-ui/commit/2612884594045d4cf50d82ecce86f55bcab7039d))
+- **stack:** add support for gap and itemStyle ([159aac1](https://github.com/marozzocom/marozzo-ui/commit/159aac1c7764cfde08c7c257c70ad75bac405ace)), closes [#12](https://github.com/marozzocom/marozzo-ui/issues/12)
+
+### Bug Fixes
+
+- **links:** fix link events ([171121a](https://github.com/marozzocom/marozzo-ui/commit/171121af17ff14af0408b90bc8abe581f6a15476)), closes [#11](https://github.com/marozzocom/marozzo-ui/issues/11)
+- **toc:** fix perf issues ([cfab829](https://github.com/marozzocom/marozzo-ui/commit/cfab8292a092e0d7dede8311c9ca3d6fc994f65e))
+- add `NavLink` export ([d9d6429](https://github.com/marozzocom/marozzo-ui/commit/d9d6429e3c29f835053eeecb7629d5ba4909eb9d))
+
+* **toc, scrollprogress:** rewrite to use custom event emitters instead of context ([fa122f7](https://github.com/marozzocom/marozzo-ui/commit/fa122f7c9fdebdb41a94b222a2f4f42af99fe4a1))
+
+### improvement
+
+- **update the way components are exported:** provides easier way to import emitters ([b0024f0](https://github.com/marozzocom/marozzo-ui/commit/b0024f06d0a722113e613eab3ba828c20a7a0ff7))
+
 ### [0.6.3](https://github.com/marozzocom/marozzo-ui/compare/v0.6.2...v0.6.3) (2019-12-30)
 
 ### [0.6.2](https://github.com/marozzocom/marozzo-ui/compare/v0.6.1...v0.6.2) (2019-12-30)

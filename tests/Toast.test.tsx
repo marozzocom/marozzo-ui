@@ -2,7 +2,7 @@ import React from "react"
 import { render } from "@testing-library/react"
 import { Toast } from "../src/toast/Toast"
 import { ThemeProvider } from "emotion-theming"
-import { defaultTheme } from "../src"
+import { defaultTheme } from "../src/theme"
 
 test("Renders Toast", () => {
   const renderComponent = () =>

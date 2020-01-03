@@ -1,6 +1,6 @@
 import React, { FC, ComponentProps } from "react"
 import { Disclosure } from "../disclosure/Disclosure"
-import { Box } from ".."
+import { Box } from "../box/Box"
 import { CardRaw } from "./CardRaw"
 
 export const Card: FC<ComponentProps<typeof Box>> = ({ children, ...props }) => {

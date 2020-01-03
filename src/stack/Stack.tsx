@@ -1,7 +1,7 @@
 import React, { FC, ComponentProps } from "react"
 import { Box } from "../box/Box"
 import { binaryFromBooleans, ensureArray } from "../_common/helpers"
-import { useTheme } from ".."
+import { useTheme } from "../theme"
 import { CSSObject } from "@emotion/core"
 
 type Alignment = "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly" | "baseline" | "stretch"

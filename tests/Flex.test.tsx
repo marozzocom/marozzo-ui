@@ -1,5 +1,5 @@
 import React from "react"
-import { Stack } from "../src/"
+import { Stack } from "../src/stack/Stack"
 import { render } from "@testing-library/react"
 
 test("Renders Stack", () => {

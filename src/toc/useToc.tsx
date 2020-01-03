@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { TocList } from "./TocProvider"
 import { emitter } from "../_common/Emitter"
-import { observe } from "./tocEmitter"
+import { tocEmitter } from "./tocEmitter"
 import { events } from "../_common/constants"
 
 const useToc = () => {
@@ -11,7 +11,7 @@ const useToc = () => {
   const addTocItem = useCallback(args => {
     const { id, title, ref } = args[0]
     setToc(toc => ({ ...toc, [id]: { title, ref } }))
-    observe(ref.current)
+    tocEmitter.observe(ref.current)
   }, [])
   const activateTocItem = useCallback(args => setActive(args[0]), [])
 

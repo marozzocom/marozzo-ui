@@ -24,4 +24,6 @@ const getTargetFromIntersectionEntries = (entries: IntersectionObserverEntry[]) 
 const activate = (entries: IntersectionObserverEntry[]) => emitter.emit("activateTocItem", getTargetFromIntersectionEntries(entries))
 
 const observer = new IntersectionObserver(activate, { threshold: 0.1 })
-export const observe = (element: HTMLElement) => observer.observe(element)
+const observe = (element: HTMLElement) => observer.observe(element)
+
+export const tocEmitter = { observe }

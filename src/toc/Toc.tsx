@@ -1,19 +1,43 @@
-import React, { FC, useCallback } from "react"
+import React, { FC, useCallback, MouseEvent, useState, useEffect } from "react"
 import { Box } from ".."
 import { useToc } from "./useToc"
 import { NavLink } from "../navLink/NavLink"
+import { useTheme } from "../theme"
+import { scrollIntoView } from "./helpers"
 
-export const Toc: FC<{}> = () => {
-  const { toc, active } = useToc()
-  const scroll = useCallback((element: Element) => element.scrollIntoView({ behavior: "smooth" }), [])
+interface Props {
+  scrollOffset?: number
+  addHash?: boolean
+  callback?: (event: MouseEvent<HTMLElement>, id: string) => void
+}
+
+export const Toc: FC<Props> = () => {
+  const { toc } = useToc()
+
+  const {
+    theme: { colors }
+  } = useTheme()
 
   return (
-    <Box>
-      {Object.entries(toc).map(([id, { title, ref }]) => (
-        <NavLink key={id} onClick={() => scroll(ref.current)} selected={ref.current === active}>
-          {title}
-        </NavLink>
-      ))}
+    <Box
+      style={{
+        background: colors.background,
+        position: "sticky",
+        overflow: "auto",
+        maxHeight: "100%"
+      }}>
+      {Object.entries(toc).map(([key, { title, selected, ref }], index) => {
+        const handleSubItemClick = () => {
+          location.hash = `#${key}`
+          scrollIntoView(ref?.current)
+        }
+
+        return (
+          <NavLink key={key} selected={selected ?? index === 0} onClick={handleSubItemClick}>
+            {title}
+          </NavLink>
+        )
+      })}
     </Box>
   )
 }

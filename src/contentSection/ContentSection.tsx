@@ -15,7 +15,7 @@ export const ContentSection: FC<Props> = ({ id, title, children, ...props }) => 
   }, [])
 
   return (
-    <Box innerRef={ref} {...props}>
+    <Box as="section" id={id} innerRef={ref} {...props}>
       {children}
     </Box>
   )

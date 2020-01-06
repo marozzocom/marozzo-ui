@@ -1,16 +1,6 @@
-import React, { FC, createContext, useCallback, useMemo } from "react"
+import React, { FC, createContext, useCallback, useMemo, useEffect } from "react"
 import EventEmitter from "eventemitter3"
 import { events } from "../_common/constants"
-
-export type TocItem = {
-  title: string
-  ref: React.MutableRefObject<HTMLHeadingElement>
-  active?: boolean
-}
-
-export type TocList = {
-  [key: string]: TocItem
-}
 
 const TocContext = createContext<EventEmitter<string | symbol>>(null)
 

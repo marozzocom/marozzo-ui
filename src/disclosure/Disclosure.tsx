@@ -7,16 +7,17 @@ interface Props {
   animation?: MotionProps
   open?: boolean
   id?: string
+  onExitComplete?: () => void
 }
 
-export const Disclosure: FC<Props> = ({ animation, id, children }) => {
+export const Disclosure: FC<Props> = ({ animation, id, onExitComplete: callback, children }) => {
   const {
     theme: { disclosures }
   } = useTheme()
   const rootKey = useMemo(() => id ?? nanoid(), [id])
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={callback}>
       {children &&
         Children.map(children, (child: ReactElement<any>) => (
           <motion.div key={child.key ?? rootKey} {...{ ...(animation ?? disclosures.default) }}>

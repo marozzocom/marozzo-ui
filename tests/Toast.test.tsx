@@ -1,13 +1,12 @@
 import React from "react"
 import { render } from "@testing-library/react"
 import { Toast } from "../src/toast/Toast"
-import { ThemeProvider } from "emotion-theming"
-import { defaultTheme } from "../src/theme"
+import { ThemeProvider } from "../src/theme/ThemeProvider"
 
 test("Renders Toast", () => {
   const renderComponent = () =>
     render(
-      <ThemeProvider theme={defaultTheme}>
+      <ThemeProvider>
         <Toast id="toast" message="Toast" />
       </ThemeProvider>
     )
@@ -19,7 +18,7 @@ test("Renders Toast", () => {
 test("Toast with id and remove has close button", () => {
   const renderComponent = () =>
     render(
-      <ThemeProvider theme={defaultTheme}>
+      <ThemeProvider>
         <Toast id="toast" remove={removeMock} message="Toast" />
       </ThemeProvider>
     )

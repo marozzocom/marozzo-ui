@@ -2,8 +2,9 @@ import path from "path"
 
 describe("Drawer", () => {
   beforeAll(async () => {
+    jest.setTimeout(15000)
     await page.goto(`file:${path.join(__dirname, "../../storybook-static", "index.html")}`)
-    await page.waitFor(1000)
+    await page.waitFor(2000)
     await page.screenshot({ path: path.join(__dirname, "../../screenshots", "drawer1.png") })
     await page.click("a#explorerdrawer")
     await page.click("a#explorerdrawer--drawer")

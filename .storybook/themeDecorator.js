@@ -1,8 +1,8 @@
 import React from "react"
-import { ThemeProvider, defaultTheme } from "../src/theme"
+import { ThemeProvider } from "../src/theme"
 
 const ThemeDecorator = storyFn => {
-  return <ThemeProvider theme={defaultTheme}>{storyFn()}</ThemeProvider>
+  return <ThemeProvider>{storyFn()}</ThemeProvider>
 }
 
 export default ThemeDecorator

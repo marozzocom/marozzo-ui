@@ -6,5 +6,5 @@ import { Box } from "../box/Box"
 
 export const ProgressIndicator: FC<ComponentProps<typeof Box>> = ({ ...props }) => {
   const { active } = useProgress()
-  return <Disclosure>{active && <Progress {...props} />}</Disclosure>
+  return <Disclosure>{active && <Progress {...props} style={{ width: "100vw" }} />}</Disclosure>
 }

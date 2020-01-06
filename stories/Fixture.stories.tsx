@@ -10,7 +10,11 @@ export default {
 
 export const center = () => (
   <Fixture>
-    <Card>
+    <Card
+      style={{
+        width: "200px",
+        height: "200px"
+      }}>
       <Fixture>
         <Box>Fixture</Box>
       </Fixture>
@@ -19,7 +23,11 @@ export const center = () => (
 )
 export const top = () => (
   <Fixture vertical={Vertical.Top}>
-    <Card>
+    <Card
+      style={{
+        width: "200px",
+        height: "200px"
+      }}>
       <Fixture>
         <Box>Fixture</Box>
       </Fixture>
@@ -28,7 +36,11 @@ export const top = () => (
 )
 export const right = () => (
   <Fixture horizontal={Horizontal.End}>
-    <Card>
+    <Card
+      style={{
+        width: "200px",
+        height: "200px"
+      }}>
       <Fixture>
         <Box>Fixture</Box>
       </Fixture>
@@ -37,7 +49,11 @@ export const right = () => (
 )
 export const bottom = () => (
   <Fixture vertical={Vertical.Bottom}>
-    <Card>
+    <Card
+      style={{
+        width: "200px",
+        height: "200px"
+      }}>
       <Fixture>
         <Box>Fixture</Box>
       </Fixture>
@@ -46,7 +62,11 @@ export const bottom = () => (
 )
 export const left = () => (
   <Fixture horizontal={Horizontal.Start}>
-    <Card>
+    <Card
+      style={{
+        width: "200px",
+        height: "200px"
+      }}>
       <Fixture>
         <Box>Fixture</Box>
       </Fixture>
@@ -55,7 +75,11 @@ export const left = () => (
 )
 export const topLeft = () => (
   <Fixture vertical={Vertical.Top} horizontal={Horizontal.Start}>
-    <Card>
+    <Card
+      style={{
+        width: "200px",
+        height: "200px"
+      }}>
       <Fixture>
         <Box>Fixture</Box>
       </Fixture>
@@ -64,7 +88,11 @@ export const topLeft = () => (
 )
 export const topRight = () => (
   <Fixture vertical={Vertical.Top} horizontal={Horizontal.End}>
-    <Card>
+    <Card
+      style={{
+        width: "200px",
+        height: "200px"
+      }}>
       <Fixture>
         <Box>Fixture</Box>
       </Fixture>
@@ -73,7 +101,11 @@ export const topRight = () => (
 )
 export const bottomRight = () => (
   <Fixture vertical={Vertical.Bottom} horizontal={Horizontal.End}>
-    <Card>
+    <Card
+      style={{
+        width: "200px",
+        height: "200px"
+      }}>
       <Fixture>
         <Box>Fixture</Box>
       </Fixture>
@@ -82,7 +114,11 @@ export const bottomRight = () => (
 )
 export const bottomLeft = () => (
   <Fixture vertical={Vertical.Bottom} horizontal={Horizontal.Start}>
-    <Card>
+    <Card
+      style={{
+        width: "200px",
+        height: "200px"
+      }}>
       <Fixture>
         <Box>Fixture</Box>
       </Fixture>

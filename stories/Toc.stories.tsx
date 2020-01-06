@@ -13,9 +13,17 @@ export const tocFromContent = () => {
   const {
     theme: { sizes }
   } = useTheme()
-
   return (
-    <Stack horizontal>
+    <Stack
+      horizontal
+      style={{
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        overflow: "hidden",
+        position: "absolute"
+      }}>
       <Box
         style={{
           flexShrink: 0,

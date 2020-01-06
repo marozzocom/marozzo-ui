@@ -16,7 +16,8 @@
     "build": "tsc -p tsconfig.prod.json",
     "release": "standard-version && npm run build && git push --follow-tags origin master && npm publish",
     "commit": "npx git-cz",
-    "build:force": "tsc -p tsconfig.prod.json"
+    "build:force": "tsc -p tsconfig.prod.json",
+    "watch": "tsc -p tsconfig.prod.json --watch"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "@types/facepaint": "^1.2.1",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
+    "deepmerge": "^4.2.2",
     "emotion": "^10.0.27",
     "eventemitter3": "^4.0.0",
     "facepaint": "^1.2.1",
@@ -49,6 +51,7 @@
     "nanoid": "^2.1.8",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-syntax-highlighter": "^12.2.1",
     "typescript": "^3.7.4"
   },
   "devDependencies": {

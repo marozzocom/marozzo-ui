@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](https://github.com/marozzocom/marozzo-ui/compare/v0.7.0...v0.7.1) (2020-01-06)
+
+### Features
+
+- **code:** add code component ([56e217d](https://github.com/marozzocom/marozzo-ui/commit/56e217d949a7fa2a019f1d00c1e41f7eb04918f7))
+- **code:** add styles ([6105ff1](https://github.com/marozzocom/marozzo-ui/commit/6105ff1e9bcaab2a710508630fb7ca5a65222232))
+- **toc:** add support for anchors ([1eddce4](https://github.com/marozzocom/marozzo-ui/commit/1eddce46dfb31a5c1bdbff0a555f17a057785012))
+
 ## [0.7.0](https://github.com/marozzocom/marozzo-ui/compare/v0.6.3...v0.7.0) (2020-01-03)
 
 ### ⚠ BREAKING CHANGES

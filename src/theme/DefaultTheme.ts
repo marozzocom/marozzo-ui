@@ -1,4 +1,6 @@
-class DefaultTheme {
+import { Theme } from "./Theme"
+
+export class DefaultTheme implements Theme {
   private static instance: DefaultTheme
 
   static getInstance() {
@@ -9,15 +11,15 @@ class DefaultTheme {
   }
 
   sizes = {
-    "0": "0",
-    "1": "0.5rem",
-    "2": "1rem",
-    "3": "2rem",
-    "4": "4rem",
-    "5": "8rem",
-    "6": "16rem",
-    "7": "32rem",
-    "8": "64rem"
+    "0": 0,
+    "1": 8,
+    "2": 16,
+    "3": 32,
+    "4": 64,
+    "5": 128,
+    "6": 256,
+    "7": 512,
+    "8": 1024
   }
 
   fonts = {
@@ -148,6 +150,14 @@ class DefaultTheme {
         borderRadius: this.radii.normal,
         boxShadow: this.shadows.subtle
       }
+    },
+    surfaces: {
+      primary: {
+        backgroundImage: this.gradients.primary
+      },
+      secondary: {
+        backgroundColor: this.colors.secondary
+      }
     }
   }
 
@@ -161,6 +171,19 @@ class DefaultTheme {
         type: "tween"
       }
     }
+  }
+
+  zIndices = {
+    hide: -1,
+    auto: "auto",
+    base: 0,
+    dropdown: 1000,
+    sticky: 1100,
+    overlay: 1300,
+    modal: 1400,
+    popover: 1500,
+    toast: 1700,
+    tooltip: 1800
   }
 }
 
@@ -180,3 +203,21 @@ export const defaultTheme = {
   breakpoints,
   animations
 }
+
+// export const theme = DefaultTheme.getInstance()
+
+// export const defaultTheme = {
+//   sizes: theme.sizes,
+//   fonts: theme.fonts,
+//   fontSizes: theme.fontSizes,
+//   fontWeights: theme.fontWeights,
+//   colors: theme.colors,
+//   animations: theme.animations,
+//   shadows: theme.shadows,
+//   gradients: theme.gradients,
+//   breakpoints: theme.breakpoints,
+//   radii: theme.radii,
+//   variants: theme.variants,
+//   disclosures: theme.disclosures,
+//   zIndices: theme.zIndices
+// }

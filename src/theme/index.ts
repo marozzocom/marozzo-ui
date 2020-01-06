@@ -1,5 +1,5 @@
-export { defaultTheme } from "./DefaultTheme"
+export { DefaultTheme } from "./DefaultTheme"
 export { global } from "./global"
 export { ThemeProvider } from "./ThemeProvider"
 export { useTheme } from "./useTheme"
-export { Theme } from "./models"
+export { Theme } from "./Theme"

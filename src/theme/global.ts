@@ -8,8 +8,7 @@ export const global: CSSObject = {
   body: {
     minHeight: "100vh",
     scrollBehavior: "smooth",
-    lineHeight: "1.62",
-    backgroundColor: "#ccf"
+    lineHeight: "1.62"
   },
   "div::before, div::after": {
     boxSizing: "border-box"

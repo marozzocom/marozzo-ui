@@ -1,13 +1,14 @@
-import { useContext } from "react"
+import { useContext, useMemo } from "react"
 import { ThemeContext } from "./ThemeProvider"
 import facepaint from "facepaint"
+import { defaultTheme } from "./DefaultTheme"
 
 export const useTheme = () => {
   try {
-    const { theme } = useContext(ThemeContext)
-    const breakpoints = facepaint(theme.breakpoints.map(breakpoint => `@media (min-width: ${breakpoint}px)`))
+    const theme = useContext(ThemeContext)
+    const breakpoints = useMemo(() => facepaint(theme?.breakpoints.map((breakpoint: number) => `@media (min-width: ${breakpoint}px)`)), [theme])
     return { theme, breakpoints }
   } catch (error) {
-    return { theme: null, breakpoints: null }
+    return { theme: defaultTheme, breakpoints: null }
   }
 }

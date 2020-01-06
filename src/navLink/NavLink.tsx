@@ -33,6 +33,7 @@ export const NavLink: FC<Props> = ({ style, children, selected, selectedStyle, .
       variant={textStyles.actionNormal}
       style={[
         {
+          color: colors.text,
           display: "block",
           "&:hover": {
             ...selectedStylesWithDefault
@@ -42,8 +43,8 @@ export const NavLink: FC<Props> = ({ style, children, selected, selectedStyle, .
             boxShadow: shadows.active
           }
         },
-        ...ensureArray(style),
-        selected && selectedStylesWithDefault
+        selected && selectedStylesWithDefault,
+        ...ensureArray(style)
       ]}
       tabIndex={0}
       {...props}>

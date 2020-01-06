@@ -5,16 +5,17 @@ import { ensureArray } from "../_common/helpers"
 
 export const Surface: FC<ComponentProps<typeof Box>> = ({ style, variant, children, ...props }) => {
   const {
-    theme: { gradients }
+    theme: {
+      variants: { surfaces }
+    }
   } = useTheme()
 
   return (
     <Box
+      variant={surfaces.primary}
       style={[
         {
-          height: "100%",
-          backgroundImage: gradients.primary,
-          ...variant
+          height: "100%"
         },
         ...ensureArray(style)
       ]}

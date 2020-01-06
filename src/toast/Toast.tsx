@@ -33,8 +33,8 @@ export const Toast: FC<Props> = ({ message, closeButtonProps = {}, title, childr
         {
           borderRadius: theme.radii.normal,
           boxShadow: theme.shadows.subtle,
-          margin: theme.sizes[2],
-          padding: theme.sizes[2],
+          margin: theme.sizes[1],
+          padding: theme.sizes[1],
           width: theme.sizes[7],
           height: theme.sizes[5],
           flex: "0 0 auto"

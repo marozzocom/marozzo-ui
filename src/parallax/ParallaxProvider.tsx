@@ -12,14 +12,12 @@ const ParallaxProvider: FC<{}> = ({ children }) => {
   const [source, attach] = useState<Element>()
 
   const observation = (entries: IntersectionObserverEntry[]) => {
-    console.log("obs", entries)
     setProgress(Math.round(entries[0].intersectionRatio * 100))
   }
   const observer = new IntersectionObserver(observation, { threshold: generateTreshold(100) })
 
   useEffect(() => {
     if (!source) return
-    console.log("source", source)
     // observer.disconnect()
     observer.observe(source)
   }, [source])

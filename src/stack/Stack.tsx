@@ -1,4 +1,4 @@
-import React, { FC, ComponentProps } from "react"
+import React, { FC, ComponentProps, useCallback } from "react"
 import { Box } from "../box/Box"
 import { binaryFromBooleans, ensureArray } from "../_common/helpers"
 import { useTheme } from "../theme"
@@ -27,9 +27,11 @@ export const Stack: FC<Props> = ({ gap, itemStyle, horizontal = false, reverse =
     theme: { sizes }
   } = useTheme()
 
+  const getGapValue = useCallback(gap => (gap ? (typeof gap === "number" ? sizes[gap] : gap) : sizes[1]), [sizes])
+
   const gapStyle: CSSObject = gap !== "none" && {
     "> *:not(:last-child)": {
-      marginRight: horizontal && (gap ?? sizes[2]),
+      marginRight: horizontal && getGapValue(gap),
       marginBottom: !horizontal && (gap ?? sizes[2])
     }
   }

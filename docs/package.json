@@ -30,7 +30,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "@marozzocom/marozzo-ui": "^0.6.3",
+    "@marozzocom/marozzo-ui": "file:../",
     "react-router-dom": "^5.1.2",
     "typescript": "^3.7.3"
   }

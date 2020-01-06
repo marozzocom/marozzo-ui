@@ -1,5 +1,5 @@
-import { NavigationItems } from "src/navigation/Navigation"
 import { routes } from "./constants"
+import { NavigationItems } from "@marozzocom/marozzo-ui"
 
 // TODO: Combine with routes
 
@@ -16,7 +16,7 @@ export const navigation: NavigationItems = {
     title: "Api",
     path: `${routes.docs}api`
   },
-  hani: {
+  awesome: {
     title: "Awesome ❤",
     path: `${routes.docs}awesome`
   }

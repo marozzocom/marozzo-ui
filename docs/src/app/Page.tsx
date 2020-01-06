@@ -1,51 +1,111 @@
-import React, { useEffect, useState, useRef, FC } from "react"
-import { Markdown, Stack, Box, useTheme, ScrollProgressContainer, ScrollProgress, Vertical, Sticky } from "@marozzocom/marozzo-ui"
+import React, { useEffect, useState, useRef, FC, useCallback, useMemo } from "react"
 import { Navigation } from "../navigation/Navigation"
 import { navigation } from "../_common/navigation"
 import { useParams } from "react-router-dom"
-import { scrollProgressEmitter } from "@marozzocom/marozzo-ui"
+import {
+  Markdown,
+  Stack,
+  Box,
+  useTheme,
+  ScrollProgressContainer,
+  scrollProgressEmitter,
+  scrollIntoView,
+  getSectionFromHash,
+  Disclosure,
+  useToc,
+  NavigationItems,
+  useProgress
+} from "@marozzocom/marozzo-ui"
+import { scrollTop } from "../_common/helpers"
 
 const Page: FC<{}> = () => {
   const {
-    theme: { sizes, shadows, colors }
-  } = useTheme()
+    theme: { sizes }
+  } = useTheme() as any
+
+  const { start, stop } = useProgress()
 
   const { name } = useParams()
   const [content, setContent] = useState<string>()
+  const [navigationItems, setNavigationItems] = useState<NavigationItems>({})
+  const { toc, clearToc } = useToc()
+
+  const getNavigationWithTOC = () => ({ ...navigation, [name]: { ...navigation[name], selected: true, subItems: toc } })
+
+  const updateNavigationItems = () => setNavigationItems(getNavigationWithTOC())
+
+  const load = async (name: string) => {
+    start("pageLoad")
+    clearToc()
+    const page = await import(`../pages/${name}.md`)
+    stop("pageLoad")
+    scrollTop()
+    setContent(page.default)
+    updateNavigationItems()
+    scrollIntoView(getSectionFromHash())(-sizes["topBar"])
+  }
+
+  const remove = useCallback(() => {
+    clearToc()
+    setContent(null)
+  }, [])
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "auto" })
-    ;(async () => {
-      const page = await import(`../pages/${name}.md`)
-      setContent(page.default)
-    })()
+    load(name)
+  }, [])
+
+  useEffect(() => {
+    updateNavigationItems()
+  }, [toc])
+
+  useEffect(() => {
+    remove()
   }, [name])
 
+  const animation = useMemo(
+    () => ({
+      initial: { opacity: 0, y: -sizes[1], overflow: "hidden" },
+      animate: { opacity: 1, y: 0 },
+      exit: { opacity: 0, y: 0, overflow: "hidden" },
+      transition: {
+        type: "tween"
+      }
+    }),
+    []
+  )
+
   return (
-    <Stack horizontal>
+    <Stack
+      horizontal
+      style={{
+        minHeight: `calc(100vh - ${sizes["topBar"]}px)`
+      }}>
       <Box
         style={{
           flexShrink: 0,
           margin: `initial ${sizes[2]}`,
           width: sizes[6],
-          boxShadow: shadows.normal,
-          backgroundColor: colors.background,
           position: "sticky",
-          top: "0px",
+          top: sizes[4],
           alignSelf: "flex-start",
-          maxHeight: "100vh",
-          overflowY: "auto"
+          maxHeight: `calc(100vh - ${sizes["topBar"]}px)`,
+          overflowY: "auto",
+          paddingTop: sizes[1],
+          paddingLeft: sizes[2],
+          paddingRight: sizes[1]
         }}>
-        <Navigation items={{ ...navigation, [name]: { ...navigation[name], selected: true } }} />
+        <Navigation items={navigationItems} />
       </Box>
-      <PageContent content={content} />
+      <Disclosure animation={animation} onExitComplete={() => load(name)}>
+        {content && <PageContent content={content} />}
+      </Disclosure>
     </Stack>
   )
 }
 
 export default Page
 
-const PageContent: FC<{ content: string }> = ({ content }) => {
+const PageContent: FC<{ content: string }> = React.memo(({ content }) => {
   const contentRef = useRef()
   const { set, clear } = scrollProgressEmitter
 
@@ -57,11 +117,12 @@ const PageContent: FC<{ content: string }> = ({ content }) => {
   }, [contentRef.current])
 
   return (
-    <Box innerRef={contentRef}>
-      <Sticky>
-        <ScrollProgress type="absolute" vertical={Vertical.Top} />
-      </Sticky>
-      <ScrollProgressContainer>{content && <Markdown>{content}</Markdown>}</ScrollProgressContainer>
-    </Box>
+    <>
+      <Box innerRef={contentRef}>
+        <ScrollProgressContainer>
+          <Markdown>{content}</Markdown>
+        </ScrollProgressContainer>
+      </Box>
+    </>
   )
-}
+})

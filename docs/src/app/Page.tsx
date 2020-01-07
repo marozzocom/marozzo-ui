@@ -6,6 +6,7 @@ import {
   Markdown,
   Stack,
   Box,
+  Button,
   useTheme,
   ScrollProgressContainer,
   scrollProgressEmitter,
@@ -14,14 +15,19 @@ import {
   Disclosure,
   useToc,
   NavigationItems,
-  useProgress
+  useProgress,
+  Drawer,
+  DrawerRaw
 } from "@marozzocom/marozzo-ui"
 import { scrollTop } from "../_common/helpers"
+import { motion, MotionProps } from "framer-motion"
 
 const Page: FC<{}> = () => {
   const {
     theme: { sizes }
   } = useTheme() as any
+
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const { start, stop } = useProgress()
 
@@ -74,6 +80,18 @@ const Page: FC<{}> = () => {
     []
   )
 
+  const motionProps: MotionProps = {
+    initial: { opacity: 0, x: "-100%", position: "fixed", left: 0, top: 0, bottom: 0 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: "-100}%" },
+    transition: {
+      type: "tween",
+      duration: 0.3
+    }
+  }
+
+  const closeDrawer = useCallback(() => setMenuOpen(false), [])
+
   return (
     <Stack
       horizontal
@@ -94,11 +112,20 @@ const Page: FC<{}> = () => {
           paddingLeft: sizes[2],
           paddingRight: sizes[1]
         }}>
-        <Navigation items={navigationItems} />
+        <Disclosure animation={motionProps} key="menu">
+          {menuOpen && (
+            <DrawerRaw close={closeDrawer}>
+              <Navigation items={navigationItems} />
+            </DrawerRaw>
+          )}
+        </Disclosure>
       </Box>
       <Disclosure animation={animation} onExitComplete={() => load(name)}>
         {content && <PageContent content={content} />}
       </Disclosure>
+      <Button style={{ zIndex: 1000000, position: "fixed" }} onClick={() => setMenuOpen(!menuOpen)}>
+        Open menu
+      </Button>
     </Stack>
   )
 }

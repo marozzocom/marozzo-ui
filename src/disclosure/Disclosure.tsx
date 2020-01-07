@@ -5,7 +5,6 @@ import { useTheme } from "../theme/useTheme"
 
 interface Props {
   animation?: MotionProps
-  open?: boolean
   id?: string
   onExitComplete?: () => void
 }
@@ -18,12 +17,20 @@ export const Disclosure: FC<Props> = ({ animation, id, onExitComplete: callback,
 
   return (
     <AnimatePresence onExitComplete={callback}>
-      {children &&
-        Children.map(children, (child: ReactElement<any>) => (
-          <motion.div key={child.key ?? rootKey} {...{ ...(animation ?? disclosures.default) }}>
-            {child}
-          </motion.div>
-        ))}
+      <motion.div key={id} {...{ ...(animation ?? disclosures.default) }}>
+        {children}
+      </motion.div>
     </AnimatePresence>
   )
+
+  // return (
+  //   <AnimatePresence onExitComplete={callback}>
+  //     {children &&
+  //       Children.map(children, (child: ReactElement<any>) => (
+  //         <motion.div key={child.key ?? rootKey} {...{ ...(animation ?? disclosures.default) }}>
+  //           {child}
+  //         </motion.div>
+  //       ))}
+  //   </AnimatePresence>
+  // )
 }

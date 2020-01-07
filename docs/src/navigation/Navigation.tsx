@@ -33,24 +33,24 @@ export const Navigation: FC<Props> = ({ items }) => {
             <NavLink selected={selected} onClick={() => history.push(path)}>
               {title}
             </NavLink>
-            <Disclosure animation={animation}>
-              {subItems && Object.keys(subItems).length > 0 && (
-                <Box key={`${key}-sub`} style={{ paddingLeft: sizes[2] }}>
-                  {Object.entries(subItems).map(([key, { title, selected, ref }], index) => {
-                    const handleSubItemClick = () => {
-                      history.push(`${history.location.pathname}#${key}`)
-                      scrollIntoView(ref?.current)(-sizes["topBar"])
-                    }
+            {/* <Disclosure animation={animation}> */}
+            {subItems && Object.keys(subItems).length > 0 && (
+              <Box key={`${key}-sub`} style={{ paddingLeft: sizes[2] }}>
+                {Object.entries(subItems).map(([key, { title, selected, ref }], index) => {
+                  const handleSubItemClick = () => {
+                    history.push(`${history.location.pathname}#${key}`)
+                    scrollIntoView(ref?.current)(-sizes["topBar"])
+                  }
 
-                    return (
-                      <NavLink key={key} selected={selected ?? index === 0} onClick={handleSubItemClick}>
-                        {title}
-                      </NavLink>
-                    )
-                  })}
-                </Box>
-              )}
-            </Disclosure>
+                  return (
+                    <NavLink key={key} selected={selected ?? index === 0} onClick={handleSubItemClick}>
+                      {title}
+                    </NavLink>
+                  )
+                })}
+              </Box>
+            )}
+            {/* </Disclosure> */}
           </Fragment>
         )
       })}

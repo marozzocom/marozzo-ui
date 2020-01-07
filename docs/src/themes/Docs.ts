@@ -16,7 +16,8 @@ export const docs: Theme = {
   variants: {
     surfaces: {
       primary: {
-        backgroundImage: "none"
+        backgroundImage: "none",
+        backgroundColor: defaultTheme.colors.background
       }
     }
   }

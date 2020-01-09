@@ -1,5 +1,5 @@
 import React, { FC, ComponentProps } from "react"
-import { Disclosure } from "../disclosure/Disclosure"
+import { Transition } from "../transition/Transition"
 import { Toast } from "./Toast"
 import { useToast } from "./useToast"
 import { MotionProps } from "framer-motion"
@@ -9,10 +9,10 @@ import { ensureArray } from "../_common/helpers"
 
 interface Props extends ComponentProps<typeof Box> {
   toastProps?: ComponentProps<typeof Toast>
-  animation?: MotionProps
+  motionProps?: MotionProps
 }
 
-const defaultAnimation: MotionProps = {
+const defaultMotionProps: MotionProps = {
   initial: { opacity: -0.5, height: "0", y: "50px", overflow: "hidden", position: "relative" },
   animate: { opacity: 1, height: "100%", y: 0 },
   exit: { opacity: -0.5, height: "0", y: "50px" },
@@ -22,7 +22,7 @@ const defaultAnimation: MotionProps = {
   }
 }
 
-export const Toaster: FC<Props> = ({ toastProps, style, animation = defaultAnimation, ...props }) => {
+export const Toaster: FC<Props> = ({ toastProps, style, motionProps = defaultMotionProps, ...props }) => {
   const { toasts, remove } = useToast()
 
   return (
@@ -39,11 +39,11 @@ export const Toaster: FC<Props> = ({ toastProps, style, animation = defaultAnima
         ...ensureArray(style)
       ]}
       {...props}>
-      <Disclosure id="toaster" animation={animation}>
+      <Transition motionProps={motionProps}>
         {Object.entries(toasts).map(([id, { message, title, duration }]) => (
           <Toast key={id} id={id} duration={duration} message={message} title={title} remove={remove} {...toastProps} />
         ))}
-      </Disclosure>
+      </Transition>
     </Stack>
   )
 }

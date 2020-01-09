@@ -1,6 +1,6 @@
 import React, { FC, ComponentProps } from "react"
 import { Portal } from "../portal/Portal"
-import { Disclosure } from "../disclosure/Disclosure"
+import { Transition } from "../transition/Transition"
 import nanoid from "nanoid"
 import { MotionProps } from "framer-motion"
 import { Overlay } from "../overlay/Overlay"
@@ -11,7 +11,7 @@ interface Props extends ComponentProps<typeof Box> {
   open?: boolean
   key?: string
   far?: boolean
-  animation?: MotionProps
+  motionProps?: MotionProps
   modal?: boolean
   hasCloseButton?: boolean
   overlayProps?: ComponentProps<typeof Overlay>
@@ -23,14 +23,14 @@ export const Drawer: FC<Props> = ({
   key = nanoid(),
   far,
   hasCloseButton = true,
-  animation,
+  motionProps,
   children,
   overlayProps,
   modal = true,
   close,
   ...props
 }) => {
-  const motionProps: MotionProps = {
+  const defaultMotionProps: MotionProps = {
     initial: { opacity: 0, x: `${far ? 100 : -100}%`, position: "fixed", left: !far && 0, right: far && 0, top: 0, bottom: 0 },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: `${far ? 100 : -100}%` },
@@ -38,19 +38,19 @@ export const Drawer: FC<Props> = ({
       type: "tween",
       duration: 0.3
     },
-    ...animation
+    ...motionProps
   }
 
   return (
     <Portal>
       {modal && open && <Overlay onClick={close} {...overlayProps} />}
-      <Disclosure animation={motionProps}>
+      <Transition motionProps={defaultMotionProps}>
         {open && (
           <DrawerRaw key={key} close={hasCloseButton && close} {...props}>
             {children}
           </DrawerRaw>
         )}
-      </Disclosure>
+      </Transition>
     </Portal>
   )
 }

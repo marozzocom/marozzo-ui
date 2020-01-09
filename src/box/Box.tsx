@@ -9,7 +9,7 @@ interface BoxProps<T> {
   as?: React.ElementType
   style?: CSSObject | CSSObject[]
   innerRef?: React.MutableRefObject<T>
-  variant?: any
+  variant?: CSSObject
 }
 
 interface Props<T = HTMLElement> extends BoxProps<T>, Omit<React.AllHTMLAttributes<T>, keyof BoxProps<T> | "type" | "value"> {}

@@ -1,4 +1,4 @@
-import React, { FC, ComponentProps } from "react"
+import React, { FC, ComponentProps, useEffect } from "react"
 import { Surface } from "../surface/Surface"
 import { Close } from "../close/Close"
 import { useFocusTrap } from "../_common/useFocusTrap"
@@ -12,17 +12,21 @@ interface Props extends ComponentProps<typeof Box> {
   close?: () => void
 }
 
-export const DrawerRaw: FC<Props> = ({ children, style, close, ...props }) => {
+export const DrawerRaw: FC<Props> = ({ variant, children, style, close, ...props }) => {
   const {
     theme: { sizes }
   } = useTheme()
 
   const focusTrap = useFocusTrap()
   useEscape(close)
+  useEffect(() => {
+    console.log("variant:", variant)
+  }, [])
 
   return (
     <Surface
       innerRef={focusTrap}
+      variant={variant}
       style={[
         {
           padding: sizes[2],

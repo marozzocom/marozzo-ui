@@ -55,7 +55,7 @@ export class DefaultTheme implements Theme {
     active: "#77daff"
   }
 
-  animations = {
+  motionPropss = {
     normal: "0.2s ease-out"
   }
 
@@ -72,7 +72,13 @@ export class DefaultTheme implements Theme {
     button: "linear-gradient(45deg, rgb(198,166,64) 0%, rgb(255,208,64) 100%)"
   }
 
-  breakpoints = [576, 768, 992, 1200]
+  breakpoints = {
+    xs: 576,
+    s: 768,
+    m: 992,
+    l: 1200,
+    xl: 1600
+  }
 
   radii = {
     normal: 10,
@@ -162,7 +168,7 @@ export class DefaultTheme implements Theme {
   }
 
   // TODO: Decide whether to keep these with components, within Theme or somewhere else.
-  disclosures = {
+  transitions = {
     default: {
       initial: { opacity: 0 },
       animate: { opacity: 1 },
@@ -187,7 +193,7 @@ export class DefaultTheme implements Theme {
   }
 }
 
-const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, disclosures, gradients, variants, breakpoints, animations } = DefaultTheme.getInstance()
+const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, transitions, gradients, variants, breakpoints, motionPropss } = DefaultTheme.getInstance()
 
 export const defaultTheme = {
   sizes,
@@ -197,11 +203,11 @@ export const defaultTheme = {
   colors,
   radii,
   shadows,
-  disclosures,
+  transitions,
   gradients,
   variants,
   breakpoints,
-  animations
+  motionPropss
 }
 
 // export const theme = DefaultTheme.getInstance()
@@ -212,12 +218,12 @@ export const defaultTheme = {
 //   fontSizes: theme.fontSizes,
 //   fontWeights: theme.fontWeights,
 //   colors: theme.colors,
-//   animations: theme.animations,
+//   motionPropss: theme.motionPropss,
 //   shadows: theme.shadows,
 //   gradients: theme.gradients,
 //   breakpoints: theme.breakpoints,
 //   radii: theme.radii,
 //   variants: theme.variants,
-//   disclosures: theme.disclosures,
+//   transitions: theme.transitions,
 //   zIndices: theme.zIndices
 // }

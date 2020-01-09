@@ -6,12 +6,12 @@ export interface Theme {
   fontSizes?: ThemeProperties
   fontWeights?: ThemeProperties
   colors?: ThemeProperties
-  animations?: ThemeProperties
+  motionPropss?: ThemeProperties
   shadows?: ThemeProperties
   gradients?: ThemeProperties
-  breakpoints?: Array<number>
+  breakpoints?: ThemeProperties
   radii?: ThemeProperties
   variants?: ThemeProperties
-  disclosures?: ThemeProperties
+  transitions?: ThemeProperties
   zIndices?: ThemeProperties
 }

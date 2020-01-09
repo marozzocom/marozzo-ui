@@ -167,7 +167,7 @@ export const drawerPositionedFar = () => {
   )
 }
 
-export const drawerWithCustomAnimation = () => {
+export const drawerWithCustommotionProps = () => {
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -176,7 +176,7 @@ export const drawerWithCustomAnimation = () => {
       </Button>
       <Drawer
         open={open}
-        animation={{
+        motionProps={{
           initial: { opacity: 0, y: "-100%", position: "fixed", left: 0, top: 0, bottom: 0 },
           animate: { opacity: 1, y: 0 },
           exit: { opacity: 0, y: "100%" },

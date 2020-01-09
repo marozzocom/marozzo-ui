@@ -44,32 +44,21 @@ Not yet available, for now check source code and the demo Storybook. A documenta
 
 Some of the short-term components you can expect.
 
-🔲 Light and dark default theme
-
-🔲 Data table (based on react-table)
-
-🔲 Basic form elements
-
-🔲 Image
-
-🔲 Menu (popup menu)
-
-🔲 Dialog
-
-🔲 Card content components
-
-🔲 Video (cloudflare stream component)
-
-🔲 List
-
-🔲 Avatar
-
+🔲 Light and dark default theme  
+🔲 Data table (based on react-table)  
+🔲 Basic form elements  
+✅ Image  
+🔲 Menu (popup menu)  
+🔲 Dialog  
+🔲 Card content components  
+🔲 Video (cloudflare stream component)  
+✅ List  
+🔲 Avatar  
 ✅ Properly styled buttons
 
 # Some things I might add to this library, or just use this library to create them with
 
-🔲 A very cool drag-and-drop "builder" for hierarchical page content
-
+🔲 A very cool drag-and-drop "builder" for hierarchical page content  
 🔲 Top and side menus
 
 # Installation
@@ -95,7 +84,7 @@ Contributions are welcome, but probably still unlikely at this stage. Drop me an
 
 [Emotion](https://emotion.sh/) for styling
 [Emotion Face Paint](https://github.com/emotion-js/facepaint) for responsive values
-[Framer motion](https://www.framer.com/motion/) for motion animations
+[Framer motion](https://www.framer.com/motion/) for motion motionPropss
 
 # Technologies considered but not used
 

@@ -1,6 +1,6 @@
 import React, { FC, ComponentProps } from "react"
 import { Box } from "../../box/Box"
-import { useTheme } from "../.."
+import { useTheme } from "../../theme/useTheme"
 
 interface Props extends ComponentProps<typeof Box> {}
 

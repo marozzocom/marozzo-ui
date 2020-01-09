@@ -1,21 +1,23 @@
 import React, { FC, Fragment, Children, MutableRefObject, useCallback } from "react"
-import { Stack, NavLink, useTheme, Box, Toc, Disclosure, useToc, tocEmitter, NavigationItems, scrollIntoView } from "@marozzocom/marozzo-ui"
+import { Stack, NavLink, useTheme, Box, Toc, Transition, useToc, tocEmitter, NavigationItems, scrollIntoView } from "@marozzocom/marozzo-ui"
 import { useHistory } from "react-router-dom"
 
 interface Props {
   items: NavigationItems
+  id?: string
 }
 
-const animation = {
+const motionProps = {
   initial: { opacity: 0, height: 0, overflow: "hidden" },
   animate: { opacity: 1, height: "100%" },
   exit: { opacity: 0, height: 0, overflow: "hidden" },
   transition: {
-    type: "tween"
+    type: "tween",
+    duration: 0.2
   }
 }
 
-export const Navigation: FC<Props> = ({ items }) => {
+export const Navigation: FC<Props> = ({ items, id }) => {
   const history = useHistory()
   const {
     theme: { sizes }
@@ -23,6 +25,7 @@ export const Navigation: FC<Props> = ({ items }) => {
 
   return (
     <Stack
+      key={id}
       itemStyle={{
         display: "block"
       }}
@@ -33,24 +36,24 @@ export const Navigation: FC<Props> = ({ items }) => {
             <NavLink selected={selected} onClick={() => history.push(path)}>
               {title}
             </NavLink>
-            {/* <Disclosure animation={animation}> */}
-            {subItems && Object.keys(subItems).length > 0 && (
-              <Box key={`${key}-sub`} style={{ paddingLeft: sizes[2] }}>
-                {Object.entries(subItems).map(([key, { title, selected, ref }], index) => {
-                  const handleSubItemClick = () => {
-                    history.push(`${history.location.pathname}#${key}`)
-                    scrollIntoView(ref?.current)(-sizes["topBar"])
-                  }
+            <Transition motionProps={motionProps}>
+              {selected && Object.keys(subItems).length > 0 && (
+                <Box style={{ paddingLeft: sizes[2] }}>
+                  {Object.entries(subItems).map(([key, { title, selected, ref }], index) => {
+                    const handleSubItemClick = () => {
+                      history.push(`${history.location.pathname}#${key}`)
+                      scrollIntoView(ref?.current)(-sizes["topBar"])
+                    }
 
-                  return (
-                    <NavLink key={key} selected={selected ?? index === 0} onClick={handleSubItemClick}>
-                      {title}
-                    </NavLink>
-                  )
-                })}
-              </Box>
-            )}
-            {/* </Disclosure> */}
+                    return (
+                      <NavLink key={key} id={key} selected={selected ?? index === 0} onClick={handleSubItemClick} style={{ fontWeight: 100 }}>
+                        {title}
+                      </NavLink>
+                    )
+                  })}
+                </Box>
+              )}
+            </Transition>
           </Fragment>
         )
       })}

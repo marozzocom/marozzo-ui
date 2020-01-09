@@ -12,27 +12,44 @@ import {
   scrollProgressEmitter,
   scrollIntoView,
   getSectionFromHash,
-  Disclosure,
+  Transition,
   useToc,
   NavigationItems,
   useProgress,
-  Drawer,
-  DrawerRaw
+  useMediaQuery
 } from "@marozzocom/marozzo-ui"
 import { scrollTop } from "../_common/helpers"
-import { motion, MotionProps } from "framer-motion"
+import { MotionProps } from "framer-motion"
+
+const menuMotionProps: MotionProps = {
+  initial: { opacity: 0, x: "-100%", overflow: "hidden" },
+  animate: { opacity: 1, x: 0 },
+  exit: { opacity: 0, x: "-100%", overflow: "hidden" },
+  transition: {
+    type: "tween",
+    duration: 0.2
+  }
+}
 
 const Page: FC<{}> = () => {
   const {
-    theme: { sizes }
+    theme: {
+      breakpoints,
+      sizes,
+      variants: { surfaces }
+    }
   } = useTheme() as any
 
+  const activeBreakpoints = useMediaQuery()
+
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showContent, setShowContent] = useState(true)
 
   const { start, stop } = useProgress()
 
   const { name } = useParams()
   const [content, setContent] = useState<string>()
+  const [nextContent, setNextContent] = useState<string>()
   const [navigationItems, setNavigationItems] = useState<NavigationItems>({})
   const { toc, clearToc } = useToc()
 
@@ -42,18 +59,16 @@ const Page: FC<{}> = () => {
 
   const load = async (name: string) => {
     start("pageLoad")
-    clearToc()
     const page = await import(`../pages/${name}.md`)
     stop("pageLoad")
     scrollTop()
-    setContent(page.default)
-    updateNavigationItems()
+    setNextContent(page.default)
     scrollIntoView(getSectionFromHash())(-sizes["topBar"])
   }
 
   const remove = useCallback(() => {
     clearToc()
-    setContent(null)
+    setShowContent(false)
   }, [])
 
   useEffect(() => {
@@ -66,31 +81,32 @@ const Page: FC<{}> = () => {
 
   useEffect(() => {
     remove()
+    load(name)
   }, [name])
 
-  const animation = useMemo(
+  useEffect(() => {
+    const animationDelayTimer = setTimeout(() => {
+      setContent(nextContent)
+      setShowContent(true)
+      updateNavigationItems()
+    }, (menuMotionProps as any).transition.duration * 1000)
+    return () => clearTimeout(animationDelayTimer)
+  }, [nextContent])
+
+  const contentMotionProps = useMemo(
     () => ({
       initial: { opacity: 0, y: -sizes[1], overflow: "hidden" },
       animate: { opacity: 1, y: 0 },
       exit: { opacity: 0, y: 0, overflow: "hidden" },
       transition: {
-        type: "tween"
+        type: "tween",
+        duration: 0.2
       }
     }),
     []
   )
 
-  const motionProps: MotionProps = {
-    initial: { opacity: 0, x: "-100%", position: "fixed", left: 0, top: 0, bottom: 0 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: "-100}%" },
-    transition: {
-      type: "tween",
-      duration: 0.3
-    }
-  }
-
-  const closeDrawer = useCallback(() => setMenuOpen(false), [])
+  // const closeDrawer = useCallback(() => setMenuOpen(false), [])
 
   return (
     <Stack
@@ -103,28 +119,29 @@ const Page: FC<{}> = () => {
           flexShrink: 0,
           margin: `initial ${sizes[2]}`,
           width: sizes[6],
-          position: "sticky",
+          transform: menuOpen ? "none" : [`translateX(-${sizes[6]}px)`, `translateX(-${sizes[6]}px)`, `translateX(-${sizes[6]}px)`, "none"],
+          position: ["fixed", "fixed", "fixed", "sticky"],
           top: sizes[4],
+          bottom: 0,
           alignSelf: "flex-start",
           maxHeight: `calc(100vh - ${sizes["topBar"]}px)`,
           overflowY: "auto",
           paddingTop: sizes[1],
           paddingLeft: sizes[2],
-          paddingRight: sizes[1]
-        }}>
-        <Disclosure animation={motionProps} key="menu">
-          {menuOpen && (
-            <DrawerRaw close={closeDrawer}>
-              <Navigation items={navigationItems} />
-            </DrawerRaw>
-          )}
-        </Disclosure>
+          paddingRight: sizes[1],
+          zIndex: 1
+        }}
+        variant={surfaces.drawer}>
+        <Box>
+          <Navigation id="navigation" items={navigationItems} />
+          {/* <Transition motionProps={menuMotionProps}>
+            {(menuOpen || activeBreakpoints["m"]) && <Navigation id="navigation" items={navigationItems} />}
+          </Transition> */}
+        </Box>
       </Box>
-      <Disclosure animation={animation} onExitComplete={() => load(name)}>
-        {content && <PageContent content={content} />}
-      </Disclosure>
+      {content && <Transition motionProps={contentMotionProps}>{showContent && <PageContent id="content" content={content} />}</Transition>}
       <Button style={{ zIndex: 1000000, position: "fixed" }} onClick={() => setMenuOpen(!menuOpen)}>
-        Open menu
+        {menuOpen ? "close" : "open"}
       </Button>
     </Stack>
   )
@@ -132,9 +149,12 @@ const Page: FC<{}> = () => {
 
 export default Page
 
-const PageContent: FC<{ content: string }> = React.memo(({ content }) => {
+const PageContent: FC<{ content: string; id: string }> = React.memo(({ content, id }) => {
   const contentRef = useRef()
   const { set, clear } = scrollProgressEmitter
+  const {
+    theme: { sizes }
+  } = useTheme()
 
   useEffect(() => {
     set(contentRef.current)
@@ -144,12 +164,18 @@ const PageContent: FC<{ content: string }> = React.memo(({ content }) => {
   }, [contentRef.current])
 
   return (
-    <>
-      <Box innerRef={contentRef}>
-        <ScrollProgressContainer>
-          <Markdown>{content}</Markdown>
-        </ScrollProgressContainer>
-      </Box>
-    </>
+    <Box
+      innerRef={contentRef}
+      key={id}
+      style={{
+        marginTop: sizes[1],
+        marginRight: [sizes[3], sizes[3], sizes[3], sizes[2]],
+        marginBottom: sizes[1],
+        marginLeft: [sizes[3], sizes[3], sizes[3], sizes[2]]
+      }}>
+      <ScrollProgressContainer>
+        <Markdown>{content}</Markdown>
+      </ScrollProgressContainer>
+    </Box>
   )
 })

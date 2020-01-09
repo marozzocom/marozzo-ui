@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/marozzocom/marozzo-ui/compare/v0.7.4...v0.8.0) (2020-01-09)
+
+### ⚠ BREAKING CHANGES
+
+- **transition:** Disclosure needs to be replaced by Transition, see also changes to API
+
+### Features
+
+- add List and Image components, update Markdown support ([7ad825c](https://github.com/marozzocom/marozzo-ui/commit/7ad825c2af0d0545f33b8d96ac2fd31a539053ac))
+- **transition:** refactor transitions ([574c0cf](https://github.com/marozzocom/marozzo-ui/commit/574c0cfb20191b16f170e15d162b66d051b96b46))
+
 ### [0.7.4](https://github.com/marozzocom/marozzo-ui/compare/v0.7.3...v0.7.4) (2020-01-06)
 
 ### [0.7.3](https://github.com/marozzocom/marozzo-ui/compare/v0.7.2...v0.7.3) (2020-01-06)

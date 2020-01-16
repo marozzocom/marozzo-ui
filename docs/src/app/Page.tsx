@@ -16,7 +16,8 @@ import {
   useToc,
   NavigationItems,
   useProgress,
-  useMediaQuery
+  useMediaQuery,
+  useVariants
 } from "@marozzocom/marozzo-ui"
 import { scrollTop } from "../_common/helpers"
 import { MotionProps } from "framer-motion"
@@ -33,12 +34,10 @@ const menuMotionProps: MotionProps = {
 
 const Page: FC<{}> = () => {
   const {
-    theme: {
-      breakpoints,
-      sizes,
-      variants: { surfaces }
-    }
-  } = useTheme() as any
+    theme: { breakpoints, sizes }
+  } = useTheme()
+
+  const { surfaces } = useVariants()
 
   const activeBreakpoints = useMediaQuery()
 

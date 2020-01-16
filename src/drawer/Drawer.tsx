@@ -5,7 +5,8 @@ import nanoid from "nanoid"
 import { MotionProps } from "framer-motion"
 import { Overlay } from "../overlay/Overlay"
 import { DrawerRaw } from "./DrawerRaw"
-import { Box } from ".."
+import { Box, useVariants } from ".."
+import { VariantsProvider } from "../variants"
 
 interface Props extends ComponentProps<typeof Box> {
   open?: boolean
@@ -42,15 +43,31 @@ export const Drawer: FC<Props> = ({
   }
 
   return (
-    <Portal>
-      {modal && open && <Overlay onClick={close} {...overlayProps} />}
-      <Transition motionProps={defaultMotionProps}>
-        {open && (
-          <DrawerRaw key={key} close={hasCloseButton && close} {...props}>
-            {children}
-          </DrawerRaw>
-        )}
-      </Transition>
-    </Portal>
+    <VariantsProvider
+      variants={{
+        buttons: {
+          default: {
+            borderRadius: "2px",
+            background: "none",
+            color: "#f00"
+          },
+          primary: {
+            borderRadius: "1px",
+            backgroundColor: "#1a1a1a",
+            color: "#fff"
+          }
+        }
+      }}>
+      <Portal>
+        {modal && open && <Overlay onClick={close} {...overlayProps} />}
+        <Transition motionProps={defaultMotionProps}>
+          {open && (
+            <DrawerRaw key={key} close={hasCloseButton && close} {...props}>
+              {children}
+            </DrawerRaw>
+          )}
+        </Transition>
+      </Portal>
+    </VariantsProvider>
   )
 }

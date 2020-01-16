@@ -4,6 +4,7 @@ import { Text } from "../src/text/Text"
 import { Button } from "../src/button/Button"
 import { Link } from "../src/link/Link"
 import { CSSObject } from "@emotion/core"
+import { VariantsProvider } from "../src"
 
 export default {
   component: Drawer,
@@ -26,12 +27,16 @@ export const drawer = () => {
   const [open, setOpen] = useState(false)
   return (
     <>
-      <Button style={buttonStyle} onClick={() => setOpen(!open)} id="drawer-toggle">
-        toggle
-      </Button>
-      <Drawer open={open} close={() => setOpen(false)}>
-        <Text>Drawer</Text>
-      </Drawer>
+      <VariantsProvider variants={{ test: "value" }}>
+        <Button style={buttonStyle} onClick={() => setOpen(!open)} id="drawer-toggle">
+          toggle
+        </Button>
+        <Drawer open={open} close={() => setOpen(false)}>
+          <Text>Drawer</Text>
+          <Button primary>Random primary button</Button>
+          <Button>Just a random button</Button>
+        </Drawer>
+      </VariantsProvider>
     </>
   )
 }

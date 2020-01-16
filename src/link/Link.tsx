@@ -2,6 +2,7 @@ import React, { FC, ComponentProps } from "react"
 import { Box } from "../box/Box"
 import { useTheme } from "../theme"
 import { ensureArray } from "../_common/helpers"
+import { useVariants } from "../variants"
 
 interface Props extends ComponentProps<typeof Box> {
   to?: string
@@ -11,12 +12,10 @@ interface Props extends ComponentProps<typeof Box> {
 
 export const Link: FC<Props> = ({ as = "a", to, newTab, style, children, ...props }) => {
   const {
-    theme: {
-      colors,
-      shadows,
-      variants: { textStyles }
-    }
+    theme: { colors, shadows }
   } = useTheme()
+
+  const { textStyles } = useVariants()
 
   return (
     <Box

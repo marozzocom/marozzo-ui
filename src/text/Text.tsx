@@ -1,6 +1,6 @@
 import React, { FC, ComponentProps } from "react"
 import { Box } from "../box/Box"
-import { useTheme } from "../theme/useTheme"
+import { useVariants } from "../variants"
 
 interface Props extends ComponentProps<typeof Box> {
   // TODO: Oneline with ellipsis?
@@ -8,11 +8,7 @@ interface Props extends ComponentProps<typeof Box> {
 }
 
 export const Text: FC<Props> = ({ children, ...props }) => {
-  const {
-    theme: {
-      variants: { textStyles }
-    }
-  } = useTheme()
+  const { textStyles } = useVariants()
 
   return (
     <Box as="p" variant={textStyles.body} {...props}>

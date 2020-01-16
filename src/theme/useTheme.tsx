@@ -5,10 +5,17 @@ import { defaultTheme } from "./DefaultTheme"
 
 export const useTheme = () => {
   try {
-    const theme = useContext(ThemeContext)
-    const breakpoints = useMemo(() => facepaint(Object.values(theme.breakpoints).map((breakpoint: number) => `@media (min-width: ${breakpoint}px)`)), [theme])
-    return { theme, breakpoints }
+    const { mergedTheme, colorMode, setColorMode, variants: variantFunc } = useContext(ThemeContext)
+    const variants: any = variantFunc(mergedTheme)
+    const theme = { ...mergedTheme, variants }
+
+    console.log("theme", theme)
+
+    const breakpoints = useMemo(() => facepaint(Object.values(mergedTheme.breakpoints).map((breakpoint: number) => `@media (min-width: ${breakpoint}px)`)), [
+      mergedTheme
+    ])
+    return { theme: { ...mergedTheme, variants } as any, breakpoints, colorMode, setColorMode }
   } catch (error) {
-    return { theme: defaultTheme, breakpoints: null }
+    return { theme: defaultTheme, breakpoints: null, colorMode: null, setColorMode: null }
   }
 }

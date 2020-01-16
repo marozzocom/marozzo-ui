@@ -48,9 +48,9 @@ const VariantButton = () => (
 )
 ```
 
-Variants are imported to a component via the useTheme hook, either by importing the entire theme object, or by deconstructing the variants, or just the needed subset of variants, for example:
+Variants are imported to a component via the useVariants hook, either by importing the entire theme object, or by deconstructing the variants, or just the needed subset of variants, for example:
 
-const { theme: { variants: { buttons } } } = useTheme()
+const { buttons } = useVariants()
 
 Variants can be specified elsewhere in the theme, another file or within the component itself as well, if needed.
 

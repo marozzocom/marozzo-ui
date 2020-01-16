@@ -55,7 +55,7 @@ export class DefaultTheme implements Theme {
     active: "#77daff"
   }
 
-  motionPropss = {
+  motionProps = {
     normal: "0.2s ease-out"
   }
 
@@ -85,88 +85,6 @@ export class DefaultTheme implements Theme {
     round: 2000
   }
 
-  variants = {
-    buttons: {
-      default: {
-        borderRadius: this.radii.normal,
-        background: "none"
-      },
-      primary: {
-        borderRadius: this.radii.normal,
-        backgroundImage: this.gradients.button,
-        boxShadow: this.shadows.inset
-      }
-    },
-    textStyles: {
-      actionSmall: {
-        fontFamily: this.fonts.action,
-        fontWeight: this.fontWeights.bold,
-        fontSize: this.fontSizes.s
-      },
-      actionNormal: {
-        fontFamily: this.fonts.action,
-        fontWeight: this.fontWeights.bold,
-        fontSize: this.fontSizes.m
-      },
-      headings: {
-        "1": {
-          fontSize: this.fontSizes.xxxl,
-          fontWeight: this.fontWeights.bold
-        },
-        "2": {
-          fontSize: this.fontSizes.xxl,
-          fontWeight: this.fontWeights.bold
-        },
-        "3": {
-          fontSize: this.fontSizes.xl,
-          fontWeight: this.fontWeights.bold
-        },
-        "4": {
-          fontSize: this.fontSizes.xl,
-          fontWeight: this.fontWeights.normal
-        },
-        "5": {
-          fontSize: this.fontSizes.l,
-          fontWeight: this.fontWeights.bold
-        },
-        "6": {
-          fontSize: this.fontSizes.l,
-          fontWeight: this.fontWeights.normal,
-          fontStyle: "italic"
-        }
-      },
-
-      body: {
-        fontFamily: this.fonts.body,
-        fontWeight: this.fontWeights.normal,
-        fontSize: this.fontSizes.m
-      }
-    },
-    cards: {
-      // TODO: I don't know whether the min size is a good idea.
-      primary: {
-        borderRadius: this.radii.normal,
-        boxShadow: this.shadows.subtle,
-        minWidth: this.sizes[5],
-        minHeight: this.sizes[5]
-      },
-      test: {
-        background: "#cf0",
-        backgroundImage: "none",
-        borderRadius: this.radii.normal,
-        boxShadow: this.shadows.subtle
-      }
-    },
-    surfaces: {
-      primary: {
-        backgroundImage: this.gradients.primary
-      },
-      secondary: {
-        backgroundColor: this.colors.secondary
-      }
-    }
-  }
-
   // TODO: Decide whether to keep these with components, within Theme or somewhere else.
   transitions = {
     default: {
@@ -193,7 +111,19 @@ export class DefaultTheme implements Theme {
   }
 }
 
-const { sizes, fonts, fontSizes, fontWeights, colors, radii, shadows, transitions, gradients, variants, breakpoints, motionPropss } = DefaultTheme.getInstance()
+const {
+  sizes,
+  fonts,
+  fontSizes,
+  fontWeights,
+  colors,
+  radii,
+  shadows,
+  transitions,
+  gradients,
+  breakpoints,
+  motionProps: motionPropss
+} = DefaultTheme.getInstance()
 
 export const defaultTheme = {
   sizes,
@@ -205,25 +135,6 @@ export const defaultTheme = {
   shadows,
   transitions,
   gradients,
-  variants,
   breakpoints,
   motionPropss
 }
-
-// export const theme = DefaultTheme.getInstance()
-
-// export const defaultTheme = {
-//   sizes: theme.sizes,
-//   fonts: theme.fonts,
-//   fontSizes: theme.fontSizes,
-//   fontWeights: theme.fontWeights,
-//   colors: theme.colors,
-//   motionPropss: theme.motionPropss,
-//   shadows: theme.shadows,
-//   gradients: theme.gradients,
-//   breakpoints: theme.breakpoints,
-//   radii: theme.radii,
-//   variants: theme.variants,
-//   transitions: theme.transitions,
-//   zIndices: theme.zIndices
-// }

@@ -8,13 +8,15 @@ export default {
 }
 
 export const card = () => {
-  const { theme } = useTheme()
+  const {
+    theme: { colors }
+  } = useTheme()
 
   // TODO: Why the following styling?
   return (
     <Card
       style={{
-        backGround: theme.colors.secondary
+        background: colors.secondary
       }}>
       Card
     </Card>

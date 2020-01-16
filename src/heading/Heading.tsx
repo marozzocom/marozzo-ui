@@ -1,7 +1,7 @@
 import React, { FC, ElementType, ComponentProps } from "react"
 import { Text } from "../text/Text"
 import { useTheme } from "../theme/useTheme"
-import { Box } from ".."
+import { Box, useVariants } from ".."
 import { ensureArray } from "../_common/helpers"
 
 export type Level = 1 | 2 | 3 | 4 | 5 | 6
@@ -12,13 +12,12 @@ interface Props extends ComponentProps<typeof Box> {
 
 export const Heading: FC<Props> = ({ level = 2, children, style, ...props }) => {
   const {
-    theme: {
-      fonts,
-      variants: {
-        textStyles: { headings }
-      }
-    }
+    theme: { fonts }
   } = useTheme()
+
+  const {
+    textStyles: { headings }
+  } = useVariants()
 
   return (
     <Text

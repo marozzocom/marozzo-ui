@@ -2,6 +2,7 @@ import { Box } from "../box/Box"
 import React, { FC, ComponentProps } from "react"
 import { useTheme } from "../theme/useTheme"
 import { ensureArray } from "../_common/helpers"
+import { useVariants } from "../variants"
 
 interface Props extends ComponentProps<typeof Box> {
   primary?: boolean
@@ -10,12 +11,11 @@ interface Props extends ComponentProps<typeof Box> {
 }
 
 export const Button: FC<Props> = ({ disabled, primary, small, style, children, ...props }) => {
-  const { theme } = useTheme()
   const {
-    sizes,
-    shadows,
-    variants: { buttons, textStyles }
-  } = theme
+    theme: { sizes, shadows }
+  } = useTheme()
+
+  const { buttons, textStyles } = useVariants()
 
   return (
     <Box

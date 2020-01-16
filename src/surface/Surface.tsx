@@ -1,14 +1,10 @@
 import React, { FC, ComponentProps } from "react"
 import { Box } from "../box/Box"
-import { useTheme } from "../theme/useTheme"
 import { ensureArray } from "../_common/helpers"
+import { useVariants } from "../variants/useVariants"
 
 export const Surface: FC<ComponentProps<typeof Box>> = ({ style, variant, children, ...props }) => {
-  const {
-    theme: {
-      variants: { surfaces }
-    }
-  } = useTheme()
+  const { surfaces } = useVariants()
 
   return (
     <Box

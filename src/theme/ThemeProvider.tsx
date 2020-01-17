@@ -1,6 +1,6 @@
 import React, { FC, createContext, useMemo, useCallback, useState, useEffect } from "react"
 import { Global, CSSObject } from "@emotion/core"
-import { defaultTheme, variants } from "./DefaultTheme"
+import { defaultTheme } from "./DefaultTheme"
 import { global as globals } from "./global"
 import { useFocusVisible } from "../_common/useFocusVisible"
 import { Theme } from "./Theme"
@@ -20,7 +20,6 @@ interface ThemeContextValue {
   mergedTheme: Record<string, any>
   colorMode?: ColorMode
   setColorMode?: React.Dispatch<React.SetStateAction<ColorMode>>
-  variants?: (theme: any) => any
 }
 
 const ThemeContext = createContext<ThemeContextValue>(null)
@@ -48,7 +47,7 @@ const ThemeProvider: FC<Props> = ({
   useEffect(() => setColorMode(localStorage.getItem("colorMode") as ColorMode), [])
 
   return (
-    <ThemeContext.Provider value={{ mergedTheme, colorMode, setColorMode, variants }}>
+    <ThemeContext.Provider value={{ mergedTheme, colorMode, setColorMode }}>
       {global && <Global styles={global} />}
       {focusVisiblePolyfill && <Global styles={focusVisibleStyles} />}
       {children}

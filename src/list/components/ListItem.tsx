@@ -8,7 +8,7 @@ export const ListItem: FC<Props> = ({ children, ...props }) => {
   const { textStyles } = useVariants()
 
   return (
-    <Box as="li" variant={textStyles.body} {...props}>
+    <Box as="li" variant={textStyles?.body} {...props}>
       {children}
     </Box>
   )

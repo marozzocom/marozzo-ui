@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Drawer, DrawerRaw } from "../src/drawer"
+import { Drawer } from "../src/drawer/Drawer"
 import { Text } from "../src/text/Text"
 import { Button } from "../src/button/Button"
 import { Link } from "../src/link/Link"
@@ -18,9 +18,9 @@ const buttonStyle: CSSObject = {
 }
 
 export const _DrawerRaw = () => (
-  <DrawerRaw>
+  <Drawer.Container>
     <Text>Drawer</Text>
-  </DrawerRaw>
+  </Drawer.Container>
 )
 
 export const drawer = () => {

@@ -8,7 +8,7 @@ export const Surface: FC<ComponentProps<typeof Box>> = ({ style, variant, childr
 
   return (
     <Box
-      variant={variant ?? surfaces.primary}
+      variant={variant ?? surfaces?.primary}
       style={[
         {
           height: "100%"

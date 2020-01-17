@@ -1,8 +1,9 @@
 import React, { FC, ElementType, ComponentProps } from "react"
 import { Text } from "../text/Text"
 import { useTheme } from "../theme/useTheme"
-import { Box, useVariants } from ".."
+import { Box } from "../box/Box"
 import { ensureArray } from "../_common/helpers"
+import { useVariants } from "../variants/useVariants"
 
 export type Level = 1 | 2 | 3 | 4 | 5 | 6
 

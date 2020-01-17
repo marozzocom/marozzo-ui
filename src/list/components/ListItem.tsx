@@ -1,15 +1,12 @@
 import React, { FC, ComponentProps } from "react"
 import { Box } from "../../box/Box"
-import { useTheme } from "../../theme/useTheme"
+import { useVariants } from "../../variants/useVariants"
 
 interface Props extends ComponentProps<typeof Box> {}
 
 export const ListItem: FC<Props> = ({ children, ...props }) => {
-  const {
-    theme: {
-      variants: { textStyles }
-    }
-  } = useTheme()
+  const { textStyles } = useVariants()
+
   return (
     <Box as="li" variant={textStyles.body} {...props}>
       {children}

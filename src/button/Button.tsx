@@ -15,13 +15,15 @@ export const Button: FC<Props> = ({ disabled, primary, small, style, children, .
     theme: { sizes, shadows }
   } = useTheme()
 
-  const { buttons, textStyles } = useVariants()
+  const variants = useVariants()
+
+  console.log("variant", variants)
 
   return (
     <Box
       variant={{
-        ...(primary ? buttons.primary : buttons.default),
-        ...(small ? textStyles.actionSmall : textStyles.actionNormal)
+        ...(primary ? variants?.buttons?.primary : variants?.buttons?.default),
+        ...(small ? variants?.textStyles?.actionSmall : variants?.textStyles?.actionNormal)
       }}
       style={[
         {

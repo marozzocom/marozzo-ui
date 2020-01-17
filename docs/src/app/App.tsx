@@ -12,7 +12,8 @@ import {
   ScrollProgress,
   Vertical,
   Stack,
-  Fixture
+  Fixture,
+  VariantsProvider
 } from "@marozzocom/marozzo-ui"
 import Page from "./Page"
 import { Footer } from "./Footer"

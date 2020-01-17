@@ -4,7 +4,7 @@ import { Transition } from "../transition/Transition"
 import nanoid from "nanoid"
 import { MotionProps } from "framer-motion"
 import { Overlay } from "../overlay/Overlay"
-import { DrawerRaw } from "./DrawerRaw"
+import { Container } from "./components/Container"
 import { Box, useVariants } from ".."
 import { VariantsProvider } from "../variants"
 
@@ -19,7 +19,11 @@ interface Props extends ComponentProps<typeof Box> {
   close?: () => void
 }
 
-export const Drawer: FC<Props> = ({
+interface Composition {
+  Container: typeof Container
+}
+
+const Drawer: FC<Props> & Composition = ({
   open = true,
   key = nanoid(),
   far,
@@ -53,7 +57,7 @@ export const Drawer: FC<Props> = ({
           },
           primary: {
             borderRadius: "1px",
-            backgroundColor: "#1a1a1a",
+            background: "#1a1a1a",
             color: "#fff"
           }
         }
@@ -62,12 +66,16 @@ export const Drawer: FC<Props> = ({
         {modal && open && <Overlay onClick={close} {...overlayProps} />}
         <Transition motionProps={defaultMotionProps}>
           {open && (
-            <DrawerRaw key={key} close={hasCloseButton && close} {...props}>
+            <Container key={key} close={hasCloseButton && close} {...props}>
               {children}
-            </DrawerRaw>
+            </Container>
           )}
         </Transition>
       </Portal>
     </VariantsProvider>
   )
 }
+
+Drawer.Container = Container
+
+export { Drawer }

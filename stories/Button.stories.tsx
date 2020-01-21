@@ -27,6 +27,42 @@ export const smallButton = () => (
     </Button>
   </Fixture>
 )
+export const bigButton = () => (
+  <Fixture>
+    <Button
+      style={{
+        width: "400px",
+        height: "200px"
+      }}>
+      Big Button
+    </Button>
+  </Fixture>
+)
+export const invertedButton = () => (
+  <Fixture>
+    <Button
+      style={{
+        width: "400px",
+        height: "200px"
+      }}
+      primary
+      inverted>
+      Big Button
+    </Button>
+  </Fixture>
+)
+export const verticalButton = () => (
+  <Fixture>
+    <Button
+      primary
+      style={{
+        width: "100px",
+        height: "250px"
+      }}>
+      Vertical
+    </Button>
+  </Fixture>
+)
 export const smallPrimaryButton = () => (
   <Fixture>
     <Button small primary onClick={action("clicked")}>

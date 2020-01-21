@@ -52,7 +52,9 @@ export class DefaultTheme implements Theme {
     primary: "#0ff",
     secondary: "#faa",
     overlay: "rgba(0, 0, 0, 0.25)",
-    active: "#77daff"
+    active: "#77daff",
+    highlight: "#fff",
+    shadow: "#000"
   }
 
   motionProps = {

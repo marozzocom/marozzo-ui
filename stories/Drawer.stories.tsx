@@ -25,6 +25,7 @@ export const _DrawerRaw = () => (
 
 export const drawer = () => {
   const [open, setOpen] = useState(false)
+  // TODO: fix variants
   return (
     <>
       <VariantsProvider variants={{ test: "value" }}>
@@ -33,7 +34,9 @@ export const drawer = () => {
         </Button>
         <Drawer open={open} close={() => setOpen(false)}>
           <Text>Drawer</Text>
-          <Button primary>Random primary button</Button>
+          <Button primary inverted>
+            Random primary button
+          </Button>
           <Button>Just a random button</Button>
         </Drawer>
       </VariantsProvider>

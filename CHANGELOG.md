@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1](https://github.com/marozzocom/marozzo-ui/compare/v0.8.0...v0.8.1) (2020-02-07)
+
+### Features
+
+- **ripples:** add ripple effects to button ([34ee606](https://github.com/marozzocom/marozzo-ui/commit/34ee6063491e141c8a15935efdb0c435e72c1c7d))
+- **variants:** continue work on variants ([243a87e](https://github.com/marozzocom/marozzo-ui/commit/243a87e548becf7bd6479eb8ace56348e483ed9b))
+- start work on useVariants ([df57f67](https://github.com/marozzocom/marozzo-ui/commit/df57f67789358544bde638282e3a38e1f429e7d0))
+
 ## [0.8.0](https://github.com/marozzocom/marozzo-ui/compare/v0.7.4...v0.8.0) (2020-01-09)
 
 ### ⚠ BREAKING CHANGES

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.4](https://github.com/marozzocom/marozzo-ui/compare/v0.9.3...v0.9.4) (2020-02-11)
+
+### Bug Fixes
+
+- move focus-visible to deps ([d079e43](https://github.com/marozzocom/marozzo-ui/commit/d079e43691633c2e78786fb5d748778df6638f63))
+
 ### [0.9.3](https://github.com/marozzocom/marozzo-ui/compare/v0.9.2...v0.9.3) (2020-02-11)
 
 ### Bug Fixes

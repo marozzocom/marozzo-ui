@@ -25,5 +25,5 @@ export const defaultTheme = {
 }
 
 export interface ITheme {
-  colors?: Partial<typeof colors>
+  colors?: Partial<typeof defaultTheme.colors>
 }

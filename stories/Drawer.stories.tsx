@@ -16,12 +16,6 @@ const buttonStyle: CSSObject = {
   zIndex: 1
 }
 
-export const _DrawerRaw = () => (
-  <Drawer.Container>
-    <Text>Drawer</Text>
-  </Drawer.Container>
-)
-
 export const DrawerContainer = () => {
   const [open, setOpen] = useState(false)
   return (

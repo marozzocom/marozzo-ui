@@ -113,7 +113,7 @@ export const Button: FC<Props> = ({
             color: colors.text,
             ...(disabled && { pointerEvents: "none" }),
             "&::after": {
-              content: '""',
+              content: `""`,
               display: "block",
               background: Color(colors.effect)
                 .alpha(0.1)

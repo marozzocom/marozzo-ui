@@ -149,17 +149,17 @@ export const defaultTheme = {
 }
 
 export interface ITheme {
-  sizes?: Partial<typeof sizes>
-  fonts?: Partial<typeof fonts>
-  fontSizes?: Partial<typeof fontSizes>
-  fontWeights?: Partial<typeof fontWeights>
-  colors?: Partial<typeof colors>
-  radii?: Partial<typeof radii>
-  shadows?: Partial<typeof shadows>
-  transitions?: Partial<typeof transitions>
-  gradients?: Partial<typeof gradients>
-  breakpoints?: Partial<typeof breakpoints>
-  motionProps?: Partial<typeof motionProps>
-  zIndices?: Partial<typeof zIndices>
-  timings?: Partial<typeof timings>
+  sizes?: Partial<typeof defaultTheme.sizes>
+  fonts?: Partial<typeof defaultTheme.fonts>
+  fontSizes?: Partial<typeof defaultTheme.fontSizes>
+  fontWeights?: Partial<typeof defaultTheme.fontWeights>
+  colors?: Partial<typeof defaultTheme.colors>
+  radii?: Partial<typeof defaultTheme.radii>
+  shadows?: Partial<typeof defaultTheme.shadows>
+  transitions?: Partial<typeof defaultTheme.transitions>
+  gradients?: Partial<typeof defaultTheme.gradients>
+  breakpoints?: Partial<typeof defaultTheme.breakpoints>
+  motionProps?: Partial<typeof defaultTheme.motionProps>
+  zIndices?: Partial<typeof defaultTheme.zIndices>
+  timings?: Partial<typeof defaultTheme.timings>
 }

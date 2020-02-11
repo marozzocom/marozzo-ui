@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.7](https://github.com/marozzocom/marozzo-ui/compare/v0.9.6...v0.9.7) (2020-02-11)
+
+### Bug Fixes
+
+- **fix toater hook:** fix toaster hook ([fb32eda](https://github.com/marozzocom/marozzo-ui/commit/fb32eda56cd370351a451768642d648e67f2accb))
+
 ### [0.9.6](https://github.com/marozzocom/marozzo-ui/compare/v0.9.5...v0.9.6) (2020-02-11)
 
 ### Bug Fixes

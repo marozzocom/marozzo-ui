@@ -1,13 +1,8 @@
 import { useContext } from "react"
-import { Toasts, ToastItem } from "./models"
-import { dissociate } from "../_common/helpers"
 import { ToastContext } from "./ToastProvider"
 
 export const useToast = () => {
-  const { toasts, setToasts } = useContext(ToastContext)
-  const add = ({ title, message, duration }: ToastItem, id = Date.now().toString()) =>
-    setToasts((currentToasts: Toasts) => ({ ...currentToasts, [id]: { title, message, duration } }))
-  const remove = (id: string) => setToasts((currentToasts: Toasts) => ({ ...dissociate(id)(currentToasts) }))
+  const { toasts, add, remove } = useContext(ToastContext)
 
   return { toasts, add, remove }
 }

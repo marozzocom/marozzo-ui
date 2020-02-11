@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/marozzocom/marozzo-ui/compare/v0.8.1...v0.9.0) (2020-02-11)
+
+### ⚠ BREAKING CHANGES
+
+- **variants:** variants no longer used
+
+### Features
+
+- syntax update ([fa570c6](https://github.com/marozzocom/marozzo-ui/commit/fa570c6b1a1170ee7cfddeac003fd575ac11b809))
+- **add modal component:** gebneric modal component ([7420158](https://github.com/marozzocom/marozzo-ui/commit/7420158975170fcf10db09865e4928ebdcc01716))
+- **variants:** remove variants api ([04f69a7](https://github.com/marozzocom/marozzo-ui/commit/04f69a7d4ef1a8d91cbb3d0fff050f407e544792))
+
 ### [0.8.1](https://github.com/marozzocom/marozzo-ui/compare/v0.8.0...v0.8.1) (2020-02-07)
 
 ### Features

@@ -74,7 +74,7 @@ export const Ripple: FC<Props> = ({ clickX, clickY, dismounting, id }) => {
           bottom: 0,
           right: 0,
           "&::after": {
-            content: '""',
+            content: `""`,
             background: Color(colors.effect)
               .alpha(0.15)
               .toString(),

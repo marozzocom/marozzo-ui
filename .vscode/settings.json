@@ -8,5 +8,12 @@
   "prettier.semi": false,
   "prettier.jsxBracketSameLine": true,
   "javascript.format.semicolons": "remove",
-  "typescript.format.semicolons": "remove"
+  "typescript.format.semicolons": "remove",
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#325a94",
+    "titleBar.inactiveBackground": "#325a9499",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#325a94"
 }

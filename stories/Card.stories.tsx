@@ -1,24 +1,24 @@
 import React from "react"
-import { Card } from "../src/card/Card"
+import { Card as CardComponent } from "../src/card/Card"
 import { useTheme } from "../src/theme/useTheme"
 
 export default {
-  component: Card,
+  component: CardComponent,
   title: "Card"
 }
 
-export const card = () => {
+export const Card = () => {
   const {
     theme: { colors }
   } = useTheme()
 
   // TODO: Why the following styling?
   return (
-    <Card
+    <CardComponent
       style={{
         background: colors.secondary
       }}>
       Card
-    </Card>
+    </CardComponent>
   )
 }

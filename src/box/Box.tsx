@@ -9,13 +9,13 @@ interface BoxProps<T> {
   as?: React.ElementType
   style?: CSSObject | CSSObject[]
   innerRef?: React.MutableRefObject<T>
-  variant?: CSSObject
 }
 
 interface Props<T = HTMLElement> extends BoxProps<T>, Omit<React.AllHTMLAttributes<T>, keyof BoxProps<T> | "type" | "value"> {}
 
-export const Box: FC<Props<HTMLElement>> = ({ as = "div", style, variant, children, innerRef, ...props }) => {
+export const Box: FC<Props<HTMLElement>> = ({ as = "div", style, children, innerRef, ...props }) => {
   const Tag: any = `${as}`
+
   const { breakpoints } = useTheme()
 
   return (
@@ -31,7 +31,6 @@ export const Box: FC<Props<HTMLElement>> = ({ as = "div", style, variant, childr
           minWidth: 0,
           pointerEvents: "all"
         },
-        variant,
         ensureArray(style)
       ])}
       {...props}>

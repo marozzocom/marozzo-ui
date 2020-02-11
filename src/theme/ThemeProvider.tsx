@@ -1,15 +1,15 @@
-import React, { FC, createContext, useMemo, useCallback, useState, useEffect } from "react"
+import React, { FC, createContext, useMemo, useState, useEffect } from "react"
 import { Global, CSSObject } from "@emotion/core"
-import { defaultTheme } from "./DefaultTheme"
+import { defaultTheme, ITheme } from "./DefaultTheme"
 import { global as globals } from "./global"
-import { useFocusVisible } from "../_common/useFocusVisible"
+import { focusVisible } from "../_common/focusVisible"
 import { Theme } from "./Theme"
 import merge from "deepmerge"
 import { ColorMode } from "./models"
 
 interface Props {
   baseTheme?: typeof defaultTheme
-  theme?: Theme
+  theme?: ITheme
   global?: CSSObject
   colorMode?: ColorMode
   alternateTheme?: Theme
@@ -17,12 +17,14 @@ interface Props {
 }
 
 interface ThemeContextValue {
-  mergedTheme: Record<string, any>
+  mergedTheme: ITheme
   colorMode?: ColorMode
   setColorMode?: React.Dispatch<React.SetStateAction<ColorMode>>
 }
 
-const ThemeContext = createContext<ThemeContextValue>(null)
+const ThemeContext = createContext<ThemeContextValue>({
+  mergedTheme: defaultTheme
+})
 
 const focusVisibleStyles: CSSObject = {
   ".js-focus-visible :focus:not([data-focus-visible-added])": {
@@ -41,8 +43,13 @@ const ThemeProvider: FC<Props> = ({
 }) => {
   const [colorMode, setColorMode] = useState<ColorMode>("normal")
 
-  focusVisiblePolyfill && useFocusVisible()
-  const mergedTheme = useMemo(() => merge.all([baseTheme, theme, colorMode === "alternate" && alternateTheme]), [theme, colorMode, alternateTheme])
+  focusVisiblePolyfill && focusVisible()
+  const mergedTheme: ITheme = useMemo(() => merge.all([baseTheme, theme, colorMode === "alternate" && alternateTheme]), [
+    baseTheme,
+    theme,
+    colorMode,
+    alternateTheme
+  ])
 
   useEffect(() => setColorMode(localStorage.getItem("colorMode") as ColorMode), [])
 

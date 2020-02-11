@@ -1,6 +1,4 @@
-import { Theme } from "./Theme"
-
-export class DefaultTheme implements Theme {
+export class DefaultTheme {
   private static instance: DefaultTheme
 
   static getInstance() {
@@ -54,7 +52,8 @@ export class DefaultTheme implements Theme {
     overlay: "rgba(0, 0, 0, 0.25)",
     active: "#77daff",
     highlight: "#fff",
-    shadow: "#000"
+    shadow: "#000",
+    effect: "#000"
   }
 
   motionProps = {
@@ -99,6 +98,10 @@ export class DefaultTheme implements Theme {
     }
   }
 
+  timings = {
+    default: "300ms"
+  }
+
   zIndices = {
     hide: -1,
     auto: "auto",
@@ -124,7 +127,9 @@ const {
   transitions,
   gradients,
   breakpoints,
-  motionProps: motionPropss
+  motionProps,
+  zIndices,
+  timings
 } = DefaultTheme.getInstance()
 
 export const defaultTheme = {
@@ -138,5 +143,23 @@ export const defaultTheme = {
   transitions,
   gradients,
   breakpoints,
-  motionPropss
+  motionProps,
+  zIndices,
+  timings
+}
+
+export interface ITheme {
+  sizes?: Partial<typeof sizes>
+  fonts?: Partial<typeof fonts>
+  fontSizes?: Partial<typeof fontSizes>
+  fontWeights?: Partial<typeof fontWeights>
+  colors?: Partial<typeof colors>
+  radii?: Partial<typeof radii>
+  shadows?: Partial<typeof shadows>
+  transitions?: Partial<typeof transitions>
+  gradients?: Partial<typeof gradients>
+  breakpoints?: Partial<typeof breakpoints>
+  motionProps?: Partial<typeof motionProps>
+  zIndices?: Partial<typeof zIndices>
+  timings?: Partial<typeof timings>
 }

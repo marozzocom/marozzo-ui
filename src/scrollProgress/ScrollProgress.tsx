@@ -1,4 +1,4 @@
-import React, { FC, ComponentProps, useMemo } from "react"
+import React, { FC, ComponentProps } from "react"
 import { Progress } from "../progress/Progress"
 import { Box } from "../box/Box"
 import { useScrollProgress } from "./useScrollProgress"

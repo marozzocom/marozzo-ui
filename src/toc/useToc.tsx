@@ -41,7 +41,7 @@ const useToc = () => {
       emitter.off(events.addTocItem, addTocItem)
       emitter.off(events.activateTocItem, activateTocItem)
     }
-  }, [])
+  }, [addTocItem])
   return { toc, clearToc }
 }
 

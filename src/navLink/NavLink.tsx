@@ -3,7 +3,6 @@ import { Link } from "../link/Link"
 import { CSSObject } from "@emotion/core"
 import { useTheme } from "../theme"
 import { ensureArray } from "../_common/helpers"
-import { useVariants } from "../variants/useVariants"
 
 interface Props extends ComponentProps<typeof Link> {
   selected?: boolean
@@ -20,8 +19,6 @@ export const NavLink: FC<Props> = ({ style, children, selected, selectedStyle, .
     theme: { colors, shadows }
   } = useTheme()
 
-  const { textStyles } = useVariants()
-
   const selectedStylesWithDefault = {
     color: colors.primary,
     ...selectedStyle
@@ -29,7 +26,6 @@ export const NavLink: FC<Props> = ({ style, children, selected, selectedStyle, .
 
   return (
     <Link
-      variant={textStyles.actionNormal}
       style={[
         {
           color: colors.text,

@@ -26,48 +26,44 @@ let timer: number
 const container = document.scrollingElement
 
 export const useScrollProgress = () => {
-  try {
-    const [progress, setProgress] = useState(0)
-    const [showProgress, setShowProgress] = useState(false)
-    const [target, setTarget] = useState<HTMLElement>()
+  const [progress, setProgress] = useState(0)
+  const [showProgress, setShowProgress] = useState(false)
+  const [target, setTarget] = useState<HTMLElement>()
 
-    const set = useCallback((args: any) => setTarget(args[0]), [])
+  const set = useCallback((args: any) => setTarget(args[0]), [])
 
-    const update = useCallback(() => {
-      setShowProgress(shouldShowProgress(container)(target))
-      setProgress(scrollPercentage(container)(target))
-    }, [target])
+  const update = useCallback(() => {
+    setShowProgress(shouldShowProgress(container)(target))
+    setProgress(scrollPercentage(container)(target))
+  }, [target])
 
-    const updateProgress = useCallback(() => {
-      if (!target) {
-        return
-      }
-      timer && cancelAnimationFrame(timer)
+  const updateProgress = useCallback(() => {
+    if (!target) {
+      return
+    }
+    timer && cancelAnimationFrame(timer)
 
-      timer = requestAnimationFrame(update)
-    }, [target])
+    timer = requestAnimationFrame(update)
+  }, [target, update])
 
-    const clear = useCallback(() => {
-      emitter.off(events.setScrollProgressTarget, set)
-      emitter.off(events.clearScrollProgressTarget, clear)
-      setTarget(null)
-      removeEventListener("scroll", updateProgress)
-      removeEventListener("resize", updateProgress)
-      clearTimeout(timer)
-    }, [])
+  const clear = useCallback(() => {
+    emitter.off(events.setScrollProgressTarget, set)
+    emitter.off(events.clearScrollProgressTarget, clear)
+    setTarget(null)
+    removeEventListener("scroll", updateProgress)
+    removeEventListener("resize", updateProgress)
+    clearTimeout(timer)
+  }, [set, updateProgress])
 
-    useEffect(() => {
-      emitter.on(events.setScrollProgressTarget, set)
-      emitter.on(events.clearScrollProgressTarget, clear)
-      addEventListener("scroll", updateProgress)
-      addEventListener("resize", updateProgress)
-      return () => {
-        clear()
-      }
-    }, [target])
+  useEffect(() => {
+    emitter.on(events.setScrollProgressTarget, set)
+    emitter.on(events.clearScrollProgressTarget, clear)
+    addEventListener("scroll", updateProgress)
+    addEventListener("resize", updateProgress)
+    return () => {
+      clear()
+    }
+  }, [clear, set, target, updateProgress])
 
-    return { progress, showProgress }
-  } catch (error) {
-    return { progress: null, showProgress: null }
-  }
+  return { progress, showProgress }
 }

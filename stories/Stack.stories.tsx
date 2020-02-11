@@ -7,7 +7,7 @@ export default {
   title: "Stack"
 }
 
-export const stackVertical = () => {
+export const StackVertical = () => {
   const {
     theme: { sizes, colors }
   } = useTheme()
@@ -46,7 +46,7 @@ export const stackVertical = () => {
   )
 }
 
-export const stackHorizontal = () => {
+export const StackHorizontal = () => {
   const {
     theme: { sizes, colors }
   } = useTheme()
@@ -86,7 +86,7 @@ export const stackHorizontal = () => {
   )
 }
 
-export const stackWithItemStylesAndCustomGap = () => {
+export const StackWithItemStylesAndCustomGap = () => {
   const {
     theme: { sizes, colors }
   } = useTheme()
@@ -130,13 +130,9 @@ export const stackWithItemStylesAndCustomGap = () => {
   )
 }
 
-export const stackTest = () => {
+export const StackTest = () => {
   const {
-    theme: {
-      sizes,
-      colors,
-      variants: { cards }
-    }
+    theme: { sizes, colors }
   } = useTheme()
   return (
     <Stack
@@ -146,13 +142,13 @@ export const stackTest = () => {
         padding: sizes[3],
         background: colors.secondary
       }}>
-      <Card variant={cards.test}>
+      <Card>
         <Text>Stack1</Text>
       </Card>
-      <Card variant={cards.test}>
+      <Card>
         <Text>Stack2</Text>
       </Card>
-      <Card variant={cards.test}>
+      <Card>
         <Text>Stack3</Text>
       </Card>
     </Stack>

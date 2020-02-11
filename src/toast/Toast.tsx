@@ -21,11 +21,14 @@ interface Props extends ToastItem, ComponentProps<typeof Box> {
 export const Toast: FC<Props> = ({ message, closeButtonProps = {}, title, children, id, duration = timings.toast, remove, style, ...props }) => {
   const { theme } = useTheme()
   const { vertical: closeButtonVertical = Vertical.Top, horizontal: closeButtonHorizontal = Horizontal.End, ...otherCloseButtonProps } = closeButtonProps
-  remove &&
-    useEffect(() => {
-      const removeTimer = setTimeout(() => remove(id), duration)
-      return () => clearTimeout(removeTimer)
-    }, [])
+
+  useEffect(() => {
+    if (!remove) {
+      return
+    }
+    const removeTimer = setTimeout(() => remove(id), duration)
+    return () => clearTimeout(removeTimer)
+  }, [duration, id, remove])
 
   return (
     <Surface

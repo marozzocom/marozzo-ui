@@ -19,7 +19,8 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "react-hooks"],
   rules: {
-    indent: ["error", 2, { SwitchCase: 1 }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "no-extra-semi": ["error"],
     semi: ["error", "never"],
     quotes: ["error", "double", { allowTemplateLiterals: true }],
@@ -28,5 +29,13 @@ module.exports = {
     "no-multiple-empty-lines": ["error", { max: 1 }],
     "@typescript-eslint/no-unused-vars": ["error", { args: "none", varsIgnorePattern: "React", ignoreRestSiblings: true }],
     "no-unused-vars": ["error", { args: "none", varsIgnorePattern: "React", ignoreRestSiblings: true }]
-  }
+  },
+  overrides: [
+    {
+      files: ["**/*.tsx"],
+      rules: {
+        "react/prop-types": "off"
+      }
+    }
+  ]
 }

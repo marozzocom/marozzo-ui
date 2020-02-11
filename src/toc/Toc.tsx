@@ -1,4 +1,4 @@
-import React, { FC, useCallback, MouseEvent, useState, useEffect } from "react"
+import React, { FC, MouseEvent } from "react"
 import { Box } from ".."
 import { useToc } from "./useToc"
 import { NavLink } from "../navLink/NavLink"

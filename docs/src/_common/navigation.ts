@@ -10,7 +10,7 @@ export const navigation: NavigationItems = {
   },
   introduction: {
     title: "Introduction",
-    path: `${routes.docs}introduction`
+    path: `${routes.docs}Introduction`
   },
   api: {
     title: "Api",

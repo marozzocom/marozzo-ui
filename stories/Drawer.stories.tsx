@@ -4,7 +4,6 @@ import { Text } from "../src/text/Text"
 import { Button } from "../src/button/Button"
 import { Link } from "../src/link/Link"
 import { CSSObject } from "@emotion/core"
-import { VariantsProvider } from "../src"
 
 export default {
   component: Drawer,
@@ -23,28 +22,25 @@ export const _DrawerRaw = () => (
   </Drawer.Container>
 )
 
-export const drawer = () => {
+export const DrawerContainer = () => {
   const [open, setOpen] = useState(false)
-  // TODO: fix variants
   return (
     <>
-      <VariantsProvider variants={{ test: "value" }}>
-        <Button style={buttonStyle} onClick={() => setOpen(!open)} id="drawer-toggle">
-          toggle
+      <Button style={buttonStyle} onClick={() => setOpen(!open)} id="drawer-toggle">
+        toggle
+      </Button>
+      <Drawer open={open} close={() => setOpen(false)}>
+        <Text>Drawer</Text>
+        <Button primary inverted>
+          Random primary button
         </Button>
-        <Drawer open={open} close={() => setOpen(false)}>
-          <Text>Drawer</Text>
-          <Button primary inverted>
-            Random primary button
-          </Button>
-          <Button>Just a random button</Button>
-        </Drawer>
-      </VariantsProvider>
+        <Button>Just a random button</Button>
+      </Drawer>
     </>
   )
 }
 
-export const drawerWithFocusTrap = () => {
+export const DrawerWithFocusTrap = () => {
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -98,7 +94,7 @@ export const drawerWithFocusTrap = () => {
   )
 }
 
-export const drawerWithoutCloseButton = () => {
+export const DrawerWithoutCloseButton = () => {
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -112,7 +108,7 @@ export const drawerWithoutCloseButton = () => {
   )
 }
 
-export const drawerWithoutOverlayClose = () => {
+export const DrawerWithoutOverlayClose = () => {
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -126,7 +122,7 @@ export const drawerWithoutOverlayClose = () => {
   )
 }
 
-export const modelessDrawer = () => {
+export const ModelessDrawer = () => {
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -140,7 +136,7 @@ export const modelessDrawer = () => {
   )
 }
 
-export const drawerWithCustomOverlay = () => {
+export const DrawerWithCustomOverlay = () => {
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -154,7 +150,7 @@ export const drawerWithCustomOverlay = () => {
   )
 }
 
-export const drawerPositionedFar = () => {
+export const DrawerPositionedFar = () => {
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -175,7 +171,7 @@ export const drawerPositionedFar = () => {
   )
 }
 
-export const drawerWithCustommotionProps = () => {
+export const DrawerWithCustommotionProps = () => {
   const [open, setOpen] = useState(false)
   return (
     <>

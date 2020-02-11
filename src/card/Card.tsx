@@ -1,12 +1,9 @@
 import React, { FC, ComponentProps } from "react"
-import { Transition } from "../transition/Transition"
 import { Box } from "../box/Box"
 import { CardRaw } from "./CardRaw"
 
+// TODO: Fix Card API
+
 export const Card: FC<ComponentProps<typeof Box>> = ({ children, ...props }) => {
-  return (
-    <Transition>
-      <CardRaw {...props}>{children}</CardRaw>
-    </Transition>
-  )
+  return <CardRaw {...props}>{children}</CardRaw>
 }

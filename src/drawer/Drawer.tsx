@@ -5,8 +5,9 @@ import nanoid from "nanoid"
 import { MotionProps } from "framer-motion"
 import { Overlay } from "../overlay/Overlay"
 import { Container } from "./components/Container"
-import { Box, useVariants } from ".."
-import { VariantsProvider } from "../variants"
+import { Box } from "../box/Box"
+
+// TODO: Convert this to a Modal api
 
 interface Props extends ComponentProps<typeof Box> {
   open?: boolean
@@ -47,32 +48,16 @@ const Drawer: FC<Props> & Composition = ({
   }
 
   return (
-    <VariantsProvider
-      variants={{
-        buttons: {
-          default: {
-            borderRadius: "2px",
-            background: "none",
-            color: "#f00"
-          },
-          primary: {
-            borderRadius: "1px",
-            background: "#1a1a1a",
-            color: "#fff"
-          }
-        }
-      }}>
-      <Portal>
-        {modal && open && <Overlay onClick={close} {...overlayProps} />}
-        <Transition motionProps={defaultMotionProps}>
-          {open && (
-            <Container key={key} close={hasCloseButton && close} {...props}>
-              {children}
-            </Container>
-          )}
-        </Transition>
-      </Portal>
-    </VariantsProvider>
+    <Portal>
+      {modal && open && <Overlay onClick={close} {...overlayProps} />}
+      <Transition motionProps={defaultMotionProps}>
+        {open && (
+          <Container key={key} close={hasCloseButton && close} {...props}>
+            {children}
+          </Container>
+        )}
+      </Transition>
+    </Portal>
   )
 }
 

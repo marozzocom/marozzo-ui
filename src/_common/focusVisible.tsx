@@ -6,4 +6,4 @@ import "focus-visible"
  * https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
  * https://github.com/WICG/focus-visible
  */
-export const useFocusVisible = () => {}
+export const focusVisible = () => {}

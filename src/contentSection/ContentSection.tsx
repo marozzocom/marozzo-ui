@@ -12,7 +12,7 @@ export const ContentSection: FC<Props> = ({ id, title, children, ...props }) => 
 
   useEffect(() => {
     addTocItem({ id, title, ref })
-  }, [])
+  }, [id, title])
 
   return (
     <Box as="section" id={id} innerRef={ref} {...props}>

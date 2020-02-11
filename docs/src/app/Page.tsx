@@ -15,11 +15,10 @@ import {
   Transition,
   useToc,
   NavigationItems,
-  useProgress,
-  useMediaQuery,
-  useVariants
+  useProgress
+  // useMediaQuery
 } from "@marozzocom/marozzo-ui"
-import { scrollTop } from "../_common/helpers"
+import { scrollTop, getRef } from "../_common/helpers"
 import { MotionProps } from "framer-motion"
 
 const menuMotionProps: MotionProps = {
@@ -34,17 +33,15 @@ const menuMotionProps: MotionProps = {
 
 const Page: FC<{}> = () => {
   const {
-    theme: { breakpoints, sizes }
+    theme: { sizes }
   } = useTheme()
 
-  const { surfaces } = useVariants()
-
-  const activeBreakpoints = useMediaQuery()
+  // const activeBreakpoints = useMediaQuery()
 
   const [menuOpen, setMenuOpen] = useState(false)
   const [showContent, setShowContent] = useState(true)
 
-  const { start, stop } = useProgress()
+  // const { start, stop } = useProgress() // TODO: Fix this
 
   const { name } = useParams()
   const [content, setContent] = useState<string>()
@@ -52,36 +49,55 @@ const Page: FC<{}> = () => {
   const [navigationItems, setNavigationItems] = useState<NavigationItems>({})
   const { toc, clearToc } = useToc()
 
-  const getNavigationWithTOC = () => ({ ...navigation, [name]: { ...navigation[name], selected: true, subItems: toc } })
+  const getNavigationWithTOC = useCallback(() => ({ ...navigation, [name]: { ...navigation[name], selected: true, subItems: toc } }), [name, toc])
 
-  const updateNavigationItems = () => setNavigationItems(getNavigationWithTOC())
-
-  const load = async (name: string) => {
-    start("pageLoad")
-    const page = await import(`../pages/${name}.md`)
-    stop("pageLoad")
-    scrollTop()
-    setNextContent(page.default)
-    scrollIntoView(getSectionFromHash())(-sizes["topBar"])
-  }
+  const updateNavigationItems = useCallback(() => setNavigationItems(getNavigationWithTOC()), [getNavigationWithTOC])
 
   const remove = useCallback(() => {
     clearToc()
     setShowContent(false)
-  }, [])
-
-  useEffect(() => {
-    load(name)
-  }, [])
+  }, [clearToc])
 
   useEffect(() => {
     updateNavigationItems()
-  }, [toc])
+  }, [toc, updateNavigationItems])
+
+  // useEffect(() => {
+  //   (async () => {
+  //     const load = async (name: string) => {
+  //       start("pageLoad")
+  //       // const page = await import(`../pages/${name}.md`)
+  //       const ref = await getRef()
+  //       const response = await fetch(`https://marozzoui.cdn.prismic.io/api/v2/documents/search?ref=${ref}&q=[[at(my.page.title,%22${name}%22)]]`)
+  //       const json = await response.json()
+  //       stop("pageLoad")
+  //       scrollTop()
+  //       setNextContent(json.results[0].data.content)
+  //       scrollIntoView(getSectionFromHash())(-sizes["topBar"])
+  //     }
+
+  //     remove()
+  //     load(name)
+  //   })()
+  // }, [name, remove, sizes, start, stop])
 
   useEffect(() => {
     remove()
-    load(name)
-  }, [name])
+    ;(async () => {
+      // start("pageLoad")
+      // const page = await import(`../pages/${name}.md`)
+      const ref = await getRef()
+      const response = await fetch(`https://marozzoui.cdn.prismic.io/api/v2/documents/search?ref=${ref}&q=[[at(my.page.title,%22${name}%22)]]`)
+      if (response.status !== 200) {
+        return // TODO: handle correctly
+      }
+      const json = await response.json()
+      // stop("pageLoad")
+      scrollTop()
+      setNextContent(json.results[0].data.content)
+      scrollIntoView(getSectionFromHash())(-sizes["topBar"])
+    })()
+  }, [name, remove, sizes])
 
   useEffect(() => {
     const animationDelayTimer = setTimeout(() => {
@@ -90,7 +106,7 @@ const Page: FC<{}> = () => {
       updateNavigationItems()
     }, (menuMotionProps as any).transition.duration * 1000)
     return () => clearTimeout(animationDelayTimer)
-  }, [nextContent])
+  }, [nextContent, updateNavigationItems])
 
   const contentMotionProps = useMemo(
     () => ({
@@ -102,7 +118,7 @@ const Page: FC<{}> = () => {
         duration: 0.2
       }
     }),
-    []
+    [sizes]
   )
 
   // const closeDrawer = useCallback(() => setMenuOpen(false), [])
@@ -129,8 +145,7 @@ const Page: FC<{}> = () => {
           paddingLeft: sizes[2],
           paddingRight: sizes[1],
           zIndex: 1
-        }}
-        variant={surfaces.drawer}>
+        }}>
         <Box>
           <Navigation id="navigation" items={navigationItems} />
           {/* <Transition motionProps={menuMotionProps}>
@@ -160,7 +175,7 @@ const PageContent: FC<{ content: string; id: string }> = React.memo(({ content, 
     return () => {
       clear()
     }
-  }, [contentRef.current])
+  }, [clear, set])
 
   return (
     <Box
@@ -178,3 +193,5 @@ const PageContent: FC<{ content: string; id: string }> = React.memo(({ content, 
     </Box>
   )
 })
+
+PageContent.displayName = "Page Content"

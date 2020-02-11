@@ -20,7 +20,7 @@ const ParallaxProvider: FC<{}> = ({ children }) => {
     if (!source) return
     // observer.disconnect()
     observer.observe(source)
-  }, [source])
+  }, [observer, source])
 
   // TODO: Do we need a way to clean up the observer?
 

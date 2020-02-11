@@ -1,4 +1,4 @@
-import React, { FC, createContext, useCallback, useMemo, useEffect } from "react"
+import React, { FC, createContext, useCallback, useMemo } from "react"
 import EventEmitter from "eventemitter3"
 import { events } from "../_common/constants"
 
@@ -16,8 +16,8 @@ const emitter = new EventEmitter()
 const TocProvider: FC<{}> = ({ children }) => {
   const activate = useCallback((entries: IntersectionObserverEntry[]) => emitter.emit("activateTocItem", getTargetFromIntersectionEntries(entries)), []) // setActiveElement(getTargetFromIntersectionEntries(entries)), [])
 
-  const observer = useMemo(() => new IntersectionObserver(activate, { threshold: 0.1 }), [])
-  const observe = useCallback((element: HTMLHeadElement) => observer.observe(element), [])
+  const observer = useMemo(() => new IntersectionObserver(activate, { threshold: 0.1 }), [activate])
+  const observe = useCallback((element: HTMLHeadElement) => observer.observe(element), [observer])
 
   // Note: I expect intersectionobserver to clean up after itself automatically
   emitter.on(events.addTocItem, ({ ref }) => observe(ref.current))

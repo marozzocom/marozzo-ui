@@ -11,7 +11,7 @@ export const ScrollProgressContainer: FC<ComponentProps<typeof Box>> = ({ childr
     return () => {
       clear()
     }
-  }, [ref.current])
+  }, [clear, ref, set])
 
   return (
     <Box innerRef={ref} {...props}>

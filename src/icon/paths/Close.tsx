@@ -1,6 +1,6 @@
 import React from "react"
 
-export default () => (
+const Path = () => (
   <>
     <defs>
       <style>{`.cls-1{fill:url(#linear-gradient);}`}</style>
@@ -15,3 +15,4 @@ export default () => (
     />
   </>
 )
+export default Path

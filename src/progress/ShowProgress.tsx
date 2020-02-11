@@ -11,7 +11,7 @@ export const ShowProgress: FC<{}> = () => {
     return () => {
       stop(id)
     }
-  }, [])
+  }, [start, stop])
 
   return null
 }

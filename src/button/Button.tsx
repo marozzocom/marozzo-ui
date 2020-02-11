@@ -1,12 +1,12 @@
 import { Box } from "../box/Box"
-import React, { FC, ComponentProps, useState, useRef, MutableRefObject, createContext, useMemo, useCallback } from "react"
+import React, { FC, ComponentProps, useState, useRef, MutableRefObject, createContext, useCallback, useLayoutEffect, Children } from "react"
 import { useTheme } from "../theme/useTheme"
 import { ensureArray, dissociate } from "../_common/helpers"
-import { useVariants } from "../variants"
 import { Ripples } from "./components/Ripples"
 import { Ripples as RipplesType } from "./models/ripples"
 import Color from "color"
 import { CSSObject } from "@emotion/core"
+import { Text } from "../text/Text"
 
 interface Props extends ComponentProps<typeof Box> {
   primary?: boolean
@@ -26,11 +26,11 @@ interface ButtonContext {
   buttonElement: MutableRefObject<HTMLButtonElement>
   rippleDuration: number
   minimumRippleVisibleDuration: number
-  width: number
-  height: number
-  effectColor: string
+  dimensions: Dimensions
   rippleStyles?: CSSObject | CSSObject[]
 }
+
+type Dimensions = { width: number; height: number }
 
 export const Context = createContext<ButtonContext>(null)
 
@@ -48,22 +48,15 @@ export const Button: FC<Props> = ({
   ...props
 }) => {
   const {
-    theme: { sizes, shadows, colors }
+    theme: { sizes, shadows, radii, colors }
   } = useTheme()
   const [ripples, setRipples] = useState<RipplesType>({})
 
   const buttonElement = useRef(null)
 
-  const variants = useVariants()
+  const [dimensions, setDimensions] = useState<Dimensions>()
 
-  const boundingRect = useMemo(() => {
-    if (!buttonElement.current) {
-      return null
-    }
-    return buttonElement.current.getBoundingClientRect()
-  }, [buttonElement.current])
-
-  const effectColor = inverted ? colors.highlight : colors.shadow
+  useLayoutEffect(() => setDimensions(buttonElement.current.getBoundingClientRect()), [])
 
   const addRipple = useCallback((event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     const { x, y } = event.currentTarget.getBoundingClientRect()
@@ -88,8 +81,6 @@ export const Button: FC<Props> = ({
     setRipples(currentRipples => ({ ...dissociate(id)(currentRipples) }))
   }, [])
 
-  const { width, height } = boundingRect ?? { width: 0, height: 0 }
-
   const contextValue = {
     ripples,
     setRipples,
@@ -98,30 +89,33 @@ export const Button: FC<Props> = ({
     buttonElement,
     rippleDuration,
     minimumRippleVisibleDuration,
-    width,
-    height,
-    effectColor,
+    dimensions,
     rippleStyles
   }
+
+  const childrenAsObject = Children.toArray(children).length === 1 && typeof Children.toArray(children)[0] ? <Text as="span">{children}</Text> : { children }
 
   return (
     <Context.Provider value={contextValue}>
       <Box
-        variant={{
-          ...(primary ? variants?.buttons?.primary : variants?.buttons?.default),
-          ...(small ? variants?.textStyles?.actionSmall : variants?.textStyles?.actionNormal)
-        }}
         style={[
           {
             position: "relative",
             border: "none",
+            borderRadius: radii.normal,
+            boxShadow: shadows.subtle,
             overflow: "hidden",
-            padding: `${small ? sizes[0] : sizes[1]} ${small ? sizes[2] : sizes[3]}`,
+            padding: `${sizes[1]} ${sizes[3]}`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: colors.primary,
+            color: colors.text,
             ...(disabled && { pointerEvents: "none" }),
             "&::after": {
               content: '""',
               display: "block",
-              background: Color(effectColor)
+              background: Color(colors.effect)
                 .alpha(0.1)
                 .toString(),
               top: 0,
@@ -152,7 +146,7 @@ export const Button: FC<Props> = ({
         {...props}
         innerRef={buttonElement}>
         {!disableRipples && <Ripples />}
-        <Box>{children}</Box>
+        {childrenAsObject}
       </Box>
     </Context.Provider>
   )

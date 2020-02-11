@@ -4,27 +4,27 @@ export const useFocusTrap = () => {
   const focusTrap = useRef(null)
   const [focusTrapZone, setFocusTrapZone] = useState({ first: undefined, last: undefined })
 
-  const handleTab = (event: KeyboardEvent) => {
-    if (event.key !== "Tab") {
-      return
-    }
-    if (!focusTrap.current.contains(event.target)) {
-      focusTrapZone.first.focus()
-      event.preventDefault()
-    }
-    if (event.target === focusTrapZone.first && event.shiftKey) {
-      focusTrapZone.last.focus()
-      event.preventDefault()
-    }
-    if (event.target === focusTrapZone.last && !event.shiftKey) {
-      focusTrapZone.first.focus()
-      event.preventDefault()
-    }
-  }
-
   useEffect(() => {
     if (!focusTrap.current) {
       return
+    }
+
+    const handleTab = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") {
+        return
+      }
+      if (!focusTrap.current.contains(event.target)) {
+        focusTrapZone.first.focus()
+        event.preventDefault()
+      }
+      if (event.target === focusTrapZone.first && event.shiftKey) {
+        focusTrapZone.last.focus()
+        event.preventDefault()
+      }
+      if (event.target === focusTrapZone.last && !event.shiftKey) {
+        focusTrapZone.first.focus()
+        event.preventDefault()
+      }
     }
 
     const focusableElements = focusTrap.current.querySelectorAll(`button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])`)
@@ -45,7 +45,7 @@ export const useFocusTrap = () => {
     return () => {
       window.removeEventListener("keydown", handleTab)
     }
-  }, [focusTrap.current])
+  }, [focusTrapZone.first, focusTrapZone.last])
 
   return focusTrap
 }

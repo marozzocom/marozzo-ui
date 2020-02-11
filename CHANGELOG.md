@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.5](https://github.com/marozzocom/marozzo-ui/compare/v0.9.4...v0.9.5) (2020-02-11)
+
+### Bug Fixes
+
+- **useprogress:** fix useprogress ([aca5d0f](https://github.com/marozzocom/marozzo-ui/commit/aca5d0f1f50d09c1a400394d8ec39081a8be9cb9))
+
 ### [0.9.4](https://github.com/marozzocom/marozzo-ui/compare/v0.9.3...v0.9.4) (2020-02-11)
 
 ### Bug Fixes

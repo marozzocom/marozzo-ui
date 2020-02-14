@@ -8,5 +8,5 @@ export const useTheme = () => {
   const breakpoints = useMemo(() => facepaint(Object.values(mergedTheme.breakpoints).map((breakpoint: number) => `@media (min-width: ${breakpoint}px)`)), [
     mergedTheme
   ])
-  return { theme: mergedTheme, breakpoints, colorMode, setColorMode }
+  return { theme: mergedTheme as typeof mergedTheme, breakpoints, colorMode, setColorMode }
 }

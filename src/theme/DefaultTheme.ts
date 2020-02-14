@@ -1,3 +1,5 @@
+import { ThemeProperties } from "./Theme"
+
 export class DefaultTheme {
   private static instance: DefaultTheme
 
@@ -148,18 +150,20 @@ export const defaultTheme = {
   timings
 }
 
+// export type ITheme = Partial<DefaultTheme>
+
 export interface ITheme {
-  sizes?: Partial<typeof defaultTheme.sizes>
-  fonts?: Partial<typeof defaultTheme.fonts>
-  fontSizes?: Partial<typeof defaultTheme.fontSizes>
-  fontWeights?: Partial<typeof defaultTheme.fontWeights>
-  colors?: Partial<typeof defaultTheme.colors>
-  radii?: Partial<typeof defaultTheme.radii>
-  shadows?: Partial<typeof defaultTheme.shadows>
-  transitions?: Partial<typeof defaultTheme.transitions>
-  gradients?: Partial<typeof defaultTheme.gradients>
-  breakpoints?: Partial<typeof defaultTheme.breakpoints>
-  motionProps?: Partial<typeof defaultTheme.motionProps>
-  zIndices?: Partial<typeof defaultTheme.zIndices>
-  timings?: Partial<typeof defaultTheme.timings>
+  sizes?: Partial<ThemeProperties & typeof defaultTheme.sizes>
+  fonts?: Partial<ThemeProperties & typeof defaultTheme.fonts>
+  fontSizes?: Partial<ThemeProperties & typeof defaultTheme.fontSizes>
+  fontWeights?: Partial<ThemeProperties & typeof defaultTheme.fontWeights>
+  colors?: Partial<ThemeProperties & typeof defaultTheme.colors>
+  radii?: Partial<ThemeProperties & typeof defaultTheme.radii>
+  shadows?: Partial<ThemeProperties & typeof defaultTheme.shadows>
+  transitions?: Partial<ThemeProperties & typeof defaultTheme.transitions>
+  gradients?: Partial<ThemeProperties & typeof defaultTheme.gradients>
+  breakpoints?: Partial<ThemeProperties & typeof defaultTheme.breakpoints>
+  motionProps?: Partial<ThemeProperties & typeof defaultTheme.motionProps>
+  zIndices?: Partial<ThemeProperties & typeof defaultTheme.zIndices>
+  timings?: Partial<ThemeProperties & typeof defaultTheme.timings>
 }

@@ -1,7 +1,6 @@
-import { Theme } from "@marozzocom/marozzo-ui"
 import { defaultTheme } from "../../../dist/theme/DefaultTheme"
 
-export const docs: Theme = {
+export const docs = {
   sizes: {
     topBar: defaultTheme.sizes[4]
   },

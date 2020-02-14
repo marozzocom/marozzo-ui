@@ -1,7 +1,5 @@
-export { DefaultTheme } from "./DefaultTheme"
-export { defaultTheme } from "./DefaultTheme"
+export { DefaultTheme, defaultTheme, ITheme } from "./DefaultTheme"
 export { global } from "./global"
 export { ThemeProvider } from "./ThemeProvider"
 export { useTheme } from "./useTheme"
-export { Theme } from "./Theme"
 export { useMediaQuery } from "./useMediaQuery"

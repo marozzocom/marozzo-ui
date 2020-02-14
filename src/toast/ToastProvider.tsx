@@ -4,7 +4,7 @@ import { dissociate } from "../_common/helpers"
 
 const ToastContext = createContext<{
   toasts: Toasts
-  add: (item: ToastItem) => void
+  add: (item: ToastItem, id?: string) => void
   remove: (id: string) => void
 }>(null)
 

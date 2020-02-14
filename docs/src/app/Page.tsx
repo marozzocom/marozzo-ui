@@ -14,8 +14,8 @@ import {
   getSectionFromHash,
   Transition,
   useToc,
-  NavigationItems,
-  useProgress
+  NavigationItems
+  // useProgress
   // useMediaQuery
 } from "@marozzocom/marozzo-ui"
 import { scrollTop, getRef } from "../_common/helpers"
@@ -95,7 +95,7 @@ const Page: FC<{}> = () => {
       // stop("pageLoad")
       scrollTop()
       setNextContent(json.results[0].data.content)
-      scrollIntoView(getSectionFromHash())(-sizes["topBar"])
+      scrollIntoView(getSectionFromHash())(-(sizes as any).topBar)
     })()
   }, [name, remove, sizes])
 
@@ -127,7 +127,7 @@ const Page: FC<{}> = () => {
     <Stack
       horizontal
       style={{
-        minHeight: `calc(100vh - ${sizes["topBar"]}px)`
+        minHeight: `calc(100vh - ${sizes.topBar}px)`
       }}>
       <Box
         style={{
@@ -139,7 +139,7 @@ const Page: FC<{}> = () => {
           top: sizes[4],
           bottom: 0,
           alignSelf: "flex-start",
-          maxHeight: `calc(100vh - ${sizes["topBar"]}px)`,
+          maxHeight: `calc(100vh - ${sizes.topBar}px)`,
           overflowY: "auto",
           paddingTop: sizes[1],
           paddingLeft: sizes[2],

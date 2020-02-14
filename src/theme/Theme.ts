@@ -1,10 +1,10 @@
-import { DefaultTheme } from "./DefaultTheme"
+// import { DefaultTheme } from "./DefaultTheme"
 
-export type ThemeProperties = Record<string, any>
+export type ThemeProperties = Record<string | number, any>
 
-export type Theme = typeof DefaultTheme
+// export type Theme = typeof DefaultTheme
 
-// export interface Theme {
+// export interface ITheme {
 //   sizes?: ThemeProperties
 //   fonts?: ThemeProperties
 //   fontSizes?: ThemeProperties

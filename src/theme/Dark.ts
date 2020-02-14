@@ -17,13 +17,3 @@ export class DefaultTheme {
     active: "#77daff"
   }
 }
-
-const { colors } = DefaultTheme.getInstance()
-
-export const defaultTheme = {
-  colors
-}
-
-export interface ITheme {
-  colors?: Partial<typeof defaultTheme.colors>
-}

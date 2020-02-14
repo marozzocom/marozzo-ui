@@ -9,7 +9,7 @@ interface Props extends ComponentProps<typeof Box> {
 
 export const Text: FC<Props> = ({ children, ...props }) => {
   const {
-    theme: { fonts, fontWeights, fontSizes }
+    theme: { fonts, fontWeights, fontSizes, colors }
   } = useTheme()
   return (
     <Box
@@ -17,7 +17,8 @@ export const Text: FC<Props> = ({ children, ...props }) => {
       style={{
         fontFamily: fonts.body,
         fontWeight: fontWeights.normal,
-        fontSize: fontSizes.m
+        fontSize: fontSizes.m,
+        color: colors.text
       }}
       {...props}>
       {children}

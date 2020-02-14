@@ -3,7 +3,6 @@ import { Global, CSSObject } from "@emotion/core"
 import { defaultTheme, ITheme } from "./DefaultTheme"
 import { global as globals } from "./global"
 import { focusVisible } from "../_common/focusVisible"
-import { Theme } from "./Theme"
 import merge from "deepmerge"
 import { ColorMode } from "./models"
 
@@ -12,7 +11,7 @@ interface Props {
   theme?: ITheme
   global?: CSSObject
   colorMode?: ColorMode
-  alternateTheme?: Theme
+  alternateTheme?: ITheme
   focusVisiblePolyfill?: boolean
 }
 
@@ -44,12 +43,7 @@ const ThemeProvider: FC<Props> = ({
   const [colorMode, setColorMode] = useState<ColorMode>("normal")
 
   focusVisiblePolyfill && focusVisible()
-  const mergedTheme: ITheme = useMemo(() => merge.all([baseTheme, theme, colorMode === "alternate" && alternateTheme]), [
-    baseTheme,
-    theme,
-    colorMode,
-    alternateTheme
-  ])
+  const mergedTheme = useMemo(() => merge.all([baseTheme, theme, colorMode === "alternate" && alternateTheme]), [baseTheme, theme, colorMode, alternateTheme])
 
   useEffect(() => setColorMode(localStorage.getItem("colorMode") as ColorMode), [])
 

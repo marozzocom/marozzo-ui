@@ -1,11 +1,10 @@
 import { MutableRefObject } from "react"
 
-export interface NavigationItems {
-  [key: string]: {
-    title: string
-    path?: string
-    selected?: boolean
-    subItems?: NavigationItems
-    ref?: MutableRefObject<HTMLElement>
-  }
+export interface NavigationItem {
+  id: string
+  title: string
+  path?: string
+  selected?: boolean
+  subItems?: NavigationItem[]
+  ref?: MutableRefObject<HTMLElement>
 }

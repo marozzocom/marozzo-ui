@@ -27,12 +27,12 @@ export const Stack: FC<Props> = ({ gap, itemStyle, horizontal = false, reverse =
     theme: { sizes }
   } = useTheme()
 
-  const getGapValue = useCallback(gap => (gap ? (typeof gap === "number" ? (sizes as any)[gap] : gap) : sizes[1]), [sizes])
+  const getGapValue = useCallback(gap => (gap ? (typeof gap === "number" ? (sizes as any)[gap] : gap) : 0), [sizes])
 
   const gapStyle: CSSObject = gap !== "none" && {
     "> *:not(:last-child)": {
       marginRight: horizontal && getGapValue(gap),
-      marginBottom: !horizontal && (gap ?? sizes[2])
+      marginBottom: !horizontal && getGapValue(gap)
     }
   }
 

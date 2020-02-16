@@ -3,6 +3,7 @@ import { Link } from "../link/Link"
 import { CSSObject } from "@emotion/core"
 import { useTheme } from "../theme"
 import { ensureArray } from "../_common/helpers"
+import { useWrapText } from "../_common/useWrapText"
 
 interface Props extends ComponentProps<typeof Link> {
   selected?: boolean
@@ -16,7 +17,7 @@ interface Props extends ComponentProps<typeof Link> {
 
 export const NavLink: FC<Props> = ({ style, children, selected, selectedStyle, ...props }) => {
   const {
-    theme: { colors, shadows }
+    theme: { colors, shadows, fonts, fontWeights, fontSizes }
   } = useTheme()
 
   const selectedStylesWithDefault = {
@@ -24,10 +25,15 @@ export const NavLink: FC<Props> = ({ style, children, selected, selectedStyle, .
     ...selectedStyle
   }
 
+  const childrenAsObject = useWrapText(children)
+
   return (
     <Link
       style={[
         {
+          fontFamily: fonts.action,
+          fontWeight: fontWeights.bold,
+          fontSize: fontSizes.m,
           color: colors.text,
           display: "block",
           "&:hover": {
@@ -43,7 +49,7 @@ export const NavLink: FC<Props> = ({ style, children, selected, selectedStyle, .
       ]}
       tabIndex={0}
       {...props}>
-      {children}
+      {childrenAsObject}
     </Link>
   )
 }

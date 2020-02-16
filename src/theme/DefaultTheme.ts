@@ -101,7 +101,7 @@ export class DefaultTheme {
   }
 
   timings = {
-    default: "300ms"
+    default: 300
   }
 
   zIndices = {

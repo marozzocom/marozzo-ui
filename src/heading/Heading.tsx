@@ -1,4 +1,4 @@
-import React, { FC, ElementType, ComponentProps } from "react"
+import React, { FC, ElementType, ComponentProps, useMemo } from "react"
 import { Text } from "../text/Text"
 import { useTheme } from "../theme/useTheme"
 import { Box } from "../box/Box"
@@ -11,9 +11,39 @@ interface Props extends ComponentProps<typeof Box> {
 }
 
 export const Heading: FC<Props> = ({ level = 2, children, style, ...props }) => {
-  const {
-    theme: { fonts }
-  } = useTheme()
+  const { theme } = useTheme()
+
+  // TODO: Consider offering a way to override these via themeprovider more easily. Maybe provide a variants provider, or typographyprovider?
+  const variants = useMemo(() => {
+    const { fontSizes, fontWeights } = theme
+    return {
+      "1": {
+        fontSize: fontSizes.xxxl,
+        fontWeight: fontWeights.bold
+      },
+      "2": {
+        fontSize: fontSizes.xxl,
+        fontWeight: fontWeights.bold
+      },
+      "3": {
+        fontSize: fontSizes.xl,
+        fontWeight: fontWeights.bold
+      },
+      "4": {
+        fontSize: fontSizes.xl,
+        fontWeight: fontWeights.normal
+      },
+      "5": {
+        fontSize: fontSizes.l,
+        fontWeight: fontWeights.normal
+      },
+      "6": {
+        fontSize: fontSizes.m,
+        fontWeight: fontWeights.normal,
+        fontStyle: "italic"
+      }
+    }
+  }, [theme])
 
   return (
     <Text
@@ -22,8 +52,9 @@ export const Heading: FC<Props> = ({ level = 2, children, style, ...props }) => 
       aria-level={level}
       style={[
         {
-          fontFamily: fonts.heading,
-          margin: 0
+          fontFamily: theme.fonts.heading,
+          margin: 0,
+          ...variants[level]
         },
         ...ensureArray(style)
       ]}

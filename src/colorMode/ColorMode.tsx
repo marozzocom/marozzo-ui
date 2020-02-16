@@ -17,7 +17,6 @@ export const ColorMode: FC<Props> = ({ onToggleColorMode }) => {
 
   const handleToggle = () => {
     const nextColorMode: ColorModeType = colorMode === "normal" ? "alternate" : "normal"
-    console.log("set", nextColorMode)
     setColorMode(nextColorMode)
     onToggleColorMode(nextColorMode)
   }

@@ -1,12 +1,12 @@
 import { Box } from "../box/Box"
-import React, { FC, ComponentProps, useState, useRef, MutableRefObject, createContext, useCallback, useLayoutEffect, Children } from "react"
+import React, { FC, ComponentProps, useState, useRef, MutableRefObject, createContext, useCallback, useLayoutEffect } from "react"
 import { useTheme } from "../theme/useTheme"
 import { ensureArray, dissociate } from "../_common/helpers"
 import { Ripples } from "./components/Ripples"
 import { Ripples as RipplesType } from "./models/ripples"
 import Color from "color"
 import { CSSObject } from "@emotion/core"
-import { Text } from "../text/Text"
+import { useWrapText } from "../_common/useWrapText"
 
 interface Props extends ComponentProps<typeof Box> {
   primary?: boolean
@@ -93,7 +93,7 @@ export const Button: FC<Props> = ({
     rippleStyles
   }
 
-  const childrenAsObject = Children.toArray(children).length === 1 && typeof Children.toArray(children)[0] ? <Text as="span">{children}</Text> : { children }
+  const childrenAsObject = useWrapText(children)
 
   return (
     <Context.Provider value={contextValue}>

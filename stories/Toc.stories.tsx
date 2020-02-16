@@ -9,7 +9,7 @@ export default {
   title: "Toc"
 }
 
-export const tocFromContent = () => {
+export const TocFromContent = () => {
   const {
     theme: { sizes }
   } = useTheme()
@@ -21,7 +21,7 @@ export const tocFromContent = () => {
         bottom: 0,
         left: 0,
         right: 0,
-        overflow: "hidden",
+        overflow: "auto",
         position: "absolute"
       }}>
       <Box

@@ -26,14 +26,14 @@ export const Toc: FC<Props> = () => {
         overflow: "auto",
         maxHeight: "100%"
       }}>
-      {Object.entries(toc).map(([key, { title, selected, ref }], index) => {
+      {toc.map(({ id, selected, title, ref }, index) => {
         const handleSubItemClick = () => {
-          location.hash = `#${key}`
-          scrollIntoView(ref?.current)
+          location.hash = `#${id}`
+          scrollIntoView(ref?.current) // TODO: fix and also use id as hash if possible
         }
 
         return (
-          <NavLink key={key} selected={selected ?? index === 0} onClick={handleSubItemClick}>
+          <NavLink key={id} selected={selected ?? index === 0} onClick={handleSubItemClick}>
             {title}
           </NavLink>
         )

@@ -1,47 +1,81 @@
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback, useEffect, useMemo } from "react"
 import { emitter } from "../_common/Emitter"
 import { events } from "../_common/constants"
-import { NavigationItems } from "../_common/models"
+import { NavigationItem } from "../_common/models"
 
-const getScrollDirectionFromObserverEntry = (entry: IntersectionObserverEntry) => (entry.boundingClientRect.y < 0 ? "down" : "up")
-const getEnteringTarget = (entries: IntersectionObserverEntry[]) => entries.find(entry => entry.isIntersecting)?.target
-const getExitingTarget = (entries: IntersectionObserverEntry[]) =>
-  getScrollDirectionFromObserverEntry(entries[0]) === "down" ? entries[0].target.nextElementSibling : entries[0].target.previousElementSibling
+// TODO: This file needs refactoring and more testing
 
-const getTargetFromIntersectionEntries = (entries: IntersectionObserverEntry[]) => getEnteringTarget(entries) ?? getExitingTarget(entries)
+interface Intersection {
+  id?: string
+  state?: "top" | "bottom"
+}
 
-const activate = (entries: IntersectionObserverEntry[]) => emitter.emit("activateTocItem", getTargetFromIntersectionEntries(entries))
+interface Options {
+  root?: Element | null
+  rootMargin?: string
+  threshold?: number | number[]
+  offsetY?: number
+}
 
-const observer = new IntersectionObserver(activate, { threshold: 0.1 })
-const observe = (element: HTMLElement) => observer.observe(element)
+const useToc = (options: Options = {}) => {
+  const { root, rootMargin, threshold = [0, 1], offsetY = 0 } = options
 
-const useToc = () => {
-  const [toc, setToc] = useState<NavigationItems>({})
+  const getEnteringTarget = useCallback(
+    (entries: IntersectionObserverEntry[]): Intersection => {
+      const entry = entries.filter(entry => entry.isIntersecting)[0]
+      return {
+        state: entry?.boundingClientRect.y < offsetY ? "top" : "bottom",
+        id: entry?.target.getAttribute("data-tocid")
+      }
+    },
+    [offsetY]
+  )
 
-  const addTocItem = useCallback(args => {
-    const { id, title, ref } = args[0]
-    setToc(toc => ({ ...toc, [id]: { title, ref } }))
-    observe(ref.current)
-  }, [])
+  const activate = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const intersection = getEnteringTarget(entries)
+      intersection && emitter.emit("activateTocItem", intersection)
+    },
+    [getEnteringTarget]
+  )
 
-  const clearToc = useCallback(() => setToc({}), [])
+  const observer = useMemo(() => new IntersectionObserver(activate, { root, rootMargin, threshold }), [])
+  const observe = useCallback((element: HTMLElement) => observer.observe(element), [observer])
 
-  const activateTocItem = (args: [Element]) =>
-    setToc(toc =>
-      Object.entries(toc).reduce(
-        (acc, [key, { selected, ref, ...tocItem }]) => ({ ...acc, [key]: { ...tocItem, ref, selected: ref?.current === args[0] } }),
-        {}
-      )
-    )
+  const [toc, setToc] = useState<NavigationItem[]>([])
+
+  const addTocItem = useCallback(
+    args => {
+      const { id, title, ref } = args[0]
+      setToc(toc => [...toc, { id, title, ref }])
+      observe(ref.current)
+    },
+    [observe]
+  )
+
+  const clearToc = useCallback(() => setToc([]), [])
 
   useEffect(() => {
+    const activateTocItem = (args: [Intersection]) => {
+      if (!args[0]) {
+        return
+      }
+      const { state, id } = args[0]
+      const targetIndex = toc.findIndex(item => item.id === id)
+      if (targetIndex < 0) {
+        return
+      }
+      const targetId = state === "bottom" ? toc[targetIndex - 1].id : toc[targetIndex].id
+
+      setToc(toc => toc.map(item => ({ ...item, selected: item.id === targetId })))
+    }
     emitter.on(events.addTocItem, addTocItem)
     emitter.on(events.activateTocItem, activateTocItem)
     return () => {
       emitter.off(events.addTocItem, addTocItem)
       emitter.off(events.activateTocItem, activateTocItem)
     }
-  }, [addTocItem])
+  }, [addTocItem, toc])
   return { toc, clearToc }
 }
 

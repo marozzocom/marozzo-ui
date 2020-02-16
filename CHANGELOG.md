@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.10.0](https://github.com/marozzocom/marozzo-ui/compare/v0.9.25...v0.10.0) (2020-02-16)
+
+### ⚠ BREAKING CHANGES
+
+- **toc, fixes:** Remove sections from markdown and make sure everything works
+
+### Features
+
+- **toc, fixes:** make TOC support (markdown) headings instead of custom sections ([2e122db](https://github.com/marozzocom/marozzo-ui/commit/2e122db2e934276cca4b3afad10fabca1fa72dc0))
+
 ### [0.9.25](https://github.com/marozzocom/marozzo-ui/compare/v0.9.24...v0.9.25) (2020-02-16)
 
 ### [0.9.24](https://github.com/marozzocom/marozzo-ui/compare/v0.9.23...v0.9.24) (2020-02-16)

@@ -10,11 +10,9 @@ import {
   useTheme,
   ScrollProgressContainer,
   scrollProgressEmitter,
-  scrollIntoView,
-  getSectionFromHash,
   Transition,
   useToc,
-  NavigationItems
+  NavigationItem
   // useProgress
   // useMediaQuery
 } from "@marozzocom/marozzo-ui"
@@ -46,7 +44,7 @@ const Page: FC<{}> = () => {
   const { name } = useParams()
   const [content, setContent] = useState<string>()
   const [nextContent, setNextContent] = useState<string>()
-  const [navigationItems, setNavigationItems] = useState<NavigationItems>({})
+  const [navigationItems, setNavigationItems] = useState<NavigationItem[]>([])
   const { toc, clearToc } = useToc()
 
   const getNavigationWithTOC = useCallback(() => ({ ...navigation, [name]: { ...navigation[name], selected: true, subItems: toc } }), [name, toc])
@@ -95,7 +93,8 @@ const Page: FC<{}> = () => {
       // stop("pageLoad")
       scrollTop()
       setNextContent(json.results[0].data.content)
-      scrollIntoView(getSectionFromHash())(-(sizes as any).topBar)
+      // TODO: implement scrolling, see marozzo for example
+      // scrollIntoView(getSectionFromHash())(-(sizes as any).topBar)
     })()
   }, [name, remove, sizes])
 
@@ -179,7 +178,7 @@ const PageContent: FC<{ content: string; id: string }> = React.memo(({ content, 
 
   return (
     <Box
-      innerRef={contentRef}
+      ref={contentRef}
       key={id}
       style={{
         marginTop: sizes[1],

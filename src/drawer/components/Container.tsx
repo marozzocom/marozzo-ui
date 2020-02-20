@@ -22,7 +22,7 @@ export const Container: FC<Props> = ({ children, style, close, ...props }) => {
 
   return (
     <Surface
-      innerRef={focusTrap}
+      ref={focusTrap}
       style={[
         {
           padding: sizes[2],

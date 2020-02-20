@@ -1,4 +1,4 @@
-import React, { FC, ElementType, ComponentProps, useMemo } from "react"
+import React, { ElementType, ComponentProps, useMemo, forwardRef } from "react"
 import { Text } from "../text/Text"
 import { useTheme } from "../theme/useTheme"
 import { Box } from "../box/Box"
@@ -10,7 +10,7 @@ interface Props extends ComponentProps<typeof Box> {
   level?: Level
 }
 
-export const Heading: FC<Props> = ({ level = 2, children, style, ...props }) => {
+export const Heading = forwardRef<Props, any>(({ level = 2, children, style, ...rest }, ref) => {
   const { theme } = useTheme()
 
   // TODO: Consider offering a way to override these via themeprovider more easily. Maybe provide a variants provider, or typographyprovider?
@@ -47,6 +47,7 @@ export const Heading: FC<Props> = ({ level = 2, children, style, ...props }) => 
 
   return (
     <Text
+      ref={ref}
       as={`h${level}` as ElementType}
       role="heading"
       aria-level={level}
@@ -54,12 +55,14 @@ export const Heading: FC<Props> = ({ level = 2, children, style, ...props }) => 
         {
           fontFamily: theme.fonts.heading,
           margin: 0,
-          ...variants[level]
+          ...(variants as any)[level]
         },
         ...ensureArray(style)
       ]}
-      {...props}>
+      {...rest}>
       {children}
     </Text>
   )
-}
+})
+
+Heading.displayName = "Heading"

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, CSSObject } from "@emotion/core"
-import { FC } from "react"
+import { forwardRef } from "react"
 import { useTheme } from "../theme"
 import { ensureArray } from "../_common/helpers"
 
@@ -8,19 +8,18 @@ interface BoxProps<T> {
   target?: string
   as?: React.ElementType
   style?: CSSObject | CSSObject[]
-  innerRef?: React.MutableRefObject<T>
 }
 
 interface Props<T = HTMLElement> extends BoxProps<T>, Omit<React.AllHTMLAttributes<T>, keyof BoxProps<T> | "type" | "value"> {}
 
-export const Box: FC<Props<HTMLElement>> = ({ as = "div", style, children, innerRef, ...props }) => {
+export const Box = forwardRef<Props, any>(({ as = "div", style, children, ...rest }, ref) => {
   const Tag: any = `${as}`
 
   const { breakpoints } = useTheme()
 
   return (
     <Tag
-      ref={innerRef}
+      ref={ref}
       css={breakpoints([
         {
           transitionProperty: "box-shadow, opacity, color, background-color, transform",
@@ -33,8 +32,10 @@ export const Box: FC<Props<HTMLElement>> = ({ as = "div", style, children, inner
         },
         ensureArray(style)
       ])}
-      {...props}>
+      {...rest}>
       {children}
     </Tag>
   )
-}
+})
+
+Box.displayName = "Box"

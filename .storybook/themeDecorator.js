@@ -4,7 +4,7 @@ import { dark } from "../src/theme/Dark"
 import { Box } from "../src/box/Box"
 
 const ThemeDecorator = storyFn => (
-  <ThemeProvider alternateTheme={dark}>
+  <ThemeProvider>
     <App>{storyFn()}</App>
   </ThemeProvider>
 )

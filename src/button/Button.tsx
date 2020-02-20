@@ -142,9 +142,9 @@ export const Button: FC<Props> = ({
         ]}
         disabled={disabled}
         as="button"
-        onMouseDown={event => addRipple(event)}
+        onMouseDown={(event: React.MouseEvent<HTMLElement, MouseEvent>) => addRipple(event)}
         {...props}
-        innerRef={buttonElement}>
+        ref={buttonElement}>
         {!disableRipples && <Ripples />}
         {childrenAsObject}
       </Box>

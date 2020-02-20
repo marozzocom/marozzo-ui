@@ -35,7 +35,7 @@ const focusVisibleStyles: CSSObject = {
 const ThemeProvider: FC<Props> = ({
   baseTheme = defaultTheme,
   theme = defaultTheme,
-  alternateTheme,
+  alternateTheme = {},
   children,
   global = globals,
   focusVisiblePolyfill = true

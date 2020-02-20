@@ -1,5 +1,3 @@
-<Section id="section1" title="Component Style">
-
 # Component Style
 
 ## Overview
@@ -95,21 +93,11 @@ color: ["green", "blue", "pink", "gray"]
 
 would change the color of the element according to the breakpoints. The array supports values imported from a theme.
 
-</Section>
-
-<Section id="section2" title="Pseudo">
-
 # Pseudo elements and classes
 
 </Section>
 
-<Section id="section3" title="Transitions">
-
 # Transitions
-
-</Section>
-
-<Section id="section4" title="How it works">
 
 # How Marozzo UI works
 
@@ -121,10 +109,6 @@ would change the color of the element according to the breakpoints. The array su
 
 ## Suggested logic for creating styles
 
-<Section id="section5" title="Notes">
-
 # Notes
 
 1. Some components, such as Drawer and Card provide an motionProps container (a Transition wrapper) by default. Some components may also provide other logic wrapped in them by default, and in all these cases a _raw_ version of the component is also provided, such as DrawerRaw or CardRaw. These components can be used as is or (if you prefer) imported with a different name such as import { CardRaw as Card } from "@marozzo/ui". By examining the source code you can recreate the logic around these raw components and change it if you need to.
-
-</Section>

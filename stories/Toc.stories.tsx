@@ -36,8 +36,10 @@ export const TocFromContent = () => {
         <Toc />
       </Box>
       <Box>
-        <Markdown>{markdown}</Markdown>
+        <Content />
       </Box>
     </Stack>
   )
 }
+
+const Content = () => <Markdown>{markdown}</Markdown>

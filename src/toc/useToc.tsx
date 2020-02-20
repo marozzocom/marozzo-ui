@@ -39,16 +39,21 @@ const useToc = (options: Options = {}) => {
     [getEnteringTarget]
   )
 
-  const observer = useMemo(() => new IntersectionObserver(activate, { root, rootMargin, threshold }), [])
-  const observe = useCallback((element: HTMLElement) => observer.observe(element), [observer])
+  const observer = useMemo(() => new IntersectionObserver(activate, { root, rootMargin, threshold }), [activate, root, rootMargin, threshold])
+  const observe = useCallback(
+    (element: HTMLElement) => {
+      observer.observe(element)
+    },
+    [observer]
+  )
 
   const [toc, setToc] = useState<NavigationItem[]>([])
 
   const addTocItem = useCallback(
     args => {
-      const { id, title, ref } = args[0]
-      setToc(toc => [...toc, { id, title, ref }])
-      observe(ref.current)
+      const { id, title, node } = args[0]
+      setToc(toc => [...toc, { id, title, node }])
+      observe(node)
     },
     [observe]
   )
@@ -57,18 +62,21 @@ const useToc = (options: Options = {}) => {
 
   useEffect(() => {
     const activateTocItem = (args: [Intersection]) => {
-      if (!args[0]) {
+      // Do nothing if TOC empty or no id emitted
+      if (!args[0].id || toc.length === 0) {
         return
       }
       const { state, id } = args[0]
       const targetIndex = toc.findIndex(item => item.id === id)
-      if (targetIndex < 0) {
+      if (targetIndex === -1) {
+        // Do nothing if no corresponding TOC item found
         return
       }
-      const targetId = state === "bottom" ? toc[targetIndex - 1].id : toc[targetIndex].id
+      const targetId = state === "bottom" ? toc[targetIndex > 0 ? targetIndex - 1 : 0].id : toc[targetIndex].id
 
       setToc(toc => toc.map(item => ({ ...item, selected: item.id === targetId })))
     }
+
     emitter.on(events.addTocItem, addTocItem)
     emitter.on(events.activateTocItem, activateTocItem)
     return () => {

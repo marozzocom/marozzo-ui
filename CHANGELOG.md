@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.11.0](https://github.com/marozzocom/marozzo-ui/compare/v0.10.4...v0.11.0) (2020-02-20)
+
+### ⚠ BREAKING CHANGES
+
+- **refs, scrollprogress:** scrollprogress no longer part of the package, use ref instead of innerRef
+
+### Features
+
+- **refs, scrollprogress:** scrollprogress removed,box now uses forwardref afterall ([b98d621](https://github.com/marozzocom/marozzo-ui/commit/b98d62179027a57607eeeb85fa69047ee48bd3eb))
+
 ### [0.10.4](https://github.com/marozzocom/marozzo-ui/compare/v0.10.3...v0.10.4) (2020-02-20)
 
 ### [0.10.3](https://github.com/marozzocom/marozzo-ui/compare/v0.10.2...v0.10.3) (2020-02-18)

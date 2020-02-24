@@ -55,7 +55,10 @@ export class DefaultTheme {
     active: "#77daff",
     highlight: "#fff",
     shadow: "#000",
-    effect: "#000"
+    effect: "#000",
+    warning: "#ecd23d",
+    error: "#bb1616",
+    ok: "#2a9c2a"
   }
 
   motionProps = {
@@ -90,7 +93,7 @@ export class DefaultTheme {
 
   // TODO: Decide whether to keep these with components, within Theme or somewhere else.
   transitions = {
-    default: {
+    common: {
       initial: { opacity: 0 },
       animate: { opacity: 1 },
       exit: { opacity: 0 },
@@ -101,7 +104,9 @@ export class DefaultTheme {
   }
 
   timings = {
-    default: 300
+    common: 0.3,
+    stagger: 0.1,
+    message: 5
   }
 
   zIndices = {
@@ -149,8 +154,6 @@ export const defaultTheme = {
   zIndices,
   timings
 }
-
-// export type ITheme = Partial<DefaultTheme>
 
 export interface ITheme {
   sizes?: Partial<ThemeProperties & typeof defaultTheme.sizes>

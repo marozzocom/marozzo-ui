@@ -7,7 +7,7 @@ export default {
   title: "Box"
 }
 
-export const box = () => {
+export const BoxContainer = () => {
   const {
     theme: { sizes, colors }
   } = useTheme()

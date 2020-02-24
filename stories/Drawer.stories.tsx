@@ -179,8 +179,7 @@ export const DrawerWithCustommotionProps = () => {
           animate: { opacity: 1, y: 0 },
           exit: { opacity: 0, y: "100%" },
           transition: {
-            type: "spring",
-            duration: 0.3
+            type: "spring"
           }
         }}
         close={() => setOpen(false)}>

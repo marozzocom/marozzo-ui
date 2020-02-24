@@ -18,7 +18,7 @@ const defaultMotionProps: MotionProps = {
   exit: { opacity: -0.5, height: "0", y: "50px" },
   transition: {
     type: "tween",
-    duration: "0.3"
+    duration: 0.3
   }
 }
 

@@ -26,10 +26,10 @@ export const Toc: FC<Props> = () => {
         overflow: "auto",
         maxHeight: "100%"
       }}>
-      {toc.map(({ id, selected, title, ref }, index) => {
+      {toc.map(({ id, selected, title, node }, index) => {
         const handleSubItemClick = () => {
           location.hash = `#${id}`
-          scrollIntoView(ref?.current) // TODO: fix and also use id as hash if possible
+          scrollIntoView(node)
         }
 
         return (

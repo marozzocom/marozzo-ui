@@ -208,7 +208,7 @@ export const ButtonWithCustomStyles = () => {
         }}>
         <Text
           style={{
-            transition: `color ${timings.default}ms`
+            transition: `color ${timings.common}s`
           }}>
           Button
         </Text>

@@ -21,7 +21,7 @@ export const Transition: FC<Props> = ({ motionProps = {}, delayChildren, disable
     theme: { transitions }
   } = useTheme()
 
-  const value = { motionProps: merge(transitions.default, motionProps), delayChildren }
+  const value = { motionProps: merge(transitions.common, motionProps), delayChildren }
 
   // const items = Children.map(children, (child, index) => <Item index={index} key={index}>{child}</Item>)
   const items = Children.toArray(children)

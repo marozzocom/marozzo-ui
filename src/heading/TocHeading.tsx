@@ -12,7 +12,7 @@ import { Heading } from "./Heading"
 
 export const TocHeading: FC<{}> = ({ children, ...rest }) => {
   const id = useMemo(() => nanoid(), [])
-  const [node, setNode] = useState()
+  const [node, setNode] = useState(null)
 
   const tocHeadingRef = useCallback((node: any) => {
     if (node !== null) {
@@ -21,7 +21,7 @@ export const TocHeading: FC<{}> = ({ children, ...rest }) => {
   }, [])
 
   useLayoutEffect(() => {
-    if (!node) {
+    if (!node || !node.textContent) {
       return
     }
     const title = node.textContent

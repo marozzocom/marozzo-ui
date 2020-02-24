@@ -1,29 +1,26 @@
-/** @jsx jsx */
-import { jsx, CSSObject } from "@emotion/core"
+import React from "react"
+import { CSSObject } from "@emotion/core"
+import styled from "@emotion/styled"
 import { forwardRef, useMemo } from "react"
 import { useTheme } from "../theme"
 import { ensureArray } from "../_common/helpers"
-
-// TODO: Possibly merge MotionBox with Box, but consider potential performance problems.
+import { motion, MotionProps } from "framer-motion"
 
 interface BoxProps<T> {
   target?: string
   as?: React.ElementType
   style?: CSSObject | CSSObject[]
+  motionProps?: MotionProps
 }
 
 interface Props<T = HTMLElement> extends BoxProps<T>, Omit<React.AllHTMLAttributes<T>, keyof BoxProps<T> | "type" | "value"> {}
 
-export const Box = forwardRef<Props, any>(({ as = "div", style, children, ...rest }, ref) => {
-  const Tag: any = `${as}`
+export const MotionBox = forwardRef<Props, any>(({ motionProps, as = "div", style, children, ...rest }, ref) => {
   const { breakpoints } = useTheme()
   const styles = useMemo(
     () =>
       breakpoints([
         {
-          transitionProperty: "box-shadow, opacity, color, background-color, transform",
-          transitionDuration: "100ms",
-          transitionTimingFunction: "ease-in-out",
           boxSizing: "border-box",
           position: "relative",
           minWidth: 0,
@@ -34,11 +31,15 @@ export const Box = forwardRef<Props, any>(({ as = "div", style, children, ...res
     [breakpoints, style]
   )
 
+  const MotionComponent = styled((motion as any)[as])`
+    ${styles}
+  `
+
   return (
-    <Tag ref={ref} css={styles} {...rest}>
+    <MotionComponent ref={ref} motionProps={motionProps} {...rest}>
       {children}
-    </Tag>
+    </MotionComponent>
   )
 })
 
-Box.displayName = "Box"
+MotionBox.displayName = "MotionBox"

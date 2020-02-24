@@ -1,5 +1,5 @@
 export const timings = {
-  toast: 5000
+  toast: 5
 }
 
 export const events = {

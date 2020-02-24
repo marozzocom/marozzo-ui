@@ -1,7 +1,7 @@
 import React, { FC, createContext, useMemo, useState, useEffect } from "react"
 import { Global, CSSObject } from "@emotion/core"
 import { defaultTheme, ITheme } from "./DefaultTheme"
-import { global as globals } from "./global"
+import { defaultGlobal } from "./global"
 import { focusVisible } from "../_common/focusVisible"
 import merge from "deepmerge"
 import { ColorMode } from "./models"
@@ -37,19 +37,19 @@ const ThemeProvider: FC<Props> = ({
   theme = defaultTheme,
   alternateTheme = {},
   children,
-  global = globals,
+  global = {},
   focusVisiblePolyfill = true
 }) => {
   const [colorMode, setColorMode] = useState<ColorMode>("normal")
 
   focusVisiblePolyfill && focusVisible()
   const mergedTheme = useMemo(() => merge.all([baseTheme, theme, colorMode === "alternate" && alternateTheme]), [baseTheme, theme, colorMode, alternateTheme])
-
+  const mergedGlobal = useMemo(() => merge.all([defaultGlobal, global]), [global])
   useEffect(() => setColorMode(localStorage.getItem("colorMode") as ColorMode), [])
 
   return (
     <ThemeContext.Provider value={{ mergedTheme, colorMode, setColorMode }}>
-      {global && <Global styles={global} />}
+      {global && <Global styles={mergedGlobal as CSSObject} />}
       {focusVisiblePolyfill && <Global styles={focusVisibleStyles} />}
       {children}
     </ThemeContext.Provider>

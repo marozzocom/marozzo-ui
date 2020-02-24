@@ -4,7 +4,6 @@ import { ToastItem } from "./models"
 import { Text } from "../text/Text"
 import { Close } from "../close/Close"
 import { Heading } from "../heading/Heading"
-import { timings } from "../_common/constants"
 import { Surface } from "../surface/Surface"
 import { Fixture, Vertical, Horizontal, FixtureProps } from "../fixture/Fixture"
 import { useTheme } from "../theme/useTheme"
@@ -18,28 +17,30 @@ interface Props extends ToastItem, ComponentProps<typeof Box> {
   remove?: (id: string) => void
 }
 
-export const Toast: FC<Props> = ({ message, closeButtonProps = {}, title, children, id, duration = timings.toast, remove, style, ...props }) => {
-  const { theme } = useTheme()
+export const Toast: FC<Props> = ({ message, closeButtonProps = {}, title, children, id, duration, remove, style, ...props }) => {
+  const {
+    theme: { shadows, sizes, timings, radii }
+  } = useTheme()
   const { vertical: closeButtonVertical = Vertical.Top, horizontal: closeButtonHorizontal = Horizontal.End, ...otherCloseButtonProps } = closeButtonProps
 
   useEffect(() => {
     if (!remove) {
       return
     }
-    const removeTimer = setTimeout(() => remove(id), duration)
+    const removeTimer = setTimeout(() => remove(id), duration ?? timings.message)
     return () => clearTimeout(removeTimer)
-  }, [duration, id, remove])
+  }, [duration, id, remove, timings])
 
   return (
     <Surface
       style={[
         {
-          borderRadius: theme.radii.normal,
-          boxShadow: theme.shadows.subtle,
-          margin: theme.sizes[1],
-          padding: theme.sizes[1],
-          width: theme.sizes[7],
-          height: theme.sizes[5],
+          borderRadius: radii.normal,
+          boxShadow: shadows.subtle,
+          margin: sizes[1],
+          padding: sizes[1],
+          width: sizes[7],
+          height: sizes[5],
           flex: "0 0 auto"
         },
         ...ensureArray(style)

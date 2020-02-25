@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.19](https://github.com/marozzocom/marozzo-ui/compare/v0.11.18...v0.11.19) (2020-02-25)
+
+### Features
+
+- **motionbox:** add alternative to Box that supports framer-motion natively ([8ab9d2b](https://github.com/marozzocom/marozzo-ui/commit/8ab9d2bccd66fd7ad5cbf14aa77924da129ce3ea))
+
 ### [0.11.18](https://github.com/marozzocom/marozzo-ui/compare/v0.11.17...v0.11.18) (2020-02-23)
 
 ### [0.11.17](https://github.com/marozzocom/marozzo-ui/compare/v0.11.16...v0.11.17) (2020-02-21)

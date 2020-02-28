@@ -40,10 +40,10 @@
   },
   "homepage": "https://github.com/marozzocom/marozzo-ui#readme",
   "dependencies": {
-    "@emotion/core": "^10.0.27",
+    "@emotion/core": "^10.0.28",
     "@types/color": "^3.0.1",
     "@types/facepaint": "^1.2.1",
-    "@types/react": "^16.9.22",
+    "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
     "color": "^3.1.2",
     "deepmerge": "^4.2.2",
@@ -54,6 +54,7 @@
     "framer-motion": "^1.8.4",
     "markdown-to-jsx": "^6.11.0",
     "nanoid": "^2.1.11",
+    "react": "^16.13.0",
     "react-syntax-highlighter": "^12.2.1",
     "typescript": "^3.8.2"
   },
@@ -62,7 +63,7 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
+    "@babel/core": "^7.8.6",
     "@storybook/addon-actions": "^5.3.14",
     "@storybook/addon-links": "^5.3.14",
     "@storybook/addons": "^5.3.14",
@@ -73,7 +74,7 @@
     "@types/jest-environment-puppeteer": "^4.3.1",
     "@types/markdown-to-jsx": "^6.9.1",
     "@types/nanoid": "^2.1.0",
-    "@types/puppeteer": "^2.0.0",
+    "@types/puppeteer": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
     "babel-loader": "^8.0.6",
@@ -81,7 +82,7 @@
     "cz-conventional-changelog": "^3.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.18.3",
-    "eslint-plugin-react-hooks": "^2.4.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "jest-puppeteer": "^4.4.0",

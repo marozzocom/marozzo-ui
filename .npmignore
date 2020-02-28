@@ -3,3 +3,7 @@ node_modules
 docs
 assets
 src
+storybook-static
+assets
+reports
+logo

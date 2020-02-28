@@ -15,3 +15,5 @@ export const binaryFromBooleans = (...rest: boolean[]) =>
 export const ensureArray = <T>(value: T | Array<T>): Array<T> => (Array.isArray(value) ? value : [value])
 
 export const getContextError = (component: string) => `To use ${component} compound components they must be inside ${component} component or context.`
+
+export const milliseconds = (seconds: number) => seconds * 1000

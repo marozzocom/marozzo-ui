@@ -58,7 +58,9 @@ export class DefaultTheme {
     effect: "#000",
     warning: "#ecd23d",
     error: "#bb1616",
-    ok: "#2a9c2a"
+    ok: "#2a9c2a",
+    action: "#1a1a1a",
+    disabled: "#ccc"
   }
 
   motionProps = {

@@ -7,7 +7,7 @@ import { Heading } from "../heading/Heading"
 import { Surface } from "../surface/Surface"
 import { Fixture, Vertical, Horizontal, FixtureProps } from "../fixture/Fixture"
 import { useTheme } from "../theme/useTheme"
-import { ensureArray } from "../_common/helpers"
+import { ensureArray, milliseconds } from "../_common/helpers"
 
 interface CloseButtonProps extends ComponentProps<typeof Close>, Omit<FixtureProps, "type"> {}
 
@@ -27,7 +27,7 @@ export const Toast: FC<Props> = ({ message, closeButtonProps = {}, title, childr
     if (!remove) {
       return
     }
-    const removeTimer = setTimeout(() => remove(id), duration ?? timings.message)
+    const removeTimer = setTimeout(() => remove(id), milliseconds(duration ?? timings.message))
     return () => clearTimeout(removeTimer)
   }, [duration, id, remove, timings])
 

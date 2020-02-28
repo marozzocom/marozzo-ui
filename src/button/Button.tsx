@@ -41,14 +41,12 @@ export const Button: FC<Props> = ({
   minimumRippleVisibleDuration = 100,
   disabled,
   disableRipples,
-  primary,
-  small,
   style,
   children,
   ...props
 }) => {
   const {
-    theme: { sizes, shadows, radii, colors }
+    theme: { sizes, shadows, radii, colors, fonts, fontSizes, fontWeights }
   } = useTheme()
   const [ripples, setRipples] = useState<RipplesType>({})
 
@@ -100,6 +98,9 @@ export const Button: FC<Props> = ({
       <Box
         style={[
           {
+            fontFamily: fonts.action,
+            fontWeight: fontWeights.bold,
+            fontSize: fontSizes.m,
             position: "relative",
             border: "none",
             borderRadius: radii.normal,
@@ -109,8 +110,8 @@ export const Button: FC<Props> = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: colors.primary,
-            color: colors.text,
+            backgroundColor: disabled ? colors.disabled : colors.primary,
+            color: colors.action,
             ...(disabled && { pointerEvents: "none" }),
             "&::after": {
               content: `""`,

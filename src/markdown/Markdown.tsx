@@ -2,7 +2,6 @@ import React, { FC } from "react"
 import { Text } from "../text/Text"
 import { Heading } from "../heading/Heading"
 import MarkdownToJSX, { MarkdownOptions } from "markdown-to-jsx"
-import { Code } from "../code/Code"
 import { ListItem, List } from "../list"
 import { Image } from "../image/Image"
 import { TocHeading } from "../heading/TocHeading"
@@ -61,9 +60,6 @@ const defaultOptions = {
     },
     img: {
       component: Image
-    },
-    code: {
-      component: Code
     }
   }
 }

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.22](https://github.com/marozzocom/marozzo-ui/compare/v0.11.21...v0.11.22) (2020-02-28)
+
+### Bug Fixes
+
+- **toat, typography:** fix toast timings and some default text styles ([4af8df0](https://github.com/marozzocom/marozzo-ui/commit/4af8df013bc1fcbc2031968058c59cf0cc61df43))
+
 ### [0.11.21](https://github.com/marozzocom/marozzo-ui/compare/v0.11.20...v0.11.21) (2020-02-27)
 
 ### [0.11.20](https://github.com/marozzocom/marozzo-ui/compare/v0.11.19...v0.11.20) (2020-02-27)

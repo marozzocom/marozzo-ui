@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.25](https://github.com/marozzocom/marozzo-ui/compare/v0.11.24...v0.11.25) (2020-02-28)
+
+### Bug Fixes
+
+- remove code from markdown ([ef4ace7](https://github.com/marozzocom/marozzo-ui/commit/ef4ace7d04f45b06e7267ba2a91cea2c4455191e))
+
 ### [0.11.24](https://github.com/marozzocom/marozzo-ui/compare/v0.11.23...v0.11.24) (2020-02-28)
 
 ### [0.11.23](https://github.com/marozzocom/marozzo-ui/compare/v0.11.22...v0.11.23) (2020-02-28)

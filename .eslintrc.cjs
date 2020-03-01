@@ -37,5 +37,15 @@ module.exports = {
         "react/prop-types": "off"
       }
     }
-  ]
+  ],
+  settings: {
+    react: {
+      version: "detect", // React version. "detect" automatically picks the version you have installed.
+    },
+    linkComponents: [
+      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+      "Hyperlink",
+      { name: "Link", linkAttribute: "to" }
+    ]
+  }
 }

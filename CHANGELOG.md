@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.35](https://github.com/marozzocom/marozzo-ui/compare/v0.11.34...v0.11.35) (2020-03-03)
+
+### Features
+
+- emotion options support, prevent custom prop forwarding to dom elements ([269ef53](https://github.com/marozzocom/marozzo-ui/commit/269ef53d0a8fd44debc6ac8c883b244a02827f85))
+
 ### [0.11.34](https://github.com/marozzocom/marozzo-ui/compare/v0.11.33...v0.11.34) (2020-03-03)
 
 ### [0.11.33](https://github.com/marozzocom/marozzo-ui/compare/v0.11.32...v0.11.33) (2020-03-03)

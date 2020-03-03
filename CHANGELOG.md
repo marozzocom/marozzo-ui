@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.33](https://github.com/marozzocom/marozzo-ui/compare/v0.11.32...v0.11.33) (2020-03-03)
+
 ### [0.11.32](https://github.com/marozzocom/marozzo-ui/compare/v0.11.31...v0.11.32) (2020-03-03)
 
 ### [0.11.31](https://github.com/marozzocom/marozzo-ui/compare/v0.11.30...v0.11.31) (2020-03-03)

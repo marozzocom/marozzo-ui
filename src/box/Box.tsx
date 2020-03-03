@@ -3,6 +3,7 @@ import { jsx, CSSObject } from "@emotion/core"
 import { forwardRef, useMemo } from "react"
 import { useTheme } from "../theme"
 import { ensureArray } from "../_common/helpers"
+import isPropValid from "@emotion/is-prop-valid"
 
 // TODO: Possibly merge MotionBox with Box, but consider potential performance problems.
 
@@ -10,6 +11,7 @@ interface BoxProps<T> {
   target?: string
   as?: React.ElementType
   style?: CSSObject | CSSObject[]
+  onClick?: () => void // TODO: unsure about this
 }
 
 interface Props<T = HTMLElement> extends BoxProps<T>, Omit<React.AllHTMLAttributes<T>, keyof BoxProps<T> | "type" | "value"> {}
@@ -17,6 +19,15 @@ interface Props<T = HTMLElement> extends BoxProps<T>, Omit<React.AllHTMLAttribut
 export const Box = forwardRef<Props, any>(({ as = "div", style, children, ...rest }, ref) => {
   const Tag: any = `${as}`
   const { breakpoints } = useTheme()
+
+  // TODO: add typings
+  const htmlAttributes = Object.keys(rest)
+    .filter(key => isPropValid(key))
+    .reduce((obj: any, key) => {
+      obj[key] = rest[key]
+      return obj
+    }, {})
+
   const styles = useMemo(
     () =>
       breakpoints([
@@ -35,7 +46,7 @@ export const Box = forwardRef<Props, any>(({ as = "div", style, children, ...res
   )
 
   return (
-    <Tag ref={ref} css={styles} {...rest}>
+    <Tag ref={ref} css={styles} {...htmlAttributes}>
       {children}
     </Tag>
   )

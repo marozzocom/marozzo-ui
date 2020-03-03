@@ -11,7 +11,7 @@ interface Props extends ComponentProps<typeof Link> {
 }
 
 // TODO: I am not happy about the difference between Link and NavLink, and their behavior with onClick vs to/href.
-// Suggestion: Make Link always simple inline A element, no special click funtionality but with to prop (support for router TBD).
+// Suggestion: Make Link always simple inline A element, no special click functionality but with to prop (support for router TBD).
 // Make NavLink always an A that is block-level.
 // Add Router support to both elements and consider creating a click/keypress handler to NavLink
 

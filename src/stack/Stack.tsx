@@ -4,7 +4,7 @@ import { binaryFromBooleans, ensureArray } from "../_common/helpers"
 import { useTheme } from "../theme"
 import { CSSObject } from "@emotion/core"
 
-type Alignment = "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly" | "baseline" | "stretch"
+type Alignment = "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly" | "baseline" | "stretch"
 
 interface Props extends ComponentProps<typeof Box> {
   horizontal?: boolean

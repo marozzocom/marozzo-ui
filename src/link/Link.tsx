@@ -23,7 +23,7 @@ export const Link: FC<Props> = ({ as = "a", to, newTab, style, children, ...prop
         {
           cursor: "pointer",
           borderRadius: "1px",
-          "&:active, &:visited": {
+          "&:active, &:visited, &:link, &:visited": {
             color: "inherit"
           },
           "&:focus": {

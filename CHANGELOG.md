@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.40](https://github.com/marozzocom/marozzo-ui/compare/v0.11.39...v0.11.40) (2020-03-04)
+
+### Features
+
+- improve motionbox props, fix stack align keys, temporary option to render navlink as div ([95fe655](https://github.com/marozzocom/marozzo-ui/commit/95fe65591fd3a9c05c6da6d1f2ff485227060fcf))
+
 ### [0.11.39](https://github.com/marozzocom/marozzo-ui/compare/v0.11.38...v0.11.39) (2020-03-03)
 
 ### [0.11.38](https://github.com/marozzocom/marozzo-ui/compare/v0.11.37...v0.11.38) (2020-03-03)

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.12.0](https://github.com/marozzocom/marozzo-ui/compare/v0.11.41...v0.12.0) (2020-03-05)
+
+### ⚠ BREAKING CHANGES
+
+- **component set:** Some components removed
+
+### Features
+
+- **component set:** remove components not in scope ([17672e4](https://github.com/marozzocom/marozzo-ui/commit/17672e4a6639e4480d77c4bcb830e01da8b85e12))
+
 ### [0.11.41](https://github.com/marozzocom/marozzo-ui/compare/v0.11.40...v0.11.41) (2020-03-04)
 
 ### [0.11.40](https://github.com/marozzocom/marozzo-ui/compare/v0.11.39...v0.11.40) (2020-03-04)

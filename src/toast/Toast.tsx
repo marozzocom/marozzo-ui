@@ -2,24 +2,22 @@ import React, { FC, useEffect, ComponentProps } from "react"
 import { Box } from "../box/Box"
 import { ToastItem } from "./models"
 import { Text } from "../text/Text"
-import { Close } from "../close/Close"
 import { Heading } from "../heading/Heading"
-import { Surface } from "../surface/Surface"
-import { Fixture, Vertical, Horizontal, FixtureProps } from "../fixture/Fixture"
+import { Fixture, Vertical, Horizontal } from "../fixture/Fixture"
 import { useTheme } from "../theme/useTheme"
 import { ensureArray, milliseconds } from "../_common/helpers"
-
-interface CloseButtonProps extends ComponentProps<typeof Close>, Omit<FixtureProps, "type"> {}
+import { Button } from "../button/Button"
 
 interface Props extends ToastItem, ComponentProps<typeof Box> {
   id?: string
-  closeButtonProps?: CloseButtonProps
   remove?: (id: string) => void
 }
 
+// TODO: Redesign this component, and create a context and composition, think how it should work and so on. Deprecate from this package.
+
 export const Toast: FC<Props> = ({ message, closeButtonProps = {}, title, children, id, duration, remove, style, ...props }) => {
   const {
-    theme: { shadows, sizes, timings, radii }
+    theme: { shadows, sizes, timings, radii, colors }
   } = useTheme()
   const { vertical: closeButtonVertical = Vertical.Top, horizontal: closeButtonHorizontal = Horizontal.End, ...otherCloseButtonProps } = closeButtonProps
 
@@ -32,9 +30,10 @@ export const Toast: FC<Props> = ({ message, closeButtonProps = {}, title, childr
   }, [duration, id, remove, timings])
 
   return (
-    <Surface
+    <Box
       style={[
         {
+          backgroundColor: colors.primary,
           borderRadius: radii.normal,
           boxShadow: shadows.subtle,
           margin: sizes[1],
@@ -49,12 +48,13 @@ export const Toast: FC<Props> = ({ message, closeButtonProps = {}, title, childr
       <Heading level={3}>{title}</Heading>
       <Text>{message}</Text>
       {children}
-
       {remove && id && (
         <Fixture vertical={closeButtonVertical} horizontal={closeButtonHorizontal}>
-          <Close onClick={() => remove(id)} {...otherCloseButtonProps} />
+          <Button onClick={() => remove(id)} style={{ margin: sizes[1] }} {...otherCloseButtonProps}>
+            ✖
+          </Button>
         </Fixture>
       )}
-    </Surface>
+    </Box>
   )
 }

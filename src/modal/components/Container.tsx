@@ -1,9 +1,8 @@
 import React, { FC, ComponentProps } from "react"
-import { Surface } from "../../surface/Surface"
-import { Close } from "../../close/Close"
+import { Box } from "../../box/Box"
+import { Close } from "./Close"
 import { useFocusTrap } from "../../_common/useFocusTrap"
 import { Fixture, Vertical, Horizontal } from "../../fixture/Fixture"
-import { Box } from "../../box/Box"
 import { useEscape } from "../../_common/useEscape"
 import { useTheme } from "../../theme/useTheme"
 import { ensureArray } from "../../_common/helpers"
@@ -21,7 +20,7 @@ export const Container: FC<Props> = ({ children, style, close, ...props }) => {
   useEscape(close)
 
   return (
-    <Surface
+    <Box
       ref={focusTrap}
       style={[
         {
@@ -38,6 +37,6 @@ export const Container: FC<Props> = ({ children, style, close, ...props }) => {
           <Close onClick={close} />
         </Fixture>
       )}
-    </Surface>
+    </Box>
   )
 }

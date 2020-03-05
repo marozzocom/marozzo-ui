@@ -1,5 +1,5 @@
 import React from "react"
-import { Stack, Text, Card, Fixture, CardRaw } from "../src"
+import { Stack, Text, Fixture, Box } from "../src"
 import { useTheme } from "../src/theme/useTheme"
 
 export default {
@@ -17,31 +17,31 @@ export const StackVertical = () => {
         padding: sizes[3],
         background: colors.secondary
       }}>
-      <Card>
+      <Box>
         <Fixture>
           <Text>Stack1</Text>
         </Fixture>
-      </Card>
-      <Card>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack2</Text>
         </Fixture>
-      </Card>
-      <Card>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack3</Text>
         </Fixture>
-      </Card>
-      <Card>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack4</Text>
         </Fixture>
-      </Card>
-      <Card>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack5</Text>
         </Fixture>
-      </Card>
+      </Box>
     </Stack>
   )
 }
@@ -57,31 +57,31 @@ export const StackHorizontal = () => {
         padding: sizes[3],
         background: colors.secondary
       }}>
-      <Card>
+      <Box>
         <Fixture>
           <Text>Stack1</Text>
         </Fixture>
-      </Card>
-      <Card>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack2</Text>
         </Fixture>
-      </Card>
-      <Card>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack3</Text>
         </Fixture>
-      </Card>
-      <Card>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack4</Text>
         </Fixture>
-      </Card>
-      <Card>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack5</Text>
         </Fixture>
-      </Card>
+      </Box>
     </Stack>
   )
 }
@@ -101,31 +101,31 @@ export const StackWithItemStylesAndCustomGap = () => {
       itemStyle={{
         border: "3px solid #f00"
       }}>
-      <CardRaw>
+      <Box>
         <Fixture>
           <Text>Stack1</Text>
         </Fixture>
-      </CardRaw>
-      <CardRaw>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack2</Text>
         </Fixture>
-      </CardRaw>
-      <CardRaw>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack3</Text>
         </Fixture>
-      </CardRaw>
-      <CardRaw>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack4</Text>
         </Fixture>
-      </CardRaw>
-      <CardRaw>
+      </Box>
+      <Box>
         <Fixture>
           <Text>Stack5</Text>
         </Fixture>
-      </CardRaw>
+      </Box>
     </Stack>
   )
 }
@@ -142,15 +142,15 @@ export const StackTest = () => {
         padding: sizes[3],
         background: colors.secondary
       }}>
-      <Card>
+      <Box>
         <Text>Stack1</Text>
-      </Card>
-      <Card>
+      </Box>
+      <Box>
         <Text>Stack2</Text>
-      </Card>
-      <Card>
+      </Box>
+      <Box>
         <Text>Stack3</Text>
-      </Card>
+      </Box>
     </Stack>
   )
 }

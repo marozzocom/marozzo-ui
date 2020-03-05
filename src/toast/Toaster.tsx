@@ -1,15 +1,19 @@
-import React, { FC, ComponentProps } from "react"
+import React, { ComponentProps } from "react"
 import { Transition } from "../transition/Transition"
 import { Toast } from "./Toast"
-import { useToast } from "./useToast"
 import { MotionProps } from "framer-motion"
 import { Stack } from "../stack/Stack"
-import { Box } from ".."
 import { ensureArray } from "../_common/helpers"
+import { Toasts } from "./models"
+import { Portal } from "../portal/Portal"
+import { CSSObject } from "@emotion/core"
 
-interface Props extends ComponentProps<typeof Box> {
+interface Props {
   toastProps?: ComponentProps<typeof Toast>
   motionProps?: MotionProps
+  style?: CSSObject | Array<CSSObject>
+  toasts: Toasts
+  remove: (id: string) => void
 }
 
 const defaultMotionProps: MotionProps = {
@@ -22,28 +26,27 @@ const defaultMotionProps: MotionProps = {
   }
 }
 
-export const Toaster: FC<Props> = ({ toastProps, style, motionProps = defaultMotionProps, ...props }) => {
-  const { toasts, remove } = useToast()
-
+export const Toaster = ({ toastProps, style, motionProps = defaultMotionProps, toasts, remove }: Props) => {
   return (
-    <Stack
-      style={[
-        {
-          flexDirection: "column",
-          position: "fixed",
-          right: 0,
-          bottom: 0,
-          left: 0,
-          justifyContent: "flex-end"
-        },
-        ...ensureArray(style)
-      ]}
-      {...props}>
-      <Transition motionProps={motionProps}>
-        {Object.entries(toasts).map(([id, { message, title, duration }]) => (
-          <Toast key={id} id={id} duration={duration} message={message} title={title} remove={remove} {...toastProps} />
-        ))}
-      </Transition>
-    </Stack>
+    <Portal>
+      <Stack
+        style={[
+          {
+            flexDirection: "column",
+            position: "fixed",
+            right: 0,
+            bottom: 0,
+            left: 0,
+            justifyContent: "flex-end"
+          },
+          ...ensureArray(style)
+        ]}>
+        <Transition motionProps={motionProps}>
+          {Object.entries(toasts).map(([id, { message, title, duration }]) => (
+            <Toast key={id} id={id} duration={duration} message={message} title={title} remove={remove} {...toastProps} />
+          ))}
+        </Transition>
+      </Stack>
+    </Portal>
   )
 }

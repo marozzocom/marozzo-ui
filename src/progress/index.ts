@@ -1,4 +1,3 @@
-export { Progress } from "./Progress"
 export { ProgressProvider } from "./ProgressProvider"
 export { Operations } from "./ProgressProvider"
 export { useProgress } from "./useProgress"

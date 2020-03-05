@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { useTheme, Stack, Surface, Box, Heading, NavLink } from "@marozzocom/marozzo-ui"
+import { useTheme, Stack, Box, Heading, NavLink } from "@marozzocom/marozzo-ui"
 
 export const TopBar: FC<{}> = () => {
   const {
@@ -21,7 +21,7 @@ export const TopBar: FC<{}> = () => {
         },
         backgroundColor: colors.background
       }}>
-      <Surface>
+      <Box>
         <Stack
           horizontal
           horizontalAlign="space-between"
@@ -41,7 +41,7 @@ export const TopBar: FC<{}> = () => {
             </NavLink>
           </Stack>
         </Stack>
-      </Surface>
+      </Box>
     </Box>
   )
 }

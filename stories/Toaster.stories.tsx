@@ -7,21 +7,18 @@ import { ToastProvider } from "../src/toast/ToastProvider"
 export const _Toaster = () => (
   <ToastProvider>
     <Controls />
-    <Toaster />
   </ToastProvider>
 )
 
 export const toasterWithCustomToasts = () => (
-  <ToastProvider>
+  <ToastProvider
+    toastProps={{
+      style: {
+        background: "none",
+        border: "5px solid #f00"
+      }
+    }}>
     <Controls />
-    <Toaster
-      toastProps={{
-        style: {
-          backgroundImage: "none",
-          border: "5px solid #f00"
-        }
-      }}
-    />
   </ToastProvider>
 )
 

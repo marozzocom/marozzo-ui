@@ -4,7 +4,7 @@ export const Variants = () => {
   const { theme } = useTheme()
 
   return {
-    surfaces: {
+    boxs: {
       primary: {
         backgroundImage: "none",
         backgroundColor: theme.colors.background
@@ -100,7 +100,7 @@ export const Variants = () => {
 //       boxShadow: this.shadows.subtle
 //     }
 //   },
-//   surfaces: {
+//   boxs: {
 //     primary: {
 //       backgroundImage: this.gradients.primary
 //     },

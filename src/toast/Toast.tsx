@@ -22,7 +22,7 @@ export const Toast: FC<Props> = ({ message, closeButtonProps = {}, title, childr
   const { vertical: closeButtonVertical = Vertical.Top, horizontal: closeButtonHorizontal = Horizontal.End, ...otherCloseButtonProps } = closeButtonProps
 
   useEffect(() => {
-    if (!remove) {
+    if (!remove || duration === 0) {
       return
     }
     const removeTimer = setTimeout(() => remove(id), milliseconds(duration ?? timings.message))

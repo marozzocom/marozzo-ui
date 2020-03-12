@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.13.0](https://github.com/marozzocom/marozzo-ui/compare/v0.12.4...v0.13.0) (2020-03-12)
+
+### ⚠ BREAKING CHANGES
+
+- **form, components:** Markdown and ToC removed
+
+### Features
+
+- **form, components:** add form elements, remove deprecated features ([676d60e](https://github.com/marozzocom/marozzo-ui/commit/676d60ea8791c1da8aa4d0f36b9c7c5d329de7a7))
+- add forms wip ([ae969f2](https://github.com/marozzocom/marozzo-ui/commit/ae969f2d6b56f630cca53ea849e8591689338321))
+- remove progress ([5e48523](https://github.com/marozzocom/marozzo-ui/commit/5e4852361fb057933700359aeb843a6d684d843a))
+
 ### [0.12.4](https://github.com/marozzocom/marozzo-ui/compare/v0.12.3...v0.12.4) (2020-03-08)
 
 ### [0.12.3](https://github.com/marozzocom/marozzo-ui/compare/v0.12.2...v0.12.3) (2020-03-08)

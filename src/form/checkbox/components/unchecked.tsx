@@ -1,7 +1,3 @@
 import React from "react"
 
-const CheckboxUnchecked = props => (
-  <SVG {...props}>
-    <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
-  </SVG>
-)
+export const Unchecked = () => <path d="M77.5,22.5v55h-55v-55h55m0-10h-55a10,10,0,0,0-10,10v55a10,10,0,0,0,10,10h55a10,10,0,0,0,10-10v-55a10,10,0,0,0-10-10Z" />

@@ -1,27 +1,39 @@
-import React, { forwardRef } from "react"
-import { Box } from ".."
+import React, { forwardRef, ComponentProps } from "react"
+import { Box, useTheme } from ".."
+import { ensureArray } from "../_common/helpers"
+import { useVariants } from "../_common/use-variants"
+import { useTypography } from "../_common/use-typography"
 
-export const Input = forwardRef((props, ref) => (
-  <Box
-    ref={ref}
-    as="input"
-    type="text"
-    tx="forms"
-    variant="input"
-    {...props}
-    style={{
-      display: "block",
-      width: "100%",
-      p: 2,
-      appearance: "none",
-      fontSize: "inherit",
-      lineHeight: "inherit",
-      border: "1px solid",
-      borderRadius: "default",
-      color: "inherit",
-      bg: "transparent"
-    }}
-  />
-))
+interface Props extends ComponentProps<typeof Box> {}
+
+export const Input = forwardRef<Props, any>(({ style, ...rest }, ref) => {
+  const { field } = useVariants()
+  const { form } = useTypography()
+  const {
+    theme: { sizes }
+  } = useTheme()
+
+  return (
+    <Box
+      ref={ref}
+      as="input"
+      type="text"
+      style={[
+        {
+          ...field,
+          ...form,
+          display: "block",
+          width: "100%",
+          paddingTop: sizes[1],
+          paddingRight: sizes[2],
+          paddingBottom: sizes[1],
+          paddingLeft: sizes[2]
+        },
+        ...ensureArray(style)
+      ]}
+      {...rest}
+    />
+  )
+})
 
 Input.displayName = "Input"

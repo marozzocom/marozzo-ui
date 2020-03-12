@@ -1,7 +1,3 @@
 import React from "react"
 
-const CheckboxChecked = props => (
-  <SVG {...props}>
-    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-  </SVG>
-)
+export const Checked = () => <rect x="12.5" y="12.5" width="75" height="75" rx="10" />

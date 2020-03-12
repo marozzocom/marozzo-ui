@@ -7,6 +7,7 @@ import { Ripples as RipplesType } from "./models/ripples"
 import Color from "color"
 import { CSSObject } from "@emotion/core"
 import { useWrapText } from "../_common/useWrapText"
+import { useTypography } from "../_common/use-typography"
 
 interface Props extends ComponentProps<typeof Box> {
   primary?: boolean
@@ -46,8 +47,9 @@ export const Button: FC<Props> = ({
   ...props
 }) => {
   const {
-    theme: { sizes, shadows, radii, colors, fonts, fontSizes, fontWeights }
+    theme: { sizes, shadows, radii, colors }
   } = useTheme()
+  const { form } = useTypography()
   const [ripples, setRipples] = useState<RipplesType>({})
 
   const buttonElement = useRef(null)
@@ -98,9 +100,7 @@ export const Button: FC<Props> = ({
       <Box
         style={[
           {
-            fontFamily: fonts.action,
-            fontWeight: fontWeights.bold,
-            fontSize: fontSizes.m,
+            ...form,
             position: "relative",
             border: "none",
             borderRadius: radii.normal,

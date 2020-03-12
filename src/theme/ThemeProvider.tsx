@@ -28,7 +28,7 @@ const ThemeContext = createContext<ThemeContextValue>({
 })
 
 const focusVisibleStyles: CSSObject = {
-  ".js-focus-visible :focus:not([data-focus-visible-added])": {
+  ".js-focus-visible :focus:not([data-focus-visible-added]), .js-focus-visible :focus:not([data-focus-visible-added]) ~ div": {
     outline: "none",
     boxShadow: "none"
   }

@@ -1,60 +1,60 @@
-import React, { forwardRef } from "react"
-import { Box } from ".."
+import React, { forwardRef, ComponentProps } from "react"
+import { Box, useTheme } from ".."
+import { ensureArray } from "../_common/helpers"
+import { useVariants } from "../_common/use-variants"
 
-interface Props {
+interface Props extends ComponentProps<typeof Box> {
   checked: boolean
 }
 
-export const Switch = forwardRef<Props, any>(({ checked, ...props }, ref) => (
-  <Box
-    ref={ref}
-    as="button"
-    type="button"
-    role="switch"
-    tx="forms"
-    variant="switch"
-    aria-checked={checked}
-    {...props}
-    style={{
-      appearance: "none",
-      m: 0,
-      p: 0,
-      width: 40,
-      height: 24,
-      color: "primary",
-      bg: "transparent",
-      border: "1px solid",
-      borderColor: "primary",
-      borderRadius: 9999,
-      "&[aria-checked=true]": {
-        bg: "primary"
-      },
-      ":focus": {
-        outline: "none",
-        boxShadow: "0 0 0 2px"
-      }
-    }}>
+export const Switch = forwardRef<Props, any>(({ style, checked, ...rest }, ref) => {
+  const { field } = useVariants()
+  const {
+    theme: { colors, radii, sizes }
+  } = useTheme()
+
+  return (
     <Box
-      aria-hidden
-      style={{
-        transform: checked ? "translateX(16px)" : "translateX(0)"
-      }}
-      sx={{
-        mt: "-1px",
-        ml: "-1px",
-        width: 24,
-        height: 24,
-        borderRadius: 9999,
-        border: "1px solid",
-        borderColor: "primary",
-        bg: "background",
-        transitionProperty: "transform",
-        transitionTimingFunction: "ease-out",
-        transitionDuration: "0.1s",
-        variant: "forms.switch.thumb"
-      }}
-    />
-  </Box>
-))
+      ref={ref}
+      as="button"
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      style={[
+        {
+          ...field,
+          margin: 0,
+          padding: 0,
+          width: sizes[4] + sizes[2],
+          height: sizes[3] + sizes[2],
+          borderRadius: radii.round,
+          display: "flex",
+          flex: "0 0 auto",
+          justifyContent: "center",
+          alignItems: "center",
+          "&[aria-checked=true]": {
+            background: colors.primary
+          }
+        },
+        ...ensureArray(style)
+      ]}
+      {...rest}>
+      <Box
+        aria-hidden
+        style={{
+          transform: checked ? `translateX(${sizes[2] - sizes[0]}px)` : `translateX(-${sizes[2] - sizes[0]}px)`,
+          width: sizes[3],
+          height: sizes[3],
+          borderRadius: radii.round,
+          borderColor: colors.primary,
+          background: colors.action,
+          transitionProperty: "transform",
+          transitionTimingFunction: "ease-out",
+          transitionDuration: "0.1s"
+        }}
+      />
+    </Box>
+  )
+})
 
 Switch.displayName = "Switch"

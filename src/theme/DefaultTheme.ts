@@ -11,15 +11,16 @@ export class DefaultTheme {
   }
 
   sizes = {
-    "0": 0,
-    "1": 8,
-    "2": 16,
-    "3": 32,
-    "4": 64,
-    "5": 128,
-    "6": 256,
-    "7": 512,
-    "8": 1024
+    "0": 2,
+    "1": 4,
+    "2": 8,
+    "3": 16,
+    "4": 32,
+    "5": 64,
+    "6": 128,
+    "7": 256,
+    "8": 512,
+    "9": 1024
   }
 
   fonts = {
@@ -89,7 +90,8 @@ export class DefaultTheme {
   }
 
   radii = {
-    normal: 10,
+    subtle: this.sizes[0],
+    normal: this.sizes[2],
     round: 2000
   }
 

@@ -22,7 +22,17 @@ const flexDirection: { [index: number]: "column" | "column-reverse" | "row" | "r
   "3": "row-reverse"
 }
 
-export const Stack: FC<Props> = ({ gap, itemStyle, horizontal = false, reverse = false, horizontalAlign, verticalAlign, children, style, ...props }) => {
+export const Stack: FC<Props> = ({
+  gap = "none",
+  itemStyle,
+  horizontal = false,
+  reverse = false,
+  horizontalAlign,
+  verticalAlign,
+  children,
+  style,
+  ...props
+}) => {
   const {
     theme: { sizes }
   } = useTheme()

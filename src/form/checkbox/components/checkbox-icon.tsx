@@ -1,34 +1,47 @@
 import React, { ComponentProps } from "react"
 import { Checked } from "./checked"
 import { Unchecked } from "./unchecked"
-import { Icon, Box } from "../../.."
+import { Box, Icon } from "../../.."
+import { Checkmark } from "./checkmark"
+import { useTheme } from "../../../theme"
 import { ensureArray } from "../../../_common/helpers"
 
 interface Props extends ComponentProps<typeof Box> {}
 
-export const RadioIcon = ({ style, ...rest }: Props) => {
-  // const {
-  //   theme: { colors }
-  // } = useTheme()
+export const CheckboxIcon = ({ style, ...rest }: Props) => {
+  const {
+    theme: { colors }
+  } = useTheme()
 
   return (
     <>
-      <Icon
+      <Box
         style={[
           {
             display: "none",
             "input:checked ~ &": {
-              display: "block"
+              display: "inline-block"
             }
           },
           ensureArray(style)
         ]}>
-        <Checked />
-      </Icon>
+        <Icon>
+          <Checked />
+        </Icon>
+        <Icon
+          style={{
+            color: colors.text,
+            position: "absolute",
+            top: 0,
+            left: 0
+          }}>
+          <Checkmark />
+        </Icon>
+      </Box>
       <Icon
         style={[
           {
-            display: "block",
+            display: "inline-block",
             "input:checked ~ &": {
               display: "none"
             }

@@ -1,20 +1,20 @@
 import React, { forwardRef, ComponentProps } from "react"
-import { Stack, Box, Icon } from "../.."
+import { Stack, Box, Icon } from "../../.."
 import { DownArrow } from "./components/down-arrow"
-import { useTheme } from "../../theme"
-import { ensureArray } from "../../_common/helpers"
-import { useVariants } from "../../_common/use-variants"
-import { useTypography } from "../../_common/use-typography"
-import { Vertical } from "../../fixture/Fixture"
+import { useTheme } from "../../../theme"
+import { ensureArray } from "../../../_common/helpers"
+import { useVariants } from "../../../_common/use-variants"
+import { useTypography } from "../../../_common/use-typography"
+import { Vertical } from "../../../fixture/Fixture"
 
 interface Props extends ComponentProps<typeof Box> {}
 
 export const Select = forwardRef<Props, any>(({ style, ...rest }, ref) => {
-  const { field } = useVariants()
-  const { form } = useTypography()
-  const {
-    theme: { sizes }
-  } = useTheme()
+  const { theme } = useTheme()
+  const { sizes } = theme
+
+  const { field } = useVariants(theme)
+  const { form } = useTypography(theme)
 
   return (
     <Stack horizontal verticalAlign={Vertical.Center}>
@@ -29,13 +29,13 @@ export const Select = forwardRef<Props, any>(({ style, ...rest }, ref) => {
             width: "100%",
             "&:focus-within, &:not:focus": {
               borderBottomLeftRadius: 0,
-              borderBottomRightRadius: 0
+              borderBottomRightRadius: 0,
             },
             "&>option": {
-              ...form
-            }
+              ...form,
+            },
           },
-          ...ensureArray(style)
+          ...ensureArray(style),
         ]}
         {...rest}
       />
@@ -43,7 +43,7 @@ export const Select = forwardRef<Props, any>(({ style, ...rest }, ref) => {
         style={{
           position: "absolute",
           right: sizes[3],
-          pointerEvents: "none"
+          pointerEvents: "none",
         }}>
         <DownArrow />
       </Icon>

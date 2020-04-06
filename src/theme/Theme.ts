@@ -1,6 +1,10 @@
 // import { DefaultTheme } from "./DefaultTheme"
 
-export type ThemeProperties = Record<string | number, any>
+// export type ThemeProperty = Record<string | number, string | ThemeProperty>
+
+type ThemeValue = string | number | Array<string | number>
+
+export type ThemeProperty = { [K in symbol]: ThemeValue | ThemeProperty }
 
 // export type Theme = typeof DefaultTheme
 

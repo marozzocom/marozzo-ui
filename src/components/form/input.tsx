@@ -1,17 +1,20 @@
 import React, { forwardRef, ComponentProps } from "react"
-import { Box, useTheme } from ".."
-import { ensureArray } from "../_common/helpers"
-import { useVariants } from "../_common/use-variants"
-import { useTypography } from "../_common/use-typography"
+import { Box, useTheme } from "../.."
+import { ensureArray } from "../../_common/helpers"
+import { useVariants } from "../../_common/use-variants"
+import { useTypography } from "../../_common/use-typography"
 
 interface Props extends ComponentProps<typeof Box> {}
 
 export const Input = forwardRef<Props, any>(({ style, ...rest }, ref) => {
-  const { field } = useVariants()
-  const { form } = useTypography()
-  const {
-    theme: { sizes }
-  } = useTheme()
+  const { theme } = useTheme()
+  const { sizes } = theme
+
+  const { field } = useVariants(theme)
+  const { form } = useTypography(theme)
+
+  console.log("field", field)
+  console.log("theme", theme)
 
   return (
     <Box
@@ -27,9 +30,9 @@ export const Input = forwardRef<Props, any>(({ style, ...rest }, ref) => {
           paddingTop: sizes[1],
           paddingRight: sizes[2],
           paddingBottom: sizes[1],
-          paddingLeft: sizes[2]
+          paddingLeft: sizes[2],
         },
-        ...ensureArray(style)
+        ...ensureArray(style),
       ]}
       {...rest}
     />

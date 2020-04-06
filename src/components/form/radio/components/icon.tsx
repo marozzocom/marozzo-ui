@@ -1,8 +1,8 @@
 import React, { ComponentProps } from "react"
 import { Checked } from "./checked"
 import { Unchecked } from "./unchecked"
-import { Icon, Box } from "../../.."
-import { ensureArray } from "../../../_common/helpers"
+import { Icon, Box } from "../../../.."
+import { ensureArray } from "../../../../_common/helpers"
 
 interface Props extends ComponentProps<typeof Box> {}
 
@@ -18,10 +18,10 @@ export const RadioIcon = ({ style, ...rest }: Props) => {
           {
             display: "none",
             "input:checked ~ &": {
-              display: "block"
-            }
+              display: "block",
+            },
           },
-          ensureArray(style)
+          ensureArray(style),
         ]}>
         <Checked />
       </Icon>
@@ -30,10 +30,10 @@ export const RadioIcon = ({ style, ...rest }: Props) => {
           {
             display: "block",
             "input:checked ~ &": {
-              display: "none"
-            }
+              display: "none",
+            },
           },
-          ensureArray(style)
+          ensureArray(style),
         ]}>
         <Unchecked />
       </Icon>

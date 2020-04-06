@@ -1,12 +1,12 @@
 import React, { forwardRef, ComponentProps } from "react"
-import { Box, useTheme } from "../.."
-import { RadioIcon } from "./components/icon"
+import { Box, useTheme } from "../../.."
+import { CheckboxIcon } from "./components/checkbox-icon"
 
 interface Props extends ComponentProps<typeof Box> {}
 
-export const Radio = forwardRef<Props, any>(({ style, ...rest }, ref) => {
+export const Checkbox = forwardRef<Props, any>(({ style, ...rest }, ref) => {
   const {
-    theme: { colors, sizes, radii }
+    theme: { colors, sizes },
   } = useTheme()
 
   return (
@@ -14,35 +14,33 @@ export const Radio = forwardRef<Props, any>(({ style, ...rest }, ref) => {
       <Box
         ref={ref}
         as="input"
-        type="radio"
+        type="checkbox"
         style={{
           position: "absolute",
           opacity: 0,
           zIndex: -1,
           width: 1,
           height: 1,
-          overflow: "hidden"
+          overflow: "hidden",
         }}
         {...rest}
       />
-      <RadioIcon
+      <CheckboxIcon
         aria-hidden="true"
         style={{
           marginRight: sizes[1],
-          borderRadius: radii.round,
-          color: colors.primary,
           "input:checked ~ &": {
-            color: colors.primary
+            color: colors.primary,
           },
           "input:focus ~ &": {
             color: colors.primary,
             outline: "none",
-            boxShadow: `0px 0px 2px 3px ${colors.active}`
-          }
+            boxShadow: `0px 0px 2px 3px ${colors.active}`,
+          },
         }}
       />
     </>
   )
 })
 
-Radio.displayName = "Radio"
+Checkbox.displayName = "Checkbox"

@@ -6,7 +6,7 @@ export const useTheme = () => {
   const { mergedTheme, colorMode, setColorMode } = useContext(ThemeContext)
 
   const breakpoints = useMemo(() => facepaint(Object.values(mergedTheme.breakpoints).map((breakpoint: number) => `@media (min-width: ${breakpoint}px)`)), [
-    mergedTheme
+    mergedTheme,
   ])
-  return { theme: mergedTheme as typeof mergedTheme, breakpoints, colorMode, setColorMode }
+  return { theme: mergedTheme, breakpoints, colorMode, setColorMode }
 }

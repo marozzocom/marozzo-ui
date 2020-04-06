@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback, FC, useLayoutEffect, useState } from "react"
 import { addTocItem } from "../toc/tocEmitter"
-import nanoid from "nanoid"
+import { nanoid } from "nanoid"
 import { Heading } from "./Heading"
 
 // TODO: Consider making this a hook instead of separate component

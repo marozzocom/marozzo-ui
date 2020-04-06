@@ -1,13 +1,18 @@
 import React, { forwardRef, ComponentProps } from "react"
-import { Stack, Box } from ".."
-import { ensureArray } from "../_common/helpers"
-import { useTypography } from "../_common/use-typography"
-import { Vertical, Horizontal } from "../fixture/Fixture"
+import { Stack, Box } from "../.."
+import { ensureArray } from "../../_common/helpers"
+import { useTypography } from "../../_common/use-typography"
+import { Vertical, Horizontal } from "../../fixture/Fixture"
+import { useTheme } from "../../theme"
 
 interface Props extends ComponentProps<typeof Box> {}
 
 export const Label = forwardRef<Props, any>(({ style, children, ...rest }, ref) => {
-  const { form } = useTypography()
+  const { theme } = useTheme() as ReturnType<typeof useTheme>
+  const { colors } = theme
+
+  const { form } = useTypography(theme)
+
   return (
     <Stack
       verticalAlign={Vertical.Center}
@@ -18,10 +23,11 @@ export const Label = forwardRef<Props, any>(({ style, children, ...rest }, ref) 
       style={[
         {
           ...form,
+          color: colors.text,
           width: "100%",
-          whiteSpace: "nowrap"
+          whiteSpace: "nowrap",
         },
-        ...ensureArray(style)
+        ...ensureArray(style),
       ]}
       {...rest}>
       {children}

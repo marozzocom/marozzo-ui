@@ -46,10 +46,9 @@ export const Button: FC<Props> = ({
   children,
   ...props
 }) => {
-  const {
-    theme: { sizes, shadows, radii, colors }
-  } = useTheme()
-  const { form } = useTypography()
+  const { theme } = useTheme()
+  const { sizes, shadows, radii, colors } = theme
+  const { form } = useTypography(theme)
   const [ripples, setRipples] = useState<RipplesType>({})
 
   const buttonElement = useRef(null)
@@ -72,8 +71,8 @@ export const Button: FC<Props> = ({
       ...currentRipples,
       [id]: {
         ...currentRipples[id],
-        dismounting: true
-      }
+        dismounting: true,
+      },
     }))
   }, [])
 
@@ -90,7 +89,7 @@ export const Button: FC<Props> = ({
     rippleDuration,
     minimumRippleVisibleDuration,
     dimensions,
-    rippleStyles
+    rippleStyles,
   }
 
   const childrenAsObject = useWrapText(children)
@@ -116,30 +115,28 @@ export const Button: FC<Props> = ({
             "&::after": {
               content: `""`,
               display: "block",
-              background: Color(colors.effect)
-                .alpha(0.1)
-                .toString(),
+              background: Color(colors.effect).alpha(0.1).toString(),
               top: 0,
               right: 0,
               bottom: 0,
               left: 0,
               position: "absolute",
               opacity: 0,
-              transitionDuration: "300ms"
+              transitionDuration: "300ms",
             },
             ...(!disabled && {
               "&:hover": {
                 "&::after": {
-                  opacity: 1
-                }
-              }
+                  opacity: 1,
+                },
+              },
             }),
             "&:focus": {
               outline: "none",
-              boxShadow: shadows.active
-            }
+              boxShadow: shadows.active,
+            },
           },
-          ...ensureArray(style)
+          ...ensureArray(style),
         ]}
         disabled={disabled}
         as="button"

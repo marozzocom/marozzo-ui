@@ -1,16 +1,16 @@
 import React, { ComponentProps } from "react"
 import { Checked } from "./checked"
 import { Unchecked } from "./unchecked"
-import { Box, Icon } from "../../.."
+import { Box, Icon } from "../../../.."
 import { Checkmark } from "./checkmark"
-import { useTheme } from "../../../theme"
-import { ensureArray } from "../../../_common/helpers"
+import { useTheme } from "../../../../theme"
+import { ensureArray } from "../../../../_common/helpers"
 
 interface Props extends ComponentProps<typeof Box> {}
 
 export const CheckboxIcon = ({ style, ...rest }: Props) => {
   const {
-    theme: { colors }
+    theme: { colors },
   } = useTheme()
 
   return (
@@ -20,10 +20,10 @@ export const CheckboxIcon = ({ style, ...rest }: Props) => {
           {
             display: "none",
             "input:checked ~ &": {
-              display: "inline-block"
-            }
+              display: "inline-block",
+            },
           },
-          ensureArray(style)
+          ensureArray(style),
         ]}>
         <Icon>
           <Checked />
@@ -33,7 +33,7 @@ export const CheckboxIcon = ({ style, ...rest }: Props) => {
             color: colors.text,
             position: "absolute",
             top: 0,
-            left: 0
+            left: 0,
           }}>
           <Checkmark />
         </Icon>
@@ -43,10 +43,10 @@ export const CheckboxIcon = ({ style, ...rest }: Props) => {
           {
             display: "inline-block",
             "input:checked ~ &": {
-              display: "none"
-            }
+              display: "none",
+            },
           },
-          ensureArray(style)
+          ensureArray(style),
         ]}>
         <Unchecked />
       </Icon>

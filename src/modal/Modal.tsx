@@ -1,5 +1,5 @@
 import React, { FC, ComponentProps } from "react"
-import nanoid from "nanoid"
+import { nanoid } from "nanoid"
 import { Overlay } from "./components/Overlay"
 import { Container } from "./components/Container"
 import { Box } from "../box/Box"

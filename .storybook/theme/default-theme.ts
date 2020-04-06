@@ -20,14 +20,14 @@ export class DefaultTheme {
     "6": 128,
     "7": 256,
     "8": 512,
-    "9": 1024
+    "9": 1024,
   }
 
   fonts = {
     body: "mr-eaves-xl-sans, sans-serif",
     heading: "rigid-square, sans-serif",
     action: "mr-eaves-xl-sans, sans-serif",
-    monospace: "Menlo, monospace"
+    monospace: "Menlo, monospace",
   }
 
   fontSizes = {
@@ -38,13 +38,13 @@ export class DefaultTheme {
     l: "1.2rem",
     xl: "1.4rem",
     xxl: "1.6rem",
-    xxxl: "2rem"
+    xxxl: "2rem",
   }
 
   fontWeights = {
     normal: 400,
     medium: 500,
-    bold: 700
+    bold: 700,
   }
 
   colors = {
@@ -61,24 +61,24 @@ export class DefaultTheme {
     error: "#bb1616",
     ok: "#2a9c2a",
     action: "#1a1a1a",
-    disabled: "#ccc"
+    disabled: "#ccc",
   }
 
   motionProps = {
-    normal: "0.2s ease-out"
+    normal: "0.2s ease-out",
   }
 
   shadows = {
     active: `${this.colors.active} 0 0 0 2px`,
     subtle: "0px 5px 10px 0px rgba(0, 0, 0, 0.02)",
     normal: "0 0 10px rgba(0, 0, 0, 0.5)",
-    inset: "inset 3.536px 3.536px 10px 0px rgba(0, 0, 0, 0.15)"
+    inset: "inset 3.536px 3.536px 10px 0px rgba(0, 0, 0, 0.15)",
   }
 
   // TODO: base these on the theme colors
   gradients = {
     primary: "linear-gradient(-45deg, rgb(140,106,0) 0%, rgb(240,181,0) 100%)",
-    button: "linear-gradient(45deg, rgb(198,166,64) 0%, rgb(255,208,64) 100%)"
+    button: "linear-gradient(45deg, rgb(198,166,64) 0%, rgb(255,208,64) 100%)",
   }
 
   breakpoints = {
@@ -86,13 +86,13 @@ export class DefaultTheme {
     s: 768,
     m: 992,
     l: 1200,
-    xl: 1600
+    xl: 1600,
   }
 
   radii = {
     subtle: this.sizes[0],
     normal: this.sizes[2],
-    round: 2000
+    round: 2000,
   }
 
   // TODO: Decide whether to keep these with components, within Theme or somewhere else.
@@ -102,15 +102,15 @@ export class DefaultTheme {
       animate: { opacity: 1 },
       exit: { opacity: 0 },
       transition: {
-        type: "tween"
-      }
-    }
+        type: "tween",
+      },
+    },
   }
 
   timings = {
     common: 0.3,
     stagger: 0.1,
-    message: 5
+    message: 5,
   }
 
   zIndices = {
@@ -123,7 +123,7 @@ export class DefaultTheme {
     modal: 1400,
     popover: 1500,
     toast: 1700,
-    tooltip: 1800
+    tooltip: 1800,
   }
 }
 
@@ -140,7 +140,7 @@ const {
   breakpoints,
   motionProps,
   zIndices,
-  timings
+  timings,
 } = DefaultTheme.getInstance()
 
 export const defaultTheme = {
@@ -156,21 +156,5 @@ export const defaultTheme = {
   breakpoints,
   motionProps,
   zIndices,
-  timings
-}
-
-export interface ITheme {
-  sizes?: Partial<ThemeProperties & typeof defaultTheme.sizes>
-  fonts?: Partial<ThemeProperties & typeof defaultTheme.fonts>
-  fontSizes?: Partial<ThemeProperties & typeof defaultTheme.fontSizes>
-  fontWeights?: Partial<ThemeProperties & typeof defaultTheme.fontWeights>
-  colors?: Partial<ThemeProperties & typeof defaultTheme.colors>
-  radii?: Partial<ThemeProperties & typeof defaultTheme.radii>
-  shadows?: Partial<ThemeProperties & typeof defaultTheme.shadows>
-  transitions?: Partial<ThemeProperties & typeof defaultTheme.transitions>
-  gradients?: Partial<ThemeProperties & typeof defaultTheme.gradients>
-  breakpoints?: Partial<ThemeProperties & typeof defaultTheme.breakpoints>
-  motionProps?: Partial<ThemeProperties & typeof defaultTheme.motionProps>
-  zIndices?: Partial<ThemeProperties & typeof defaultTheme.zIndices>
-  timings?: Partial<ThemeProperties & typeof defaultTheme.timings>
+  timings,
 }

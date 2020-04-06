@@ -14,6 +14,6 @@ export class DefaultTheme {
     primary: "#faf",
     secondary: "#faa",
     overlay: "rgba(0, 0, 0, 0.25)",
-    active: "#77daff"
+    active: "#77daff",
   }
 }

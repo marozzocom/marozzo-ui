@@ -1,17 +1,17 @@
 import React, { forwardRef, ComponentProps } from "react"
-import { Box, useTheme } from ".."
-import { ensureArray } from "../_common/helpers"
-import { useVariants } from "../_common/use-variants"
+import { Box, useTheme } from "../.."
+import { ensureArray } from "../../_common/helpers"
+import { useVariants } from "../../_common/use-variants"
 
 interface Props extends ComponentProps<typeof Box> {
   checked: boolean
 }
 
 export const Switch = forwardRef<Props, any>(({ style, checked, ...rest }, ref) => {
-  const { field } = useVariants()
-  const {
-    theme: { colors, radii, sizes }
-  } = useTheme()
+  const { theme } = useTheme()
+  const { colors, radii, sizes } = theme
+
+  const { field } = useVariants(theme)
 
   return (
     <Box
@@ -33,10 +33,10 @@ export const Switch = forwardRef<Props, any>(({ style, checked, ...rest }, ref) 
           justifyContent: "center",
           alignItems: "center",
           "&[aria-checked=true]": {
-            background: colors.primary
-          }
+            background: colors.primary,
+          },
         },
-        ...ensureArray(style)
+        ...ensureArray(style),
       ]}
       {...rest}>
       <Box
@@ -50,7 +50,7 @@ export const Switch = forwardRef<Props, any>(({ style, checked, ...rest }, ref) 
           background: colors.action,
           transitionProperty: "transform",
           transitionTimingFunction: "ease-out",
-          transitionDuration: "0.1s"
+          transitionDuration: "0.1s",
         }}
       />
     </Box>

@@ -1,18 +1,12 @@
-import React, { useMemo } from "react"
-import { useTheme } from ".."
+export const useTypography = (theme: any) => {
+  const { fontSizes, fontWeights, fonts } = theme
 
-export const useTypography = () => {
-  const { theme } = useTheme()
-
-  const form = useMemo(() => {
-    const { fontSizes, fontWeights, fonts } = theme
-    return {
-      fontFamily: fonts.action,
-      fontWeight: fontWeights.bold,
-      fontSize: fontSizes.m,
-      lineHeight: "inherit"
-    }
-  }, [theme])
+  const form = {
+    fontFamily: fonts.action,
+    fontWeight: fontWeights.regular,
+    fontSize: fontSizes.m,
+    lineHeight: "inherit",
+  }
 
   return { form }
 }

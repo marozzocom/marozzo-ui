@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.13.8](https://github.com/marozzocom/marozzo-ui/compare/v0.13.7...v0.13.8) (2020-04-15)
+
+### Features
+
+- **components:** remove components from core library ([9a855f2](https://github.com/marozzocom/marozzo-ui/commit/9a855f2d14bf44fa13dc91caa220d9276bc43e6e))
+
 ### [0.13.7](https://github.com/marozzocom/marozzo-ui/compare/v0.13.6...v0.13.7) (2020-04-15)
 
 ### [0.13.6](https://github.com/marozzocom/marozzo-ui/compare/v0.13.5...v0.13.6) (2020-04-15)

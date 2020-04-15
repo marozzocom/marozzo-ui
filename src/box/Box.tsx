@@ -5,8 +5,6 @@ import { useTheme } from "../theme"
 import { ensureArray } from "../_common/helpers"
 import isPropValid from "@emotion/is-prop-valid"
 
-// TODO: Possibly merge MotionBox with Box, but consider potential performance problems.
-
 interface BoxProps<T> {
   target?: string
   as?: React.ElementType
@@ -20,7 +18,6 @@ export const Box = forwardRef<Props, any>(({ as = "div", style, children, ...res
   const Tag: any = `${as}`
   const { breakpoints } = useTheme()
 
-  // TODO: add typings
   const htmlAttributes = Object.keys(rest)
     .filter(key => isPropValid(key))
     .reduce((obj: any, key) => {
@@ -38,9 +35,9 @@ export const Box = forwardRef<Props, any>(({ as = "div", style, children, ...res
           boxSizing: "border-box",
           position: "relative",
           minWidth: 0,
-          pointerEvents: "all"
+          pointerEvents: "all",
         },
-        ensureArray(style)
+        ensureArray(style),
       ]),
     [breakpoints, style]
   )

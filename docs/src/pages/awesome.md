@@ -1,3 +1,0 @@
-# Everything
-
-Everything is cool! ❤

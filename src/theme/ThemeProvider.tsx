@@ -14,12 +14,14 @@ interface Props {
   alternateModeTheme?: ThemeProperty
   focusVisiblePolyfill?: boolean
   options?: Options
+  breakpoints?: Array<number>
 }
 
 interface ThemeContextValue {
-  mergedTheme: ThemeProperty
+  mergedTheme: any
   colorMode?: ColorMode
   setColorMode?: React.Dispatch<React.SetStateAction<ColorMode>>
+  breakpoints?: Array<number>
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
@@ -33,23 +35,26 @@ const focusVisibleStyles: CSSObject = {
   },
 }
 
-const ThemeProvider: FC<Props> = ({ baseTheme, theme, alternateModeTheme, children, global, focusVisiblePolyfill = true, options }) => {
+const ThemeProvider: FC<Props> = ({ baseTheme, theme, alternateModeTheme, children, global, focusVisiblePolyfill = true, options, breakpoints = [] }) => {
   const [colorMode, setColorMode] = useState<ColorMode>("normal")
 
   const emotionCache = createCache(options)
 
   focusVisiblePolyfill && focusVisible()
-  const mergedTheme = useMemo(() => merge.all([baseTheme, global, theme, colorMode === "alternate" && alternateModeTheme]) as ThemeProperty, [
+
+  const mergedTheme = useMemo(() => merge.all([baseTheme, global, theme, colorMode === "alternate" && alternateModeTheme]), [
     alternateModeTheme,
     baseTheme,
     colorMode,
+    global,
     theme,
   ])
+
   useEffect(() => setColorMode(localStorage.getItem("colorMode") as ColorMode), [])
 
   return (
     <CacheProvider value={emotionCache}>
-      <ThemeContext.Provider value={{ mergedTheme, colorMode, setColorMode }}>
+      <ThemeContext.Provider value={{ mergedTheme, colorMode, setColorMode, breakpoints }}>
         {global && <Global styles={global} />}
         {focusVisiblePolyfill && <Global styles={focusVisibleStyles} />}
         {children}

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.13.6](https://github.com/marozzocom/marozzo-ui/compare/v0.13.5...v0.13.6) (2020-04-15)
+
+### Features
+
+- **docs, theme:** move docs to their own project for now, fix breakpoints and theme types ([390c7b0](https://github.com/marozzocom/marozzo-ui/commit/390c7b04070edc0571d38648a94d127440a314ef))
+
 ### [0.13.5](https://github.com/marozzocom/marozzo-ui/compare/v0.13.4...v0.13.5) (2020-03-16)
 
 ### [0.13.4](https://github.com/marozzocom/marozzo-ui/compare/v0.13.3...v0.13.4) (2020-03-16)
